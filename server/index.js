@@ -3,11 +3,12 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import dotenv from "dotenv";
+
+dotenv.config();
+
 // SV: If you want to import the routes please do it from here.
 import UserRoutes from "./routes/User.js";
-
-
-
 
 // SV: Initializing the Application
 const app = express();
@@ -20,13 +21,12 @@ app.use(cors());
 
 // SV: Setting up database mongoose.
 // This is the connection url Which I will move to that .env file so that no one has access to it.
-const connection_URL = `mongodb+srv://shubham_mern:shubham_mern123@cluster0.kfluk.mongodb.net/DustyPaws?retryWrites=true&w=majority`;
 // This will also move to the .env file
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8082;
 
 // SV: Connecting the mongoose.
 mongoose
-  .connect(connection_URL, {
+  .connect(process.env.connection_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
