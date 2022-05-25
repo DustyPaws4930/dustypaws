@@ -1,0 +1,9 @@
+.labelInputWrapper label,
+.labelInputWrapper input {
+  margin: 1rem;
+  border: 0;
+}
+
+.labelInputWrapper input {
+  border-bottom: 1px solid black;
+}

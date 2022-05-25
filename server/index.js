@@ -3,6 +3,9 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+//todo:  This will be removed from here
+// import jwt from "jsonwebtoken";
+
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -39,3 +42,17 @@ mongoose
 
 // SV: Here are all my routes which you will also mention when any endpoint for the api is created.
 app.use("/user", UserRoutes);
+
+// let say you wanted to fetch the data but we need to first perform authentication.
+// To do that
+
+// app.use("/fetchsome", (req, res) => {
+//   const token = req.headers["x-access-token"];
+//   try {
+//     const decodedToken = jwt.verify(token, "secret123");
+//     const email = decodedToken.email;
+//     // Then find the user using the email and then just proceed
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
