@@ -17,6 +17,7 @@ const SignUp = () => {
     street: "",
     city: "",
     Dob: "",
+    isNgo: false,
   });
   const [cPassword, setConfirmPassword] = useState("");
   const [securityKey, setSecurityKey] = useState("");
@@ -27,6 +28,9 @@ const SignUp = () => {
 
     if (name === "cpassword") {
       setConfirmPassword(value);
+    } else if (name === "isNgo") {
+      value = e.target.checked;
+      setUser({ ...user, [name]: value });
     } else {
       setUser({ ...user, [name]: value });
     }
@@ -186,8 +190,12 @@ const SignUp = () => {
 
         <div className="NGO_Wrapper">
           <label>
-            <input type="checkbox" />
-            Signing up as NGO
+            <input
+              name="isNgo"
+              onChange={(event) => HandleInputChange(event)}
+              value={user.isNgo}
+              type="checkbox"
+            />
           </label>
           <input
             type="text"
