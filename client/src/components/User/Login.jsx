@@ -80,6 +80,9 @@ const Login = () => {
             <input type="submit" />
           </div>
         </div>
+        <p>
+          Not a member? <a href="/signup"> SignUp</a>
+        </p>
       </form>
     </>
   );

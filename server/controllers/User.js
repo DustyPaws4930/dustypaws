@@ -6,25 +6,38 @@ export const SignUp = (req, res) => {
   let lname = req.body.lname;
   let password = req.body.password;
   let email = req.body.email;
+  let file = req.body.file;
+  let Dob = req.body.Dob;
   let phoneNumber = req.body.phoneNumber;
-  let address = req.body.address;
+  let role = req.body.isNgo ? "ngo" : "user";
+  let address = { street: req.body.street, city: req.body.city };
 
   let userObj = new User({
     fname: fname,
     lname: lname,
     email: email,
     password: password,
+    file: file,
+    Dob: Dob,
+    role: role,
     phoneNumber: phoneNumber,
     address: address,
   });
-
+  console.log(`User obj: ${userObj}`);
   try {
     User.find({ email: email }, async (err, user) => {
       if (user.length > 0) {
         res.status(401).json(`User with email already exists`);
       } else {
-        await userObj.save();
-        res.status(201).json(userObj);
+        let savedUser = await userObj.save();
+        const token = jwt.sign(
+          {
+            savedUser,
+          },
+          "Langara123"
+        );
+
+        res.status(200).json({ user: token });
       }
     });
   } catch (err) {

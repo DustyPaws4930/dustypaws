@@ -9,6 +9,7 @@ let userModel = mongoose.Schema({
     type: String,
     require: true,
   },
+
   email: {
     type: String,
     require: true,
@@ -17,13 +18,21 @@ let userModel = mongoose.Schema({
     type: String,
     require: true,
   },
+  Dob: {
+    type: String,
+    require: true,
+  },
   phoneNumber: {
     type: String,
     require: true,
   },
   address: {
-    type: String,
+    type: Object,
     require: true,
+  },
+  rewardsEarned: {
+    type: Number,
+    default: 0,
   },
   role: {
     type: String,

@@ -1,7 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { getApiPath } from "../../Common";
 import jwt from "jwt-decode";
+import {
+  getApiPath,
+  isTokenTimeOut,
+  setToken,
+  setTokenTimeout,
+} from "../../Common";
 const SignUp = () => {
   const [user, setUser] = useState({
     fname: "",
@@ -9,9 +14,12 @@ const SignUp = () => {
     email: "",
     password: "",
     phoneNumber: "",
-    address: "",
+    street: "",
+    city: "",
+    Dob: "",
   });
   const [cPassword, setConfirmPassword] = useState("");
+  const [securityKey, setSecurityKey] = useState("");
 
   const HandleInputChange = (e) => {
     let name = e.target.name;
@@ -32,25 +40,49 @@ const SignUp = () => {
       axios
         .post(SignUPURL, user)
         .then((res) => {
-          window.location.href = "/";
-          const user = jwt(res.data.user); // decode your token here
-          alert("Logged in!!");
-          localStorage.setItem("token", user.user);
-          console.log("user", user.user);
+          const userToken = jwt(res.data.user); // decode your token here
+          alert("Signed Up!!");
+          localStorage.setItem("token", userToken.user);
+          setToken(userToken.user);
+          console.log("user", userToken);
+          // These function requires token only
+          setTokenTimeout(userToken);
+
+          console.log(isTokenTimeOut(userToken));
+          console.log("user", new Date(userToken.iat));
         })
         .catch((err) => {
-          console.log(err);
-          alert(`Err: ${err}`);
+          console.log("Error" + err.response.data);
+          alert("Error: " + err.response.data);
         });
     } else {
       alert("Password does not match");
     }
   };
 
+  const GetLiveLocation = (event) => {
+    event.preventDefault();
+  };
+
+  const HandleSecurityCheck = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <>
       <h1>Sign Up page</h1>{" "}
       <form onSubmit={(e) => handleSubmit(e)}>
+        {/* <div className="labelInputWrapper">
+          <label htmlFor="file">Upload File</label>
+          <input
+            type="File"
+            name="file"
+            value={user.file}
+            id="file"
+            onChange={(event) => HandleInputChange(event)}
+            placeholder="Upload File"
+          />
+        </div> */}
         <div className="labelInputWrapper">
           <label htmlFor="fname">First Name</label>
           <input
@@ -71,6 +103,18 @@ const SignUp = () => {
             id="lname"
             onChange={(event) => HandleInputChange(event)}
             placeholder="Last Name"
+          />
+        </div>
+        <div className="labelInputWrapper">
+          <label htmlFor="Dob">Date of Birthday:</label>
+          <input
+            type="date"
+            id="Dob"
+            value={user.Dob}
+            onChange={(event) => {
+              HandleInputChange(event);
+            }}
+            name="Dob"
           />
         </div>
         <div className="labelInputWrapper">
@@ -118,16 +162,47 @@ const SignUp = () => {
           />
         </div>
         <div className="labelInputWrapper">
-          <label htmlFor="address">Address</label>
+          <label htmlFor="street">Street</label>
           <input
             type="text"
-            value={user.address}
-            name="address"
+            value={user.street}
+            name="street"
             onChange={(event) => HandleInputChange(event)}
-            id="address"
-            placeholder="Address"
+            id="street"
+            placeholder="Street"
           />
         </div>
+        <div className="labelInputWrapper">
+          <label htmlFor="city">City</label>
+          <input
+            type="text"
+            value={user.city}
+            name="city"
+            onChange={(event) => HandleInputChange(event)}
+            id="city"
+            placeholder="City"
+          />
+        </div>
+
+        <div className="NGO_Wrapper">
+          <label>
+            <input type="checkbox" />
+            Signing up as NGO
+          </label>
+          <input
+            type="text"
+            onChange={(event) => HandleSecurityCheck(event)}
+            value={securityKey}
+          />
+        </div>
+
+        <button
+          onClick={(event) => {
+            GetLiveLocation(event);
+          }}
+        >
+          Access Location
+        </button>
         <input type="submit" value="Submit" />
       </form>
     </>
