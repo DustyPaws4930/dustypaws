@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import Header from "./Header/Header";
 // import { getToken } from "../Common";
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
   return (
     <>
       <h1>Home page</h1>
+      <Header />
     </>
   );
 };
