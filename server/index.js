@@ -25,7 +25,7 @@ app.use(cors());
 // SV: Setting up database mongoose.
 // This is the connection url Which I will move to that .env file so that no one has access to it.
 // This will also move to the .env file
-const PORT = process.env.PORT || 8082;
+const PORT = process.env.PORT || 5000;
 
 // SV: Connecting the mongoose.
 mongoose
