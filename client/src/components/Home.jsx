@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer"
 // import { getToken } from "../Common";
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
     <>
       <h1>Home page</h1>
       <Header />
+      <Footer />
     </>
   );
 };
