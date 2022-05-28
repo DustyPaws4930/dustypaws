@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { deleteToken } from "../../Common";
 import { User } from "../Home";
 
 const Navbar = () => {
@@ -28,8 +29,10 @@ const Navbar = () => {
       );
     }
   };
-
-  const RenderUserNavBar = () => {};
+  const HandleLogoutClick = () => {
+    deleteToken();
+    alert("Logged out!!");
+  };
 
   return (
     <>
@@ -46,6 +49,9 @@ const Navbar = () => {
               </Link>
               <Link to="/login">
                 <li>Login</li>
+              </Link>
+              <Link to="/login" onClick={HandleLogoutClick}>
+                <li>Logout</li>
               </Link>
             </div>
           </div>

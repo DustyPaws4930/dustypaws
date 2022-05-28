@@ -28,3 +28,7 @@ export const setTokenTimeout = (token) => {
     0
   );
 };
+
+export const deleteToken = () => {
+  localStorage.removeItem("token");
+};
