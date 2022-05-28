@@ -196,6 +196,7 @@ const SignUp = () => {
               value={user.isNgo}
               type="checkbox"
             />
+            Are you from NGO?
           </label>
           <input
             type="text"
