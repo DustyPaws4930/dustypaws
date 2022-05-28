@@ -1,11 +1,11 @@
+import jwt from "jwt-decode";
 let tokenTimeout;
-
 export const getApiPath = () => {
   return "http://localhost:5000/";
 };
 
 export const getToken = () => {
-  return localStorage.getItem("token");
+  return jwt(localStorage.getItem("token"));
 };
 
 export const setToken = (token) => {
@@ -27,5 +27,4 @@ export const setTokenTimeout = (token) => {
     0,
     0
   );
-  alert(tokenTimeout);
 };

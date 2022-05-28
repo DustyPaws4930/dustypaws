@@ -4,7 +4,6 @@ import jwt from "jwt-decode";
 import axios from "axios";
 import {
   getApiPath,
-  isTokenTimeOut,
   setToken,
   setTokenTimeout,
 } from "../../Common";
@@ -32,15 +31,11 @@ const Login = () => {
       .then((res) => {
         const userToken = jwt(res.data.user); // decode your token here
         alert("Logged in!!");
-        localStorage.setItem("token", userToken.user);
-        setToken(userToken.user);
+        setToken(res.data.user);
         console.log("user", userToken);
         // These function requires token only
         setTokenTimeout(userToken);
-
-        console.log(isTokenTimeOut(userToken));
-        console.log("user", new Date(userToken.iat));
-        // window.location.href = "/";
+         window.location.href = "/";
       })
       .catch((err) => {
         alert(`Error Occured: ${err.response.data.message}`);

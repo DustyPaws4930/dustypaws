@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { User } from "../Home";
 
 const Navbar = () => {
-  return (
-    <>
-      <nav>
-        <ul>
+  let loggedInUser = useContext(User);
+
+  const RenderNavBar = () => {
+    if (loggedInUser?.role === "NGO") {
+      return (
+        <Link to="/event">
+          <li>Create Event</li>
+        </Link>
+      );
+    } else {
+      return (
+        <>
           <Link to="/event">
             <li>Event</li>
           </Link>
@@ -13,8 +22,20 @@ const Navbar = () => {
             <li>Donate</li>
           </Link>
           <Link to="/about">
-            <li>About us</li>
+            <li>About us </li>
           </Link>
+        </>
+      );
+    }
+  };
+
+  const RenderUserNavBar = () => {};
+
+  return (
+    <>
+      <nav>
+        <ul>
+          {RenderNavBar()}
           <div>
             <li className="nav-dropDown">
               <img src="" alt="user-profile" />
