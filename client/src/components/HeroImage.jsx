@@ -17,12 +17,17 @@ const resizeFile = (file) =>
     );
   });
 
+  const imgResizing = {
+    width:"300px",
+    height:"300px"
+  }
+
 let HeroImage = () => {
   return (
     <>
       <div className="hero-image">
         <h1>Heroes</h1>
-        <img src="" alt="" srcset="" />
+        <img src="" alt="" style={imgResizing} />
       </div>
     </>
   );
