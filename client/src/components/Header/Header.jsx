@@ -7,7 +7,7 @@ const Header = () => {
     <header>
       {/* <h1>Header page</h1> */}
       <Link to="/">
-        <img src="" alt="logo" />{" "}
+        <img src="" alt="logo" />
       </Link>
       <Navbar />
     </header>
