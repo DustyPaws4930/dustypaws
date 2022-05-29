@@ -23,6 +23,7 @@ const Home = () => {
   const [loggedInUser, setLoggedInUser] = useState({});
   useEffect(() => {
     let userToken = getToken();
+    if (userToken !== null && userToken !== undefined && userToken !== "");
     setLoggedInUser(userToken.user);
   }, [setLoggedInUser]);
 

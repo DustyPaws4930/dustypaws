@@ -5,7 +5,12 @@ export const getApiPath = () => {
 };
 
 export const getToken = () => {
-  return jwt(localStorage.getItem("token"));
+  let token = localStorage.getItem("token");
+  if (token != null && token !== undefined) {
+    return jwt(token);
+  } else {
+    return "";
+  }
 };
 
 export const setToken = (token) => {
