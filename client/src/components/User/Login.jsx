@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import jwt from "jwt-decode";
 import axios from "axios";
-import {
-  getApiPath,
-  setToken,
-  setTokenTimeout,
-} from "../../Common";
+import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -35,7 +31,7 @@ const Login = () => {
         console.log("user", userToken);
         // These function requires token only
         setTokenTimeout(userToken);
-         window.location.href = "/";
+        window.location.href = "/";
       })
       .catch((err) => {
         alert(`Error Occured: ${err.response.data.message}`);

@@ -1,12 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import jwt from "jwt-decode";
-import {
-  getApiPath,
-  isTokenTimeOut,
-  setToken,
-  setTokenTimeout,
-} from "../../Common";
+import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 const SignUp = () => {
   const [user, setUser] = useState({
     fname: "",
@@ -51,8 +46,7 @@ const SignUp = () => {
           console.log("user", userToken);
           // These function requires token only
           setTokenTimeout(userToken);
-
-          console.log(isTokenTimeOut(userToken));
+          // console.log(isTokenTimeOut(userToken));
           console.log("user", new Date(userToken.iat));
         })
         .catch((err) => {
