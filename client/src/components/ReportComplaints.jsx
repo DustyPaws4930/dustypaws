@@ -18,11 +18,6 @@ let ReportComplaints = () => {
             <input type="text" name="description" />
           </label>
 
-          <label for="img">
-            Upload image:
-            <input type="file" id="img" name="img" accept="image/*"></input>
-          </label>
-
           <label>
             Name
             <input type="text" name="name" />
