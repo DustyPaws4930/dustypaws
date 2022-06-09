@@ -16,9 +16,25 @@ const Navbar = () => {
     } else {
       return (
         <>
-          <Link to="/event">
-            <li>Event</li>
-          </Link>
+            <li>Explore 
+              <img src="" alt="arrow down"/> </li>
+              {/* arrow down png to be added */}
+               <div>
+                  <ul>
+                      <Link to='/event'><li>Events</li></Link>
+                      <Link to='/partners'> <li>Partners</li> </Link>
+                    </ul>
+               </div>
+
+
+          {/* <label>Explore
+              <select>
+              <option><Link to='/event'>Events</Link></option>
+                  <Link to='/partners'> <option>Partners</option> </Link>
+              </select>
+          </label> */}
+
+
           <Link to="/donate">
             <li>Donate</li>
           </Link>
@@ -50,9 +66,10 @@ const Navbar = () => {
               <Link to="/login">
                 <li>Login</li>
               </Link>
-              <Link to="/login" onClick={HandleLogoutClick}>
-                <li>Logout</li>
-              </Link>
+              {/* <Link to="/login" onClick={HandleLogoutClick}>
+                <li>Logout</li> 
+              </Link> */} 
+              {/* Log out is not needed here pls check n remove. */}
             </div>
           </div>
         </ul>
