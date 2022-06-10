@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const Schema = mongoose.Schema
 
-const ReportComplaintSchema = new Schema({
+const ReportSchema = new Schema({
     title: {
         type: String,
         minlength: 1,
@@ -50,4 +50,4 @@ const ReportComplaintSchema = new Schema({
     }
 })
 
-exports.ReportComplaint = mongoose.model('ReportComplaint', ReportComplaintSchema)
+exports.Report = mongoose.model('Report', ReportSchema)

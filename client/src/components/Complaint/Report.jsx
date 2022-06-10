@@ -1,7 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
-import PopUp from "./Footer/ModelPopups/PopUp";
-import "./ReportComplaint.css";
-let ReportComplaints = () => {
+import { getApiPath } from "../../Common";
+import PopUp from "../Footer/ModelPopups/PopUp";
+import "./Report.css";
+
+let Report = () => {
   let [popUp, setPopUp] = useState(false);
   let TogglePopUp = () => {
     setPopUp(!popUp);
@@ -12,16 +15,48 @@ let ReportComplaints = () => {
     PopUpContent = <PopUp TogglePopUp={TogglePopUp} />;
   }
 
+  const [reportData, setReportData] = useState({
+    title: "",
+    description: "",
+    name:"",
+    isLocked:"",
+    reportDate:""    
+
+  });
+
+  const onInputChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setReportData({ ...reportData, [name]: value });
+  };
+
+  const handleSubmitBtn = (e) => {
+    e.preventDefault();
+    const reportUrl = getApiPath() + "complaint/report";
+    axios
+      .post(reportUrl, reportData)
+      .then((res) => {
+
+      })
+      .catch((err) => {
+        alert(`Error Occured: ${err.response.data.message}`);
+        console.log(err.response.data.message);
+      });
+  };
+
+
   return (
     <>
       <div className="sitePage">
         <h1>Report Complaint</h1>
 
-        <form action="/report-complaint" method="POST">
+        <form action="/"  onSubmit={(e) => {
+          handleSubmitBtn(e);
+        }}>
           <div className="labelInputWrapper">
             <label>
               Title of Complaint
-              <input type="text" name="title" />
+              <input type="text" onChange={(event) => onInputChange(event)} name="title" />
             </label>
           </div>
           <div className="labelInputWrapper">
@@ -67,7 +102,7 @@ let ReportComplaints = () => {
             </label>
           </div>
 
-          <label>
+          {/* <label>
             Name
             <input type="text" name="name" />
           </label>
@@ -105,7 +140,7 @@ let ReportComplaints = () => {
               value="1"
               name="priority"
             />
-          </label>
+          </label> */}
 
           <input type="submit" value="Registered Complaint" />
         </form>
@@ -114,4 +149,4 @@ let ReportComplaints = () => {
   );
 };
 
-export default ReportComplaints;
+export default Report;
