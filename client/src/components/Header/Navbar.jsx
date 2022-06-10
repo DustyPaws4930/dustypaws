@@ -9,7 +9,7 @@ const Navbar = () => {
   const RenderNavBar = () => {
     if (loggedInUser?.role === "NGO") {
       return (
-        <Link to="/event">
+        <Link to="/eventform">
           <li>Create Event</li>
         </Link>
       );
