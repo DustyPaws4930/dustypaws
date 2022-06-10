@@ -42,7 +42,9 @@ mongoose
   });
 
 // SV: Here are all my routes which you will also mention when any endpoint for the api is created.
+//****** User Routes ****** 
 app.use("/user", UserRoutes);
+//****** Complaint Routes ****** 
 app.use("/complaint", ComplaintRoutes);
 
 // let say you wanted to fetch the data but we need to first perform authentication.
