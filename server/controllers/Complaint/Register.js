@@ -1,4 +1,4 @@
-import { Report } from "../models/Report"
+import { Report } from "../../models/Report"
 
 export const Complaint = (req, res) => {
     let title = req.body.title;
