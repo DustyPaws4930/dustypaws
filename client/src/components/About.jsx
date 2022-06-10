@@ -8,7 +8,7 @@ let About = () => {
       {/* header component fetched */}
       <header className="header">< Header /></header>
 
-      <div className="about-us">
+      <main className="about-us">
         <h1>About Us</h1>
         <section className="landing-about-us">
           <div className="about-description">
@@ -55,7 +55,7 @@ let About = () => {
             <p>Jaskaranvir Deogan</p>
           </div>
         </section>
-      </div>
+      </main>
 
       {/* Footer component fetched */}
       <footer className="footer">
