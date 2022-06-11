@@ -107,6 +107,7 @@ let Report = () => {
               </a>
             </label>
           </div>
+          {PopUpContent}
           <div>
             <label htmlFor="priority">Priority Flag</label>
             <button
