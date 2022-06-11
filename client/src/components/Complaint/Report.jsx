@@ -18,10 +18,8 @@ let Report = () => {
   const [reportData, setReportData] = useState({
     title: "",
     description: "",
-    name:"",
-    isLocked:"",
-    reportDate:""    
-
+    name: "",
+    reportDate: "",
   });
 
   const onInputChange = (event) => {
@@ -35,34 +33,42 @@ let Report = () => {
     const reportUrl = getApiPath() + "complaint/report";
     axios
       .post(reportUrl, reportData)
-      .then((res) => {
-
-      })
+      .then((res) => {})
       .catch((err) => {
         alert(`Error Occured: ${err.response.data.message}`);
         console.log(err.response.data.message);
       });
   };
 
-
   return (
     <>
-      <div className="sitePage">
+      <section className="report-complaint">
         <h1>Report Complaint</h1>
-
-        <form action="/"  onSubmit={(e) => {
-          handleSubmitBtn(e);
-        }}>
+        <form
+          action="/"
+          onSubmit={(e) => {
+            handleSubmitBtn(e);
+          }}
+        >
           <div className="labelInputWrapper">
             <label>
-              Title of Complaint
-              <input type="text" onChange={(event) => onInputChange(event)} name="title" />
+              Title
+              <input
+                type="text"
+                onChange={(event) => onInputChange(event)}
+                name="title"
+              />
             </label>
           </div>
           <div className="labelInputWrapper">
             <label>
-              Description of Complaint
-              <input type="text" name="description" />
+              Description
+              <input
+                type="text"
+                name="description"
+                id="description"
+                placeholder="please briefly describe the event"
+              />
             </label>
           </div>
           <div className="labelInputWrapper">
@@ -74,23 +80,23 @@ let Report = () => {
           <div className="labelInputWrapper">
             <label>
               Name
-              <input type="text" name="name" />
-            </label>
-          </div>
-
-          <div className="labelInputWrapper">
-            <label for="isLocked">
-              Is Locked:
-              <select name="isLocked" id="isLocked">
-                <option value="true">True</option>
-                <option value="false">False</option>
-              </select>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="your name"
+              />
             </label>
           </div>
           <div className="labelInputWrapper">
             <label>
-              Report Date:
-              <input type="date" name="reportDate" />
+              Contact Number
+              <input
+                type="tel"
+                name="name"
+                id="contact-number"
+                placeholder="000-000-0000"
+              />
             </label>
           </div>
           <div className="LocationWrapper">
@@ -100,6 +106,26 @@ let Report = () => {
                 Get Location
               </a>
             </label>
+          </div>
+          <div>
+            <label htmlFor="priority">Priority Flag</label>
+            <button
+              className="priority-flag"
+              id="priorityEmergency"
+              type="button"
+            >
+              Emergency
+            </button>
+            <button
+              className="priority-flag"
+              id="priorityModerate"
+              type="button"
+            >
+              Moderate
+            </button>
+            <button className="priority-flag" id="priorityHigh" type="button">
+              High
+            </button>
           </div>
 
           {/* <label>
@@ -141,10 +167,9 @@ let Report = () => {
               name="priority"
             />
           </label> */}
-
           <input type="submit" value="Registered Complaint" />
         </form>
-      </div>
+      </section>
     </>
   );
 };
