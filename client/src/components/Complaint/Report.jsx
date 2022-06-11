@@ -1,45 +1,96 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { getApiPath } from "../../Common";
+import { useEffect } from "react";
+import { getApiPath, getToken } from "../../Common";
 import PopUp from "../Footer/ModelPopups/PopUp";
 import "./Report.css";
 
 let Report = () => {
+  // ***Declare all variables here***
+  let PopUpContent;
   let [popUp, setPopUp] = useState(false);
-  let TogglePopUp = () => {
+  let [priority, setPriority] = useState(0);
+  let [loggedInUser, setLoggedInUser] = useState({});
+  let [complaintImage, setComplaintImage] = useState();
+  let [reportData, setReportData] = useState({
+    title: "",
+    description: "",
+    Image: File,
+    name: "",
+    phoneNumber: "",
+  });
+
+  // ***Declare Functions here***F
+  useEffect(() => {
+    let userToken = getToken();
+    if (userToken !== null && userToken !== undefined && userToken !== "") {
+      setLoggedInUser(userToken.user);
+      setReportData({
+        name: `${userToken.user.fname} ${userToken.user.lname}`,
+        phoneNumber: userToken.user.phoneNumber,
+      });
+    } else {
+      setReportData({
+        name: "",
+        phoneNumber: "",
+      });
+    }
+  }, [setLoggedInUser]);
+
+  // To show the popup
+  const TogglePopUp = () => {
     setPopUp(!popUp);
   };
 
-  let PopUpContent;
-  if (popUp) {
-    PopUpContent = <PopUp TogglePopUp={TogglePopUp} />;
-  }
-
-  const [reportData, setReportData] = useState({
-    title: "",
-    description: "",
-    name: "",
-    reportDate: "",
-  });
-
+  // All input change event handler
   const onInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setReportData({ ...reportData, [name]: value });
   };
 
+  // form submit event handler
   const handleSubmitBtn = (e) => {
     e.preventDefault();
-    const reportUrl = getApiPath() + "complaint/report";
-    axios
-      .post(reportUrl, reportData)
-      .then((res) => {})
+
+    var bodyFormData = new FormData();
+    bodyFormData.append("title", reportData.title);
+    bodyFormData.append("description", reportData.description);
+    bodyFormData.append("name", reportData.name);
+    bodyFormData.append("contactNumber", reportData.phoneNumber);
+    bodyFormData.append("Image", complaintImage);
+    bodyFormData.append("priority", priority);
+
+    const reportUrl = getApiPath() + "complaint/register";
+    console.log(bodyFormData.title);
+    axios({
+      method: "POST",
+      url: reportUrl,
+      data: bodyFormData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
-        alert(`Error Occured: ${err.response.data.message}`);
-        console.log(err.response.data.message);
+        //handle error
+        console.log(err);
       });
   };
 
+  // File change event handler
+  const handleFileChange = (e) => {
+    setComplaintImage(e.target.files[0]);
+  };
+
+  // Priority change event handler
+  const HandlePriorityChange = (e) => {
+    setPriority(e.target.id);
+  };
+
+  if (popUp) {
+    PopUpContent = <PopUp TogglePopUp={TogglePopUp} />;
+  }
   return (
     <>
       <section className="report-complaint">
@@ -57,6 +108,8 @@ let Report = () => {
                 type="text"
                 onChange={(event) => onInputChange(event)}
                 name="title"
+                id="title"
+                value={reportData.title}
               />
             </label>
           </div>
@@ -67,14 +120,24 @@ let Report = () => {
                 type="text"
                 name="description"
                 id="description"
+                value={reportData.description}
+                onChange={(event) => onInputChange(event)}
                 placeholder="please briefly describe the event"
               />
             </label>
           </div>
           <div className="labelInputWrapper">
-            <label for="img">
+            <label htmlFor="img">
               Upload image:
-              <input type="file" id="img" name="img" accept="image/*"></input>
+              <input
+                onChange={(e) => {
+                  handleFileChange(e);
+                }}
+                type="file"
+                id="img"
+                name="img"
+                accept="image/*"
+              ></input>
             </label>
           </div>
           <div className="labelInputWrapper">
@@ -84,17 +147,21 @@ let Report = () => {
                 type="text"
                 name="name"
                 id="name"
+                value={reportData.name}
+                onChange={(e) => onInputChange(e)}
                 placeholder="your name"
               />
             </label>
           </div>
           <div className="labelInputWrapper">
             <label>
-              Contact Number
+              Phone Number
               <input
                 type="tel"
-                name="name"
-                id="contact-number"
+                name="phoneNumber"
+                id="phoneNumber"
+                value={reportData.phoneNumber}
+                onChange={(e) => onInputChange(e)}
                 placeholder="000-000-0000"
               />
             </label>
@@ -112,62 +179,38 @@ let Report = () => {
             <label htmlFor="priority">Priority Flag</label>
             <button
               className="priority-flag"
-              id="priorityEmergency"
+              id="0"
+              name="priorityEmergency"
               type="button"
+              onClick={(e) => {
+                HandlePriorityChange(e);
+              }}
             >
               Emergency
             </button>
             <button
               className="priority-flag"
-              id="priorityModerate"
+              id="1"
+              name="priorityModerate"
               type="button"
+              onClick={(e) => {
+                HandlePriorityChange(e);
+              }}
             >
               Moderate
             </button>
-            <button className="priority-flag" id="priorityHigh" type="button">
-              High
+            <button
+              className="priority-flag"
+              id="2"
+              name="priorityLow"
+              type="button"
+              onClick={(e) => {
+                HandlePriorityChange(e);
+              }}
+            >
+              Low
             </button>
           </div>
-
-          {/* <label>
-            Name
-            <input type="text" name="name" />
-          </label>
-
-          <label for="isLocked">
-            Is Locked:
-            <select name="isLocked" id="isLocked">
-              <option value="true">True</option>
-              <option value="false">False</option>
-            </select>
-          </label>
-
-          <label>
-            Report Date:
-            <input type="date" name="reportDate" />
-          </label>
-
-          <label>
-            Contact No.:
-            <input
-              type="number"
-              placeholder="between 0 and 9"
-              value="0"
-              name="contact"
-            />
-          </label>
-
-          <label>
-            Priority:
-            <input
-              type="number"
-              min="1"
-              max="5"
-              placeholder="between 1 and 5"
-              value="1"
-              name="priority"
-            />
-          </label> */}
           <input type="submit" value="Registered Complaint" />
         </form>
       </section>

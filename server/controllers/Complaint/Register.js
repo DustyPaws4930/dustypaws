@@ -1,21 +1,37 @@
-import { Report } from "../../models/Report"
+import ReportModel from "../../models/Report.js";
+import fs from "fs";
 
-export const Complaint = (req, res) => {
-    let title = req.body.title;
-    let description = req.body.description;
-    let name = req.body.name;
-    let isLocked = req.body.isLocked;
-    let reportDate = req.body.reportDate;
+export const Register = (req, res) => {
+  let title = req.body.title;
+  let description = req.body.description;
+  let name = req.body.name;
+  let phoneNumber = req.body.phoneNumber;
+  let priority = req.body.priority;
 
-    let report = new Report({
-        title: title,
-        description: description,
-        name: name,
-        isLocked: isLocked,
-        reportDate: reportDate
-    });
-    report.save();
-    console.log("Report object: " + report);
-    res.status(200).json(user);
+  const file = fs.readFileSync(req.file.path);
+  const imgStr = Buffer.from(file).toString("base64");
 
-}
+  let reportObj = new ReportModel({
+    title: title,
+    description: description,
+    name: name,
+    phoneNumber: phoneNumber,
+    Image: imgStr,
+    priority: priority,
+  });
+
+  console.log("Report object: " + reportObj);
+  reportObj.save((err, savedReport) => {
+    if (!err) {
+      console.log("Complaint Registered and sent to client");
+      return res.status(200).json({ Complaint: savedReport });
+    } else {
+      console.log(`Unable to create complaint with ${reportObj}`);
+      return res.status(400).json({
+        message: `Error occured while registering a complaint ${err}`,
+      });
+    }
+  });
+};
+
+export default Register;
