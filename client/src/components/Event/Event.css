@@ -1,0 +1,42 @@
+html {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-content: center;
+    justify-content: center;
+    margin: 0;
+    padding: 1rem;
+    line-height: 1.5;
+} 
+
+/* li{
+    list-style: none;
+} */
+/* .control-arrow{
+    display: none;
+} */
+.card-body{
+    background-color: gray;
+    border-radius: 0.5rem;
+    padding-bottom: 1rem;
+    margin: 10px;
+
+}
+
+.event-ngo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10rem;
+}
+.event-form{
+    padding: 20px;
+}
+.control-dots{
+    background-color: red;
+    padding: 10px;
+}

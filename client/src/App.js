@@ -27,9 +27,11 @@ const App = () => {
 
           <Route path="/event" caseSensitive={false} element={<Event />} />
 
-          <Route path="/singleevent" caseSensitive={false} element={<SingleEvent />} />
+          <Route path="/singleEvent" caseSensitive={false} element={<SingleEvent />} />
 
           <Route path="/eventform" caseSensitive={false} element={<EventForm />} />
+
+          <Route path="*" element={<Home/>}/>
 
 
         </Routes>
