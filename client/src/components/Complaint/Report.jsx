@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { getApiPath, getToken } from "../../Common";
-import PopUp from "../Footer/ModelPopups/PopUp";
+import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
 
 let Report = () => {
@@ -89,7 +89,7 @@ let Report = () => {
   };
 
   if (popUp) {
-    PopUpContent = <PopUp TogglePopUp={TogglePopUp} />;
+    PopUpContent = <PopUp TogglePopUp={TogglePopUp} showMap={false} />;
   }
   return (
     <>
