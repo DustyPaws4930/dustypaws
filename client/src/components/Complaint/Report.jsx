@@ -89,7 +89,7 @@ let Report = () => {
   };
 
   if (popUp) {
-    PopUpContent = <PopUp TogglePopUp={TogglePopUp} showMap={false} />;
+    PopUpContent = <PopUp TogglePopUp={TogglePopUp} showMap={true} />;
   }
   return (
     <>
