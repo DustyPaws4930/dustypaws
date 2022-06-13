@@ -1,22 +1,45 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import {
   GoogleMap,
   withScriptjs,
   withGoogleMap,
   Marker,
 } from "react-google-maps";
-function Map() {
-  return (
-    <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{ lat: 45.421532, lng: -75.697189 }}
-    />
-  );
-}
-
-const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 const GMap = () => {
+  const [currentCoordinate, setCurrentCoordinates] = useState({
+    lat: "",
+    long: "",
+  });
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+      setCurrentCoordinates({
+        lat: position.coords.latitude,
+        long: position.coords.longitude,
+      });
+    });
+  }, []);
+
+  function Map() {
+    return (
+      <GoogleMap
+        defaultZoom={10}
+        defaultCenter={{
+          lat: currentCoordinate.lat,
+          lng: currentCoordinate.long,
+        }}
+      >
+        <Marker
+          position={{ lat: currentCoordinate.lat, lng: currentCoordinate.long }}
+        />
+      </GoogleMap>
+    );
+  }
+  const WrappedMap = withScriptjs(withGoogleMap(Map));
   return (
     <div>
       <h2>Map</h2>
