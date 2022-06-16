@@ -23,8 +23,9 @@ export const Register = (req, res) => {
   console.log("Report object: " + reportObj);
   reportObj.save((err, savedReport) => {
     if (!err) {
-      console.log("Complaint Registered and sent to client");
-      return res.status(200).json({ Complaint: savedReport });
+      let resMsg = "Complaint Registered.";
+      console.log(resMsg);
+      return res.status(200).json({ Complaint: savedReport, message: resMsg });
     } else {
       console.log(`Unable to create complaint with ${reportObj}`);
       return res.status(400).json({

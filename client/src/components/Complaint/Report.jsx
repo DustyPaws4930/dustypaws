@@ -62,7 +62,6 @@ let Report = () => {
     bodyFormData.append("priority", priority);
 
     const reportUrl = getApiPath() + "complaint/register";
-    console.log(bodyFormData.title);
     axios({
       method: "POST",
       url: reportUrl,
@@ -71,6 +70,7 @@ let Report = () => {
     })
       .then((res) => {
         console.log(res);
+        alert(res.data.message)
       })
       .catch((err) => {
         //handle error
