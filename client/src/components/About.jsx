@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 
-let About = () => {
+let About = (props) => {
   return (
     <>
       {/* header component fetched */}
@@ -16,19 +16,7 @@ let About = () => {
           </div>
           <div className="image-container"></div>
         </section>
-        {/* <section className="about-stats">
-          <div className="sub-section-1">
-              <div className="heading1">Heading 1</div>
-              <div className="heading2"> Heading 2</div>
-          </div>
-          <div className="sub-section-1">
-              <h3>Our Impact</h3>
-              <div className="graph-area">Graph area</div>
-              <div className="graph-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eveniet libero explicabo tempore labore aliquam nemo reprehenderit praesentium fuga cumque?
-              </div>
-          </div>
-        </section> */}
+        
         <section className="our-team">
           <div className="team-member" id="team-member1">
             <img src="" alt="AnmolDeep Kaur" />
