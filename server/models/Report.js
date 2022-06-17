@@ -1,12 +1,9 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const Schema = mongoose.Schema;
-
-const ReportSchema = new Schema({
+const ReportSchema = new mongoose.Schema({
   title: {
     type: String,
-    minlength: 1,
-    maxlength: 20,
+
     required: true,
   },
   description: {
@@ -18,17 +15,20 @@ const ReportSchema = new Schema({
     required: true,
   },
 
-  img: {
-    type: File,
+  Image: {
+    type: String,
+    reuired: true,
   },
 
   reportDate: {
     type: Date,
+    default: new Date(),
   },
 
   isLocked: {
-    type: Boolean
+    type: Boolean,
   },
+
   location: {
     type: Object,
   },
@@ -36,17 +36,21 @@ const ReportSchema = new Schema({
   priority: {
     type: Number,
     min: 0,
-    max: 5,
+    max: 2,
   },
+
   userId: {
     type: Object,
   },
+
   ngoId: {
     type: Object,
   },
-  contact: {
-    type: String,
+
+  phoneNumber: {
+    type: Number,
   },
 });
 
-exports.Report = mongoose.model("Report", ReportSchema);
+let ReportModel = mongoose.model("Report", ReportSchema);
+export default ReportModel;

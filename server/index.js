@@ -43,19 +43,16 @@ mongoose
   });
 
 // SV: Here are all my routes which you will also mention when any endpoint for the api is created.
-//****** User Routes ****** 
+//****** User Routes ******
 app.use("/user", UserRoutes);
-//****** Complaint Routes ****** 
-app.use("/complaint", ComplaintRoutes);
 
-<<<<<<< Updated upstream
-=======
+//****** Complaint Routes ******
+app.use("/complaint", ComplaintRoutes);
 
 //****** Event Routes ******
 app.use("/event", EventRoutes);
 
 
->>>>>>> Stashed changes
 // let say you wanted to fetch the data but we need to first perform authentication.
 // To do that
 

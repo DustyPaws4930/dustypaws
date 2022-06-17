@@ -1,5 +1,9 @@
-.LocationBtn {
-  border: 1px solid black;
+.LocationWrapper {
   margin: 1rem;
-  padding: 1rem;
+}
+
+.LocationBtn {
+  margin: 1rem;
+  border: 1px solid black;
+  padding: 0.3rem;
 }
