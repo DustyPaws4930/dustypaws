@@ -1,7 +1,8 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
-export const SignUp = (req, res) => {
+export const SignUp = async (req, res) => {
   let fname = req.body.fname;
   let lname = req.body.lname;
   let password = req.body.password;
@@ -12,6 +13,9 @@ export const SignUp = (req, res) => {
   let role = req.body.isNgo ? "ngo" : "user";
   let address = { street: req.body.street, city: req.body.city };
 
+  const salt = await bcrypt.genSalt(10);
+  // now we set user password to hashed password
+  password = await bcrypt.hash(password, salt);
   let userObj = new User({
     fname: fname,
     lname: lname,
@@ -52,21 +56,20 @@ export const Login = async (req, res) => {
 
   // Todo: Move the SECRET KEY To .env file
   try {
-    User.findOne({ email: email }, (err, user) => {
+    User.findOne({ email: email }, async (err, user) => {
       if (user === null) {
         console.log("No registered User not found with email: " + email);
         res.status(400).json({
           message: `User not found`,
         });
       } else if (!err) {
-        if (user.password == password) {
+        if (await bcrypt.compare(password, user.password)) {
           const token = jwt.sign(
             {
               user,
             },
             "Langara123"
           );
-
           console.log("User found with the associated Email");
           res.status(200).json({ user: token });
         } else {

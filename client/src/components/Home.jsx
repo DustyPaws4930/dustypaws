@@ -4,8 +4,7 @@ import Header from "./Header/Header";
 import { getToken } from "../Common";
 import jwt from "jwt-decode";
 import Footer from "./Footer/Footer";
-import ReportComplaint from "./Complaint/ReportComplaint";
-// import ReportComplaints from "./ReportComplaints";
+import Report from "./Complaint/Report";
 
 const User = createContext();
 const Home = () => {
@@ -34,7 +33,7 @@ const Home = () => {
       <h1>Home page</h1>
       <User.Provider value={loggedInUser}>
         <Header />
-        < ReportComplaint />
+        <Report/>
         <Footer />
       </User.Provider>
     </>
