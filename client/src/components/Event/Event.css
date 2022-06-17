@@ -13,13 +13,6 @@ html {
     padding: 1rem;
     line-height: 1.5;
 } 
-
-/* li{
-    list-style: none;
-} */
-/* .control-arrow{
-    display: none;
-} */
 .card-body{
     background-color: gray;
     border-radius: 0.5rem;
@@ -36,7 +29,114 @@ html {
 .event-form{
     padding: 20px;
 }
-.control-dots{
-    background-color: red;
-    padding: 10px;
+
+.slider{
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.slides{
+     width: 100%;
+     height: 600px;
+     /* display:flex; */
+    
+}
+.slides input{
+    display: none;
+}
+.slide{
+    width: 100%;
+    transition: 2s;
+}
+/* for manual slide navigation */
+.navigation-manual{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   
+}
+.manual-btn{
+    border: 2px solid rgb(9, 236, 9);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    
+}
+.manual-btn:not(:last-child){
+    margin-right: 40px;
+}
+
+.manual-btn:hover{
+    background-color: yellowgreen;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+#radio5:checked ~ .first{
+    margin-left: 0;
+}
+#radio6:checked ~ .first{
+    margin-left: -20%;
+}
+#radio7:checked ~ .first{
+    margin-left: -40%;
+}
+#radio8:checked ~ .first{
+    margin-left: -60%;
+}
+
+.navigation-auto{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    /* margin-top: 0px; */
+}
+
+.navigation-auto div{
+    border: 2px solid rgb(9, 236, 9);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.navigation-auto div:not(:last-child){
+    margin-right: 40px
+}
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background-color: blue;
+}
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background-color: blue;
+}
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background-color: blue;
+}
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background-color: blue;
+}
+#radio5:checked ~ .navigation-auto .auto-btn5{
+    background-color: blue;
+}
+#radio6:checked ~ .navigation-auto .auto-btn6{
+    background-color: blue;
+}
+#radio7:checked ~ .navigation-auto .auto-btn7{
+    background-color: blue;
+}
+#radio8:checked ~ .navigation-auto .auto-btn8{
+    background-color: blue;
 }
