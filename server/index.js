@@ -13,6 +13,7 @@ dotenv.config();
 // SV: If you want to import the routes please do it from here.
 import UserRoutes from "./routes/User.js";
 import ComplaintRoutes from "./routes/Complaint.js";
+import EventRoutes from "./routes/Event.js";
 
 // SV: Initializing the Application
 const app = express();
@@ -47,6 +48,14 @@ app.use("/user", UserRoutes);
 //****** Complaint Routes ****** 
 app.use("/complaint", ComplaintRoutes);
 
+<<<<<<< Updated upstream
+=======
+
+//****** Event Routes ******
+app.use("/event", EventRoutes);
+
+
+>>>>>>> Stashed changes
 // let say you wanted to fetch the data but we need to first perform authentication.
 // To do that
 
