@@ -1,0 +1,32 @@
+
+.header-wrapper{
+    margin: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border-bottom: 1px solid black; */
+}
+header{
+    border-bottom: 1px solid grey;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 10%);
+}
+
+header img{
+    height: 100px;
+    width: auto;
+}
+header .primary-logo{
+    height: 150px;
+    flex-basis:20%;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+nav ul li{
+    margin: 1rem ;
+}
+nav div{
+    display: none;
+}

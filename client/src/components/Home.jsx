@@ -5,6 +5,11 @@ import { getToken } from "../Common";
 import jwt from "jwt-decode";
 import Footer from "./Footer/Footer";
 import Report from "./Complaint/Report";
+import "../index.css";
+import "./home.css";
+import CardImages1 from './project-files/13.png'
+import CardImages2 from './project-files/1 6.png'
+import CardImages3 from './project-files/15.png'
 
 const User = createContext();
 const Home = () => {
@@ -29,14 +34,78 @@ const Home = () => {
   }, [setLoggedInUser]);
 
   return (
-    <>
-      <h1>Home page</h1>
+    <div className="Home">
+      {/* <h1>Home page</h1> */}
       <User.Provider value={loggedInUser}>
         <Header />
+        <section className="landing">
+          <h4 className="landing-text">
+          Our responsive web applications make it easier for people and non-governmental organizations (NGOs) who wants to.
+          </h4>
+          <button id='report-case'>Report Case</button>
+        </section>
+        <section className="statistics">
+          <div className="charts"></div>
+          <div className="description">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nulla ex labore et similique corporis!</p>
+            <button id="donate">Donate</button>
+          </div>
+        </section>
+        <section className="features">
+          
+          <div className="feature-subsection1">
+            <h2>Our Featuers</h2>
+            <div id="card1" className="featurecard">
+              <div className="img-container">
+                <img src={CardImages3} alt="img1" />
+              </div>
+              <p>
+              Register Complaints accoring to there Priority of assistance required
+              </p>
+            </div>
+            <div id="card2" className="featurecard">
+              <div className="img-container">
+                <img src={CardImages2} alt="img2" />
+              </div>
+              <p>
+              Earn Rewards and get recognized on basis of information provided by the user. 
+              </p>
+            </div>
+            <div id="card3" className="featurecard">
+                <div className="img-container">
+                  <img src={CardImages1} alt="img2" />
+                </div>
+                <p>
+                Earn Rewards and get recognized on basis of information provided by the user. 
+                </p>
+            </div>
+          </div>
+          <div className="feature-subsection2">
+            <h4>Why&nbsp;We?</h4>
+          </div>
+          <div className="circle" id="circle1"></div>
+          <div className="circle" id="circle2"></div>
+          <div className="circle" id="circle3"></div>
+          <div className="circle" id="circle4"></div>
+          <div className="circle" id="circle5"></div>
+          <div className="circle" id="circle6"></div>
+          <div className="circle" id="circle7"></div>
+          <div className="circles">
+            
+          </div>
+        </section>
         <Report/>
+        <section className="newsletter">
+          <h4>Join Our Newsletter</h4>
+          <p>Keep yourself updated with latest event and affairs. Subscribe our news letter by providing your  </p>
+          <div>
+            <input type="email" name="newsletter-email" id="newsletterEmail" placeholder="Enter your email"/>
+            <button type="submit">Submit</button>
+          </div>
+        </section>
         <Footer />
       </User.Provider>
-    </>
+    </div>
   );
 };
 
