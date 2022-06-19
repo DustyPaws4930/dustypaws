@@ -1,10 +1,34 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './Event.css';
 import Header from "../Header/Header";
+import EventCards from './EventCards';
+// import { useState } from 'react';
 
 
 const EventForm = () => {
+
+  // const[ slider1 , setSlider1 ] = useState(true);
+  // const[ slider2 , setSlider2 ] = useState(true);
+  // const[ slider3 , setSlider3 ] = useState(true);
+
+  // const handleRadio1 = event =>{
+  //     setSlider1(true)
+  //     setSlider2(false)
+  //     setSlider3(false)
+  // }
+  // const handleRadio2 = event =>{
+  //   setSlider1(false)
+  //   setSlider2(true)
+  //   setSlider3(false)
+  // }
+  // const handleRadio3 = event =>{
+  // setSlider1(false)
+  // setSlider2(false)
+  // setSlider3(true)
+  // }
+  //  const styles = {
+  //     visibility:"visible"
+  //  }
 
   return (
     <>
@@ -63,74 +87,46 @@ const EventForm = () => {
         <h3>Created Events</h3>
         <div className='slider'>
             <div className='slides'>
+
               <input type='radio' name='radio-btn' id='radio1' />
               <input type='radio' name='radio-btn' id='radio2' />
               <input type='radio' name='radio-btn' id='radio3' />
-              <input type='radio' name='radio-btn' id='radio4' />
+              {/* <input type='radio' name='radio-btn' id='radio4' /> */}
 
-            <div className='slide'>
-
-
-              <div className='card'>
-                    
-                    <div className='card-body'>
-                        <div className='card-date'>
-                          <p>display date </p>
-                        </div>
-                        <img src="" alt="" />
-                        <h2 className='card-title'>title</h2>
-                        <p className='card-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum harum possimus ut quia architecto ipsa. Unde deleniti consectetur veniam soluta? Minima dolorem vitae incidunt totam maxime fugit similique soluta quod.</p>
-                        <Link to='/singleEvent'><button>View More...</button></Link>
-                        <i className='fa fa-heart-o'></i> 
-                        <img src='' alt="dustbin" />
-                        <Link to='/eventEdit'><img src="" alt="edit" /></Link>
-                    </div>
-    
-                    <div className='card-body'>
-                        <div className='card-date'>
-                          <p>display date </p>
-                        </div>
-                        <img src="" alt="" />
-                        <h2 className='card-title'>title</h2>
-                        <p className='card-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum harum possimus ut quia architecto ipsa. Unde deleniti consectetur veniam soluta? Minima dolorem vitae incidunt totam maxime fugit similique soluta quod.</p>
-                        <Link to='/singleEvent'><button>View More...</button></Link>
-                        <i className='fa fa-heart-o'></i> 
-                        <img src='' alt="dustbin" />
-                        <Link to='/eventEdit'><img src="" alt="edit" /></Link>
-                    </div>
-    
-                    <div className='card-body'>
-                        <div className='card-date'>
-                          <p>display date </p>
-                        </div>
-                        <img src="" alt="" />
-                        <h2 className='card-title'>title</h2>
-                        <p className='card-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum harum possimus ut quia architecto ipsa. Unde deleniti consectetur veniam soluta? Minima dolorem vitae incidunt totam maxime fugit similique soluta quod.</p>
-                        <Link to='/singleEvent'><button>View More...</button></Link>
-                        <i className='fa fa-heart-o'></i> 
-                        <img src='' alt="dustbin" />
-                        <Link to='/eventEdit'><img src="" alt="edit" /></Link>
-                    </div>
-    
-                    
-    
-                  </div>
-
-
+            <div className='slide first'>
+                <div className='slide-div'>
+                  <EventCards />
+                  <EventCards />
+                  <EventCards />
+                </div>
             </div>
+            <div className='slide second'>
+                <EventCards />
+                <EventCards />
+                <EventCards />
+            </div>
+            <div className='slide third'>
+                <EventCards /> 
+                <EventCards />
+                <EventCards /> 
+            </div>
+            {/* <div className='slide'>
+                <EventCards />
+            </div> */}
+            
 
               <div className='navigation-auto'>
-                  <div className='auto-btn1'></div>
-                  <div className='auto-btn2'></div>
-                  <div className='auto-btn3'></div>
-                  <div className='auto-btn4'></div>
+                  <div className='auto-btn1' ></div>
+                  <div className='auto-btn2' ></div>
+                  <div className='auto-btn3' ></div>
+                  {/* <div className='auto-btn4'></div> */}
               </div>
 
               <div className='navigation-manual'>
                   <label for='radio1' className='manual-btn'></label>
                   <label for='radio2' className='manual-btn'></label>
                   <label for='radio3' className='manual-btn'></label>
-                  <label for='radio4' className='manual-btn'></label>
+                  {/* <label for='radio4' className='manual-btn'></label> */}
               </div>
 
 

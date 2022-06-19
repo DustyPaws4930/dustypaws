@@ -23,3 +23,4 @@ const SingleEvent = () => {
 }
 
 export default SingleEvent
+

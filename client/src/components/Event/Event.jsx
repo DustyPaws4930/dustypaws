@@ -1,6 +1,5 @@
 // import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { Carousel } from 'react-responsive-carousel'
 import './Event.css';
 import Header from '../Header/Header';
 
