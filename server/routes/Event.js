@@ -1,5 +1,5 @@
 import express from "express";
-import { Register } from "../controllers/event/Register";
+import { Register } from "../controllers/event/Register.js";
 import { CheckFormFields } from "../middlewares/EventValidation.js";
 import ImageUpload from "../middlewares/ImageUpload.js";
 

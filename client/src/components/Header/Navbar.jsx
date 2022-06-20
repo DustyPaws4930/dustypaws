@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { deleteToken } from "../../Common";
 import { User } from "../Home";
+import PopUp from "../ModelPopups/PopUp";
 
 const Navbar = () => {
   let loggedInUser = useContext(User);
+
+  const [loginPopUp, setLoginPopUp] = useState(false);
+
+  const [signUpPopUp, setSignUpPopUp] = useState(false);
 
   const RenderNavBar = () => {
     if (loggedInUser?.role === "NGO") {
@@ -34,6 +40,22 @@ const Navbar = () => {
     alert("Logged out!!");
   };
 
+  const ShowSignUpPopUp = (e) => {
+    setSignUpPopUp(!signUpPopUp);
+  };
+
+  const ShowLoginPopUp = (e) => {
+    setLoginPopUp(!loginPopUp);
+  };
+
+  let popUpContent = "";
+  if (signUpPopUp) {
+    popUpContent = <PopUp TogglePopUp={ShowSignUpPopUp} showSignUp={true} />;
+  }
+  if (loginPopUp) {
+    popUpContent = <PopUp TogglePopUp={ShowLoginPopUp} showLogin={true} />;
+  }
+
   return (
     <>
       <nav>
@@ -44,12 +66,12 @@ const Navbar = () => {
               <img src="" alt="user-profile" />
             </li>
             <div>
-              <Link to="/signup">
+              <a href="#" onClick={ShowSignUpPopUp}>
                 <li>Sign up</li>
-              </Link>
-              <Link to="/login">
+              </a>
+              <a href="#" onClick={ShowLoginPopUp}>
                 <li>Login</li>
-              </Link>
+              </a>
               <Link to="/login" onClick={HandleLogoutClick}>
                 <li>Logout</li>
               </Link>
@@ -57,6 +79,7 @@ const Navbar = () => {
           </div>
         </ul>
       </nav>
+      {popUpContent}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import EventModel from "../../models/Event";
+import EventModel from "../../models/Event.js";
 import fs from "fs";
 
 export const Register = (req, res) => {

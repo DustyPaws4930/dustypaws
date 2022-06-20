@@ -1,5 +1,7 @@
 import React from "react";
 import GMap from "../Map/GMap";
+import Login from "../User/Login";
+import SignUp from "../User/SignUp";
 import "./PopUp.css";
 const PopUp = (props) => {
   let renderedContent;
@@ -9,26 +11,19 @@ const PopUp = (props) => {
         <GMap />
       </div>
     );
+  } else if (props.showLogin) {
+    renderedContent = <Login />;
+  } else if (props.showSignUp) {
+    renderedContent = <SignUp />;
   } else {
-    renderedContent = (
-      <div className="contentWrapper">
-        <h1> this is some Content That you will show some time</h1>
-        <p>
-          Some more Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Quam, a rerum? Quisquam, quidem dolor consequuntur quia eveniet
-          consequatur cumque fugiat exercitationem officiis voluptatem
-          accusamus, laborum placeat inventore. Labore error dolor neque!
-          Tempora dolore voluptates nesciunt nobis ipsam aliquam sit dolorem
-          voluptatem, possimus iusto amet repellat itaque quia. Ut laborum
-          sapiente molestias optio! Rerum reprehenderit a dolor fuga expedita
-          totam, quia distinctio similique quisquam ab sint molestiae vitae aut
-          eum recusandae perspiciatis. Nobis, distinctio ut! Ratione odit
-          facilis totam, sint cumque eos pariatur blanditiis laboriosam porro
-          adipisci ab nesciunt suscipit non, sapiente vitae. Molestiae minima
-          quaerat obcaecati cumque asperiores. Dolorem, molestias!
-        </p>
-      </div>
-    );
+    <div className="SomeContent">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil omnis
+        vel voluptas dolores deleniti repudiandae excepturi totam at nemo, eum,
+        qui facere. Saepe minima maxime minus incidunt consequatur officia
+        nihil.
+      </p>
+    </div>;
   }
 
   return (
