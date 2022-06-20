@@ -10,6 +10,7 @@ import "./home.css";
 import CardImages1 from './project-files/13.png'
 import CardImages2 from './project-files/1 6.png'
 import CardImages3 from './project-files/15.png'
+// import WarningIcon from '@fortawesome/free-solid-svg-icons';
 
 const User = createContext();
 const Home = () => {
@@ -94,13 +95,20 @@ const Home = () => {
             
           </div>
         </section>
-        <Report/>
+        <section className="report-wrapper">
+          <Report/>
+          <section className="report-images">
+          
+          </section>
+        </section>
         <section className="newsletter">
-          <h4>Join Our Newsletter</h4>
-          <p>Keep yourself updated with latest event and affairs. Subscribe our news letter by providing your  </p>
-          <div>
-            <input type="email" name="newsletter-email" id="newsletterEmail" placeholder="Enter your email"/>
-            <button type="submit">Submit</button>
+          <div className="newsletter-wrapper">
+            <h4>Join Our Newsletter</h4>
+            <p>Keep yourself updated with latest event and affairs. Subscribe our news letter by providing your  </p>
+            <div>
+              <input type="email" name="newsletter-email" id="newsletterEmail" placeholder="Enter your email"/>
+              <button type="submit">Submit</button>
+            </div>
           </div>
         </section>
         <Footer />

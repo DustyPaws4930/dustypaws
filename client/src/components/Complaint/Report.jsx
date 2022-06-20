@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import { getApiPath, getToken } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { fab } from '@fortawesome/free-brands-svg-icons'
+//   import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 let Report = () => {
   // ***Declare all variables here***
@@ -94,7 +97,7 @@ let Report = () => {
   return (
     <>
       <section className="report-complaint">
-        <h1>Report Complaint</h1>
+        <h1>Report</h1>
         <form
           action="/"
           onSubmit={(e) => {
@@ -104,6 +107,7 @@ let Report = () => {
           <div className="labelInputWrapper">
             <label>
               Title
+            </label>  
               <input
                 type="text"
                 onChange={(event) => onInputChange(event)}
@@ -111,11 +115,12 @@ let Report = () => {
                 id="title"
                 value={reportData.title}
               />
-            </label>
+            
           </div>
           <div className="labelInputWrapper">
             <label>
               Description
+              </label>
               <input
                 type="text"
                 name="description"
@@ -124,11 +129,12 @@ let Report = () => {
                 onChange={(event) => onInputChange(event)}
                 placeholder="please briefly describe the event"
               />
-            </label>
+            
           </div>
           <div className="labelInputWrapper">
             <label htmlFor="img">
               Upload image:
+              </label>
               <input
                 onChange={(e) => {
                   handleFileChange(e);
@@ -138,11 +144,12 @@ let Report = () => {
                 name="img"
                 accept="image/*"
               ></input>
-            </label>
+            
           </div>
           <div className="labelInputWrapper">
             <label>
               Name
+              </label>
               <input
                 type="text"
                 name="name"
@@ -151,11 +158,12 @@ let Report = () => {
                 onChange={(e) => onInputChange(e)}
                 placeholder="your name"
               />
-            </label>
+            
           </div>
           <div className="labelInputWrapper">
             <label>
               Phone Number
+              </label>
               <input
                 type="tel"
                 name="phoneNumber"
@@ -164,54 +172,65 @@ let Report = () => {
                 onChange={(e) => onInputChange(e)}
                 placeholder="000-000-0000"
               />
-            </label>
+            
           </div>
           <div className="LocationWrapper">
             <label>
               Location
+              </label>
               <a className="LocationBtn" onClick={TogglePopUp}>
                 Get Location
               </a>
-            </label>
+            
           </div>
           {PopUpContent}
-          <div>
-            <label htmlFor="priority">Priority Flag</label>
-            <button
-              className="priority-flag"
-              id="0"
-              name="priorityEmergency"
-              type="button"
-              onClick={(e) => {
-                HandlePriorityChange(e);
-              }}
-            >
-              Emergency
-            </button>
-            <button
-              className="priority-flag"
-              id="1"
-              name="priorityModerate"
-              type="button"
-              onClick={(e) => {
-                HandlePriorityChange(e);
-              }}
-            >
-              Moderate
-            </button>
-            <button
-              className="priority-flag"
-              id="2"
-              name="priorityLow"
-              type="button"
-              onClick={(e) => {
-                HandlePriorityChange(e);
-              }}
-            >
-              Low
-            </button>
+          <div className="priority-flag-wrapper">
+            <label>Priority Flag</label>
+            <div className="priority-buttons">
+              <button
+                className="priority-flag emergency"
+                id="0"
+                name="priorityEmergency"
+                type="button"
+                onClick={(e) => {
+                  HandlePriorityChange(e);
+                }}
+              >
+                Emergency
+              </button>
+
+              <button
+                className="priority-flag high"
+                id="2"
+                name="priorityLow"
+                type="button"
+                onClick={(e) => {
+                  HandlePriorityChange(e);
+                }}
+              >
+                
+                High
+              </button>
+
+              <button
+                className="priority-flag moderate"
+                id="1"
+                name="priorityModerate"
+                type="button"
+                onClick={(e) => {
+                  HandlePriorityChange(e);
+                }}
+              >
+                Moderate
+              </button>
+              
+              <FontAwesomeIcon icon="check-square" />
+            </div>
           </div>
-          <input type="submit" value="Registered Complaint" />
+          <div className="submit">
+            {/* <input type="submit" id='submit-complaint' value="Register Complaint" /> */}
+                <button type="submit">Register Complaint</button>
+          </div>
         </form>
       </section>
     </>

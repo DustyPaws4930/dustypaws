@@ -34,3 +34,4 @@ button, input[type="submit"], input[type="reset"] {
     -webkit-box-sizing: border-box; 
      box-sizing: border-box; 
 }
+input { outline: none; }
