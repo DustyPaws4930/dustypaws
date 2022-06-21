@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { deleteToken } from "../../Common";
+import { deleteToken, getToken } from "../../Common";
 import { User } from "../Home";
 import PopUp from "../ModelPopups/PopUp";
 
@@ -37,6 +38,7 @@ const Navbar = () => {
   };
   const HandleLogoutClick = () => {
     deleteToken();
+    window.location.reload();
     alert("Logged out!!");
   };
 
@@ -56,6 +58,37 @@ const Navbar = () => {
     popUpContent = <PopUp TogglePopUp={ShowLoginPopUp} showLogin={true} />;
   }
 
+  const HandleLoggedInUI = () => {
+    let usertoken = getToken();
+    if (usertoken !== null && usertoken !== "undefined" && usertoken !== "") {
+      return (
+        <>
+          <a href="#" onClick={HandleLogoutClick}>
+            <li>Logout</li>
+          </a>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <a href="#" onClick={ShowSignUpPopUp}>
+            <li>Sign up</li>
+          </a>
+          <a href="#" onClick={ShowLoginPopUp}>
+            <li>Login</li>
+          </a>
+        </>
+      );
+    }
+  };
+
+  useEffect(
+    (e) => {
+      HandleLoggedInUI();
+    },
+    [HandleLoggedInUI]
+  );
+
   return (
     <>
       <nav>
@@ -65,18 +98,8 @@ const Navbar = () => {
             <li className="nav-dropDown">
               <img src="" alt="user-profile" />
             </li>
-            <div>
-              <a href="#" onClick={ShowSignUpPopUp}>
-                <li>Sign up</li>
-              </a>
-              <a href="#" onClick={ShowLoginPopUp}>
-                <li>Login</li>
-              </a>
-              <Link to="/login" onClick={HandleLogoutClick}>
-                <li>Logout</li>
-              </Link>
-            </div>
           </div>
+          {HandleLoggedInUI()}
         </ul>
       </nav>
       {popUpContent}

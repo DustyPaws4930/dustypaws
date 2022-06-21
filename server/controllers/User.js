@@ -33,10 +33,10 @@ export const SignUp = async (req, res) => {
       if (user.length > 0) {
         res.status(401).json(`User with email already exists`);
       } else {
-        let savedUser = await userObj.save();
+        let user = await userObj.save();
         const token = jwt.sign(
           {
-            savedUser,
+            user,
           },
           "Langara123"
         );

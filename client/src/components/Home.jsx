@@ -24,7 +24,7 @@ const Home = () => {
   const [loggedInUser, setLoggedInUser] = useState({});
   useEffect(() => {
     let userToken = getToken();
-    if (userToken !== null && userToken !== undefined && userToken !== "");
+    if (userToken !== null && userToken !== "undefined" && userToken !== "");
     setLoggedInUser(userToken.user);
   }, [setLoggedInUser]);
 
@@ -33,7 +33,7 @@ const Home = () => {
       <h1>Home page</h1>
       <User.Provider value={loggedInUser}>
         <Header />
-        <Report/>
+        <Report />
         <Footer />
       </User.Provider>
     </>

@@ -6,7 +6,8 @@ export const getApiPath = () => {
 
 export const getToken = () => {
   let token = localStorage.getItem("token");
-  if (token != null && token !== undefined) {
+
+  if (token !== "undefined" && token !== null) {
     return jwt(token);
   } else {
     return "";

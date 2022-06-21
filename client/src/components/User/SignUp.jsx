@@ -41,13 +41,12 @@ const SignUp = () => {
         .then((res) => {
           const userToken = jwt(res.data.user); // decode your token here
           alert("Signed Up!!");
-          localStorage.setItem("token", userToken.user);
-          setToken(userToken.user);
-          console.log("user", userToken);
+          setToken(res.data.user);
+          window.location.reload();
           // These function requires token only
-          setTokenTimeout(userToken);
+          // setTokenTimeout(userToken);
           // console.log(isTokenTimeOut(userToken));
-          console.log("user", new Date(userToken.iat));
+          // console.log("user", new Date(userToken.iat));
         })
         .catch((err) => {
           console.log("Error" + err.response.data);
