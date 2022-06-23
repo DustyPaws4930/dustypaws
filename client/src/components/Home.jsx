@@ -7,14 +7,14 @@ import Footer from "./Footer/Footer";
 import Report from "./Complaint/Report";
 import "../index.css";
 import "./home.css";
-import CardImages1 from './project-files/13.png'
-import CardImages2 from './project-files/1 6.png'
-import CardImages3 from './project-files/15.png'
-import reportImage from './project-files/report-form-img.png'
-import reportBGImage1 from './project-files/report-bg-image.png'
-import reportBGImage2 from './project-files/report-bg-image2.png'
-import reportMobile1 from './project-files/form-mobile-image.png'
-import reportMobile from './project-files/form-mobile-image1.png'
+import CardImages1 from "./project-files/13.png";
+import CardImages2 from "./project-files/1 6.png";
+import CardImages3 from "./project-files/15.png";
+import reportImage from "./project-files/report-form-img.png";
+import reportBGImage1 from "./project-files/report-bg-image.png";
+import reportBGImage2 from "./project-files/report-bg-image2.png";
+import reportMobile1 from "./project-files/form-mobile-image.png";
+import reportMobile from "./project-files/form-mobile-image1.png";
 
 // import WarningIcon from '@fortawesome/free-solid-svg-icons';
 
@@ -47,19 +47,22 @@ const Home = () => {
         <Header />
         <section className="landing">
           <h4 className="landing-text">
-          Our responsive web applications make it easier for people and non-governmental organizations (NGOs) who wants to.
+            Our responsive web applications make it easier for people and
+            non-governmental organizations (NGOs) who wants to.
           </h4>
-          <button id='report-case'>Report Case</button>
+          <button id="report-case">Report Case</button>
         </section>
         <section className="statistics">
           <div className="charts"></div>
           <div className="description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nulla ex labore et similique corporis!</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+              nulla ex labore et similique corporis!
+            </p>
             <button id="donate">Donate</button>
           </div>
         </section>
         <section className="features">
-          
           <div className="feature-subsection1">
             <h2>Our Featuers</h2>
             <div id="card1" className="featurecard">
@@ -67,7 +70,8 @@ const Home = () => {
                 <img src={CardImages3} alt="img1" />
               </div>
               <p>
-              Register Complaints accoring to there Priority of assistance required
+                Register Complaints accoring to there Priority of assistance
+                required
               </p>
             </div>
             <div id="card2" className="featurecard">
@@ -75,16 +79,18 @@ const Home = () => {
                 <img src={CardImages2} alt="img2" />
               </div>
               <p>
-              Earn Rewards and get recognized on basis of information provided by the user. 
+                Earn Rewards and get recognized on basis of information provided
+                by the user.
               </p>
             </div>
             <div id="card3" className="featurecard">
-                <div className="img-container">
-                  <img src={CardImages1} alt="img2" />
-                </div>
-                <p>
-                Earn Rewards and get recognized on basis of information provided by the user. 
-                </p>
+              <div className="img-container">
+                <img src={CardImages1} alt="img2" />
+              </div>
+              <p>
+                Earn Rewards and get recognized on basis of information provided
+                by the user.
+              </p>
             </div>
           </div>
           <div className="feature-subsection2">
@@ -97,28 +103,57 @@ const Home = () => {
           <div className="circle" id="circle5"></div>
           <div className="circle" id="circle6"></div>
           <div className="circle" id="circle7"></div>
-          <div className="circles">
-            
-          </div>
+          <div className="circles"></div>
         </section>
         <section className="report-wrapper">
-        <img src={reportMobile} alt=" report image" className="report-mobile2" />
-          <Report/>
+          <img
+            src={reportMobile}
+            alt=" report image"
+            className="report-mobile2"
+          />
+          <Report />
           <section className="report-images">
-           <img src={reportImage} alt="report image" className="report-image3" />
+            <img
+              src={reportImage}
+              alt="report image"
+              className="report-image3"
+            />
           </section>
-          <img src={reportBGImage1} alt=" report image" className="report-image1" />
-          <img src={reportBGImage2} alt=" report image" className="report-image2" />
-          <img src={reportMobile1} alt=" report image" className="report-mobile1" />
-          <img src={reportMobile} alt=" report image" className="report-mobile2" />
-          
+          <img
+            src={reportBGImage1}
+            alt=" report image"
+            className="report-image1"
+          />
+          <img
+            src={reportBGImage2}
+            alt=" report image"
+            className="report-image2"
+          />
+          <img
+            src={reportMobile1}
+            alt=" report image"
+            className="report-mobile1"
+          />
+          <img
+            src={reportMobile}
+            alt=" report image"
+            className="report-mobile2"
+          />
         </section>
         <section className="newsletter">
           <div className="newsletter-wrapper">
             <h4>Join Our Newsletter</h4>
-            <p>Keep yourself updated with latest event and affairs. Subscribe our news letter by providing your  </p>
+            <p>
+              Keep yourself updated with latest event and affairs. Subscribe our
+              news letter by providing your{" "}
+            </p>
             <div>
-              <input type="email" name="newsletter-email" id="newsletterEmail" placeholder="Enter your email"/>
+              <input
+                type="email"
+                name="newsletter-email"
+                id="newsletterEmail"
+                placeholder="Enter your email"
+              />
               <button type="submit">Submit</button>
             </div>
           </div>
