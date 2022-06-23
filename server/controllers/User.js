@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-
+import mongoose from "mongoose";
 export const SignUp = async (req, res) => {
   let fname = req.body.fname;
   let lname = req.body.lname;
@@ -98,6 +98,20 @@ export const GetUser = (req, res) => {
       res.status(400).json("Error occured while getting user: " + err);
     }
   });
+};
+
+export const Update = async (req, res) => {
+  let id = req.params.id;
+  console.log(req.params.id.toString());
+  const user = await User.findByIdAndUpdate(id, req.body, { new: true });
+  const token = jwt.sign(
+    {
+      user,
+    },
+    "Langara123"
+  );
+  console.log("User found with the associated Email");
+  res.status(200).json({ user: token });
 };
 
 // // SV:

@@ -28,7 +28,6 @@ let userModel = mongoose.Schema({
   },
   address: {
     type: Object,
-    require: true,
   },
   rewardsEarned: {
     type: Number,
@@ -36,7 +35,6 @@ let userModel = mongoose.Schema({
   },
   role: {
     type: String,
-    require: true,
     default: "user",
   },
 });
