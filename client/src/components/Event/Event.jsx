@@ -65,7 +65,7 @@ const Event = props => {
       <div className='featured-event'>
         <div>
             <div className='featured-event-heading'>
-                <h2>Featured Event</h2>
+                <h1>Featured Event</h1>
             </div>
             <div className='featured-event-date'>
               <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
@@ -83,7 +83,7 @@ const Event = props => {
 
         </div>
         <div className='featured-event-img'>
-            <img src="" alt="featured Event" />
+            {/* <img src="https://images.unsplash.com/photo-1592769606534-fe78d27bf450?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="featured Event" /> */}
         </div>
       </div>
 
@@ -105,9 +105,9 @@ const Event = props => {
 
                 <div className='card'>
                     <div className='card-body'>
-                      <div className='card-date'>
+                      {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
-                      </div>
+                      </div> */}
                       <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
@@ -279,7 +279,7 @@ const Event = props => {
       </div>
       <div className='our-partners-container'>
           <div className='our-partners-heading'>
-              <h2>Upcoming Event</h2>
+              <h2>Our Partners</h2>
           </div>
           <div className='our-partners-content'>
               <OwlCarousel
@@ -296,13 +296,15 @@ const Event = props => {
                 >
 
                   <div className="item">
-                      <h3>People For Animal</h3>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam earum fugit tempore assumenda nam iusto corrupti eaque veritatis ab nisi laudantium, exercitationem laborum rem tenetur magnam nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquam vero laudantium nobis consectetur fugiat quibusdam alias, corporis pariatur, recusandae odio voluptas hic. Rem ab hic doloribus pariatur cumque cum.
-                      </p>
+                     {/* <div className='item-black'> */}
+                        <h3>People For Animal</h3>
+                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam earum fugit tempore assumenda nam iusto corrupti eaque veritatis ab nisi laudantium, exercitationem laborum rem tenetur magnam nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquam vero laudantium nobis consectetur fugiat quibusdam alias, corporis pariatur, recusandae odio voluptas hic. Rem ab hic doloribus pariatur cumque cum.
+                          </p>
+                     {/* </div> */}
                   </div>
                   <div className="item">
                       <h3>People For Animal</h3>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam earum fugit tempore assumenda nam iusto corrupti eaque veritatis ab nisi laudantium, exercitationem laborum rem tenetur magnam nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquam vero laudantium nobis consectetur fugiat quibusdam alias, corporis pariatur, recusandae odio voluptas hic. Rem ab hic doloribus pariatur cumque cum.
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam earum fugit tempore assumenda nam iusto corrupti eaque veritatis ab nisi laudantium, exercitationem laborum rem tenetur magnam nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit. D insa electus aliquam vero laudantium nobis consectetur fugiat quibusdam alias, corporis pariatur, recusandae odio voluptas hic. Rem ab hic doloribus pariatur cumque cum.
                       </p>
                   </div>
                   <div className="item">
