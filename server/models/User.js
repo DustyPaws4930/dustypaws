@@ -1,15 +1,10 @@
 import mongoose from "mongoose";
 
 let userModel = mongoose.Schema({
-  fname: {
+  username: {
     type: String,
     require: true,
   },
-  lname: {
-    type: String,
-    require: true,
-  },
-
   email: {
     type: String,
     require: true,

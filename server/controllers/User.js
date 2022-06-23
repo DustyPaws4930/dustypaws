@@ -3,29 +3,19 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 export const SignUp = async (req, res) => {
-  let fname = req.body.fname;
-  let lname = req.body.lname;
-  let password = req.body.password;
+  let username = req.body.username;
   let email = req.body.email;
-  let file = req.body.file;
-  let Dob = req.body.Dob;
-  let phoneNumber = req.body.phoneNumber;
+  let password = req.body.password;
   let role = req.body.isNgo ? "ngo" : "user";
-  let address = { street: req.body.street, city: req.body.city };
 
   const salt = await bcrypt.genSalt(10);
   // now we set user password to hashed password
   password = await bcrypt.hash(password, salt);
   let userObj = new User({
-    fname: fname,
-    lname: lname,
+    username: username,
     email: email,
     password: password,
-    file: file,
-    Dob: Dob,
     role: role,
-    phoneNumber: phoneNumber,
-    address: address,
   });
   console.log(`User obj: ${userObj}`);
   try {
