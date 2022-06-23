@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 let userModel = mongoose.Schema({
   username: {
     type: String,
@@ -22,7 +21,7 @@ let userModel = mongoose.Schema({
     require: true,
   },
   address: {
-    type: Object,
+    type: String,
   },
   rewardsEarned: {
     type: Number,

@@ -38,7 +38,7 @@ const Navbar = () => {
   };
   const HandleLogoutClick = () => {
     deleteToken();
-    window.location.reload();
+    window.location.href = "/";
     alert("Logged out!!");
   };
 

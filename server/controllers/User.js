@@ -93,15 +93,44 @@ export const GetUser = (req, res) => {
 export const Update = async (req, res) => {
   let id = req.params.id;
   console.log(req.params.id.toString());
-  const user = await User.findByIdAndUpdate(id, req.body, { new: true });
-  const token = jwt.sign(
-    {
-      user,
-    },
-    "Langara123"
-  );
-  console.log("User found with the associated Email");
-  res.status(200).json({ user: token });
+
+  let username = req.body.username;
+  let email = req.body.email;
+  let password = req.body.password;
+  let phoneNumber = req.body.phoneNumber;
+  let address = req.body.address;
+  let Dob = req.body.Dob;
+  let gender = req.body.gender;
+
+  const salt = await bcrypt.genSalt(10);
+  // now we set user password to hashed password
+  password = await bcrypt.hash(password, salt);
+  let userObj = {
+    username,
+    email,
+    password,
+    phoneNumber,
+    address,
+    Dob,
+    gender,
+  };
+  console.log(userObj);
+
+  try {
+    const user = await User.findByIdAndUpdate(id, userObj, { new: true });
+    const token = jwt.sign(
+      {
+        user,
+      },
+      "Langara123"
+    );
+    res.status(200).json({ user: token, message: "User updated successfully" });
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ message: `Error occured while updating user ${err}` });
+  }
 };
 
 // // SV:
