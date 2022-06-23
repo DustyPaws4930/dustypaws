@@ -96,7 +96,9 @@ const Navbar = () => {
           {RenderNavBar()}
           <div>
             <li className="nav-dropDown">
-              <img src="" alt="user-profile" />
+              <Link to="/profile">
+                <img src="" alt="user-profile" />
+              </Link>
             </li>
           </div>
           {HandleLoggedInUI()}
