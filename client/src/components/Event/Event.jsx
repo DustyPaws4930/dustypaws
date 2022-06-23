@@ -4,10 +4,13 @@ import './Event.css';
 // import Header from '../Header/Header';
 import Carousel from  "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
-
+import Footer from '../Footer/Footer.jsx'
 import OwlCarousel from 'react-owl-carousel'
 import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel/dist/assets/owl.theme.default.css'
+
+import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
+// import WishlistIcon from "../images/WishlistIcon.png";
 
 // import { img } from '../images/'
 
@@ -108,7 +111,7 @@ const Event = props => {
                       {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                      <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
+                      <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
                             <h4 className='card-title'>Indian Animal Health Summit and Awards 2022</h4>
@@ -127,7 +130,7 @@ const Event = props => {
                       {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                      <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
+                       <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
                             <h4 className='card-title'>Indian Animal Health Summit and Awards 2022</h4>
@@ -146,7 +149,7 @@ const Event = props => {
                       {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                      <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
+                       <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
                             <h4 className='card-title'>Indian Animal Health Summit and Awards 2022</h4>
@@ -165,7 +168,7 @@ const Event = props => {
                       {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                      <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
+                       <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
                             <h4 className='card-title'>Indian Animal Health Summit and Awards 2022</h4>
@@ -202,7 +205,7 @@ const Event = props => {
                       {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                      <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
+                       <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
                             <h4 className='card-title'>Indian Animal Health Summit and Awards 2022</h4>
@@ -221,7 +224,7 @@ const Event = props => {
                       {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                      <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
+                       <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
                             <h4 className='card-title'>Indian Animal Health Summit and Awards 2022</h4>
@@ -240,7 +243,7 @@ const Event = props => {
                       {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                      <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
+                       <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
                             <h4 className='card-title'>Indian Animal Health Summit and Awards 2022</h4>
@@ -259,7 +262,7 @@ const Event = props => {
                       {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                      <img src="https://images.unsplash.com/photo-1608096299210-db7e38487075?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80" alt="" />
+                       <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
                       <div className='card-content'>
                           <div className='card-heading-wishlist'>
                             <h4 className='card-title'>Indian Animal Health Summit and Awards 2022</h4>
@@ -290,8 +293,8 @@ const Event = props => {
                 autoplay={false}
                 dots={false}
                 mouseDrag
-                // loop={true}
-                margin={20}
+                loop={true}
+                margin={40}
                 center={true}
                 >
 
@@ -330,7 +333,7 @@ const Event = props => {
                 </OwlCarousel>
           </div>
       </div>
-      
+      <Footer />
       
     </>
   )

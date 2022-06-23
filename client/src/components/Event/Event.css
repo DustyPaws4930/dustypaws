@@ -1,6 +1,6 @@
 html {
-    margin: 0;
-    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
     
 }
 .event-ngo{
@@ -18,13 +18,15 @@ html {
 .react-multiple-carousel__arrow{
     visibility: hidden;
 }
+.react-multi-carousel-dot--active{
+    color: #295B53;
+}
 .card-body{
     border: 1px solid #295B53;
-    margin: 30px 20px 70px 20px;
+    margin: 30px; 
+    /* change this */
     border-radius: 10px;
-}
-.card-body img{
-    border-radius: 9px 9px 0 0;
+    overflow: hidden;
 }
 .card-content{
     padding: 1rem;
@@ -110,8 +112,15 @@ hr{
     top: 15px;
     left: 30px;
 }
+.our-partners-content{
+    /* background-color: #DEB141; */
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
 .owl-theme{
     /* margin: 20px; */
+    /* margin: auto; */
     text-align: center;
 }
 
@@ -120,11 +129,13 @@ hr{
     opacity: 1;
     border-radius: 10px;
     background-position: center;
+   
     
 }
 .item{
     padding: 50px 10px;
-    margin: 10px;
+    margin: 30px;
+    /* margin: auto; */
     border-radius: 30px;
     text-align: center;
     transform: scale(0.8);
@@ -143,7 +154,7 @@ hr{
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 .item-black{
