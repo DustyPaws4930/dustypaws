@@ -10,6 +10,10 @@ import "./home.css";
 import CardImages1 from './project-files/13.png'
 import CardImages2 from './project-files/1 6.png'
 import CardImages3 from './project-files/15.png'
+import reportImage from './project-files/report-form-img.png'
+import reportBGImage1 from './project-files/report-bg-image.png'
+import reportBGImage2 from './project-files/report-bg-image2.png'
+
 // import WarningIcon from '@fortawesome/free-solid-svg-icons';
 
 const User = createContext();
@@ -98,8 +102,10 @@ const Home = () => {
         <section className="report-wrapper">
           <Report/>
           <section className="report-images">
-          
+           <img src={reportImage} alt="report image" />
           </section>
+          <img src={reportBGImage1} alt=" report image" className="report-image1" />
+          <img src={reportBGImage2} alt=" report image" className="report-image2" />
         </section>
         <section className="newsletter">
           <div className="newsletter-wrapper">

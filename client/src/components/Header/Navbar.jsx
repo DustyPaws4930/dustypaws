@@ -16,8 +16,29 @@ const Navbar = () => {
     } else {
       return (
         <>
-          <Link to="/event">
+          
+            <li className="dropDown">
+              <li className="btn btn-drop">
+                Explore
+              </li>
+              <li className="dropDown-options active">
+                <li>
+                  <Link to="/explore">
+                    option 1
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/explore">
+                    option 2
+                  </Link>
+                </li>
+              </li>
+            </li>
+          {/* <Link to="/event">
             <li>Event</li>
+          </Link> */}
+          <Link to="/report">
+            <li>Report</li>
           </Link>
           <Link to="/donate">
             <li>Donate</li>
@@ -40,20 +61,22 @@ const Navbar = () => {
         <ul>
           {RenderNavBar()}
           <div>
-            <li className="nav-dropDown">
+            <li className="nav-dropDown">            
               <img src="" alt="user-profile" />
+
+              <div className="user-profile">
+                <Link to="/signup">
+                  <li>Sign up</li>
+                </Link>
+                <Link to="/login">
+                  <li>Login</li>
+                </Link>
+                <Link to="/login" onClick={HandleLogoutClick}>
+                  <li>Logout</li>
+                </Link>
+              </div>
+
             </li>
-            <div>
-              <Link to="/signup">
-                <li>Sign up</li>
-              </Link>
-              <Link to="/login">
-                <li>Login</li>
-              </Link>
-              <Link to="/login" onClick={HandleLogoutClick}>
-                <li>Logout</li>
-              </Link>
-            </div>
           </div>
         </ul>
       </nav>
