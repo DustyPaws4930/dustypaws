@@ -26,10 +26,6 @@ let Report = () => {
     if (userToken !== null && userToken !== "undefined" && userToken !== "") {
       setLoggedInUser(userToken.user);
       console.log(userToken);
-      setReportData({
-        name: `${userToken.user.fname} ${userToken.user.lname}`,
-        phoneNumber: userToken.user.phoneNumber,
-      });
     } else {
       setReportData({
         name: "",
