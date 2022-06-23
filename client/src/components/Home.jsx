@@ -13,6 +13,8 @@ import CardImages3 from './project-files/15.png'
 import reportImage from './project-files/report-form-img.png'
 import reportBGImage1 from './project-files/report-bg-image.png'
 import reportBGImage2 from './project-files/report-bg-image2.png'
+import reportMobile1 from './project-files/form-mobile-image.png'
+import reportMobile from './project-files/form-mobile-image1.png'
 
 // import WarningIcon from '@fortawesome/free-solid-svg-icons';
 
@@ -100,12 +102,16 @@ const Home = () => {
           </div>
         </section>
         <section className="report-wrapper">
+        <img src={reportMobile} alt=" report image" className="report-mobile2" />
           <Report/>
           <section className="report-images">
-           <img src={reportImage} alt="report image" />
+           <img src={reportImage} alt="report image" className="report-image3" />
           </section>
           <img src={reportBGImage1} alt=" report image" className="report-image1" />
           <img src={reportBGImage2} alt=" report image" className="report-image2" />
+          <img src={reportMobile1} alt=" report image" className="report-mobile1" />
+          <img src={reportMobile} alt=" report image" className="report-mobile2" />
+          
         </section>
         <section className="newsletter">
           <div className="newsletter-wrapper">

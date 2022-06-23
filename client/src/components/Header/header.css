@@ -21,9 +21,16 @@ header .primary-logo {
 nav ul {
   list-style: none;
   display: flex;
-  padding: 0;
-  
+  flex-direction: column;
+  padding: 0;  
 }
+
+@media screen and (max-width: 768px) {  
+  .feature-subsection2{
+    display: none;
+  }
+}
+
 nav a{
   color: black;
   text-decoration: none;
@@ -78,3 +85,4 @@ nav ul .user-profile {
 nav ul .nav-dropDown:hover .user-profile{
     display: block;
 }
+

@@ -171,7 +171,7 @@ section.newsletter p {
 section.newsletter input[type="email"] {
   padding: 5px 10px;
   width: 250px;
-  background: #515151;
+  /* background: #515151; */
   border-radius: 8px;
   color: white;
 }
@@ -210,14 +210,19 @@ section.report-wrapper .report-image1 {
   overflow: hidden;
 }
 img.report-image2 {
-    height: 100%;
-    width: auto;
-    position: absolute;
-    right: -50%;
-    overflow: hidden;
-    top: 15%;
-    z-index: 1;
+  height: 100%;
+  width: auto;
+  position: absolute;
+  right: -50%;
+  overflow: hidden;
+  top: 15%;
+  z-index: 1;
 }
+
+.report-mobile1, .report-mobile2{
+    display: none;
+}
+
 /* footer styling */
 footer {
   padding: 1rem 2rem;
@@ -227,4 +232,54 @@ footer p {
   margin: 0%;
   text-align: center;
   color: white;
+}
+/* mobile view */
+@media screen and (max-width: 768px) {
+  .report-image3,
+  .report-image2,
+  .report-image1 {
+    display: none;
+  }
+  .header-wrapper {
+    flex-direction: column;
+  }
+  section.landing {
+    height: 350px;
+    background: url(../components/project-files/mobile-landing.png);
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  h4.landing-text {
+    font-size: 1rem;
+    margin: 5rem 20%;
+  }
+  section .feature-subsection1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    flex-basis: 100%;
+    padding: 1rem;
+  }
+  .circle {
+    display: none;
+  }
+  .featurecard {
+    margin: 4rem;
+  }
+  .feature-subsection1 h2 {
+    margin-bottom: 0;
+  }
+  section.report-wrapper{
+    margin: 0;
+  }
+}
+
+/* why me hidden */
+@media screen and (max-width: 1100px) {
+  .feature-subsection2 {
+    display: none;
+  }
 }
