@@ -26,9 +26,18 @@ const Info = () => {
             <input type="email" name="email" id="email" />
           </div>
 
-          <div className="labelInputWrapper">
-            <label htmlFor="address">Address</label>
-            <input type="email" name="address" id="address" />
+          <div className="AddressInfoContainer">
+            <fieldset>
+              <legend>Address</legend>
+              <div className="labelInputWrapper">
+                <label htmlFor="city">City</label>
+                <input type="text" name="city" id="city" />
+              </div>
+              <div className="labelInputWrapper">
+                <label htmlFor="province">state</label>
+                <input type="text" name="province" id="province" />
+              </div>
+            </fieldset>
           </div>
         </div>
         <div className="basicInfoWrapper">
