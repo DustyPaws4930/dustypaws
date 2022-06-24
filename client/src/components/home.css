@@ -5,7 +5,6 @@ section.landing {
   height: 420px;
   object-fit: cover;
   background-size: 100%;
-
   background-repeat: no-repeat;
   /* background-repeat:repeat-x; */
 }
@@ -27,6 +26,42 @@ section > button {
   font-size: 1.25rem;
   font-weight: bold;
 }
+section.statistics {
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+section.statistics> div{
+  margin:2rem;
+}
+section.statistics h4, section.statistics h3{
+  text-align: center;
+}
+
+.statCount {
+  flex: 1 1 auto;
+}
+
+.charts {
+  flex: 1 1 auto;
+}
+
+.description {
+  position: relative;
+  flex: 1 1 50%;
+}
+.description button#donate {
+  position: relative;
+  right: 0%;
+  padding: 0.8rem 2rem;
+  border-radius: 2px;
+  background: var(--primary-color);
+  color: white;
+}
+
 section.features {
   display: flex;
   margin: 1rem 0;
@@ -85,10 +120,13 @@ section .feature-subsection1 {
   position: relative;
 }
 .feature-subsection2 h4 {
+  display: flex;
   transform: rotate(-90deg);
   font-weight: 400;
   font-size: 72px;
   color: #f4dda4;
+  align-self: normal;
+  margin: 0.5rem;
 }
 .circle {
   position: absolute;
@@ -151,11 +189,9 @@ section.newsletter {
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
   padding: 1px;
   background: #deb141;
-  margin: 5px;
 }
 section .newsletter-wrapper {
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
-  /* clip-path: border-box; */
   background: #fffaef;
   padding: 6rem 4rem;
   display: flex;
@@ -219,8 +255,9 @@ img.report-image2 {
   z-index: 1;
 }
 
-.report-mobile1, .report-mobile2{
-    display: none;
+.report-mobile1,
+.report-mobile2 {
+  display: none;
 }
 
 /* footer styling */
@@ -272,9 +309,12 @@ footer p {
   .feature-subsection1 h2 {
     margin-bottom: 0;
   }
-  section.report-wrapper{
+  section.report-wrapper {
     margin: 0;
+    grid-template-columns: 1fr;
+    max-width: 100%;
   }
+  
 }
 
 /* why me hidden */

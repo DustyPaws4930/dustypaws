@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { getApiPath, getToken } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
-  // import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 let Report = () => {
   // ***Declare all variables here***
@@ -226,7 +226,7 @@ let Report = () => {
           </div>
           <div className="submit">
             {/* <input type="submit" id='submit-complaint' value="Register Complaint" /> */}
-                <button type="submit">Register Complaint</button>
+                <button type="submit">Register Complaint </button>
           </div>
         </form>
       </section>

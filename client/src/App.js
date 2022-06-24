@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Login from "./components/User/Login";
 import Profile from "./components/User/Settings/Profile";
 import SignUp from "./components/User/SignUp";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const App = () => {
   return (
