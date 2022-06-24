@@ -14,6 +14,15 @@ export const getToken = () => {
   }
 };
 
+export const getLoggedInUser = () => {
+  let userToken = getToken();
+  let loggedInUser = "";
+  if (userToken !== null && userToken !== "undefined" && userToken !== "") {
+    loggedInUser = userToken.user;
+  }
+  return loggedInUser;
+};
+
 export const setToken = (token) => {
   localStorage.setItem("token", token);
 };

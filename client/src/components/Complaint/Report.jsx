@@ -28,7 +28,6 @@ let Report = () => {
     let userToken = getToken();
     if (userToken !== null && userToken !== "undefined" && userToken !== "") {
       setLoggedInUser(userToken.user);
-      console.log(userToken);
     } else {
       setReportData({
         name: "",
