@@ -1,185 +1,175 @@
 html {
-    max-width: 1200px;
-    margin: 0 auto;
-    
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.event-ngo{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10rem;
+.event-ngo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10rem;
 }
-.event-form{
-    padding: 20px;
+.event-form {
+  padding: 20px;
 }
-.card img{
-    width: 100%;
-    height: auto;
+.card img {
+  width: 100%;
+  height: auto;
 }
-.react-multiple-carousel__arrow{
-    visibility: hidden;
+.react-multiple-carousel__arrow {
+  visibility: hidden;
 }
-.react-multi-carousel-dot--active{
-    color: #295B53;
+.react-multi-carousel-dot--active {
+  color: #295b53;
 }
-.card-body{
-    border: 1px solid #295B53;
-    margin: 30px; 
-    /* change this */
-    border-radius: 10px;
-    overflow: hidden;
+.card-body {
+  margin: 30px;
+  box-shadow: 2px 6px 16px 1px rgba(40, 91, 83, 0.58);
+  /* change this */
+  border-radius: 10px;
+  overflow: hidden;
 }
-.card-content{
-    padding: 1rem;
+.card-content {
+  padding: 1rem;
 }
 
-.card-heading-wishlist{
-    /* display: inline-grid;
+.card-heading-wishlist {
+  /* display: inline-grid;
     grid-template-columns: auto 1fr ; */
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-.card-heading-wishlist img{
-    /* background-color: blueviolet; */
-    width: 30px;
-    height: 100%;
-    margin: auto;
-    
+.card-heading-wishlist img {
+  /* background-color: blueviolet; */
+  width: 30px;
+  height: 100%;
+  margin: auto;
 }
-.featured-event{
-    /* background-color: cadetblue; */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-flow: column;
-    grid-gap: 10em;
-    margin: 50px;
-    padding: 50px 20px; 
+.featured-event {
+  /* background-color: cadetblue; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: column;
+  grid-gap: 10em;
+  margin: 50px;
+  padding: 50px 20px;
 }
-.featured-event-heading{
-    padding: 0 0 20px 0;
-    font-size: x-large;
+.featured-event-heading {
+  padding: 0 0 20px 0;
+  font-size: x-large;
 }
-.featured-event-date{
-    /* background-color: aqua; */
-    display: inline-block;
+.featured-event-date {
+  /* background-color: aqua; */
+  display: inline-block;
 }
-.featured-event-date img{
-    padding-right: 20px;
-    display: inline;
-    width: 40px;
-    height: 40px;
-    float: left;   
+.featured-event-date img {
+  padding-right: 20px;
+  display: inline;
+  width: 40px;
+  height: 40px;
+  float: left;
 }
-.featured-event-date p{
-    float: right;
+.featured-event-date p {
+  float: right;
 }
-.featured-event-description p{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
+.featured-event-description p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
-.btn-feature-event{
-    text-align: center;
+.btn-feature-event {
+  text-align: center;
 }
-.btn-feature-event button{
-    background-color: #DEB141;
-    float: left;
-    padding:  10px 70px;
-    border: none;
+.btn-feature-event button {
+  background-color: #deb141;
+  float: left;
+  padding: 10px 70px;
+  border: none;
 }
-hr{
-    width: 50%;
-    text-align: center;
-    margin-bottom: 5em;
+hr {
+  width: 50%;
+  text-align: center;
+  margin-bottom: 5em;
 }
-.btn-eventt-details{
-    text-align: center;
-
+.btn-eventt-details {
+  text-align: center;
 }
-.btn-eventt-details button{
-    background-color: #DEB141;
-    width: 100%;
-    padding:  10px 70px;
-    border: none;
-    
+.btn-eventt-details button {
+  background-color: #deb141;
+  width: 100%;
+  padding: 10px 70px;
+  border: none;
 }
-.card-date{
-    /* background-color: aqua; */
-    position: absolute;
-    width: 30px;
-    height: auto;
-    top: 15px;
-    left: 30px;
+.card-date {
+  /* background-color: aqua; */
+  position: absolute;
+  width: 30px;
+  height: auto;
+  top: 15px;
+  left: 30px;
 }
-.our-partners-content{
-    /* background-color: #DEB141; */
-    width: 100%;
-    height: auto;
-    padding: 20px;
+.our-partners-content {
+  /* background-color: #DEB141; */
+  width: 100%;
+  height: auto;
+  padding: 20px;
 }
-.owl-theme{
-    /* margin: 20px; */
-    /* margin: auto; */
-    text-align: center;
+.owl-theme {
+  /* margin: 20px; */
+  /* margin: auto; */
+  text-align: center;
 }
 
-.owl-item.active.center .item{
-    transform: scale(1.05);
-    opacity: 1;
-    border-radius: 10px;
-    background-position: center;
-   
-    
+.owl-item.active.center .item {
+  transform: scale(1.05);
+  opacity: 1;
+  border-radius: 10px;
+  background-position: center;
 }
-.item{
-    padding: 50px 10px;
-    margin: 30px;
-    /* margin: auto; */
-    border-radius: 30px;
-    text-align: center;
-    transform: scale(0.8);
-    opacity: 0.7;
-    transition: all 0.3s;
-    background-image: url('../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg');
-    height: 100%;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    
+.item {
+  padding: 50px 10px;
+  margin: 30px;
+  /* margin: auto; */
+  border-radius: 30px;
+  text-align: center;
+  transform: scale(0.8);
+  opacity: 0.7;
+  transition: all 0.3s;
+  background-image: url("../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
-.item p{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+.item p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
-.item-black{
-    background-color: black;
-    padding: 50px 10px;
-    border-radius: 30px;
-    text-align: center;
-    transform: scale(0.8);
-    opacity: 0.7;
-    transition: all 0.3s;
+.item-black {
+  background-color: black;
+  padding: 50px 10px;
+  border-radius: 30px;
+  text-align: center;
+  transform: scale(0.8);
+  opacity: 0.7;
+  transition: all 0.3s;
 }
-
 
 /* to be changed according to the gif */
-.featured-event-img{
-    /* background-color: #295B53; */
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-image: url(https://images.unsplash.com/photo-1608096299230-81c7b43d5dfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+.featured-event-img {
+  /* background-color: #295B53; */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(https://images.unsplash.com/photo-1608096299230-81c7b43d5dfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
 
 /* #295B53 */
