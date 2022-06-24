@@ -7,6 +7,8 @@ export const Register = (req, res) => {
   let name = req.body.name;
   let phoneNumber = req.body.phoneNumber;
   let priority = req.body.priority;
+  let userId = req.body.userId;
+  let location = req.body.location;
 
   const file = fs.readFileSync(req.file.path);
   const imgStr = Buffer.from(file).toString("base64");
@@ -17,6 +19,8 @@ export const Register = (req, res) => {
     name: name,
     phoneNumber: phoneNumber,
     Image: imgStr,
+    userId: userId,
+    location: location,
     priority: priority,
   });
 

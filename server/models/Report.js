@@ -40,7 +40,7 @@ const ReportSchema = new mongoose.Schema({
   },
 
   userId: {
-    type: Object,
+    type: String,
   },
 
   ngoId: {

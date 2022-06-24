@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import GMap from "../Map/GMap";
 import Login from "../User/Login";
 import SignUp from "../User/SignUp";
@@ -8,7 +9,7 @@ const PopUp = (props) => {
   if (props.showMap) {
     renderedContent = (
       <div className="MapWrapper">
-        <GMap />
+        <GMap currentCoordinate={props.currentCoordinate} />
       </div>
     );
   } else if (props.showLogin) {
