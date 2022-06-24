@@ -12,6 +12,8 @@ dotenv.config();
 
 // SV: If you want to import the routes please do it from here.
 import UserRoutes from "./routes/User.js";
+import ComplaintRoutes from "./routes/Complaint.js";
+import EventRoutes from "./routes/Event.js";
 
 // SV: Initializing the Application
 const app = express();
@@ -41,7 +43,15 @@ mongoose
   });
 
 // SV: Here are all my routes which you will also mention when any endpoint for the api is created.
+//****** User Routes ******
 app.use("/user", UserRoutes);
+
+//****** Complaint Routes ******
+app.use("/complaint", ComplaintRoutes);
+
+//****** Event Routes ******
+app.use("/event", EventRoutes);
+
 
 // let say you wanted to fetch the data but we need to first perform authentication.
 // To do that

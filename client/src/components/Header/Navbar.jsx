@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { deleteToken } from "../../Common";
+import { deleteToken, getToken } from "../../Common";
 import { User } from "../Home";
+import PopUp from "../ModelPopups/PopUp";
 
 const Navbar = () => {
   let loggedInUser = useContext(User);
+
+  const [loginPopUp, setLoginPopUp] = useState(false);
+
+  const [signUpPopUp, setSignUpPopUp] = useState(false);
 
   const RenderNavBar = () => {
     if (loggedInUser?.role === "NGO") {
@@ -16,25 +23,16 @@ const Navbar = () => {
     } else {
       return (
         <>
-            <li>Explore 
-              <img src="" alt="arrow down"/> </li>
-              {/* arrow down png to be added */}
-               <div>
-                  <ul>
-                      <Link to='/event'><li>Events</li></Link>
-                      <Link to='/partners'> <li>Partners</li> </Link>
-                    </ul>
-               </div>
-
-
-          {/* <label>Explore
-              <select>
-              <option><Link to='/event'>Events</Link></option>
-                  <Link to='/partners'> <option>Partners</option> </Link>
-              </select>
-          </label> */}
-
-
+          <ul className="dropDown">
+            <li className="btn btn-drop">Explore</li>
+            <li className="dropDown-options active">
+              <Link to="/event">Event</Link>
+              <Link to="/event">Partners</Link>
+            </li>
+          </ul>
+          <Link to="/report">
+            <li>Report</li>
+          </Link>
           <Link to="/donate">
             <li>Donate</li>
           </Link>
@@ -47,8 +45,59 @@ const Navbar = () => {
   };
   const HandleLogoutClick = () => {
     deleteToken();
+    window.location.href = "/";
     alert("Logged out!!");
   };
+
+  const ShowSignUpPopUp = (e) => {
+    setSignUpPopUp(!signUpPopUp);
+  };
+
+  const ShowLoginPopUp = (e) => {
+    setLoginPopUp(!loginPopUp);
+  };
+
+  let popUpContent = "";
+  if (signUpPopUp) {
+    popUpContent = <PopUp TogglePopUp={ShowSignUpPopUp} showSignUp={true} />;
+  }
+  if (loginPopUp) {
+    popUpContent = <PopUp TogglePopUp={ShowLoginPopUp} showLogin={true} />;
+  }
+
+  const HandleLoggedInUI = () => {
+    let usertoken = getToken();
+    if (usertoken !== null && usertoken !== "undefined" && usertoken !== "") {
+      return (
+        <>
+          <Link to="/profile">Profile</Link>
+          <a href="#" onClick={HandleLogoutClick}>
+            Logout
+          </a>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div className="securityWrapper">
+            <a href="#" onClick={ShowSignUpPopUp}>
+              Sign up
+            </a>
+            <a href="#" onClick={ShowLoginPopUp}>
+              Login
+            </a>
+          </div>
+        </>
+      );
+    }
+  };
+
+  useEffect(
+    (e) => {
+      HandleLoggedInUI();
+    },
+    [HandleLoggedInUI]
+  );
 
   return (
     <>
@@ -58,22 +107,12 @@ const Navbar = () => {
           <div>
             <li className="nav-dropDown">
               <img src="" alt="user-profile" />
+              <div className="user-profile">{HandleLoggedInUI()}</div>
             </li>
-            <div>
-              <Link to="/signup">
-                <li>Sign up</li>
-              </Link>
-              <Link to="/login">
-                <li>Login</li>
-              </Link>
-              {/* <Link to="/login" onClick={HandleLogoutClick}>
-                <li>Logout</li> 
-              </Link> */} 
-              {/* Log out is not needed here pls check n remove. */}
-            </div>
           </div>
         </ul>
       </nav>
+      {popUpContent}
     </>
   );
 };

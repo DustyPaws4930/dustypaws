@@ -1,27 +1,21 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
-
-export const SignUp = (req, res) => {
-  let fname = req.body.fname;
-  let lname = req.body.lname;
-  let password = req.body.password;
+import bcrypt from "bcrypt";
+import mongoose from "mongoose";
+export const SignUp = async (req, res) => {
+  let username = req.body.username;
   let email = req.body.email;
-  let file = req.body.file;
-  let Dob = req.body.Dob;
-  let phoneNumber = req.body.phoneNumber;
+  let password = req.body.password;
   let role = req.body.isNgo ? "ngo" : "user";
-  let address = { street: req.body.street, city: req.body.city };
 
+  const salt = await bcrypt.genSalt(10);
+  // now we set user password to hashed password
+  password = await bcrypt.hash(password, salt);
   let userObj = new User({
-    fname: fname,
-    lname: lname,
+    username: username,
     email: email,
     password: password,
-    file: file,
-    Dob: Dob,
     role: role,
-    phoneNumber: phoneNumber,
-    address: address,
   });
   console.log(`User obj: ${userObj}`);
   try {
@@ -29,10 +23,10 @@ export const SignUp = (req, res) => {
       if (user.length > 0) {
         res.status(401).json(`User with email already exists`);
       } else {
-        let savedUser = await userObj.save();
+        let user = await userObj.save();
         const token = jwt.sign(
           {
-            savedUser,
+            user,
           },
           "Langara123"
         );
@@ -52,21 +46,20 @@ export const Login = async (req, res) => {
 
   // Todo: Move the SECRET KEY To .env file
   try {
-    User.findOne({ email: email }, (err, user) => {
+    User.findOne({ email: email }, async (err, user) => {
       if (user === null) {
         console.log("No registered User not found with email: " + email);
         res.status(400).json({
           message: `User not found`,
         });
       } else if (!err) {
-        if (user.password == password) {
+        if (await bcrypt.compare(password, user.password)) {
           const token = jwt.sign(
             {
               user,
             },
             "Langara123"
           );
-
           console.log("User found with the associated Email");
           res.status(200).json({ user: token });
         } else {
@@ -95,6 +88,49 @@ export const GetUser = (req, res) => {
       res.status(400).json("Error occured while getting user: " + err);
     }
   });
+};
+
+export const Update = async (req, res) => {
+  let id = req.params.id;
+  console.log(req.params.id.toString());
+
+  let username = req.body.username;
+  let email = req.body.email;
+  let password = req.body.password;
+  let phoneNumber = req.body.phoneNumber;
+  let address = req.body.address;
+  let Dob = req.body.Dob;
+  let gender = req.body.gender;
+
+  const salt = await bcrypt.genSalt(10);
+  // now we set user password to hashed password
+  password = await bcrypt.hash(password, salt);
+  let userObj = {
+    username,
+    email,
+    password,
+    phoneNumber,
+    address,
+    Dob,
+    gender,
+  };
+  console.log(userObj);
+
+  try {
+    const user = await User.findByIdAndUpdate(id, userObj, { new: true });
+    const token = jwt.sign(
+      {
+        user,
+      },
+      "Langara123"
+    );
+    res.status(200).json({ user: token, message: "User updated successfully" });
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ message: `Error occured while updating user ${err}` });
+  }
 };
 
 // // SV:

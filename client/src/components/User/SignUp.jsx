@@ -4,14 +4,9 @@ import jwt from "jwt-decode";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 const SignUp = () => {
   const [user, setUser] = useState({
-    fname: "",
-    lname: "",
+    username: "",
     email: "",
     password: "",
-    phoneNumber: "",
-    street: "",
-    city: "",
-    Dob: "",
     isNgo: false,
   });
   const [cPassword, setConfirmPassword] = useState("");
@@ -21,9 +16,7 @@ const SignUp = () => {
     let name = e.target.name;
     let value = e.target.value;
 
-    if (name === "cpassword") {
-      setConfirmPassword(value);
-    } else if (name === "isNgo") {
+    if (name === "isNgo") {
       value = e.target.checked;
       setUser({ ...user, [name]: value });
     } else {
@@ -34,28 +27,25 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
-    if (user.password === cPassword) {
-      const SignUPURL = getApiPath() + "user/signup";
-      axios
-        .post(SignUPURL, user)
-        .then((res) => {
-          const userToken = jwt(res.data.user); // decode your token here
-          alert("Signed Up!!");
-          localStorage.setItem("token", userToken.user);
-          setToken(userToken.user);
-          console.log("user", userToken);
-          // These function requires token only
-          setTokenTimeout(userToken);
-          // console.log(isTokenTimeOut(userToken));
-          console.log("user", new Date(userToken.iat));
-        })
-        .catch((err) => {
-          console.log("Error" + err.response.data);
-          alert("Error: " + err.response.data);
-        });
-    } else {
-      alert("Password does not match");
-    }
+
+    const SignUPURL = getApiPath() + "user/signup";
+    console.log(user);
+    axios
+      .post(SignUPURL, user)
+      .then((res) => {
+        const userToken = jwt(res.data.user); // decode your token here
+        alert("Signed Up!!");
+        setToken(res.data.user);
+        window.location.reload();
+        // These function requires token only
+        // setTokenTimeout(userToken);
+        // console.log(isTokenTimeOut(userToken));
+        // console.log("user", new Date(userToken.iat));
+      })
+      .catch((err) => {
+        console.log("Error" + err.response.data);
+        alert("Error: " + err.response.data);
+      });
   };
 
   const GetLiveLocation = (event) => {
@@ -82,37 +72,14 @@ const SignUp = () => {
           />
         </div> */}
         <div className="labelInputWrapper">
-          <label htmlFor="fname">First Name</label>
+          <label htmlFor="username">User Name</label>
           <input
             type="text"
-            name="fname"
-            value={user.fname}
-            id="fname"
+            name="username"
+            value={user.username}
+            id="username"
             onChange={(event) => HandleInputChange(event)}
-            placeholder="First Name"
-          />
-        </div>
-        <div className="labelInputWrapper">
-          <label htmlFor="lname">Last Name</label>
-          <input
-            type="text"
-            name="lname"
-            value={user.lname}
-            id="lname"
-            onChange={(event) => HandleInputChange(event)}
-            placeholder="Last Name"
-          />
-        </div>
-        <div className="labelInputWrapper">
-          <label htmlFor="Dob">Date of Birthday:</label>
-          <input
-            type="date"
-            id="Dob"
-            value={user.Dob}
-            onChange={(event) => {
-              HandleInputChange(event);
-            }}
-            name="Dob"
+            placeholder="User name"
           />
         </div>
         <div className="labelInputWrapper">
@@ -126,6 +93,18 @@ const SignUp = () => {
             onChange={(event) => HandleInputChange(event)}
           />
         </div>
+        {/* <div className="labelInputWrapper">
+          <label htmlFor="Dob">Date of Birthday:</label>
+          <input
+            type="date"
+            id="Dob"
+            value={user.Dob}
+            onChange={(event) => {
+              HandleInputChange(event);
+            }}
+            name="Dob"
+          />
+        </div> */}
         <div className="labelInputWrapper">
           <label htmlFor="password">Password</label>
           <input
@@ -137,7 +116,7 @@ const SignUp = () => {
             onChange={(event) => HandleInputChange(event)}
           />
         </div>
-        <div className="labelInputWrapper">
+        {/* <div className="labelInputWrapper">
           <label htmlFor="cpassword">Confirm Password</label>
           <input
             type="text"
@@ -147,8 +126,8 @@ const SignUp = () => {
             onChange={(event) => HandleInputChange(event)}
             placeholder="Confirm Password"
           />
-        </div>
-        <div className="labelInputWrapper">
+        </div> */}
+        {/* <div className="labelInputWrapper">
           <label htmlFor="phoneNumber">Phone Number</label>
           <input
             type="text"
@@ -158,8 +137,8 @@ const SignUp = () => {
             onChange={(event) => HandleInputChange(event)}
             placeholder="Phone Number"
           />
-        </div>
-        <div className="labelInputWrapper">
+        </div> */}
+        {/* <div className="labelInputWrapper">
           <label htmlFor="street">Street</label>
           <input
             type="text"
@@ -180,7 +159,7 @@ const SignUp = () => {
             id="city"
             placeholder="City"
           />
-        </div>
+        </div> */}
 
         <div className="NGO_Wrapper">
           <label>
@@ -198,14 +177,14 @@ const SignUp = () => {
             value={securityKey}
           />
         </div>
-
+        {/* 
         <button
           onClick={(event) => {
             GetLiveLocation(event);
           }}
         >
           Access Location
-        </button>
+        </button> */}
         <input type="submit" value="Submit" />
       </form>
     </>

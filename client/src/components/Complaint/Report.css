@@ -1,0 +1,60 @@
+.LocationWrapper {
+  margin: 1rem;
+}
+
+.LocationBtn {
+  margin: 1rem;
+  border: 1px solid black;
+  padding: 0.3rem;
+}
+section .labelInputWrapper, .priority-flag-wrapper{
+  display: flex;
+  flex-direction: column;
+}
+section .labelInputWrapper input{
+  margin-top: 2px;
+}
+section.report-complaint{
+  max-width: 400px;
+}
+.priority-flag-wrapper>*{
+  margin: 0 1rem 1rem 1rem;
+}
+
+.priority-flag-wrapper button{
+  margin: 0 1rem;
+  padding: 6px 10px;
+}
+
+.priority-buttons{
+  display: flex;
+}
+
+.priority-buttons button{
+    flex-basis: 100%;
+    color: white;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.priority-buttons .emergency{
+  background: #FF3333;
+}
+
+.priority-buttons .high{
+  background: #DEB141;
+}
+
+.priority-buttons .moderate{
+  background: #285B53;
+}
+
+.submit > button {
+  display: block;
+  width: 80%;
+  padding: 10px;
+  margin: 0.5rem auto;
+  background-color: #285B53;
+  color:white;
+  font-weight: bold;
+}
