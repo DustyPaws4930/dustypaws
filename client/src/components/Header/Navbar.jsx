@@ -77,6 +77,9 @@ const Navbar = () => {
     if (usertoken !== null && usertoken !== "undefined" && usertoken !== "") {
       return (
         <>
+          <Link to="/profile">
+            <li>Profile</li>
+          </Link>
           <a href="#" onClick={HandleLogoutClick}>
             <li>Logout</li>
           </a>
