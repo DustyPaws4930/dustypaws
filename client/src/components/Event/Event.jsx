@@ -12,7 +12,6 @@ import Header from "../Header/Header";
 import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
 // import WishlistIcon from "../images/WishlistIcon.png";
 
-// import { img } from '../images/'
 
 const Event = (props) => {
   const responsive = {
@@ -37,12 +36,22 @@ const Event = (props) => {
   const owl = {
     1000: {
       items: 5,
+      // margin: "0px",
+      marginleft: "100px",
+      marginRight: "100px",
+      center: true
     },
     768: {
       items: 3,
+      marginleft: "100px",
+      marginRight: "100px",
+      center: true
     },
     480: {
       items: 3,
+      // marginleft: "10px",
+      marginRight: "10px",
+      center: true
     },
     0: {
       items: 1,
@@ -394,24 +403,25 @@ const Event = (props) => {
             dots={false}
             mouseDrag
             loop={true}
-            margin={40}
+            margin={70}
             center={true}
           >
-            <div className="item">
-              {/* <div className='item-black'> */}
-              <h3>People For Animal</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-                earum fugit tempore assumenda nam iusto corrupti eaque veritatis
-                ab nisi laudantium, exercitationem laborum rem tenetur magnam
-                nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Delectus aliquam vero laudantium
-                nobis consectetur fugiat quibusdam alias, corporis pariatur,
-                recusandae odio voluptas hic. Rem ab hic doloribus pariatur
-                cumque cum.
-              </p>
-              {/* </div> */}
-            </div>
+            {/* <div className='item-black'> */}
+              <div className="item">
+              
+                <h3>People For Animal</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+                  earum fugit tempore assumenda nam iusto corrupti eaque veritatis
+                  ab nisi laudantium, exercitationem laborum rem tenetur magnam
+                  nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Delectus aliquam vero laudantium
+                  nobis consectetur fugiat quibusdam alias, corporis pariatur,
+                  recusandae odio voluptas hic. Rem ab hic doloribus pariatur
+                  cumque cum.
+                </p>
+              </div>
+            {/* </div> */}
             <div className="item">
               <h3>People For Animal</h3>
               <p>
@@ -480,7 +490,9 @@ const Event = (props) => {
           </OwlCarousel>
         </div>
       </div>
-      <Footer />
+      <div className="footer">
+        <Footer />
+      </div>
     </>
   );
 };
