@@ -32,12 +32,13 @@ section.statistics {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
 }
-section.statistics> div{
-  margin:2rem;
+section.statistics > div {
+  margin: 2rem;
 }
-section.statistics h4, section.statistics h3{
+section.statistics h4,
+section.statistics h3 {
   text-align: center;
 }
 
@@ -314,7 +315,6 @@ footer p {
     grid-template-columns: 1fr;
     max-width: 100%;
   }
-  
 }
 
 /* why me hidden */

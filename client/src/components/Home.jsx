@@ -59,7 +59,7 @@ const Home = () => {
         </section>
         <section className="statistics">
           <div className="statCount">
-            <h3>{<AnimatedNumber end={1000} start={500} timer={10} />}</h3>
+            <h3>{<AnimatedNumber end={100000} start={0} timer={10} />}</h3>
             <h4>Donation Count</h4>
           </div>
           <div className="charts">
