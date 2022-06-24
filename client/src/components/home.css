@@ -33,6 +33,19 @@ section.features {
   align-items: center;
   position: relative;
 }
+.reportCaseContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#report-case {
+  background-color: var(--secondary-color);
+  font-weight: bold;
+  padding: 0.8rem 2.5rem;
+  text-decoration: none;
+  color: black;
+}
 
 section .feature-subsection1 {
   flex-basis: 90%;
@@ -219,8 +232,9 @@ img.report-image2 {
   z-index: 1;
 }
 
-.report-mobile1, .report-mobile2{
-    display: none;
+.report-mobile1,
+.report-mobile2 {
+  display: none;
 }
 
 /* footer styling */
@@ -272,7 +286,7 @@ footer p {
   .feature-subsection1 h2 {
     margin-bottom: 0;
   }
-  section.report-wrapper{
+  section.report-wrapper {
     margin: 0;
   }
 }

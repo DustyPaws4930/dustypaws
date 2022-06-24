@@ -50,7 +50,11 @@ const Home = () => {
             Our responsive web applications make it easier for people and
             non-governmental organizations (NGOs) who wants to.
           </h4>
-          <button id="report-case">Report Case</button>
+          <div className="reportCaseContainer">
+            <a href="#reportSection" id="report-case">
+              Report Case
+            </a>
+          </div>
         </section>
         <section className="statistics">
           <div className="charts"></div>

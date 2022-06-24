@@ -30,7 +30,7 @@ const Navbar = () => {
               <Link to="/event">Partners</Link>
             </li>
           </ul>
-          <Link to="/report">
+          <Link to="/#reportSection">
             <li>Report</li>
           </Link>
           <Link to="/donate">
@@ -70,10 +70,12 @@ const Navbar = () => {
     if (usertoken !== null && usertoken !== "undefined" && usertoken !== "") {
       return (
         <>
-          <Link to="/profile">Profile</Link>
-          <a href="#" onClick={HandleLogoutClick}>
-            Logout
-          </a>
+          <div className="securityWrapper">
+            <Link to="/profile">Profile</Link>
+            <a href="#" onClick={HandleLogoutClick}>
+              Logout
+            </a>
+          </div>
         </>
       );
     } else {
