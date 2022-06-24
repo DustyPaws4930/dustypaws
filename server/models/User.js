@@ -1,15 +1,9 @@
 import mongoose from "mongoose";
-
 let userModel = mongoose.Schema({
-  fname: {
+  username: {
     type: String,
     require: true,
   },
-  lname: {
-    type: String,
-    require: true,
-  },
-
   email: {
     type: String,
     require: true,
@@ -27,8 +21,7 @@ let userModel = mongoose.Schema({
     require: true,
   },
   address: {
-    type: Object,
-    require: true,
+    type: String,
   },
   rewardsEarned: {
     type: Number,
@@ -36,7 +29,6 @@ let userModel = mongoose.Schema({
   },
   role: {
     type: String,
-    require: true,
     default: "user",
   },
 });

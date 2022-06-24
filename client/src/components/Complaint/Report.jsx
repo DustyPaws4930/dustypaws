@@ -26,12 +26,9 @@ let Report = () => {
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
-    if (userToken !== null && userToken !== undefined && userToken !== "") {
+    if (userToken !== null && userToken !== "undefined" && userToken !== "") {
       setLoggedInUser(userToken.user);
-      setReportData({
-        name: `${userToken.user.fname} ${userToken.user.lname}`,
-        phoneNumber: userToken.user.phoneNumber,
-      });
+      console.log(userToken);
     } else {
       setReportData({
         name: "",
@@ -73,7 +70,7 @@ let Report = () => {
     })
       .then((res) => {
         console.log(res);
-        alert(res.data.message)
+        alert(res.data.message);
       })
       .catch((err) => {
         //handle error

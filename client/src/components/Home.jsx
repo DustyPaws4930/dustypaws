@@ -16,7 +16,7 @@ import reportBGImage2 from "./project-files/report-bg-image2.png";
 import reportMobile1 from "./project-files/form-mobile-image.png";
 import reportMobile from "./project-files/form-mobile-image1.png";
 
-import WarningIcon from '@fortawesome/free-solid-svg-icons';
+import WarningIcon from "@fortawesome/free-solid-svg-icons";
 
 const User = createContext();
 const Home = () => {
@@ -36,7 +36,7 @@ const Home = () => {
   const [loggedInUser, setLoggedInUser] = useState({});
   useEffect(() => {
     let userToken = getToken();
-    if (userToken !== null && userToken !== undefined && userToken !== "");
+    if (userToken !== null && userToken !== "undefined" && userToken !== "");
     setLoggedInUser(userToken.user);
   }, [setLoggedInUser]);
 
@@ -145,7 +145,7 @@ const Home = () => {
             <h4>Join Our Newsletter</h4>
             <p>
               Keep yourself updated with latest event and affairs. Subscribe our
-              news letter by providing your{" "}
+              news letter by providing your
             </p>
             <div>
               <input
