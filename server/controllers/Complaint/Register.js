@@ -39,14 +39,3 @@ export const Register = (req, res) => {
   });
 };
 
-export const GetReportByUserId = (req, res) => {
-  let { userId } = req.params;
-  ReportModel.find({ userId: userId }).then((data, err) => {
-    if (err) {
-      console.log("Err" + err);
-    } else {
-      console.log(data);
-      res.status(200).json({ data });
-    }
-  });
-};
