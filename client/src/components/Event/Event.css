@@ -17,9 +17,32 @@ html {
 .react-multiple-carousel__arrow {
   visibility: hidden;
 }
-.react-multi-carousel-dot--active {
-  color: #295b53;
+.react-multi-carousel-dot--active button:first-child{
+  background-color: #295b53;
+  border: none;
+  transform: scale(1.05);
 }
+.react-multi-carousel-dot button{
+  background-color: #698c87;
+  
+}
+.react-multi-carousel-dot button{
+  border: none !important;
+  transform: scale(0.7);
+}
+/* .react-multi-carousel-dot--active button:first-child{
+  background-color: #295b53;
+  border: none;
+}
+.react-multi-carousel-dot button:nth-child(2){
+  background-color: #3e6b64;
+}
+.react-multi-carousel-dot button:nth-child(3){
+  background-color: #537c75;
+}
+.react-multi-carousel-dot button:nth-child(4){
+  background-color: #698c87;
+} */
 .card-body {
   margin: 30px;
   box-shadow: 2px 6px 16px 1px rgba(40, 91, 83, 0.58);
@@ -208,3 +231,57 @@ hr {
 }
 
 /* #295B53 */
+@media only screen and (max-width: 500px){
+  .featured-event{
+    /* background-color: cadetblue; */
+    display: flex;
+    margin: 10px;
+    padding: 0; 
+    height: 85vh;   
+  }
+  .featured-event-heading{
+    margin: 0;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+  }
+  .Event-Mobile{
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 40px;
+    /* change here for image placement */
+    margin: 10px;
+    border: 5px solid #295b53;
+    border-radius: 5px;
+    padding: 270px 30px 20px 30px;
+     /* change here for image placement */
+
+  }
+  .featured-event-img{
+    /* visibility: hidden; */
+    position: absolute;
+    left: 10%;
+    top: 350px;
+    /* overflow: hidden; */
+    width: 80%;
+    height: 35%;
+    border-radius: 10px;
+    background-image: url('../images/Event_Feature_Hero.jpg');
+  }
+  .featured-event-date{
+    display: flex;
+    justify-content: center;
+  }
+  .featured-event-description{
+   text-align: center;
+  }
+  .btn-feature-event {
+    display: flex;
+    justify-content: center;
+  }
+  
+}
