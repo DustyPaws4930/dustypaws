@@ -4,8 +4,7 @@ section.landing {
   background: url(../components/project-files/hero_image.png);
   height: 420px;
   object-fit: cover;
-  background-size: 100%;
-
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   /* background-repeat:repeat-x; */
 }
@@ -27,6 +26,43 @@ section > button {
   font-size: 1.25rem;
   font-weight: bold;
 }
+section.statistics {
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+section.statistics > div {
+  margin: 2rem;
+}
+section.statistics h4,
+section.statistics h3 {
+  text-align: center;
+}
+
+.statCount {
+  flex: 1 1 auto;
+}
+
+.charts {
+  flex: 1 1 auto;
+}
+
+.description {
+  position: relative;
+  flex: 1 1 50%;
+}
+.description button#donate {
+  position: relative;
+  right: 0%;
+  padding: 0.8rem 2rem;
+  border-radius: 2px;
+  background: var(--primary-color);
+  color: white;
+}
+
 section.features {
   display: flex;
   margin: 1rem 0;
@@ -51,13 +87,14 @@ section .feature-subsection1 {
   flex-basis: 90%;
   border-radius: 0 272.5px 272.5px 0;
   background: var(--primary-color);
-  padding-left: 10%;
+  padding-left: 5%;
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   position: relative;
   padding-bottom: 2rem;
-  padding-right: 20%;
+  gap: 1rem;
+  padding-right: 15%;
 }
 .feature-subsection1 h2 {
   width: 100%;
@@ -68,7 +105,6 @@ section .feature-subsection1 {
 .featurecard {
   background: #fffcf3;
   max-width: 200px;
-  height: 200px;
   padding: 2rem;
   border-radius: 8px;
   display: flex;
@@ -96,12 +132,18 @@ section .feature-subsection1 {
 
 .feature-subsection2 {
   position: relative;
+  transform: rotate(-90deg);
+  display: flex;
+  align-items: end;
+  align-self: normal;
+  margin: 0.5rem;
 }
 .feature-subsection2 h4 {
-  transform: rotate(-90deg);
+  display: flex;
   font-weight: 400;
   font-size: 72px;
   color: #f4dda4;
+  margin: 0.2rem;
 }
 .circle {
   position: absolute;
@@ -164,11 +206,9 @@ section.newsletter {
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
   padding: 1px;
   background: #deb141;
-  margin: 5px;
 }
 section .newsletter-wrapper {
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
-  /* clip-path: border-box; */
   background: #fffaef;
   padding: 6rem 4rem;
   display: flex;
@@ -185,11 +225,13 @@ section.newsletter input[type="email"] {
   padding: 5px 10px;
   width: 250px;
   /* background: #515151; */
-  border-radius: 8px;
-  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid darkgrey;
+  color: grey;
 }
 section.newsletter input[type="email"]:focus {
-  color: white;
+  color: grey;
 }
 section.newsletter div {
   display: flex;
@@ -262,7 +304,7 @@ footer p {
     background: url(../components/project-files/mobile-landing.png);
     object-fit: cover;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
   }
   h4.landing-text {
     font-size: 1rem;
@@ -288,6 +330,8 @@ footer p {
   }
   section.report-wrapper {
     margin: 0;
+    grid-template-columns: 1fr;
+    max-width: 100%;
   }
 }
 

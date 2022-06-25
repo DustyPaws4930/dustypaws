@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import { deleteToken, getToken } from "../../Common";
 import { User } from "../Home";
 import PopUp from "../ModelPopups/PopUp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
+import Header from "./Header";
 
-const Navbar = () => {
+const Navbar = (props) => {
   let loggedInUser = useContext(User);
 
   const [loginPopUp, setLoginPopUp] = useState(false);
@@ -24,7 +27,9 @@ const Navbar = () => {
       return (
         <>
           <ul className="dropDown">
-            <li className="btn btn-drop">Explore</li>
+            <li className="btn btn-drop">
+              Explore <FontAwesomeIcon icon={faCaretDown} />
+            </li>
             <li className="dropDown-options active">
               <Link to="/event">Event</Link>
               <Link to="/event">Partners</Link>
@@ -103,12 +108,13 @@ const Navbar = () => {
 
   return (
     <>
-      <nav>
+      <nav className={props.showNav ? "active" : ""}>
         <ul>
           {RenderNavBar()}
           <div>
             <li className="nav-dropDown">
-              <img src="" alt="user-profile" />
+              <FontAwesomeIcon icon={faUser} />
+              <FontAwesomeIcon icon={faCaretDown} />
               <div className="user-profile">{HandleLoggedInUI()}</div>
             </li>
           </div>
