@@ -25,11 +25,18 @@ header .primary-logo {
 nav ul {
   list-style: none;
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: row;
   padding: 0;
 }
 header svg {
   margin: 0 5px;
+}
+
+.securityWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 2rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -68,6 +75,18 @@ nav a {
   text-decoration: none;
 }
 
+.dropDown {
+  margin: 1rem;
+}
+.AuthenticationWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
 nav ul li {
   margin: 1rem;
 }
@@ -86,21 +105,25 @@ nav ul .dropDown-options {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  /* min-width: 160px; */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  /* margin: 1rem 0 ; */
 }
 
 nav ul .dropDown:hover .dropDown-options {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  flex-direction: column;
 }
 
 .dropDown-options,
-.dropDown-options > li {
+.dropDown-options > Link {
   margin: 0;
 }
-.dropDown-options > li {
+.dropDown-options > Link {
   padding: 1rem;
 }
 
@@ -115,5 +138,11 @@ nav ul .user-profile {
 }
 
 nav ul .nav-dropDown:hover .user-profile {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1rem;
+  padding: 1rem 2rem;
 }

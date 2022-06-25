@@ -93,7 +93,7 @@ let Report = () => {
   }
   return (
     <>
-      <section className="report-complaint">
+      <section id="reportSection" className="report-complaint">
         <h1>Report</h1>
         <form
           action="/"
@@ -102,83 +102,65 @@ let Report = () => {
           }}
         >
           <div className="labelInputWrapper">
-            <label>
-              Title
-            </label>  
-              <input
-                type="text"
-                onChange={(event) => onInputChange(event)}
-                name="title"
-                id="title"
-                value={reportData.title}
-              />
-            
+            <label>Title</label>
+            <input
+              type="text"
+              onChange={(event) => onInputChange(event)}
+              name="title"
+              id="title"
+              value={reportData.title}
+            />
           </div>
           <div className="labelInputWrapper">
-            <label>
-              Description
-              </label>
-              <input
-                type="text"
-                name="description"
-                id="description"
-                value={reportData.description}
-                onChange={(event) => onInputChange(event)}
-                placeholder="please briefly describe the event"
-              />
-            
+            <label>Description</label>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              value={reportData.description}
+              onChange={(event) => onInputChange(event)}
+              placeholder="please briefly describe the event"
+            />
           </div>
           <div className="labelInputWrapper">
-            <label htmlFor="img">
-              Upload image:
-              </label>
-              <input
-                onChange={(e) => {
-                  handleFileChange(e);
-                }}
-                type="file"
-                id="img"
-                name="img"
-                accept="image/*"
-              ></input>
-            
+            <label htmlFor="img">Upload image:</label>
+            <input
+              onChange={(e) => {
+                handleFileChange(e);
+              }}
+              type="file"
+              id="img"
+              name="img"
+              accept="image/*"
+            ></input>
           </div>
           <div className="labelInputWrapper">
-            <label>
-              Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={reportData.name}
-                onChange={(e) => onInputChange(e)}
-                placeholder="your name"
-              />
-            
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={reportData.name}
+              onChange={(e) => onInputChange(e)}
+              placeholder="your name"
+            />
           </div>
           <div className="labelInputWrapper">
-            <label>
-              Phone Number
-              </label>
-              <input
-                type="tel"
-                name="phoneNumber"
-                id="phoneNumber"
-                value={reportData.phoneNumber}
-                onChange={(e) => onInputChange(e)}
-                placeholder="000-000-0000"
-              />
-            
+            <label>Phone Number</label>
+            <input
+              type="tel"
+              name="phoneNumber"
+              id="phoneNumber"
+              value={reportData.phoneNumber}
+              onChange={(e) => onInputChange(e)}
+              placeholder="000-000-0000"
+            />
           </div>
           <div className="LocationWrapper">
-            <label>
-              Location
-              </label>
-              <a className="LocationBtn" onClick={TogglePopUp}>
-                Get Location
-              </a>
-            
+            <label>Location</label>
+            <a className="LocationBtn" onClick={TogglePopUp}>
+              Get Location
+            </a>
           </div>
           {PopUpContent}
           <div className="priority-flag-wrapper">
@@ -205,7 +187,6 @@ let Report = () => {
                   HandlePriorityChange(e);
                 }}
               >
-                
                 High
               </button>
 
@@ -220,13 +201,13 @@ let Report = () => {
               >
                 Moderate
               </button>
-              
+
               {/* <FontAwesomeIcon icon="check-square" /> */}
             </div>
           </div>
           <div className="submit">
             {/* <input type="submit" id='submit-complaint' value="Register Complaint" /> */}
-                <button type="submit">Register Complaint </button>
+            <button type="submit">Register Complaint</button>
           </div>
         </form>
       </section>

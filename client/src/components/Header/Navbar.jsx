@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { deleteToken, getToken } from "../../Common";
 import { User } from "../Home";
 import PopUp from "../ModelPopups/PopUp";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown, faUser } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 
 const Navbar = (props) => {
@@ -16,41 +16,31 @@ const Navbar = (props) => {
 
   const [signUpPopUp, setSignUpPopUp] = useState(false);
 
-  console.log(props.showNav)
+  console.log(props.showNav);
 
   // let active = {
   //   display: 'block'
   // }
 
- 
-
-
-
-
   const RenderNavBar = () => {
     if (loggedInUser?.role === "NGO") {
       return (
-        <Link to="/event">
+        <Link to="/eventform">
           <li>Create Event</li>
         </Link>
       );
     } else {
       return (
         <>
-          <li className="dropDown">
-            <li className="btn btn-drop">Explore <FontAwesomeIcon icon={faCaretDown} /></li>
-            <li className="dropDown-options active">
-              <li>
-                <Link to="/explore">option 1</Link>
-              </li>
-              <li>
-                <Link to="/explore">option 2</Link>
-              </li>
+          <ul className="dropDown">
+            <li className="btn btn-drop">
+              Explore <FontAwesomeIcon icon={faCaretDown} />
             </li>
-          </li>
-          {/* <Link to="/event">
-            <li>Event</li>
-          </Link> */}
+            <li className="dropDown-options active">
+              <Link to="/event">Event</Link>
+              <Link to="/event">Partners</Link>
+            </li>
+          </ul>
           <Link to="/report">
             <li>Report</li>
           </Link>
@@ -91,23 +81,23 @@ const Navbar = (props) => {
     if (usertoken !== null && usertoken !== "undefined" && usertoken !== "") {
       return (
         <>
-          <Link to="/profile">
-            <li>Profile</li>
-          </Link>
+          <Link to="/profile">Profile</Link>
           <a href="#" onClick={HandleLogoutClick}>
-            <li>Logout</li>
+            Logout
           </a>
         </>
       );
     } else {
       return (
         <>
-          <a href="#" onClick={ShowSignUpPopUp}>
-            <li>Sign up</li>
-          </a>
-          <a href="#" onClick={ShowLoginPopUp}>
-            <li>Login</li>
-          </a>
+          <div className="securityWrapper">
+            <a href="#" onClick={ShowSignUpPopUp}>
+              Sign up
+            </a>
+            <a href="#" onClick={ShowLoginPopUp}>
+              Login
+            </a>
+          </div>
         </>
       );
     }
@@ -122,13 +112,13 @@ const Navbar = (props) => {
 
   return (
     <>
-      <nav className={ props.showNav ? 'active' : ''} >
+      <nav className={props.showNav ? "active" : ""}>
         <ul>
           {RenderNavBar()}
           <div>
             <li className="nav-dropDown">
-            <FontAwesomeIcon icon={faUser} />
-            <FontAwesomeIcon icon={faCaretDown} />
+              <FontAwesomeIcon icon={faUser} />
+              <FontAwesomeIcon icon={faCaretDown} />
               <div className="user-profile">{HandleLoggedInUI()}</div>
             </li>
           </div>
