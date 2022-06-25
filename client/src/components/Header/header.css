@@ -142,7 +142,6 @@ nav ul .nav-dropDown:hover .user-profile {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0;
   gap: 1rem;
   padding: 1rem 2rem;
 }
