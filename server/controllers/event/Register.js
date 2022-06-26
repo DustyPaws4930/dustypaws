@@ -7,7 +7,7 @@ export const Register = (req, res) => {
   let createdBy = req.body.createdBy;
   let address = req.body.address;
   let date = req.body.Date;
-  let price = req.body.price
+  let price = req.body.price;
 
   const file = fs.readFileSync(req.file.path);
   const imgStr = Buffer.from(file).toString("base64");
@@ -19,7 +19,7 @@ export const Register = (req, res) => {
     Image: imgStr,
     address: address,
     date: date,
-    price: price
+    price: price,
   });
 
   console.log("Event object: " + eventObj);

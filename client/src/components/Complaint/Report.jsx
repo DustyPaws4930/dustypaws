@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { getApiPath, getToken } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
-// import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 let Report = () => {
   // ***Declare all variables here***
@@ -28,7 +28,6 @@ let Report = () => {
     let userToken = getToken();
     if (userToken !== null && userToken !== "undefined" && userToken !== "") {
       setLoggedInUser(userToken.user);
-      console.log(userToken);
     } else {
       setReportData({
         name: "",
@@ -36,10 +35,24 @@ let Report = () => {
       });
     }
   }, [setLoggedInUser]);
-
+  const [currentCoordinate, setCurrentCoordinates] = useState({
+    lat: "",
+    long: "",
+  });
   // To show the popup
   const TogglePopUp = () => {
     setPopUp(!popUp);
+  };
+
+  const GetLocationNShowPopUp = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setCurrentCoordinates({
+        lat: position.coords.latitude,
+        long: position.coords.longitude,
+      });
+
+      TogglePopUp();
+    });
   };
 
   // All input change event handler
@@ -60,6 +73,14 @@ let Report = () => {
     bodyFormData.append("contactNumber", reportData.phoneNumber);
     bodyFormData.append("Image", complaintImage);
     bodyFormData.append("priority", priority);
+    bodyFormData.append("location", JSON.stringify(currentCoordinate));
+    if (
+      loggedInUser !== null &&
+      loggedInUser !== "undefined" &&
+      loggedInUser !== ""
+    ) {
+      bodyFormData.append("userId", loggedInUser._id);
+    }
 
     const reportUrl = getApiPath() + "complaint/register";
     axios({
@@ -89,7 +110,13 @@ let Report = () => {
   };
 
   if (popUp) {
-    PopUpContent = <PopUp TogglePopUp={TogglePopUp} showMap={true} />;
+    PopUpContent = (
+      <PopUp
+        TogglePopUp={TogglePopUp}
+        currentCoordinate={currentCoordinate}
+        showMap={true}
+      />
+    );
   }
   return (
     <>
@@ -158,7 +185,7 @@ let Report = () => {
           </div>
           <div className="LocationWrapper">
             <label>Location</label>
-            <a className="LocationBtn" onClick={TogglePopUp}>
+            <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
               Get Location
             </a>
           </div>

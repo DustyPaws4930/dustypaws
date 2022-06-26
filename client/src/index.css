@@ -1,38 +1,45 @@
-
 /* comman css to be added here */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
-:root{
---primary-color: #285B53;
---secondary-color: #DEB141;
---red-color:#FF3333;
---primary-button: var(--primary-color);
---secondary-button: var(--secondary-color);
---disabled-button: #A8A7A4;
---quicksand: 'Quicksand';
+:root {
+  --primary-color: #285b53;
+  --secondary-color: #deb141;
+  --red-color: #ff3333;
+  --primary-button: var(--primary-color);
+  --secondary-button: var(--secondary-color);
+  --disabled-button: #a8a7a4;
+  --quicksand: "Quicksand";
 }
-
-body{
-    margin: 0;
-    font-family: var(--quicksand);
+html {
+  scroll-behavior: smooth;
 }
-img{
-    width: 100%;
-    height: auto;
+body {
+  margin: 0;
+  font-family: var(--quicksand);
 }
-button, input[type="submit"], input[type="reset"] {
-	/* background: none; */
-	color: inherit;
-	border: none;
-	/* padding: 0; */
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+img {
+  width: 100%;
+  height: auto;
 }
-* { 
-    -moz-box-sizing: border-box; 
-    -webkit-box-sizing: border-box; 
-     box-sizing: border-box; 
+button,
+input[type="submit"],
+input[type="reset"] {
+  /* background: none; */
+  color: inherit;
+  border: none;
+  /* padding: 0; */
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
-input { outline: none; }
-
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input {
+  outline: none;
+}
+html {
+  scroll-behavior: smooth;
+}

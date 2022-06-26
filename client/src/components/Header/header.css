@@ -1,6 +1,7 @@
 .header-wrapper {
   margin: 0 5%;
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
   /* border-bottom: 1px solid black; */
@@ -15,15 +16,22 @@ header img {
   width: auto;
 }
 header .primary-logo {
-  height: 150px;
   flex-basis: 20%;
 }
+.hamburger {
+  display: none;
+}
+
 nav ul {
   list-style: none;
   display: flex;
   flex-direction: row;
   padding: 0;
 }
+header svg {
+  margin: 0 5px;
+}
+
 .securityWrapper {
   display: flex;
   flex-direction: column;
@@ -34,6 +42,31 @@ nav ul {
 @media screen and (max-width: 768px) {
   .feature-subsection2 {
     display: none;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul li {
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgb(180, 177, 177);
+  }
+  nav {
+    width: 100%;
+    display: none;
+    transition: 0.5s;
+  }
+  .hamburger {
+    display: block;
+  }
+  .hamburger button {
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: var(--primary-button);
+    color: white;
+  }
+  .active {
+    display: block;
   }
 }
 
@@ -105,5 +138,9 @@ nav ul .user-profile {
 }
 
 nav ul .nav-dropDown:hover .user-profile {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }

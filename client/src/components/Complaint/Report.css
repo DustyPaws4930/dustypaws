@@ -17,7 +17,7 @@ section .labelInputWrapper input{
 section.report-complaint{
   max-width: 400px;
 }
-.priority-flag-wrapper>*{
+.priority-flag-wrapper>label{
   margin: 0 1rem 1rem 1rem;
 }
 
@@ -51,10 +51,11 @@ section.report-complaint{
 
 .submit > button {
   display: block;
-  width: 80%;
+  width: 91%;
   padding: 10px;
-  margin: 0.5rem auto;
+  margin: 1rem;
   background-color: #285B53;
   color:white;
   font-weight: bold;
 }
+

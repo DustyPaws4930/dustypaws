@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import Header from "./Header/Header";
 import { getToken } from "../Common";
+import { useRef } from "react";
 import jwt from "jwt-decode";
 import Footer from "./Footer/Footer";
 import Report from "./Complaint/Report";
 import "../index.css";
 import "./home.css";
+import AnimatedNumber from "./AnimatedNumber/AnimatedNumber";
 import CardImages1 from "./project-files/13.png";
 import CardImages2 from "./project-files/1 6.png";
 import CardImages3 from "./project-files/15.png";
@@ -15,6 +17,7 @@ import reportBGImage1 from "./project-files/report-bg-image.png";
 import reportBGImage2 from "./project-files/report-bg-image2.png";
 import reportMobile1 from "./project-files/form-mobile-image.png";
 import reportMobile from "./project-files/form-mobile-image1.png";
+import figPie from "./project-files/Figpie.png";
 
 // import WarningIcon from "@fortawesome/free-solid-svg-icons";
 
@@ -33,6 +36,8 @@ const Home = () => {
   //   { headers: { "x-access-token": `${token}` } }
   // );
 
+  let myRef = useRef();
+
   const [loggedInUser, setLoggedInUser] = useState({});
   useEffect(() => {
     let userToken = getToken();
@@ -50,14 +55,29 @@ const Home = () => {
             Our responsive web applications make it easier for people and
             non-governmental organizations (NGOs) who wants to.
           </h4>
-          <button id="report-case">Report Case</button>
+          <div className="reportCaseContainer">
+            <a href="#reportSection" id="report-case">
+              Report Case
+            </a>
+          </div>
         </section>
         <section className="statistics">
-          <div className="charts"></div>
+          <div className="statCount">
+            <h3>{<AnimatedNumber end={100000} start={0} timer={10} />}</h3>
+            <h4>Donation Count</h4>
+          </div>
+          <div className="charts">
+            <div>
+              <img src={figPie} alt="pie chart" />
+            </div>
+            <h4>Help Count</h4>
+          </div>
           <div className="description">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-              nulla ex labore et similique corporis!
+              nulla ex labore et similique corporis! Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit. Amet quaerat, accusamus molestiae
+              alias ab aspernatur magni dolor sit ut qui!
             </p>
             <button id="donate">Donate</button>
           </div>
@@ -94,7 +114,7 @@ const Home = () => {
             </div>
           </div>
           <div className="feature-subsection2">
-            <h4>Why&nbsp;We?</h4>
+            <h4>Why&nbsp;Us?</h4>
           </div>
           <div className="circle" id="circle1"></div>
           <div className="circle" id="circle2"></div>
