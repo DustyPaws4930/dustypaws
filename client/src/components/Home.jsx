@@ -19,7 +19,7 @@ import reportMobile1 from "./project-files/form-mobile-image.png";
 import reportMobile from "./project-files/form-mobile-image1.png";
 import figPie from "./project-files/Figpie.png";
 
-import WarningIcon from "@fortawesome/free-solid-svg-icons";
+// import WarningIcon from "@fortawesome/free-solid-svg-icons";
 
 const User = createContext();
 const Home = () => {
@@ -55,7 +55,11 @@ const Home = () => {
             Our responsive web applications make it easier for people and
             non-governmental organizations (NGOs) who wants to.
           </h4>
-          <button id="report-case">Report Case</button>
+          <div className="reportCaseContainer">
+            <a href="#reportSection" id="report-case">
+              Report Case
+            </a>
+          </div>
         </section>
         <section className="statistics">
           <div className="statCount">

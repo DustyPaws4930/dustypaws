@@ -8,33 +8,21 @@ import {
   Marker,
 } from "react-google-maps";
 
-const GMap = () => {
-  const [currentCoordinate, setCurrentCoordinates] = useState({
-    lat: "",
-    long: "",
-  });
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
-      setCurrentCoordinates({
-        lat: position.coords.latitude,
-        long: position.coords.longitude,
-      });
-    });
-  }, []);
-
+const GMap = (props) => {
   function Map() {
     return (
       <GoogleMap
         defaultZoom={10}
         defaultCenter={{
-          lat: currentCoordinate.lat,
-          lng: currentCoordinate.long,
+          lat: props.currentCoordinate.lat,
+          lng: props.currentCoordinate.long,
         }}
       >
         <Marker
-          position={{ lat: currentCoordinate.lat, lng: currentCoordinate.long }}
+          position={{
+            lat: props.currentCoordinate.lat,
+            lng: props.currentCoordinate.long,
+          }}
         />
       </GoogleMap>
     );

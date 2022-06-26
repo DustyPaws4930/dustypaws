@@ -69,6 +69,19 @@ section.features {
   align-items: center;
   position: relative;
 }
+.reportCaseContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#report-case {
+  background-color: var(--secondary-color);
+  font-weight: bold;
+  padding: 0.8rem 2.5rem;
+  text-decoration: none;
+  color: black;
+}
 
 section .feature-subsection1 {
   flex-basis: 90%;
@@ -122,15 +135,19 @@ section .feature-subsection1 {
   transform: rotate(-90deg);
   display: flex;
   align-items: end;
-  align-self: normal;
-  margin: 0.5rem;
+  margin: 0;
 }
 .feature-subsection2 h4 {
   display: flex;
   font-weight: 400;
   font-size: 72px;
   color: #f4dda4;
-  margin: 0.2rem;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .circle {
   position: absolute;
@@ -212,11 +229,13 @@ section.newsletter input[type="email"] {
   padding: 5px 10px;
   width: 250px;
   /* background: #515151; */
-  border-radius: 8px;
-  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid darkgrey;
+  color: grey;
 }
 section.newsletter input[type="email"]:focus {
-  color: white;
+  color: grey;
 }
 section.newsletter div {
   display: flex;
@@ -289,7 +308,7 @@ footer p {
     background: url(../components/project-files/mobile-landing.png);
     object-fit: cover;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
   }
   h4.landing-text {
     font-size: 1rem;
