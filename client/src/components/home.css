@@ -135,15 +135,19 @@ section .feature-subsection1 {
   transform: rotate(-90deg);
   display: flex;
   align-items: end;
-  align-self: normal;
-  margin: 0.5rem;
+  margin: 0;
 }
 .feature-subsection2 h4 {
   display: flex;
   font-weight: 400;
   font-size: 72px;
   color: #f4dda4;
-  margin: 0.2rem;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .circle {
   position: absolute;
