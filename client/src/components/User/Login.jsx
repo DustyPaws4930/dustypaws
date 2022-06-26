@@ -31,7 +31,7 @@ const Login = () => {
         console.log("user", userToken);
         // These function requires token only
         setTokenTimeout(userToken);
-        window.location.reload();
+        window.location.href = "/";
       })
       .catch((err) => {
         alert(`Error Occured: ${err.response.data.message}`);

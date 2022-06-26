@@ -36,7 +36,7 @@ const SignUp = () => {
         const userToken = jwt(res.data.user); // decode your token here
         alert("Signed Up!!");
         setToken(res.data.user);
-        window.location.reload();
+        window.location.href = "/";
         // These function requires token only
         // setTokenTimeout(userToken);
         // console.log(isTokenTimeOut(userToken));
