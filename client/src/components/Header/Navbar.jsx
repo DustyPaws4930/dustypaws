@@ -87,12 +87,8 @@ const Navbar = (props) => {
       return (
         <>
           <div className="securityWrapper">
-            <a href="#" onClick={ShowSignUpPopUp}>
-              Sign up
-            </a>
-            <a href="#" onClick={ShowLoginPopUp}>
-              Login
-            </a>
+            <Link to="/signup">Sign Up</Link>
+            <Link to="/login">Login</Link>
           </div>
         </>
       );
