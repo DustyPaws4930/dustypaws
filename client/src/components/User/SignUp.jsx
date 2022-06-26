@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import jwt from "jwt-decode";
-import { getApiPath, setToken, setTokenTimeout } from "../../Common";
+// import jwt from "jwt-decode";
+import { getApiPath, setToken } from "../../Common";
 const SignUp = () => {
   const [user, setUser] = useState({
     username: "",
@@ -9,7 +9,6 @@ const SignUp = () => {
     password: "",
     isNgo: false,
   });
-  const [cPassword, setConfirmPassword] = useState("");
   const [securityKey, setSecurityKey] = useState("");
 
   const HandleInputChange = (e) => {
@@ -33,7 +32,7 @@ const SignUp = () => {
     axios
       .post(SignUPURL, user)
       .then((res) => {
-        const userToken = jwt(res.data.user); // decode your token here
+        // const userToken = jwt(res.data.user); // decode your token here
         alert("Signed Up!!");
         setToken(res.data.user);
         window.location.href = "/";
@@ -48,9 +47,9 @@ const SignUp = () => {
       });
   };
 
-  const GetLiveLocation = (event) => {
-    event.preventDefault();
-  };
+  // const GetLiveLocation = (event) => {
+  //   event.preventDefault();
+  // };
 
   const HandleSecurityCheck = (event) => {
     event.preventDefault();
