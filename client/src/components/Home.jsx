@@ -50,7 +50,6 @@ const Home = () => {
       loggedInUser?.role === "ngo"
     ) {
       // NGO HOMEPAGE
-      alert("HElaas :  " + loggedInUser);
       return <Homepage loggedInUser={loggedInUser} />;
     } else {
       // USER HOMEPAGE
