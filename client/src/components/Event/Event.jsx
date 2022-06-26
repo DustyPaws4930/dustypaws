@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 // import React, { useEffect, useState } from 'react'
+=======
+import React, { useEffect, useState } from 'react'
+>>>>>>> Stashed changes
 import { Link } from "react-router-dom";
 import "./Event.css";
 // import Header from '../Header/Header';
@@ -10,6 +14,10 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Header from "../Header/Header";
 import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
+<<<<<<< Updated upstream
+=======
+import axios from 'axios';
+>>>>>>> Stashed changes
 // import WishlistIcon from "../images/WishlistIcon.png";
 
 const Event = (props) => {
@@ -68,6 +76,20 @@ const Event = (props) => {
   //   .catch(error => console.log(error))
   // },[])
 
+<<<<<<< Updated upstream
+=======
+  const [ events, setEvents ] = useState({});  
+  useEffect(function getAllEvents(){
+      axios.get('')
+      .then(result =>{
+        console.log("fetch the data from DB")
+        setEvents(result.data)
+        console.log(result.data)
+      })
+      .catch(error => console.log(error))
+    },[])
+
+>>>>>>> Stashed changes
   return (
     <>
       <Header />
