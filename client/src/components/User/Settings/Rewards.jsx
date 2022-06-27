@@ -24,13 +24,17 @@ const Rewards = () => {
 
   return (
     <div className="userRewardsContainer">
-      <h1>Rewards Trackers</h1>
-      <div style={{ width: 600 }}>
-        <LineChart chartData={userData} />
+        <div className="rewardsHeading">
+          <h1>Rewards Trackers</h1>
+        </div>
+      <div className="rewardsChart" >
+          <div className="userChart" style={{width: 500}}>
+            <LineChart chartData={userData} />
+          </div>
         <div className="RewardsInfo">
           <h4>Current Rewards</h4>
           <p>Count: 100pts</p>
-          <a href="/" rel="noopener noreferrer">
+          <a href="/" rel="noopener noreferrer" >
             Report Case
           </a>
         </div>
