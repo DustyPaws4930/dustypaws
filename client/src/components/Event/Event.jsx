@@ -1,8 +1,6 @@
-<<<<<<< Updated upstream
 // import React, { useEffect, useState } from 'react'
-=======
 import React, { useEffect, useState } from 'react'
->>>>>>> Stashed changes
+import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import "./Event.css";
 // import Header from '../Header/Header';
@@ -14,10 +12,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Header from "../Header/Header";
 import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
-<<<<<<< Updated upstream
-=======
 import axios from 'axios';
->>>>>>> Stashed changes
 // import WishlistIcon from "../images/WishlistIcon.png";
 
 const Event = (props) => {
@@ -76,11 +71,9 @@ const Event = (props) => {
   //   .catch(error => console.log(error))
   // },[])
 
-<<<<<<< Updated upstream
-=======
-  const [ events, setEvents ] = useState({});  
+  const [ events, setEvents ] = useState([]);  
   useEffect(function getAllEvents(){
-      axios.get('')
+      axios.get('/event/all')
       .then(result =>{
         console.log("fetch the data from DB")
         setEvents(result.data)
@@ -89,7 +82,6 @@ const Event = (props) => {
       .catch(error => console.log(error))
     },[])
 
->>>>>>> Stashed changes
   return (
     <>
       <Header />
@@ -286,6 +278,7 @@ const Event = (props) => {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item"
           >
+            {events.map((event)=>
             <div className="card">
               <div className="card-body">
                 {/* <div className='card-date'>
@@ -295,7 +288,7 @@ const Event = (props) => {
                 <div className="card-content">
                   <div className="card-heading-wishlist">
                     <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
+                      {event.title}
                     </h4>
                     <img
                       src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
@@ -303,19 +296,16 @@ const Event = (props) => {
                     />
                   </div>
                   <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
+                    {event.description}
                   </p>
                   <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
+                    <Link to="/singleEvent" state={event}>
                       <button>Event Details</button>
                     </Link>
                   </div>
                 </div>
               </div>
-            </div>
+            </div>)}
 
             <div className="card">
               <div className="card-body">
