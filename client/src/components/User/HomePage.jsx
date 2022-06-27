@@ -138,7 +138,6 @@ const HomePage = (props) => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };

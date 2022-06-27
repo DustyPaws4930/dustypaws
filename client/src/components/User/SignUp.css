@@ -58,8 +58,6 @@
   text-align: end;
   font-size: .825rem;
   margin: 1rem;
-  font-weight: bold;
-
 }
 .SubmitBtnWrapper button{
   padding: 10px;
@@ -79,8 +77,6 @@
   justify-content: space-evenly;
   margin: auto;
   margin-bottom: 1.5rem;
-  font-weight: bold;
-
 
 }
 
@@ -96,5 +92,9 @@
 
 .login-footer span{
   color: #C1BFBF;
-  
+}
+.sign-up .form-wrapper p{
+  text-align: center;
+  font-size: .85rem;
+  font-weight: bold;
 }

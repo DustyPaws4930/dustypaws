@@ -3,6 +3,9 @@ import "./Login.css";
 import jwt from "jwt-decode";
 import axios from "axios";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import LoginBg from "../project-files/Login-Bg-image.png";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -40,42 +43,58 @@ const Login = () => {
   };
 
   return (
-    <>
-      <h1>Login</h1>
-      <form
-        action="/"
-        onSubmit={(e) => {
-          handleSubmitBtn(e);
-        }}
-      >
-        <div className="labelInputWrapper">
-          <label htmlFor="email">Email: </label>
-          <input
-            type="text"
-            onChange={(event) => onInputChange(event)}
-            name="email"
-            id="email"
-            placeholder="Email"
-          />
+    <div>
+        <Header />
+      <div className="login-page">
+        <div className="login-bg">
+          {/* <img src={LoginBg} alt="LoginBg" /> */}
         </div>
-        <div className="labelInputWrapper">
-          <label htmlFor="password">Password: </label>
-          <input
-            type="text"
-            onChange={(event) => onInputChange(event)}
-            name="password"
-            id="password"
-            placeholder="Password"
-          />
-          <div className="SubmitBtnWrapper">
-            <input type="submit" />
+        <div className="form-wrapper">
+          <div className="login-form">
+            <h2>Login</h2>
+            <form
+              action="/"
+              onSubmit={(e) => {
+                handleSubmitBtn(e);
+              }}
+            >
+              <div className="labelInputWrapper">
+                <label htmlFor="email">Email: </label>
+                <input
+                  type="text"
+                  onChange={(event) => onInputChange(event)}
+                  name="email"
+                  id="email"
+                />
+              </div>
+              <div className="labelInputWrapper">
+                <label htmlFor="password">Password: </label>
+                <input
+                  type="text"
+                  onChange={(event) => onInputChange(event)}
+                  name="password"
+                  id="password"
+                />
+                <p>
+                  <a href="">Forgot Password?</a>
+                </p>
+              </div>
+              <div className="SubmitBtnWrapper">
+                <button>Log In</button>
+              </div>
+              <div className="box-footer">
+                <label htmlFor="|">Not a member?</label> <label htmlFor="|"><a href="/signup"> SignUp</a></label>
+              </div>
+            </form>
           </div>
         </div>
-        <p>
-          Not a member? <a href="/signup"> SignUp</a>
-        </p>
-      </form>
-    </>
+        <div className="login-footer">
+          <h3>
+           <span> Welcome to</span>  DustyPaws</h3>
+        </div>
+    </div>
+      {/* <Footer /> */}
+    </div>
   );
 };
 export default Login;
