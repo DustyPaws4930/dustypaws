@@ -50,11 +50,6 @@ html{
     background-repeat: no-repeat;
     background-size: cover;
 }
-.securityWrapper{
-    /* background-color: coral; */
-    padding-right: 0;
-    padding-left: 0;
-}
 .UserUpdateBtn{
     /* background-color: yellow; */
     display: flex;
