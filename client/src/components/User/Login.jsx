@@ -47,7 +47,7 @@ const Login = () => {
         <Header />
       <div className="login-page">
         <div className="login-bg">
-          {/* <img src={LoginBg} alt="LoginBg" /> */}
+          <img src={LoginBg} alt="LoginBg" />
         </div>
         <div className="form-wrapper">
           <div className="login-form">
