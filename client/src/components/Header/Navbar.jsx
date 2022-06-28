@@ -17,7 +17,8 @@ const Navbar = (props) => {
   const [signUpPopUp, setSignUpPopUp] = useState(false);
 
   const RenderNavBar = () => {
-    if (loggedInUser?.role === "NGO") {
+    console.log(loggedInUser);
+    if (loggedInUser?.role === "ngo") {
       return (
         <Link to="/eventform">
           <li>Create Event</li>
