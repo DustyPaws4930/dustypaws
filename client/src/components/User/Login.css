@@ -10,6 +10,7 @@
   height: 100%;
   display: grid;
   grid-template-columns: 3fr 2fr;
+  /* grid-template-rows: ; */
   justify-items: center;
   align-items: center;
 }
@@ -39,18 +40,18 @@
   color: var(--primary-color);
 }
 
-.labelInputWrapper {
+.login-page .labelInputWrapper {
   display: flex;
   flex-direction: column;
 }
-.labelInputWrapper input {
+.login-page .labelInputWrapper input {
   background: rgba(40, 91, 83, 0.2);
   border: 1px solid #285b53;
   border-radius: 6px;
   padding: 7px;
   margin: 0 1rem;
 }
-.labelInputWrapper p {
+.login-page .labelInputWrapper p {
   text-align: end;
   font-size: 0.825rem;
   margin: 1rem;

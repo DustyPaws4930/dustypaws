@@ -37,23 +37,23 @@
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.form-wrapper h2 {
+.sign-up .form-wrapper h2 {
   text-transform: uppercase;
   color: var(--primary-color);
 }
 
-.labelInputWrapper {
+.sign-up .labelInputWrapper {
   display: flex;
   flex-direction: column;
 }
-.labelInputWrapper input {
+.sign-up .labelInputWrapper input {
   background: rgba(40, 91, 83, 0.2);
   border: 1px solid #285b53;
   border-radius: 6px;
   padding: 7px;
   margin: 0 1rem;
 }
-.labelInputWrapper p {
+.sign-up .labelInputWrapper p {
   text-align: end;
   font-size: 0.825rem;
   margin: 1rem;
