@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import { getApiPath, getToken } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 let Report = () => {
   // ***Declare all variables here***
@@ -26,14 +26,15 @@ let Report = () => {
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
-    if (userToken !== null && userToken !== "undefined" && userToken !== "") {
-      setLoggedInUser(userToken.user);
-    } else {
-      setReportData({
-        name: "",
-        phoneNumber: "",
-      });
-    }
+
+    if (userToken == null) {
+      return;
+    } else if (
+      userToken !== null &&
+      userToken !== "undefined" &&
+      userToken !== ""
+    );
+    setLoggedInUser(userToken?.user);
   }, [setLoggedInUser]);
   const [currentCoordinate, setCurrentCoordinates] = useState({
     lat: "",

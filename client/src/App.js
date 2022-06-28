@@ -6,14 +6,17 @@ import Event from "./components/Event/Event";
 import EventForm from "./components/Event/EventForm";
 import SingleEvent from "./components/Event/SingleEvent";
 import Profile from "./components/User/Settings/Profile";
+import Login from "./components/User/Login";
+import SignUp from "./components/User/SignUp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const App = () => {
   return (
     <>
       <Router>
         <Routes>
-          {/* <Route path="/login" caseSensitive={false} element={<Login />} /> */}
-          {/* <Route path="/signup" caseSensitive={false} element={<SignUp />} /> */}
+          <Route path="/login" caseSensitive={false} element={<Login />} />
+          <Route path="/signup" caseSensitive={false} element={<SignUp />} />
           <Route path="/" caseSensitive={false} element={<Home />} />
 
           <Route path="/about" caseSensitive={false} element={<About />} />

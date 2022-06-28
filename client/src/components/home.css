@@ -305,7 +305,7 @@ footer p {
   }
   section.landing {
     height: 350px;
-    background: url(../components/project-files/mobile-landing.png);
+    background: url(../components/project-files/hero_image.png);
     object-fit: cover;
     background-repeat: no-repeat;
     background-size: 100% 100%;
