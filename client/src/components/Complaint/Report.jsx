@@ -185,9 +185,9 @@ let Report = () => {
             />
           </div>
           <div className="LocationWrapper">
-            <label>Location</label>
+            <label>Location :</label>
             <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
-              Get Location
+              Auto Detect
             </a>
           </div>
           {PopUpContent}

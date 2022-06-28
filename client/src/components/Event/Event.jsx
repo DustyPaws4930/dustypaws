@@ -11,6 +11,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import Header from "../Header/Header";
 import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
 // import WishlistIcon from "../images/WishlistIcon.png";
+import EventCalenderImg from "../images/Event_Calender.png";
 
 const Event = (props) => {
   const responsive = {
@@ -38,19 +39,19 @@ const Event = (props) => {
       // margin: "0px",
       marginleft: "100px",
       marginRight: "100px",
-      center: true
+      center: true,
     },
     768: {
       items: 3,
       marginleft: "100px",
       marginRight: "100px",
-      center: true
+      center: true,
     },
     480: {
       items: 3,
       // marginleft: "10px",
       marginRight: "10px",
-      center: true
+      center: true,
     },
     0: {
       items: 1,
@@ -76,33 +77,30 @@ const Event = (props) => {
           <div className="featured-event-heading">
             <h1>Featured Event</h1>
           </div>
-            <div className="Event-Mobile">
-              <div className="featured-event-date">
-                <img
-                  src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0"
-                  alt=""
-                />
-                <p>Days to go</p>
-              </div>
-              <div className="featured-event-description">
-                <h4>Awareness Drive for stray animals</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Voluptatum consequuntur, amet id nobis, numquam laudantium
-                  excepturi fugit quaerat aspernatur, illo ipsumipsa esse architecto
-                  deleniti beatae doloribus. Minus, fuga obcaecati! Lorem, ipsum
-                  dolor sit amet consectetur adipisicing elit. Aperiam cumque
-                  voluptas sit rem eaque animi nisi, consequatur repellendus
-                  asperiores maiores, consectetur aut maxime, excepturi odio?
-                  Nesciunt veniam excepturi in quis.
-                </p>
-                <div className="btn-feature-event">
-                  <Link to="/singleEvent">
-                    <button>View</button>
-                  </Link>
-                </div>
+          <div className="Event-Mobile">
+            <div className="featured-event-date">
+              <img id="CalenderIcon" src={EventCalenderImg} alt="" />
+              <p>Days to go</p>
+            </div>
+            <div className="featured-event-description">
+              <h4>Awareness Drive for stray animals</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptatum consequuntur, amet id nobis, numquam laudantium
+                excepturi fugit quaerat aspernatur, illo ipsumipsa esse
+                architecto deleniti beatae doloribus. Minus, fuga obcaecati!
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Aperiam cumque voluptas sit rem eaque animi nisi, consequatur
+                repellendus asperiores maiores, consectetur aut maxime,
+                excepturi odio? Nesciunt veniam excepturi in quis.
+              </p>
+              <div className="btn-feature-event">
+                <Link to="/singleEvent">
+                  <button>View</button>
+                </Link>
               </div>
             </div>
+          </div>
         </div>
         <div className="featured-event-img">
           {/* <img src="https://images.unsplash.com/photo-1592769606534-fe78d27bf450?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="featured Event" /> */}
@@ -408,20 +406,19 @@ const Event = (props) => {
             center={true}
           >
             {/* <div className='item-black'> */}
-              <div className="item">
-              
-                <h3>People For Animal</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-                  earum fugit tempore assumenda nam iusto corrupti eaque veritatis
-                  ab nisi laudantium, exercitationem laborum rem tenetur magnam
-                  nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Delectus aliquam vero laudantium
-                  nobis consectetur fugiat quibusdam alias, corporis pariatur,
-                  recusandae odio voluptas hic. Rem ab hic doloribus pariatur
-                  cumque cum.
-                </p>
-              </div>
+            <div className="item">
+              <h3>People For Animal</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+                earum fugit tempore assumenda nam iusto corrupti eaque veritatis
+                ab nisi laudantium, exercitationem laborum rem tenetur magnam
+                nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Delectus aliquam vero laudantium
+                nobis consectetur fugiat quibusdam alias, corporis pariatur,
+                recusandae odio voluptas hic. Rem ab hic doloribus pariatur
+                cumque cum.
+              </p>
+            </div>
             {/* </div> */}
             <div className="item">
               <h3>People For Animal</h3>

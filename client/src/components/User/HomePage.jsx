@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AnimatedNumber from "../AnimatedNumber/AnimatedNumber";
 import CardImages1 from "../project-files/13.png";
 import CardImages2 from "../project-files/1 6.png";
@@ -11,7 +11,21 @@ import reportMobile from "../project-files/form-mobile-image1.png";
 import figPie from "../project-files/Figpie.png";
 import Footer from "../Footer/Footer";
 import Report from "../Complaint/Report";
+import PieChart from "../Charts/PieChart";
+import UserData from "../../Data";
 const HomePage = (props) => {
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.month),
+    datasets: [
+      {
+        label: "Rewards",
+        data: UserData.map((data) => data.userGain),
+        backgroundColor: ["#285b53", "#deb141", "#ff3333"],
+        borderColor: "#ddd",
+        borderWidth: 2,
+      },
+    ],
+  });
   return (
     <div className="Home">
       <section className="landing">
@@ -31,8 +45,8 @@ const HomePage = (props) => {
           <h4>Donation Count</h4>
         </div>
         <div className="charts">
-          <div>
-            <img src={figPie} alt="pie chart" />
+          <div className="userChart" style={{ width: 400 }}>
+            <PieChart chartData={userData} />
           </div>
           <h4>Help Count</h4>
         </div>

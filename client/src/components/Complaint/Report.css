@@ -11,47 +11,49 @@
   margin: 1rem;
   border: 1px solid black;
   padding: 0.3rem;
+  border-radius: 10px;
 }
-section .labelInputWrapper, .priority-flag-wrapper{
+section .labelInputWrapper,
+.priority-flag-wrapper {
   display: flex;
   flex-direction: column;
 }
-section .labelInputWrapper input{
+section .labelInputWrapper input {
   margin-top: 2px;
 }
-section.report-complaint{
+section.report-complaint {
   max-width: 400px;
 }
-.priority-flag-wrapper>label{
+.priority-flag-wrapper > label {
   margin: 0 1rem 1rem 1rem;
 }
 
-.priority-flag-wrapper button{
+.priority-flag-wrapper button {
   margin: 0 1rem;
   padding: 6px 10px;
 }
 
-.priority-buttons{
+.priority-buttons {
   display: flex;
 }
 
-.priority-buttons button{
-    flex-basis: 100%;
-    color: white;
-    font-weight: bold;
-    border-radius: 2px;
+.priority-buttons button {
+  flex-basis: 100%;
+  color: white;
+  font-weight: bold;
+  border-radius: 2px;
 }
 
-.priority-buttons .emergency{
-  background: #FF3333;
+.priority-buttons .emergency {
+  background: #ff3333;
 }
 
-.priority-buttons .high{
-  background: #DEB141;
+.priority-buttons .high {
+  background: #deb141;
 }
 
-.priority-buttons .moderate{
-  background: #285B53;
+.priority-buttons .moderate {
+  background: #285b53;
 }
 
 .submit > button {
@@ -59,8 +61,7 @@ section.report-complaint{
   width: 91%;
   padding: 10px;
   margin: 1rem;
-  background-color: #285B53;
-  color:white;
+  background-color: #285b53;
+  color: white;
   font-weight: bold;
 }
-
