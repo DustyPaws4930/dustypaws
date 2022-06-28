@@ -4,6 +4,7 @@ import jwt from "jwt-decode";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 import "./SignUp.css"
 import Header from "../Header/Header";
+import LoginBg from "../project-files/Login-Bg-image.png";
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -62,10 +63,14 @@ const SignUp = () => {
   return (
     <div className="sign-up">
       <Header />
-      <div className="form-wrapper">
-        <h2>Sign Up</h2>{" "}
-        <form onSubmit={(e) => handleSubmit(e)}>
-          {/* <div className="labelInputWrapper">
+      <div className="sign-up-body">
+        <div className="sign-up-image-section">
+          <img src={LoginBg} alt="LoginBg" />
+        </div>
+        <div className="signup-form-wrapper">
+          <h2>Sign Up</h2>{" "}
+          <form onSubmit={(e) => handleSubmit(e)}>
+            {/* <div className="labelInputWrapper">
             <label htmlFor="file">Upload File</label>
             <input
               type="File"
@@ -76,29 +81,29 @@ const SignUp = () => {
               placeholder="Upload File"
             />
           </div> */}
-          <div className="labelInputWrapper">
-            <label htmlFor="username">User Name</label>
-            <input
-              type="text"
-              name="username"
-              value={user.username}
-              id="username"
-              onChange={(event) => HandleInputChange(event)}
-              placeholder="User name"
-            />
-          </div>
-          <div className="labelInputWrapper">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              name="email"
-              value={user.email}
-              id="email"
-              placeholder="Email"
-              onChange={(event) => HandleInputChange(event)}
-            />
-          </div>
-          {/* <div className="labelInputWrapper">
+            <div className="labelInputWrapper">
+              <label htmlFor="username">User Name</label>
+              <input
+                type="text"
+                name="username"
+                value={user.username}
+                id="username"
+                onChange={(event) => HandleInputChange(event)}
+                placeholder="User name"
+              />
+            </div>
+            <div className="labelInputWrapper">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                name="email"
+                value={user.email}
+                id="email"
+                placeholder="Email"
+                onChange={(event) => HandleInputChange(event)}
+              />
+            </div>
+            {/* <div className="labelInputWrapper">
             <label htmlFor="Dob">Date of Birthday:</label>
             <input
               type="date"
@@ -110,18 +115,18 @@ const SignUp = () => {
               name="Dob"
             />
           </div> */}
-          <div className="labelInputWrapper">
-            <label htmlFor="password">Password</label>
-            <input
-              type="text"
-              name="password"
-              id="password"
-              value={user.password}
-              placeholder="Password"
-              onChange={(event) => HandleInputChange(event)}
-            />
-          </div>
-          {/* <div className="labelInputWrapper">
+            <div className="labelInputWrapper">
+              <label htmlFor="password">Password</label>
+              <input
+                type="text"
+                name="password"
+                id="password"
+                value={user.password}
+                placeholder="Password"
+                onChange={(event) => HandleInputChange(event)}
+              />
+            </div>
+            {/* <div className="labelInputWrapper">
             <label htmlFor="cpassword">Confirm Password</label>
             <input
               type="text"
@@ -132,7 +137,7 @@ const SignUp = () => {
               placeholder="Confirm Password"
             />
           </div> */}
-          {/* <div className="labelInputWrapper">
+            {/* <div className="labelInputWrapper">
             <label htmlFor="phoneNumber">Phone Number</label>
             <input
               type="text"
@@ -143,7 +148,7 @@ const SignUp = () => {
               placeholder="Phone Number"
             />
           </div> */}
-          {/* <div className="labelInputWrapper">
+            {/* <div className="labelInputWrapper">
             <label htmlFor="street">Street</label>
             <input
               type="text"
@@ -165,7 +170,7 @@ const SignUp = () => {
               placeholder="City"
             />
           </div> */}
-          {/* <div className="NGO_Wrapper">
+            {/* <div className="NGO_Wrapper">
             <label>
               <input
                 name="isNgo"
@@ -181,7 +186,7 @@ const SignUp = () => {
               value={securityKey}
             />
           </div> */}
-          {/*
+            {/*
           <button
             onClick={(event) => {
               GetLiveLocation(event);
@@ -189,21 +194,23 @@ const SignUp = () => {
           >
             Access Location
           </button> */}
-          <div className="SubmitBtnWrapper">
-                <button>Log In</button>
-          </div>
-          <p>
-            Are you an NGO user?<a href="">Sign Up here</a>
-          </p>
-          <p>
-            Already a user? <a href="">Login Here</a>
-          </p>
-        </form>
-      </div>
-      <div className="login-footer">
-          <h3>
-           <span> Welcome to</span>  DustyPaws</h3>
+            <div className="SubmitBtnWrapper">
+              <button>Log In</button>
+            </div>
+            <p>
+              Are you an NGO user?<a href="">Sign Up here</a>
+            </p>
+            <p>
+              Already a user? <a href="">Login Here</a>
+            </p>
+          </form>
         </div>
+        <div className="signup-footer">
+          <h3>
+            <span> Welcome to</span> DustyPaws
+          </h3>
+        </div>
+      </div>
     </div>
   );
 };

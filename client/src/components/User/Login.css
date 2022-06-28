@@ -5,7 +5,6 @@
 }
 
 .login-page {
-  
   margin: auto;
   position: relative;
   height: 100%;
@@ -14,17 +13,10 @@
 .login-bg img {
   max-height: 100vh;
   width: auto;
- 
+
   /* max-width: 1000px; */
 }
 
-.login-bg{
-  background: url(../../components/project-files/Login-Bg-image.png);
-  height: 600px;
-  background-position: left;
-  background-size: 50%;
-  background-repeat: no-repeat;
-}
 .form-wrapper {
   position: absolute;
   /* max-width: 400px; */
@@ -54,16 +46,15 @@
   padding: 7px;
   margin: 0 1rem;
 }
-.labelInputWrapper p{
+.labelInputWrapper p {
   text-align: end;
-  font-size: .825rem;
+  font-size: 0.825rem;
   margin: 1rem;
   font-weight: bold;
-
 }
-.SubmitBtnWrapper button{
+.SubmitBtnWrapper button {
   padding: 10px;
-  background: #DEB141;
+  background: #deb141;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -80,21 +71,18 @@
   margin: auto;
   margin-bottom: 1.5rem;
   font-weight: bold;
-
-
 }
 
-.login-footer{
+.login-footer {
   color: #285b53;
 }
-.login-footer h3{
+.login-footer h3 {
   position: absolute;
-  right:10%;
+  right: 10%;
   bottom: 2%;
   transform: translateX(-30%);
 }
 
-.login-footer span{
-  color: #C1BFBF;
-  
+.login-footer span {
+  color: #c1bfbf;
 }
