@@ -122,7 +122,7 @@ const HomePage = (props) => {
           {showReportForm ? (
             <Report HandleReportConfirmation={HandleReportConfirmation} />
           ) : (
-            <Confirmation />
+            <Confirmation HandleReportConfirmation={HandleReportConfirmation} />
           )}
         </>
         <section className="report-images">
