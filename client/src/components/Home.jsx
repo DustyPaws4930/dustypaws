@@ -38,8 +38,9 @@ const Home = () => {
       userToken !== null &&
       userToken !== "undefined" &&
       userToken !== ""
-    );
-    setLoggedInUser(userToken?.user);
+    ) {
+      setLoggedInUser(userToken?.user);
+    }
   }, []);
 
   let RenderUI = () => {

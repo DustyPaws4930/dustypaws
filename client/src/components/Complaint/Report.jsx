@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 
-let Report = () => {
+let Report = (props) => {
   // ***Declare all variables here***
   let PopUpContent;
   let [popUp, setPopUp] = useState(false);
@@ -93,6 +93,7 @@ let Report = () => {
       .then((res) => {
         console.log(res);
         alert(res.data.message);
+        props.HandleReportConfirmation(e);
       })
       .catch((err) => {
         //handle error

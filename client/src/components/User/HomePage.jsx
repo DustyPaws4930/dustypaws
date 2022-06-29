@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimatedNumber from "../AnimatedNumber/AnimatedNumber";
 import CardImages1 from "../project-files/13.png";
 import CardImages2 from "../project-files/1 6.png";
@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import Report from "../Complaint/Report";
 import PieChart from "../Charts/PieChart";
 import UserData from "../../Data";
+import Confirmation from "../Complaint/Confirmation";
 const HomePage = (props) => {
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.month),
@@ -26,6 +27,14 @@ const HomePage = (props) => {
       },
     ],
   });
+
+  const [showReportForm, setShowReportForm] = useState(true);
+
+  let HandleReportConfirmation = (e) => {
+    e.preventDefault();
+    setShowReportForm(!showReportForm);
+  };
+
   return (
     <div className="Home">
       <section className="landing">
@@ -109,7 +118,13 @@ const HomePage = (props) => {
           alt=" report image"
           className="report-mobile2"
         />
-        <Report />
+        <>
+          {showReportForm ? (
+            <Report HandleReportConfirmation={HandleReportConfirmation} />
+          ) : (
+            <Confirmation />
+          )}
+        </>
         <section className="report-images">
           <img src={reportImage} alt="report image" className="report-image3" />
         </section>
