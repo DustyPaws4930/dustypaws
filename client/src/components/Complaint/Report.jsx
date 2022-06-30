@@ -7,35 +7,37 @@ import "./Report.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { Upload } from "@aws-sdk/lib-storage";
+import { S3Client, S3 } from "@aws-sdk/client-s3";
 
-let Report = () => {
+let Report = (props) => {
   // ***Declare all variables here***
   let PopUpContent;
   let [popUp, setPopUp] = useState(false);
-  let [priority, setPriority] = useState(0);
-  let [loggedInUser, setLoggedInUser] = useState({});
-  let [complaintImage, setComplaintImage] = useState();
   let [reportData, setReportData] = useState({
     title: "",
     description: "",
-    Image: File,
+    Image: "",
     name: "",
+    priority: 0,
     phoneNumber: "",
+    location: {},
+    userId: "",
   });
 
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
-
     if (userToken == null) {
       return;
     } else if (
       userToken !== null &&
       userToken !== "undefined" &&
       userToken !== ""
-    );
-    setLoggedInUser(userToken?.user);
-  }, [setLoggedInUser]);
+    ) {
+      reportData.userId = userToken?.user._id;
+    }
+  }, [reportData]);
   const [currentCoordinate, setCurrentCoordinates] = useState({
     lat: "",
     long: "",
@@ -63,51 +65,72 @@ let Report = () => {
     setReportData({ ...reportData, [name]: value });
   };
 
+  const UploadFile = async (file) => {
+    try {
+      const credentials = {
+        accessKeyId: "AKIAXGG575DZRYM2U7X5",
+        secretAccessKey: "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",
+      };
+      const parallelUploads3 = new Upload({
+        client:
+          new S3({ region: "us-east-1", credentials: credentials }) ||
+          new S3Client({ region: "us-east-1", credentials: credentials }),
+        params: {
+          Bucket: "dustypaws-storage-bucket",
+          Key: file.name,
+          Body: file,
+        },
+
+        tags: [
+          /*...*/
+        ], // optional tags
+        queueSize: 4, // optional concurrency configuration
+        partSize: 1024 * 1024 * 5, // optional size of each part, in bytes, at least 5MB
+        leavePartsOnError: false, // optional manually handle dropped parts
+      });
+
+      parallelUploads3.on("httpUploadProgress", (progress) => {
+        // console.log(progress);
+      });
+
+      let data = await parallelUploads3.done();
+      return data.Location;
+    } catch (e) {
+      alert("Error occured, cannot upload image.");
+      console.log(e);
+    }
+  };
+
   // form submit event handler
   const handleSubmitBtn = (e) => {
     e.preventDefault();
 
-    var bodyFormData = new FormData();
-    bodyFormData.append("title", reportData.title);
-    bodyFormData.append("description", reportData.description);
-    bodyFormData.append("name", reportData.name);
-    bodyFormData.append("contactNumber", reportData.phoneNumber);
-    bodyFormData.append("Image", complaintImage);
-    bodyFormData.append("priority", priority);
-    bodyFormData.append("location", JSON.stringify(currentCoordinate));
-    if (
-      loggedInUser !== null &&
-      loggedInUser !== "undefined" &&
-      loggedInUser !== ""
-    ) {
-      bodyFormData.append("userId", loggedInUser._id);
-    }
+    reportData.location = currentCoordinate;
+    console.log(reportData);
 
     const reportUrl = getApiPath() + "complaint/register";
-    axios({
-      method: "POST",
-      url: reportUrl,
-      data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
+    axios
+      .post(reportUrl, reportData)
       .then((res) => {
-        console.log(res);
-        alert(res.data.message);
+        alert("Complaint registered");
+        props.HandleReportConfirmation(e);
       })
       .catch((err) => {
-        //handle error
-        console.log(err);
+        console.log("Error" + err.response.data);
+        alert("Error: " + err.response.data);
       });
   };
 
   // File change event handler
-  const handleFileChange = (e) => {
-    setComplaintImage(e.target.files[0]);
+  const handleFileChange = async (e) => {
+    UploadFile(e.target.files[0]).then((uploadedImage) => {
+      reportData.Image = uploadedImage;
+    });
   };
 
   // Priority change event handler
   const HandlePriorityChange = (e) => {
-    setPriority(e.target.id);
+    reportData.priority = e.target.id;
   };
 
   if (popUp) {
@@ -185,9 +208,9 @@ let Report = () => {
             />
           </div>
           <div className="LocationWrapper">
-            <label>Location</label>
+            <label>Location :</label>
             <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
-              Get Location
+              Auto Detect
             </a>
           </div>
           {PopUpContent}

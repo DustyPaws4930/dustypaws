@@ -3,22 +3,31 @@ import React from "react";
 const Whislist = () => {
   return (
     <div className="wishlistEvents">
-      <h1>Whishlisted Events</h1>
+      <h3>Wishlisted Events</h3>
       <div className="eventContainer">
         <div className="eventWrapper">
-          <p>Evetn Title</p>
-          <button>Icon Image</button>
+          <p>Event Name</p>
+          <img
+            src="https://cdn-icons.flaticon.com/png/512/3870/premium/3870922.png?token=exp=1656292606~hmac=e532c4c424c575976bbc84804db2e8dd"
+            alt=""
+          />
         </div>
         <div className="eventWrapper">
-          <p>Event Title</p>
-          <button>Icon Image</button>
+          <p>Event Name</p>
+          <img
+            src="https://cdn-icons.flaticon.com/png/512/3870/premium/3870922.png?token=exp=1656292606~hmac=e532c4c424c575976bbc84804db2e8dd"
+            alt=""
+          />
         </div>
         <div className="eventWrapper">
-          <p>Evetn Title</p>
-          <button>Icon Image</button>
+          <p>Event Name</p>
+          <img
+            src="https://cdn-icons.flaticon.com/png/512/3870/premium/3870922.png?token=exp=1656292606~hmac=e532c4c424c575976bbc84804db2e8dd"
+            alt=""
+          />
         </div>
 
-        <button>View All</button>
+        <a className="wishlist-btn">View All</a>
       </div>
     </div>
   );

@@ -45,11 +45,12 @@ const Reports = () => {
 
   return (
     <div className="userReportContainer">
-      <h1>Reported Cases</h1>
+      <h3>Reported Cases</h3>
       <div className="CasesContainer">
-        {RenderComplaints()}
-
-        <button>View All</button>
+        <p>{RenderComplaints()}</p>
+        
+        <a  className="reportedcase-btn">View All</a>
+        
       </div>
     </div>
   );

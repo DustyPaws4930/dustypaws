@@ -17,16 +17,15 @@ html {
 .react-multiple-carousel__arrow {
   visibility: hidden;
 }
-.react-multi-carousel-dot--active button:first-child{
+.react-multi-carousel-dot--active button:first-child {
   background-color: #295b53;
   border: none;
   transform: scale(1.05);
 }
-.react-multi-carousel-dot button{
+.react-multi-carousel-dot button {
   background-color: #698c87;
-  
 }
-.react-multi-carousel-dot button{
+.react-multi-carousel-dot button {
   border: none !important;
   transform: scale(0.7);
 }
@@ -95,6 +94,10 @@ html {
 .featured-event-date p {
   float: right;
 }
+
+#CalenderIcon {
+  color: #295b53;
+}
 .featured-event-description p {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -129,11 +132,11 @@ hr {
   color: black;
   font-weight: bolder;
 }
-.recent-event-container{
+.recent-event-container {
   max-width: 1200px;
   margin: 0 auto;
 }
-.upcoming-event-container{
+.upcoming-event-container {
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -160,16 +163,15 @@ hr {
   text-align: center;
   /* margin-right: -100px; */
 }
-.owl-item.active{
-    margin: 0;
-    /* padding: -50px; */
+.owl-item.active {
+  margin: 0;
+  /* padding: -50px; */
 }
 .owl-item.active.center .item {
   transform: scale(1);
   opacity: 1;
   border-radius: 10px;
   background-position: center;
-
 }
 .item {
   padding: 50px 10px;
@@ -188,7 +190,6 @@ hr {
   background-size: cover;
   color: white;
   z-index: 0;
-  
 }
 .item p {
   overflow: hidden;
@@ -218,36 +219,35 @@ hr {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-image: url('../images/Event_Feature_Hero.jpg');
+  background-image: url("../images/Event_Feature_Hero.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.footer{
+.footer {
   margin-top: 40px;
 }
-.our-partners-heading{
+.our-partners-heading {
   margin-bottom: 50px;
 }
 
 /* #295B53 */
-@media only screen and (max-width: 500px){
-  .featured-event{
+@media only screen and (max-width: 500px) {
+  .featured-event {
     /* background-color: cadetblue; */
     display: flex;
     margin: 10px;
-    padding: 0; 
-    height: 85vh;   
+    padding: 0;
+    height: 85vh;
   }
-  .featured-event-heading{
+  .featured-event-heading {
     margin: 0;
     /* background-color: aqua; */
     display: flex;
     justify-content: center;
     text-align: center;
-
   }
-  .Event-Mobile{
+  .Event-Mobile {
     /* background-color: aquamarine; */
     display: flex;
     flex-direction: column;
@@ -258,10 +258,9 @@ hr {
     border: 5px solid #295b53;
     border-radius: 5px;
     padding: 270px 30px 20px 30px;
-     /* change here for image placement */
-
+    /* change here for image placement */
   }
-  .featured-event-img{
+  .featured-event-img {
     /* visibility: hidden; */
     position: absolute;
     left: 10%;
@@ -270,18 +269,17 @@ hr {
     width: 80%;
     height: 35%;
     border-radius: 10px;
-    background-image: url('../images/Event_Feature_Hero.jpg');
+    background-image: url("../images/Event_Feature_Hero.jpg");
   }
-  .featured-event-date{
+  .featured-event-date {
     display: flex;
     justify-content: center;
   }
-  .featured-event-description{
-   text-align: center;
+  .featured-event-description {
+    text-align: center;
   }
   .btn-feature-event {
     display: flex;
     justify-content: center;
   }
-  
 }

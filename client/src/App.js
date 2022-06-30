@@ -8,6 +8,7 @@ import SingleEvent from "./components/Event/SingleEvent";
 import Profile from "./components/User/Settings/Profile";
 import Login from "./components/User/Login";
 import SignUp from "./components/User/SignUp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const App = () => {
   return (

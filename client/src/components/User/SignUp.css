@@ -8,54 +8,55 @@
   margin: auto;
   position: relative;
   height: 100%;
+}
+.sign-up-image-section {
+  grid-row: 1/3;
+}
+
+.sign-up-image-section img {
+  max-width  :65%; 
+  max-height : 80%;
+  object-fit : contain;
+}
+
+.sign-up-body {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  /* grid-template-rows: ; */
   justify-items: center;
   align-items: center;
 }
-
-.login-bg img {
-  /* max-height: 100vh; */
-  width: 65%;
-
-  }
-  .login-bg{
-    grid-row: 1/3;
-  }
-
-.form-wrapper {
-  
-  /* max-width: 400px; */
-  grid-column: 2/3;
+.signup-form-wrapper {
+  /* position: absolute; */
+  max-width: 400px;
   min-width: 350px;
+
   border: 2px solid #deb141;
   background: #f8f8f8;
+
   padding: 1rem;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.form-wrapper h2 {
+.sign-up .form-wrapper h2 {
   text-transform: uppercase;
   color: var(--primary-color);
 }
 
-.login-page .labelInputWrapper {
+.sign-up .labelInputWrapper {
   display: flex;
   flex-direction: column;
 }
-.login-page .labelInputWrapper input {
+.sign-up .labelInputWrapper input {
   background: rgba(40, 91, 83, 0.2);
   border: 1px solid #285b53;
   border-radius: 6px;
   padding: 7px;
   margin: 0 1rem;
 }
-.login-page .labelInputWrapper p {
+.sign-up .labelInputWrapper p {
   text-align: end;
   font-size: 0.825rem;
   margin: 1rem;
-  font-weight: bold;
 }
 .SubmitBtnWrapper button {
   padding: 10px;
@@ -75,14 +76,26 @@
   justify-content: space-evenly;
   margin: auto;
   margin-bottom: 1.5rem;
+}
+
+.signup-footer {
+  color: #285b53;
+  grid-column: 2/3;
+}
+
+.signup-footer span {
+  color: #c1bfbf;
+}
+.sign-up .form-wrapper p {
+  text-align: center;
+  font-size: 0.85rem;
   font-weight: bold;
 }
 
-.login-footer {
-  grid-column: 2/3;
-  color: #285b53;
+.sign-up {
+  position: relative;
 }
 
-.login-footer span {
-  color: #c1bfbf;
+.signup-footer h3 {
+  grid-row: 2/3;
 }
