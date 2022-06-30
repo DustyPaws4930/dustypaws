@@ -47,7 +47,6 @@ const Homepage = (props) => {
 
   // GetIcon
   const GetIcon = (complaint) => {
-    console.log(redIcon);
     if (complaint.priority === 0) {
       return redIcon;
     } else if (complaint.priority === 1) {
@@ -73,11 +72,11 @@ const Homepage = (props) => {
             <Marker
               key={complaint._id}
               position={{
-                lat: parseFloat(JSON.parse(complaint.location).lat),
-                lng: parseFloat(JSON.parse(complaint.location).long),
+                lat: parseFloat(complaint.location.lat),
+                lng: parseFloat(complaint.location.long),
               }}
               onClick={() => {
-                setCurrentCoordinates(JSON.parse(complaint.location));
+                setCurrentCoordinates(complaint.location);
                 setSelectedComplaint(complaint);
               }}
               icon={{
@@ -91,8 +90,8 @@ const Homepage = (props) => {
         {selectedComplatint && (
           <InfoWindow
             position={{
-              lat: JSON.parse(selectedComplatint.location).lat,
-              lng: JSON.parse(selectedComplatint.location).long,
+              lat: selectedComplatint.location.lat,
+              lng: selectedComplatint.location.long,
             }}
           >
             <div>
@@ -140,7 +139,7 @@ const Homepage = (props) => {
                       height: 100,
                       width: 200,
                     }}
-                    src={"data:image/jpg;base64," + complaint.Image}
+                    src={complaint.Image}
                     alt={complaint.title}
                   />
                 </div>
