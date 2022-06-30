@@ -10,7 +10,22 @@ import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 
 const Navbar = (props) => {
-  let loggedInUser = useContext(User);
+  // let loggedInUser = useContext(User);
+
+  const [loggedInUser, setLoggedInUser] = useState({});
+  useEffect(() => {
+    let userToken = getToken();
+
+    if (userToken == null) {
+      return;
+    } else if (
+      userToken !== null &&
+      userToken !== "undefined" &&
+      userToken !== ""
+    ) {
+      setLoggedInUser(userToken?.user);
+    }
+  }, []);
 
   const [loginPopUp, setLoginPopUp] = useState(false);
 
@@ -35,9 +50,9 @@ const Navbar = (props) => {
               <Link to="/event">Partners</Link>
             </li>
           </ul>
-          <Link to="/#reportSection">
+          <a href="/#reportSection">
             <li>Report</li>
-          </Link>
+          </a>
           <Link to="/donate">
             <li>Donate</li>
           </Link>

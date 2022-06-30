@@ -7,7 +7,8 @@ const EventSchema = new mongoose.Schema({
   },
 
   description: {
-    type: String
+    type: String,
+    required: true,
   },
 
   address: {
@@ -21,16 +22,16 @@ const EventSchema = new mongoose.Schema({
   },
 
   price: {
-    type: Number
+    type: Number,
   },
 
   createdBy: {
-    type: Object,
+    type: String,
   },
 
-  Date: {
-    type: Number,
-    default: Date
+  date: {
+    type: Date,
+    default: Date,
   },
 });
 

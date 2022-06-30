@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react'
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Event.css";
 // import Header from '../Header/Header';
@@ -12,7 +12,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Header from "../Header/Header";
 import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
-import axios from 'axios';
+import axios from "axios";
 // import WishlistIcon from "../images/WishlistIcon.png";
 import EventCalenderImg from "../images/Event_Calender.png";
 
@@ -72,16 +72,17 @@ const Event = (props) => {
   //   .catch(error => console.log(error))
   // },[])
 
-  const [ events, setEvents ] = useState([]);  
-  useEffect(function getAllEvents(){
-      axios.get('/event/all')
-      .then(result =>{
-        console.log("fetch the data from DB")
-        setEvents(result.data)
-        console.log(result.data)
+  const [events, setEvents] = useState([]);
+  useEffect(function getAllEvents() {
+    axios
+      .get("/event/all")
+      .then((result) => {
+        console.log("fetch the data from DB");
+        setEvents(result.data);
+        console.log(result.data);
       })
-      .catch(error => console.log(error))
-    },[])
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <>
@@ -276,34 +277,31 @@ const Event = (props) => {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item"
           >
-            {events.map((event)=>
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
+            {events.map((event) => (
+              <div className="card">
+                <div className="card-body">
+                  {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      {event.title}
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    {event.description}
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent" state={event}>
-                      <button>Event Details</button>
-                    </Link>
+                  <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
+                  <div className="card-content">
+                    <div className="card-heading-wishlist">
+                      <h4 className="card-title">{event.title}</h4>
+                      <img
+                        src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
+                        alt="wishlist"
+                      />
+                    </div>
+                    <p className="card-description">{event.description}</p>
+                    <div className="btn-eventt-details">
+                      <Link to="/singleEvent" state={event}>
+                        <button>Event Details</button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>)}
+            ))}
 
             <div className="card">
               <div className="card-body">
