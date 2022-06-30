@@ -134,9 +134,8 @@ export const Update = async (req, res) => {
 };
 
 export const TrackWhishlist = async (req, res) => {
-
   let id = req.params.id;
-  User.find({ id: id }, (err, user) => {
+  User.find({ id: id }, async (err, user) => {
     if (!err) {
       let whishlistEventId = req.body.eventId;
       user.whistlist.push(whishlistEventId);
@@ -144,7 +143,9 @@ export const TrackWhishlist = async (req, res) => {
 
       res.status(200).json(user);
     } else {
-      res.status(400).json("Error occured while updating whishtlist eventId: " + err);
+      res
+        .status(400)
+        .json("Error occured while updating whishtlist eventId: " + err);
     }
   });
 };

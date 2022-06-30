@@ -36,5 +36,3 @@ export const Register = (req, res) => {
     }
   });
 };
-
-export default Register;
