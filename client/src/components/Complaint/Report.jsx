@@ -55,7 +55,6 @@ let Report = (props) => {
       });
 
       TogglePopUp();
-      console.log(currentCoordinate);
     });
   };
 
@@ -114,6 +113,7 @@ let Report = (props) => {
       .post(reportUrl, reportData)
       .then((res) => {
         alert("Complaint registered");
+        props.HandleReportConfirmation(e);
       })
       .catch((err) => {
         console.log("Error" + err.response.data);
@@ -124,7 +124,6 @@ let Report = (props) => {
   // File change event handler
   const handleFileChange = async (e) => {
     UploadFile(e.target.files[0]).then((uploadedImage) => {
-      console.log(typeof uploadedImage);
       reportData.Image = uploadedImage;
     });
   };
