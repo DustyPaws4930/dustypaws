@@ -36,8 +36,9 @@ const PopUp = (props) => {
               <button onClick={props.TogglePopUp} className="closePopUpBtn">
                 X
               </button>
-              {renderedContent}
             </div>
+              {renderedContent}
+              <div className="enter-location-wrapper"><button className="enter-lacation-btn">Enter</button></div>
           </div>
         </div>
       </div>

@@ -18,6 +18,7 @@ h4.landing-text {
 /* section button{
     position: absolute;
 } */
+
 section > button {
   position: absolute;
   left: 50%;
@@ -64,6 +65,15 @@ section.statistics h3 {
   border-radius: 2px;
   background: var(--primary-color);
   color: white;
+  border: 2px solid var(--primary-color);
+  font-weight: bold;
+
+}
+
+.description button#donate:hover {
+  background-color: white;
+  transition: 0.4s;
+  color: #3e6b64;
 }
 
 section.features {
@@ -83,6 +93,11 @@ section.features {
   padding: 0.8rem 2.5rem;
   text-decoration: none;
   color: black;
+  border: 2px solid var(--secondary-color);
+}
+a#report-case:hover {
+  background-color: white;
+  transition: 0.3s;
 }
 
 section .feature-subsection1 {

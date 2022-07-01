@@ -144,3 +144,7 @@ nav ul .nav-dropDown:hover .user-profile {
   align-items: center;
   gap: 1rem;
 }
+
+li.dropDown-options.active a{
+  border: 2px solid var(--primary-button)
+}

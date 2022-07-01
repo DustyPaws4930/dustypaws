@@ -9,17 +9,61 @@
   bottom: 0;
   position: fixed;
 }
+/* .PopUpContainer{
+  width: 80vw;
+  height: 80vh;
+} */
+
 .OverlayShadow {
   background: rgba(49, 49, 49, 0.8);
 }
 
 .PopUpContent {
+  background-color: #F6F6F6;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.5;
-  background-color: white;
+  /* background-color: white; */
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 5px
+}
+.closeBtnContainer, .enter-location-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  
+}
+.closeBtnContainer button{
+  padding: .6rem 1rem;
+  color: var(--primary-color);
+  font-weight: bolder;
+  background-color: #F6F6F6;
+}
+
+.closeBtnContainer button:hover{
+  background-color: var( --red-color);
+  transition: .4s;
+}
+
+.enter-location-wrapper{
+margin: 1rem 5rem;
+}
+
+.MapWrapper{
+  margin:2rem 6rem;
+}
+button.enter-lacation-btn {
+  padding: 0.8rem 2.25rem;
+  border: 1px solid var(--secondary-button);
+  border-radius: 2px;
+  background-color: var(--secondary-button);
+  font-weight: bold;
+}
+
+button.enter-lacation-btn:hover{
+  background-color: white;
+  transition: .4s;
+  position: cursor;
 }

@@ -31,8 +31,12 @@ const Navbar = (props) => {
               Explore <FontAwesomeIcon icon={faCaretDown} />
             </li>
             <li className="dropDown-options active">
-              <Link to="/event">Event</Link>
-              <Link to="/event">Partners</Link>
+              <div>
+                <Link to="/event">Event</Link>
+              </div>
+              <div>
+                <Link to="/event">Partners</Link>
+              </div>
             </li>
           </ul>
           <Link to="/#reportSection">
