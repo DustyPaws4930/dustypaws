@@ -66,10 +66,12 @@ const Event = (props) => {
 
   const [recentEvents, setRecentEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [allPartners, setAllPartners] = useState([]);
 
   useEffect(function getAllEvents() {
     let eventURL = getApiPath() + "event/fetchAll";
 
+    // Get All Events
     axios
       .get(eventURL)
       .then((result) => {
@@ -101,6 +103,21 @@ const Event = (props) => {
         setUpcomingEvents(upcoingData);
       })
       .catch((error) => console.log(error));
+
+    let ourPartnersURL = getApiPath() + "user/getNGOUsers";
+    axios
+      .get(ourPartnersURL)
+      .then((res) => {
+        console.log(res.data);
+        setAllPartners(
+          res.data.filter((obj) => {
+            return obj.role !== "user";
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(`Error occured: ${err}`);
+      });
   }, []);
 
   return (
@@ -143,6 +160,7 @@ const Event = (props) => {
 
       <hr />
 
+      {/* RECENT EVENTS */}
       <div className="recent-event-container">
         <div className="recent-evet-heading">
           <h2>Recent Event</h2>
@@ -185,6 +203,7 @@ const Event = (props) => {
         </div>
       </div>
 
+      {/* UPCOMING EVENTS */}
       <div className="upcoming-event-container">
         <div className="upcoming-evet-heading">
           <h2>Upcoming Event</h2>
@@ -226,6 +245,8 @@ const Event = (props) => {
           </Carousel>
         </div>
       </div>
+
+      {/* OUR PARTNERS */}
       <div className="our-partners-container">
         <div className="our-partners-heading">
           <h2>Our Partners</h2>
@@ -243,86 +264,13 @@ const Event = (props) => {
             margin={70}
             center={true}
           >
-            {/* <div className='item-black'> */}
-            <div className="item">
-              <h3>People For Animal</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-                earum fugit tempore assumenda nam iusto corrupti eaque veritatis
-                ab nisi laudantium, exercitationem laborum rem tenetur magnam
-                nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Delectus aliquam vero laudantium
-                nobis consectetur fugiat quibusdam alias, corporis pariatur,
-                recusandae odio voluptas hic. Rem ab hic doloribus pariatur
-                cumque cum.
-              </p>
-            </div>
-            {/* </div> */}
-            <div className="item">
-              <h3>People For Animal</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-                earum fugit tempore assumenda nam iusto corrupti eaque veritatis
-                ab nisi laudantium, exercitationem laborum rem tenetur magnam
-                nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. D insa electus aliquam vero
-                laudantium nobis consectetur fugiat quibusdam alias, corporis
-                pariatur, recusandae odio voluptas hic. Rem ab hic doloribus
-                pariatur cumque cum.
-              </p>
-            </div>
-            <div className="item">
-              <h3>People For Animal</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-                earum fugit tempore assumenda nam iusto corrupti eaque veritatis
-                ab nisi laudantium, exercitationem laborum rem tenetur magnam
-                nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Delectus aliquam vero laudantium
-                nobis consectetur fugiat quibusdam alias, corporis pariatur,
-                recusandae odio voluptas hic. Rem ab hic doloribus pariatur
-                cumque cum.
-              </p>
-            </div>
-            <div className="item">
-              <h3>People For Animal</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-                earum fugit tempore assumenda nam iusto corrupti eaque veritatis
-                ab nisi laudantium, exercitationem laborum rem tenetur magnam
-                nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Delectus aliquam vero laudantium
-                nobis consectetur fugiat quibusdam alias, corporis pariatur,
-                recusandae odio voluptas hic. Rem ab hic doloribus pariatur
-                cumque cum.
-              </p>
-            </div>
-            <div className="item">
-              <h3>People For Animal</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-                earum fugit tempore assumenda nam iusto corrupti eaque veritatis
-                ab nisi laudantium, exercitationem laborum rem tenetur magnam
-                nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Delectus aliquam vero laudantium
-                nobis consectetur fugiat quibusdam alias, corporis pariatur,
-                recusandae odio voluptas hic. Rem ab hic doloribus pariatur
-                cumque cum.
-              </p>
-            </div>
-            <div className="item">
-              <h3>People For Animal</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-                earum fugit tempore assumenda nam iusto corrupti eaque veritatis
-                ab nisi laudantium, exercitationem laborum rem tenetur magnam
-                nihil! Consectetur, quibusdam sunt.Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Delectus aliquam vero laudantium
-                nobis consectetur fugiat quibusdam alias, corporis pariatur,
-                recusandae odio voluptas hic. Rem ab hic doloribus pariatur
-                cumque cum.
-              </p>
-            </div>
+            {allPartners.map((partner, idx) => {
+              return (
+                <div className="item">
+                  <h3>{partner.username}</h3>
+                </div>
+              );
+            })}
           </OwlCarousel>
         </div>
       </div>

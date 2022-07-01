@@ -37,8 +37,15 @@ const PopUp = (props) => {
                 X
               </button>
             </div>
-              {renderedContent}
-              <div className="enter-location-wrapper"><button className="enter-lacation-btn">Enter</button></div>
+            {renderedContent}
+            <div className="enter-location-wrapper">
+              <button
+                className="enter-lacation-btn"
+                onClick={props.TogglePopUp}
+              >
+                Enter
+              </button>
+            </div>
           </div>
         </div>
       </div>

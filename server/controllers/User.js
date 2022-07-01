@@ -150,6 +150,18 @@ export const TrackWhishlist = async (req, res) => {
   });
 };
 
+export const GetAllNGOUsers = (req, res) => {
+  console.log("here");
+
+  User.find({}, (err, user) => {
+    if (!err) {
+      res.status(200).json(user);
+    } else {
+      res.status(400).json("Error occured while getting user: " + err);
+    }
+  });
+};
+
 // // SV:
 // ToDo: This code here work perfect in the error handling.
 // try {

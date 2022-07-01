@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  GetAllNGOUsers,
   GetUser,
   Login,
   SignUp,
@@ -18,5 +19,6 @@ router.post("/login", LoginValidation, Login);
 router.get("/:id", GetUser);
 router.patch("/update/:id", Update);
 router.patch("/whishlist/:id", TrackWhishlist);
+router.get("/getAllUsers", GetAllNGOUsers);
 
 export default router;
