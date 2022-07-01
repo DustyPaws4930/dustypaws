@@ -7,6 +7,7 @@ import "./Report.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 let Report = (props) => {
   // ***Declare all variables here***
@@ -73,13 +74,26 @@ let Report = (props) => {
     const reportUrl = getApiPath() + "complaint/register";
     axios
       .post(reportUrl, reportData)
-      .then((res) => {
-        alert("Complaint registered");
-        props.HandleReportConfirmation(e);
+      .then(() => {
+        toast.success("Complaint registered", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+
+        setTimeout(() => {
+          props.HandleReportConfirmation(e);
+        }, 2200);
       })
       .catch((err) => {
-        console.log("Error" + err.response.data);
-        alert("Error: " + err.response.data);
+        toast.error(`${err.response.data.message}!`, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        console.log(err.response.data.message);
       });
   };
 

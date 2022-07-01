@@ -10,6 +10,7 @@ import Login from "./components/User/Login";
 import SignUp from "./components/User/SignUp";
 import NGOSignUp from "./components/NGO/Signup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -48,6 +49,17 @@ const App = () => {
           <Route path="*" element={<Home />} />
         </Routes>
       </Router>
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

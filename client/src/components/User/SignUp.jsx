@@ -6,6 +6,7 @@ import "./SignUp.css";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.png";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -37,24 +38,28 @@ const SignUp = () => {
     axios
       .post(SignUPURL, user)
       .then((res) => {
-        // const userToken = jwt(res.data.user); // decode your token here
-        alert("Signed Up!!");
-        setToken(res.data.user);
-        window.location.href = "/";
-        // These function requires token only
-        // setTokenTimeout(userToken);
-        // console.log(isTokenTimeOut(userToken));
-        // console.log("user", new Date(userToken.iat));
+        toast.success("Signed Up!!", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+
+        setTimeout(() => {
+          setToken(res.data.user);
+          window.location.href = "/";
+        }, 2200);
       })
       .catch((err) => {
-        console.log("Error" + err.response.data);
-        alert("Error: " + err.response.data);
+        toast.error(`${err.response.data.message}!`, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        console.log(err.response.data.message);
       });
   };
-
-  // const GetLiveLocation = (event) => {
-  //   event.preventDefault();
-  // };
 
   const HandleSecurityCheck = (event) => {
     event.preventDefault();
@@ -70,17 +75,6 @@ const SignUp = () => {
         <div className="signup-form-wrapper">
           <h2>Sign Up</h2>{" "}
           <form onSubmit={(e) => handleSubmit(e)}>
-            {/* <div className="labelInputWrapper">
-            <label htmlFor="file">Upload File</label>
-            <input
-              type="File"
-              name="file"
-              value={user.file}
-              id="file"
-              onChange={(event) => HandleInputChange(event)}
-              placeholder="Upload File"
-            />
-          </div> */}
             <div className="labelInputWrapper">
               <label htmlFor="username">User Name</label>
               <input
@@ -103,18 +97,7 @@ const SignUp = () => {
                 onChange={(event) => HandleInputChange(event)}
               />
             </div>
-            {/* <div className="labelInputWrapper">
-            <label htmlFor="Dob">Date of Birthday:</label>
-            <input
-              type="date"
-              id="Dob"
-              value={user.Dob}
-              onChange={(event) => {
-                HandleInputChange(event);
-              }}
-              name="Dob"
-            />
-          </div> */}
+
             <div className="labelInputWrapper">
               <label htmlFor="password">Password</label>
               <input
@@ -126,74 +109,6 @@ const SignUp = () => {
                 onChange={(event) => HandleInputChange(event)}
               />
             </div>
-            {/* <div className="labelInputWrapper">
-            <label htmlFor="cpassword">Confirm Password</label>
-            <input
-              type="text"
-              name="cpassword"
-              id="cpassword"
-              value={cPassword}
-              onChange={(event) => HandleInputChange(event)}
-              placeholder="Confirm Password"
-            />
-          </div> */}
-            {/* <div className="labelInputWrapper">
-            <label htmlFor="phoneNumber">Phone Number</label>
-            <input
-              type="text"
-              value={user.phoneNumber}
-              name="phoneNumber"
-              id="phoneNumber"
-              onChange={(event) => HandleInputChange(event)}
-              placeholder="Phone Number"
-            />
-          </div> */}
-            {/* <div className="labelInputWrapper">
-            <label htmlFor="street">Street</label>
-            <input
-              type="text"
-              value={user.street}
-              name="street"
-              onChange={(event) => HandleInputChange(event)}
-              id="street"
-              placeholder="Street"
-            />
-          </div>
-          <div className="labelInputWrapper">
-            <label htmlFor="city">City</label>
-            <input
-              type="text"
-              value={user.city}
-              name="city"
-              onChange={(event) => HandleInputChange(event)}
-              id="city"
-              placeholder="City"
-            />
-          </div> */}
-            {/* <div className="NGO_Wrapper">
-            <label>
-              <input
-                name="isNgo"
-                onChange={(event) => HandleInputChange(event)}
-                value={user.isNgo}
-                type="checkbox"
-              />
-              Are you from NGO?
-            </label>
-            <input
-              type="text"
-              onChange={(event) => HandleSecurityCheck(event)}
-              value={securityKey}
-            />
-          </div> */}
-            {/*
-          <button
-            onClick={(event) => {
-              GetLiveLocation(event);
-            }}
-          >
-            Access Location
-          </button> */}
             <div className="SubmitBtnWrapper">
               <button>Sign Up</button>
             </div>

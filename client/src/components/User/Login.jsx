@@ -4,9 +4,9 @@ import jwt from "jwt-decode";
 import axios from "axios";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import LoginBg from "../project-files/Login-Bg-image.png";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -30,15 +30,28 @@ const Login = () => {
       .post(loginUrl, loginInfo)
       .then((res) => {
         const userToken = jwt(res.data.user); // decode your token here
-        alert("Logged in!!");
-        setToken(res.data.user);
-        console.log("user", userToken);
-        // These function requires token only
-        setTokenTimeout(userToken);
-        window.location.href = "/";
+        toast.success("Logged in!!", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+
+        setTimeout(() => {
+          setToken(res.data.user);
+          console.log("user", userToken);
+          // These function requires token only
+          setTokenTimeout(userToken);
+          window.location.href = "/";
+        }, 2200);
       })
       .catch((err) => {
-        alert(`Error Occured: ${err.response.data.message}`);
+        toast.error(`${err.response.data.message}!`, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
         console.log(err.response.data.message);
       });
   };
@@ -77,7 +90,7 @@ const Login = () => {
                   id="password"
                 />
                 <p>
-                  <a href="">Forgot Password?</a>
+                  <a href="#">Forgot Password?</a>
                 </p>
               </div>
               <div className="SubmitBtnWrapper">
@@ -98,7 +111,6 @@ const Login = () => {
           </h3>
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 };

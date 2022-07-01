@@ -7,6 +7,7 @@ import "./SignUp.css";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.png";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [user, setUser] = useState({
@@ -31,9 +32,17 @@ const Signup = () => {
     axios
       .post(SignUPURL, user)
       .then((res) => {
-        alert("Signed Up!!");
-        setToken(res.data.user);
-        window.location.href = "/";
+        toast.success("Signed Up as NGO!!", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+
+        setTimeout(() => {
+          setToken(res.data.user);
+          window.location.href = "/";
+        }, 2200);
       })
       .catch((err) => {
         console.log("Error" + err.response.data);

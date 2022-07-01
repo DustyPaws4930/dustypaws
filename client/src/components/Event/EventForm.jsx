@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getApiPath, getToken, UploadFile } from "../../Common";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const EventForm = () => {
   const responsive = {
@@ -88,12 +89,25 @@ const EventForm = () => {
     axios
       .post(registerEventUrl, eventData)
       .then((res) => {
-        alert(res.data.message);
-        console.log(res.data);
-        setFetchedEvents(fectchedEvents.concat([res.data.Event]));
+        toast.success(res.data.message, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+
+        setTimeout(() => {
+          setFetchedEvents(fectchedEvents.concat([res.data.Event]));
+        }, 2200);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(`${err.response.data.message}!`, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        console.log(err.response.data.message);
       });
   };
 
