@@ -133,6 +133,23 @@ export const Update = async (req, res) => {
   }
 };
 
+export const TrackWhishlist = async (req, res) => {
+  let id = req.params.id;
+  User.find({ id: id }, async (err, user) => {
+    if (!err) {
+      let whishlistEventId = req.body.eventId;
+      user.whistlist.push(whishlistEventId);
+      user = await User.findByIdAndUpdate(id, user, { new: true });
+
+      res.status(200).json(user);
+    } else {
+      res
+        .status(400)
+        .json("Error occured while updating whishtlist eventId: " + err);
+    }
+  });
+};
+
 // // SV:
 // ToDo: This code here work perfect in the error handling.
 // try {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { getApiPath, getToken } from "../../Common";
+import { getApiPath, getToken, UploadFile } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,30 +12,30 @@ let Report = (props) => {
   // ***Declare all variables here***
   let PopUpContent;
   let [popUp, setPopUp] = useState(false);
-  let [priority, setPriority] = useState(0);
-  let [loggedInUser, setLoggedInUser] = useState({});
-  let [complaintImage, setComplaintImage] = useState();
   let [reportData, setReportData] = useState({
     title: "",
     description: "",
-    Image: File,
+    Image: "",
     name: "",
+    priority: 0,
     phoneNumber: "",
+    location: {},
+    userId: "",
   });
 
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
-
     if (userToken == null) {
       return;
     } else if (
       userToken !== null &&
       userToken !== "undefined" &&
       userToken !== ""
-    );
-    setLoggedInUser(userToken?.user);
-  }, [setLoggedInUser]);
+    ) {
+      reportData.userId = userToken?.user._id;
+    }
+  }, [reportData]);
   const [currentCoordinate, setCurrentCoordinates] = useState({
     lat: "",
     long: "",
@@ -67,48 +67,32 @@ let Report = (props) => {
   const handleSubmitBtn = (e) => {
     e.preventDefault();
 
-    var bodyFormData = new FormData();
-    bodyFormData.append("title", reportData.title);
-    bodyFormData.append("description", reportData.description);
-    bodyFormData.append("name", reportData.name);
-    bodyFormData.append("contactNumber", reportData.phoneNumber);
-    bodyFormData.append("Image", complaintImage);
-    bodyFormData.append("priority", priority);
-    bodyFormData.append("location", JSON.stringify(currentCoordinate));
-    if (
-      loggedInUser !== null &&
-      loggedInUser !== "undefined" &&
-      loggedInUser !== ""
-    ) {
-      bodyFormData.append("userId", loggedInUser._id);
-    }
+    reportData.location = currentCoordinate;
+    console.log(reportData);
 
     const reportUrl = getApiPath() + "complaint/register";
-    axios({
-      method: "POST",
-      url: reportUrl,
-      data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
+    axios
+      .post(reportUrl, reportData)
       .then((res) => {
-        console.log(res);
-        alert(res.data.message);
+        alert("Complaint registered");
         props.HandleReportConfirmation(e);
       })
       .catch((err) => {
-        //handle error
-        console.log(err);
+        console.log("Error" + err.response.data);
+        alert("Error: " + err.response.data);
       });
   };
 
   // File change event handler
-  const handleFileChange = (e) => {
-    setComplaintImage(e.target.files[0]);
+  const handleFileChange = async (e) => {
+    UploadFile(e.target.files[0]).then((uploadedImage) => {
+      reportData.Image = uploadedImage;
+    });
   };
 
   // Priority change event handler
   const HandlePriorityChange = (e) => {
-    setPriority(e.target.id);
+    reportData.priority = e.target.id;
   };
 
   if (popUp) {

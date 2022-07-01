@@ -1,4 +1,6 @@
 // import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Event.css";
 // import Header from '../Header/Header';
@@ -10,8 +12,10 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Header from "../Header/Header";
 import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
+import axios from "axios";
 // import WishlistIcon from "../images/WishlistIcon.png";
 import EventCalenderImg from "../images/Event_Calender.png";
+import { getApiPath } from "../../Common";
 
 const Event = (props) => {
   const responsive = {
@@ -58,16 +62,46 @@ const Event = (props) => {
     },
   };
 
-  // const [ cards, setCards ] = useState({});
+  const [events, setEvents] = useState([]);
 
-  // useEffect(function loadCardsDetails(){
-  //   axios.get('')
-  //   .then(result =>{
-  //     console.log("fetch the data from DB")
-  //     setCards()
-  //   })
-  //   .catch(error => console.log(error))
-  // },[])
+  const [recentEvents, setRecentEvents] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+
+  useEffect(function getAllEvents() {
+    let eventURL = getApiPath() + "event/fetchAll";
+
+    axios
+      .get(eventURL)
+      .then((result) => {
+        let newDate = new Date();
+        newDate.setMonth(new Date().getMonth() - 1);
+
+        let recntData = result.data.filter((obj) => {
+          return (
+            new Date(obj.date) >= newDate && new Date(obj.date) < new Date()
+          );
+        });
+
+        // Get Upcoming Event
+        newDate.setMonth(new Date().getMonth() + 1);
+        console.log(recntData);
+
+        let upcoingData = result.data.filter((obj) => {
+          return new Date(obj.date) > new Date();
+        });
+
+        console.log(upcoingData);
+        // Set recent Events
+        setRecentEvents(recntData);
+
+        // Set All Events
+        setEvents(result.data);
+
+        // Set Upcoming Events
+        setUpcomingEvents(upcoingData);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <>
@@ -122,129 +156,31 @@ const Event = (props) => {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item"
           >
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
+            {recentEvents.map((event, idx) => (
+              <div key={idx} className="card">
+                <div className="card-body">
+                  {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
-                      <button>Event Details</button>
-                    </Link>
+                  <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
+                  <div className="card-content">
+                    <div className="card-heading-wishlist">
+                      <h4 className="card-title">{event.title}</h4>
+                      <img
+                        src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
+                        alt="wishlist"
+                      />
+                    </div>
+                    <p className="card-description">{event.description}</p>
+                    <div className="btn-eventt-details">
+                      <Link to="/singleEvent" state={event}>
+                        <button>Event Details</button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
-                          <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
-                      </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
-                      <button>Event Details</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
-                          <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
-                      </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
-                      <button>Event Details</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
-                          <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
-                      </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
-                      <button>Event Details</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </Carousel>
         </div>
       </div>
@@ -262,129 +198,31 @@ const Event = (props) => {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item"
           >
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
+            {upcomingEvents.map((event, idx) => (
+              <div key={idx} className="card">
+                <div className="card-body">
+                  {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
-                      <button>Event Details</button>
-                    </Link>
+                  <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
+                  <div className="card-content">
+                    <div className="card-heading-wishlist">
+                      <h4 className="card-title">{event.title}</h4>
+                      <img
+                        src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
+                        alt="wishlist"
+                      />
+                    </div>
+                    <p className="card-description">{event.description}</p>
+                    <div className="btn-eventt-details">
+                      <Link to="/singleEvent" state={event}>
+                        <button>Event Details</button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
-                          <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
-                      </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
-                      <button>Event Details</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
-                          <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
-                      </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
-                      <button>Event Details</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="card-body">
-                {/* <div className='card-date'>
-                          <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
-                      </div> */}
-                <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
-                <div className="card-content">
-                  <div className="card-heading-wishlist">
-                    <h4 className="card-title">
-                      Indian Animal Health Summit and Awards 2022
-                    </h4>
-                    <img
-                      src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
-                      alt="wishlist"
-                    />
-                  </div>
-                  <p className="card-description">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum harum possimus ut quia architecto ipsa. Unde deleniti
-                    consectetur veniam soluta? Minima dolorem vitae incidunt
-                    totam maxime fugit similique soluta quod.
-                  </p>
-                  <div className="btn-eventt-details">
-                    <Link to="/singleEvent">
-                      <button>Event Details</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </Carousel>
         </div>
       </div>

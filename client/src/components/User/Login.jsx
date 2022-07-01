@@ -6,6 +6,7 @@ import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import LoginBg from "../project-files/Login-Bg-image.png";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -44,7 +45,7 @@ const Login = () => {
 
   return (
     <div>
-        <Header />
+      <Header />
       <div className="login-page">
         <div className="login-bg">
           <img src={LoginBg} alt="LoginBg" />
@@ -70,7 +71,7 @@ const Login = () => {
               <div className="labelInputWrapper">
                 <label htmlFor="password">Password: </label>
                 <input
-                  type="text"
+                  type="password"
                   onChange={(event) => onInputChange(event)}
                   name="password"
                   id="password"
@@ -83,16 +84,20 @@ const Login = () => {
                 <button>Log In</button>
               </div>
               <div className="box-footer">
-                <label htmlFor="|">Not a member?</label> <label htmlFor="|"><a href="/signup"> SignUp</a></label>
+                <label htmlFor="|">Not a member?</label>{" "}
+                <label htmlFor="|">
+                  <Link to="/signup">SignUp</Link>
+                </label>
               </div>
             </form>
           </div>
         </div>
         <div className="login-footer">
           <h3>
-           <span> Welcome to</span>  DustyPaws</h3>
+            <span> Welcome to</span> DustyPaws
+          </h3>
         </div>
-    </div>
+      </div>
       {/* <Footer /> */}
     </div>
   );

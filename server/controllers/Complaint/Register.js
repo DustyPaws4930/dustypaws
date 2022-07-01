@@ -9,19 +9,17 @@ export const Register = (req, res) => {
   let priority = req.body.priority;
   let userId = req.body.userId;
   let location = req.body.location;
-
-  const file = fs.readFileSync(req.file.path);
-  const imgStr = Buffer.from(file).toString("base64");
+  let img = req.body.Image;
 
   let reportObj = new ReportModel({
     title: title,
     description: description,
     name: name,
     phoneNumber: phoneNumber,
-    Image: imgStr,
     userId: userId,
     location: location,
     priority: priority,
+    Image: img,
   });
 
   console.log("Report object: " + reportObj);
@@ -38,4 +36,3 @@ export const Register = (req, res) => {
     }
   });
 };
-

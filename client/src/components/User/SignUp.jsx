@@ -5,6 +5,7 @@ import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 import "./SignUp.css";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.png";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -194,13 +195,15 @@ const SignUp = () => {
             Access Location
           </button> */}
             <div className="SubmitBtnWrapper">
-              <button>Log In</button>
+              <button>Sign Up</button>
             </div>
             <p>
-              Are you an NGO user?<a href="">Sign Up here</a>
+              Are you an NGO user?
+              <Link to="/NGO/signup">Sign Up here</Link>
             </p>
             <p>
-              Already a user? <a href="/login">Login Here</a>
+              Already a user?
+              <Link to="/login">Login Here</Link>
             </p>
           </form>
         </div>

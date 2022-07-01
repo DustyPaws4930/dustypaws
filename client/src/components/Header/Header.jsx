@@ -1,16 +1,14 @@
 import React from "react";
 import Navbar from "./Navbar";
-import {useState} from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
-import Primary from '../project-files/primary-logo.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import Primary from "../project-files/primary-logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
-  const [showNav, setShowNav] = useState(false)
-
-  
+  const [showNav, setShowNav] = useState(false);
 
   return (
     <header>
@@ -22,11 +20,11 @@ const Header = () => {
           </div>
         </Link>
         <div className="hamburger">
-            <button onClick={()=> setShowNav(!showNav)}>
-              <FontAwesomeIcon icon={faBars} />
-            </button>
+          <button onClick={() => setShowNav(!showNav)}>
+            <FontAwesomeIcon icon={faBars} />
+          </button>
         </div>
-        <Navbar showNav={showNav}/>
+        <Navbar showNav={showNav} />
         {/* {menu} */}
       </div>
     </header>
