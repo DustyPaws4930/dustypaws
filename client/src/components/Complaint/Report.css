@@ -14,9 +14,9 @@
   border-radius: 4px;
 }
 
-.LocationBtn:hover{
-  background-color:#285b53;
-  transition: .4s;
+.LocationBtn:hover {
+  background-color: #285b53;
+  transition: 0.4s;
   color: white;
   cursor: pointer;
 }
@@ -27,6 +27,7 @@ section .labelInputWrapper,
 }
 section .labelInputWrapper input {
   margin-top: 2px;
+  border-bottom: 1px solid grey;
 }
 section.report-complaint {
   max-width: 400px;
@@ -55,9 +56,9 @@ section.report-complaint {
   background: #ff3333;
   border: 2px solid #ff3333;
 }
-.priority-buttons .emergency:hover{
+.priority-buttons .emergency:hover {
   background: white;
-  transition: .4s;
+  transition: 0.4s;
   color: #ff3333;
 }
 
@@ -66,9 +67,9 @@ section.report-complaint {
   border: 2px solid #deb141;
 }
 
-.priority-buttons .high:hover{
+.priority-buttons .high:hover {
   background: white;
-  transition: .4s;
+  transition: 0.4s;
   color: #deb141;
 }
 
@@ -77,9 +78,9 @@ section.report-complaint {
   border: 2px solid #285b53;
 }
 
-.priority-buttons .moderate:hover{
+.priority-buttons .moderate:hover {
   background: white;
-  transition: .4s;
+  transition: 0.4s;
   color: #285b53;
 }
 
@@ -93,6 +94,5 @@ section.report-complaint {
   font-weight: bold;
 }
 
-.submit > button:hover{
-  
+.submit > button:hover {
 }
