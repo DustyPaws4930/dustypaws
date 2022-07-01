@@ -86,7 +86,7 @@ const Login = () => {
               <div className="box-footer">
                 <label htmlFor="|">Not a member?</label>{" "}
                 <label htmlFor="|">
-                  <Link to="">SignUp</Link>
+                  <Link to="/signup">SignUp</Link>
                 </label>
               </div>
             </form>
