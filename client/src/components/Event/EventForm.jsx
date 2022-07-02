@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { getApiPath, getToken, UploadFile } from "../../Common";
 import axios from "axios";
 import { toast } from "react-toastify";
+import eventBGImage from "../project-files/event-bg-image.svg"
 
 const EventForm = () => {
   const responsive = {
@@ -122,6 +123,8 @@ const EventForm = () => {
     <>
       <Header />
       <div className="event-ngo">
+        <h2>Create Event</h2>
+        <div className="event-form-wrapper">
         <form
           action="/"
           onSubmit={(e) => {
@@ -131,6 +134,7 @@ const EventForm = () => {
           <div className="event-form">
             <label>
               Title
+            </label>
               <input
                 type="text"
                 value={eventData.title}
@@ -140,11 +144,11 @@ const EventForm = () => {
                 name="title"
                 id="title"
               />
-            </label>
           </div>
           <div className="event-form">
             <label>
               Description
+            </label>
               <input
                 type="text"
                 value={eventData.description}
@@ -154,11 +158,11 @@ const EventForm = () => {
                 name="description"
                 id="description"
               />
-            </label>
           </div>
           <div className="event-form">
             <label htmlFor="img">
               Upload image:
+            </label>
               <input
                 onChange={(e) => {
                   handleFileChange(e);
@@ -168,11 +172,11 @@ const EventForm = () => {
                 name="img"
                 accept="image/*"
               ></input>
-            </label>
           </div>
           <div className="event-form">
             <label>
               Location
+            </label>
               <input
                 type="text"
                 value={eventData.address}
@@ -182,11 +186,11 @@ const EventForm = () => {
                 name="address"
                 id="address"
               />
-            </label>
           </div>
           <div className="event-form">
             <label>
               Date:
+            </label>
               <input
                 type="date"
                 value={eventData.date}
@@ -195,17 +199,17 @@ const EventForm = () => {
                 }}
                 name="eventDate"
               />
-            </label>
           </div>
           <div className="event-form">
             <label>
               Time:
-              <input type="time" name="eventTime" />
             </label>
+              <input type="time" name="eventTime" />
           </div>
           <div className="event-form">
             <label>
               price
+            </label>
               <input
                 type="number"
                 value={eventData.price}
@@ -214,10 +218,13 @@ const EventForm = () => {
                 }}
                 name="price"
               />
-            </label>
           </div>
-          <input type="submit" value="Submit" />
+          <div className="event-form"><button type="submit" className="btn-submit">Submit</button></div>
         </form>
+        </div>
+        <div className="event-bg-image">
+          <img src={eventBGImage} alt="eventBGImage" />
+        </div>
       </div>
       <div>
         <h3>Created Events</h3>

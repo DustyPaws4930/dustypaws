@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import "./header.css";
 import Primary from "../project-files/primary-logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
+
+  let navICon = showNav ? faXmark: faBars;
+
 
   return (
     <header>
@@ -21,7 +24,7 @@ const Header = () => {
         </Link>
         <div className="hamburger">
           <button onClick={() => setShowNav(!showNav)}>
-            <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon icon={navICon} />
           </button>
         </div>
         <Navbar showNav={showNav} />

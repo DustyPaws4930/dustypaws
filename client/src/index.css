@@ -4,7 +4,7 @@
 :root {
   --primary-color: #285b53;
   --secondary-color: #deb141;
-  --red-color: #ff3333;
+  --red-color: #e04444;
   --primary-button: var(--primary-color);
   --secondary-button: var(--secondary-color);
   --disabled-button: #a8a7a4;

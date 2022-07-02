@@ -94,5 +94,30 @@ section.report-complaint {
   font-weight: bold;
 }
 
-.submit > button:hover {
+.confirmation {
+  padding: 5rem 0;
+  border-right: 2px solid var(--primary-color);
+  height: 60%;
+  margin: auto;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}    
+
+.confirmation p {
+  padding: 0 2rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}  
+.confirmation button {
+  background: var(--primary-color);
+  padding: 0.8rem 1.2rem;
+  color: white;
+  font-weight: 500;
+  border: 1px solid var(--primary-color);
+}
+
+.confirmation button:hover {
+  background: white;
+  transition: .4s;
 }

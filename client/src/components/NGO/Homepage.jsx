@@ -12,6 +12,7 @@ import { getApiPath } from "../../Common";
 import yellowIcon from "../images/Yellow_location.png";
 import redIcon from "../images/Red_Locaion.png";
 import greenIcon from "../images/Green_Location.png";
+import "./NGO-Home.css"
 
 const Homepage = (props) => {
   const [currentCoordinate, setCurrentCoordinates] = useState({
@@ -20,6 +21,13 @@ const Homepage = (props) => {
   });
   const [complaintsArr, setComplaintsArr] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(2);
+  const [selected, setSelected] = useState('');
+
+  function handleSelectedDrop(event){
+    console.log(event.target.value);
+    setSelected(event.target.value);
+  }
+
   useEffect((e) => {
     // navigator.geolocation.getCurrentPosition(function (position) {
     //   setCurrentCoordinates({
@@ -106,14 +114,19 @@ const Homepage = (props) => {
   const WrappedMap = withScriptjs(withGoogleMap(Map));
 
   return (
-    <div>
-      <WrappedMap
-        isMarkerShown
-        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw "
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `400px`, width: `auto` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-      />
+    <div className="NGO-Home">
+      <h2 className="NGO-Title">
+        Recent Complaints
+      </h2>
+      <div className="map-container">
+        <WrappedMap
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw "
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px`, width: `auto` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+      </div>
 
       <div className="complaintContainer">
         <div className="headerSettingContainer">
@@ -146,7 +159,7 @@ const Homepage = (props) => {
                 <h4>{complaint.title}</h4>
                 <p>{complaint.description}</p>
                 <select>
-                  <option value="Accept">Accept</option>
+                  <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>
                   <option value="Complete">Complete</option>
                   <option value="Spam">Spam</option>
                 </select>
