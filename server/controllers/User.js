@@ -150,12 +150,10 @@ export const TrackWhishlist = async (req, res) => {
   });
 };
 
-export const GetAllNGOUsers = (req, res) => {
-  console.log("here");
-
-  User.find({}, (err, user) => {
+export const GetAllUsers = (req, res) => {
+  User.find({}, (err, users) => {
     if (!err) {
-      res.status(200).json(user);
+      res.status(200).json(users);
     } else {
       res.status(400).json("Error occured while getting user: " + err);
     }

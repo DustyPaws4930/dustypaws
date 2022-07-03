@@ -16,6 +16,7 @@ import axios from "axios";
 // import WishlistIcon from "../images/WishlistIcon.png";
 import EventCalenderImg from "../images/Event_Calender.png";
 import { getApiPath } from "../../Common";
+import SingleEvent from "./SingleEvent";
 
 const Event = (props) => {
   const responsive = {
@@ -62,12 +63,13 @@ const Event = (props) => {
     },
   };
 
-  const [events, setEvents] = useState([]);
-
   const [recentEvents, setRecentEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [allPartners, setAllPartners] = useState([]);
 
+  let [popUp, setPopUp] = useState(false);
+  let [selectedEvent, setSelectedEvent] = useState({});
+  let PopUpContent = "";
   useEffect(function getAllEvents() {
     let eventURL = getApiPath() + "event/fetchAll";
 
@@ -96,9 +98,6 @@ const Event = (props) => {
         // Set recent Events
         setRecentEvents(recntData);
 
-        // Set All Events
-        setEvents(result.data);
-
         // Set Upcoming Events
         setUpcomingEvents(upcoingData);
       })
@@ -108,17 +107,26 @@ const Event = (props) => {
     axios
       .get(ourPartnersURL)
       .then((res) => {
-        console.log(res.data);
-        setAllPartners(
-          res.data.filter((obj) => {
-            return obj.role !== "user";
-          })
-        );
+        let ngoUsers = res.data.filter((userData) => {
+          return userData.role === "ngo";
+        });
+        setAllPartners(ngoUsers);
+        console.log(ngoUsers);
       })
       .catch((err) => {
         console.log(`Error occured: ${err}`);
       });
   }, []);
+
+  const TogglePopUp = () => {
+    setPopUp(!popUp);
+  };
+
+  if (popUp) {
+    PopUpContent = (
+      <SingleEvent TogglePopUp={TogglePopUp} eventData={selectedEvent} />
+    );
+  }
 
   return (
     <>
@@ -180,7 +188,7 @@ const Event = (props) => {
                   {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                  <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
+                  <img src={event.Image} alt="Card_Hero_Image" />
                   <div className="card-content">
                     <div className="card-heading-wishlist">
                       <h4 className="card-title">{event.title}</h4>
@@ -191,9 +199,15 @@ const Event = (props) => {
                     </div>
                     <p className="card-description">{event.description}</p>
                     <div className="btn-eventt-details">
-                      <Link to="/singleEvent" state={event}>
-                        <button>Event Details</button>
-                      </Link>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedEvent(event);
+                          TogglePopUp();
+                        }}
+                      >
+                        Event Details
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -223,7 +237,7 @@ const Event = (props) => {
                   {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                  <img src={Event_Page_Card_Dog} alt="Card_Hero_Image" />
+                  <img src={event.Image} alt="Card_Hero_Image" />
                   <div className="card-content">
                     <div className="card-heading-wishlist">
                       <h4 className="card-title">{event.title}</h4>
@@ -234,9 +248,15 @@ const Event = (props) => {
                     </div>
                     <p className="card-description">{event.description}</p>
                     <div className="btn-eventt-details">
-                      <Link to="/singleEvent" state={event}>
-                        <button>Event Details</button>
-                      </Link>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedEvent(event);
+                          TogglePopUp();
+                        }}
+                      >
+                        Event Details
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -266,7 +286,7 @@ const Event = (props) => {
           >
             {allPartners.map((partner, idx) => {
               return (
-                <div className="item">
+                <div key={idx} className="item">
                   <h3>{partner.username}</h3>
                 </div>
               );
@@ -274,6 +294,7 @@ const Event = (props) => {
           </OwlCarousel>
         </div>
       </div>
+      {PopUpContent}
       <div className="footer">
         <Footer />
       </div>
