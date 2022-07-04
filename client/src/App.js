@@ -11,17 +11,16 @@ import SignUp from "./components/User/SignUp";
 import NGOSignUp from "./components/NGO/Signup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ToastContainer } from "react-toastify";
-import AnimatedDropdown from "./components/dropdown/AnimatedDropdown"
+import Pagination from './components/PaginationComponent/Pagination'
 
 const App = () => {
-  const options = ["Accept", "Completed", "Spam"];
   return (
     <>
       <Router>
         <Routes>
           <Route path="/login" caseSensitive={false} element={<Login />} />
           <Route path="/signup" caseSensitive={false} element={<SignUp />} />
-          <Route path="/dropdown" caseSensitive={false} element={<AnimatedDropdown options={options} />} />
+          <Route path="/pagination" caseSensitive={false} element={<Pagination />} />
           <Route
             path="/NGO/signup"
             caseSensitive={false}
