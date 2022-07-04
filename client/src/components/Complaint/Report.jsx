@@ -23,6 +23,7 @@ let Report = (props) => {
     location: {},
     userId: "",
   });
+  let [fileName, setFileName] = useState("");
 
   // ***Declare Functions here***F
   useEffect(() => {
@@ -99,6 +100,7 @@ let Report = (props) => {
 
   // File change event handler
   const handleFileChange = async (e) => {
+    setFileName(e.target.files[0].name);
     UploadFile(e.target.files[0]).then((uploadedImage) => {
       reportData.Image = uploadedImage;
     });
@@ -150,17 +152,26 @@ let Report = (props) => {
             />
           </div>
           <div className="labelInputWrapper">
-            <label htmlFor="img">Upload image:</label>
-            <input
-              onChange={(e) => {
-                handleFileChange(e);
-              }}
-              type="file"
-              id="img"
-              name="img"
-              accept="image/*"
-            ></input>
+            <label htmlFor="myFile">Upload image:</label>
+            <div className="button-div">
+              <div className="chooseFileContainer">
+                Choose File
+                <input
+                  type="file"
+                  id="myFile"
+                  name="chooseFileBtn"
+                  className="fileOriginalBtn"
+                  accept="image/*"
+                  onChange={(e) => {
+                    handleFileChange(e);
+                  }}
+                  aria-hidden="false"
+                ></input>
+              </div>
+              <label className="imageFileName">{fileName}</label>
+            </div>
           </div>
+
           <div className="labelInputWrapper">
             <label>Name</label>
             <input
