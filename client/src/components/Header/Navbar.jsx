@@ -73,7 +73,6 @@ const Navbar = (props) => {
               onOptionSelect={handleDropDown}
               options={options}
               initialText={initialText}
-              dropStyle={navDropStyle}
             />
           </ul>
           <a href="/#reportSection">

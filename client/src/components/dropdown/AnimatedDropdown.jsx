@@ -4,6 +4,8 @@ import "./dropdown.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 
+// 
+
 const AnimatedDropdown = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState(props.initialText);
