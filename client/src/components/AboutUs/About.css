@@ -1,0 +1,78 @@
+.about-us{
+    /* background-color: cadetblue; */
+    
+}
+.team-intro{
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 70px auto;
+}
+
+.social-links img{
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+}
+
+.about-description{
+    /* background-color: rebeccapurple; */
+    /* background-image: url('../images/AboutUS_Hero_Image.png'); */
+    /* background-position: cover;
+    background-size: 100%; */
+    width: 100%;
+    height: 100%;
+    /* height: 50vh; */
+    /* background-repeat: no-repeat; */
+}
+
+.Our-impact{
+    /* background-color: beige; */
+    position: absolute;
+    top: 170px;
+    width: 40%;
+    margin: 0 30px;
+    text-align: center;
+    /* display: flex;
+    flex-wrap: wrap; 
+    width: 40%;
+    margin: 0 50px;*/
+
+
+}
+.our-team{
+    /* background-color: coral; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 150px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+
+}
+
+.profile-details{
+    /* background-color: aliceblue; */
+    /* text-align: center; */
+    padding: 0 20px ;
+    border: 2px solid #deb141;
+    border-radius: 5px;
+}
+.connect-email{
+    clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+    padding: 1px;
+    background: #deb141;
+    margin-top: 100px;
+
+}
+.connect-email-wrapper{
+    clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+  background: #fffaef;
+  padding: 6rem 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

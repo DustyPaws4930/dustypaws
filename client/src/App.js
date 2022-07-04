@@ -1,11 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import About from "./components/About";
+import About from "./components/AboutUs/About";
 import Home from "./components/Home";
 import Event from "./components/Event/Event";
 import EventForm from "./components/Event/EventForm";
 import SingleEvent from "./components/Event/SingleEvent";
 import Profile from "./components/User/Settings/Profile";
+<<<<<<< Updated upstream
+=======
+import Login from "./components/User/Login";
+import SignUp from "./components/User/SignUp";
+import NGOSignUp from "./components/NGO/Signup";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ToastContainer } from "react-toastify";
+>>>>>>> Stashed changes
 
 const App = () => {
   return (
