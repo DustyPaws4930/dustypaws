@@ -117,7 +117,6 @@ nav ul .user-profile {
   display: flex;
 }
 
-
 /* Mobile */
 @media screen and (max-width: 768px) {
   .feature-subsection2 {
@@ -185,14 +184,13 @@ nav ul .user-profile {
     position: relative;
     background: inherit;
     box-shadow: none;
-    
   }
-  nav ul .user-profile a{
+  nav ul .user-profile a {
     color: white;
     font-weight: 500;
   }
 
-  .nav-dropDown .user-icons{
+  .nav-dropDown .user-icons {
     margin: 1rem;
   }
 }
