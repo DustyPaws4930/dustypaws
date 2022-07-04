@@ -22,7 +22,7 @@ const Homepage = (props) => {
   });
   const [complaintsArr, setComplaintsArr] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(2);
-  const [selected, setSelected] = useState('Change Status');
+  const initialText='Change Status';
   const options = ["Accept", "Completed", "Spam"];
   const [isActive, setIsActive] = useState(false);
   
@@ -166,8 +166,8 @@ const Homepage = (props) => {
                   {/* <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>
                   <option value="Complete">Complete</option>
                   <option value="Spam">Spam</option> */}
-                  <AnimatedDropdown options={options}  setSelected={setSelected} selected={selected} isActive={isActive} setIsActive={setIsActive}/>
-                  {selected}
+                  <AnimatedDropdown options={options} initialText={initialText}  />
+                  {/* {selected} */}
                 </div>
               </div>
             );
