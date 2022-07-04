@@ -256,8 +256,12 @@ section.newsletter input[type="email"]:focus {
 }
 section.newsletter div {
   display: flex;
+  gap: 10px;
   align-items: center;
 }
+
+
+
 section.newsletter button {
   padding: 5px 20px;
   margin: 0 1rem;
