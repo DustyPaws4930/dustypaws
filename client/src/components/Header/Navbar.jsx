@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
+import { toast } from "react-toastify";
 
 const Navbar = (props) => {
   // let loggedInUser = useContext(User);
@@ -23,7 +24,6 @@ const Navbar = (props) => {
   // function handleUserClick(event){
   //   setActiveUser
   // }
-
 
   function handleDropDown(option) {
     console.log(`Navbar`, option);
@@ -90,8 +90,17 @@ const Navbar = (props) => {
   };
   const HandleLogoutClick = () => {
     deleteToken();
-    window.location.href = "/";
-    alert("Logged out!!");
+
+    toast.warning("Logged out!!", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2200);
   };
 
   const ShowSignUpPopUp = (e) => {
@@ -148,16 +157,19 @@ const Navbar = (props) => {
         <ul>
           {RenderNavBar()}
           <div>
-            <li className="nav-dropDown" onClick={(e) => {
-             setActiveUser(!activeUser);
-          }}
-          
-          >
+            <li
+              className="nav-dropDown"
+              onClick={(e) => {
+                setActiveUser(!activeUser);
+              }}
+            >
               <div className="user-icons">
                 <FontAwesomeIcon icon={faUser} />
                 <FontAwesomeIcon icon={faCaretDown} />
               </div>
-              <div className="user-profile" id={activeUser ? 'activeUser': ''}>{HandleLoggedInUI()}</div>
+              <div className="user-profile" id={activeUser ? "activeUser" : ""}>
+                {HandleLoggedInUI()}
+              </div>
             </li>
           </div>
         </ul>
