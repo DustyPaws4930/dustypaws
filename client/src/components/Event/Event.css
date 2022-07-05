@@ -213,17 +213,19 @@ hr {
   margin-top: 40px;
 }
 .our-partners-heading{
-  margin-bottom: 50px;
+  /* background-color: rebeccapurple; */
+  max-width: 1200px;
+  margin: 50px auto;
 }
 
 /* #295B53 */
-@media only screen and (max-width: 500px){
+@media only screen and (min-width: 300px) and (max-width: 500px){
   .featured-event{
     /* background-color: cadetblue; */
     display: flex;
     margin: 10px;
     padding: 0; 
-    height: 85vh;   
+    height: 90vh;   
   }
   .featured-event-heading{
     margin: 0;
@@ -251,7 +253,7 @@ hr {
     /* visibility: hidden; */
     position: absolute;
     left: 10%;
-    top: 350px;
+    top: 250px;
     /* overflow: hidden; */
     width: 80%;
     height: 35%;
@@ -269,9 +271,9 @@ hr {
     display: flex;
     justify-content: center;
   }
-<<<<<<< Updated upstream
+/* <<<<<<< Updated upstream */
   
-=======
+/* ======= */
 }
 /* event page NGO */
 
@@ -322,5 +324,5 @@ hr {
   background-color: white;
   transition: .3s;
   color: var(--primary-button);
->>>>>>> Stashed changes
+/* >>>>>>> Stashed changes */
 }

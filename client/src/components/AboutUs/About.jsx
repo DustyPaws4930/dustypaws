@@ -36,7 +36,7 @@ let About = (props) => {
         <section className="our-team">
           <div className="team-member" id="team-member1">
             <img src={profileImage} alt="AnmolDeep Kaur" />
-            <div className="profile-details">
+            <div className="profile-details" id="profile1">
                 <div className="member-title">
                   <p>AnmolDeep Kaur</p>
                   <p>Lead UI Designer</p>
@@ -54,7 +54,7 @@ let About = (props) => {
           <div className="team-member" id="team-member2">
             <img src={profileImage} alt="Manpreet Kaur" />
             
-           <div className="profile-details">
+           <div className="profile-details" id="profile2">
               <div className="member-title">
                   <p>Manpreet Kaur</p>
                   <p>Lead UX Designer</p>
@@ -72,7 +72,7 @@ let About = (props) => {
           <div className="team-member" id="team-member5">
             <img src={profileImage} alt="Tejaswini Kalyan" />
             
-            <div className="profile-details">
+            <div className="profile-details" id="profile3">
                 <div className="member-title">
                     <p>Tejaswini Kalyan Kumar</p>
                     <p>Front End Developer</p>
@@ -90,7 +90,7 @@ let About = (props) => {
           <div className="team-member" id="team-member3">
             <img src={profileImage} alt="Shubham Verma" />
             
-            <div className="profile-details">
+            <div className="profile-details" id="profile4">
                 <div className="member-title">
                   <p>Shubham Verma</p>
                   <p>Full Stack Developer</p>
@@ -104,10 +104,11 @@ let About = (props) => {
                 </div>
             </div>
           </div>
+
           <div className="team-member" id="team-member4">
             <img src={profileImage} alt="Paraminder Singh" />
             
-           <div className="profile-details">
+           <div className="profile-details" id="profile5">
                 <div className="member-title">
                   <p>Paraminder Singh</p>
                   <p>Full Stack Developer</p>
@@ -124,7 +125,7 @@ let About = (props) => {
           
           <div className="team-member" id="team-member6">
             <img src={profileImage} alt="Jaskaranvir Deogan" />
-            <div className="profile-details">
+            <div className="profile-details" id="profile6">
                 <div className="member-title">
                   <p>Jaskaranvir Deogan</p>
                   <p>Front End Developer</p>
@@ -138,6 +139,7 @@ let About = (props) => {
                 </div>
             </div>
           </div>
+
         </section>
         <section className="connect-email">
           <div className="connect-email-wrapper">

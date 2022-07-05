@@ -68,7 +68,7 @@ const Info = () => {
         }}
       >
         <div className="headerContainer">
-          <h1>Test Username</h1>
+          <h3>Test Username</h3>
         </div>
         <div className="userImage">
             <img src="" alt="" />

@@ -25,7 +25,7 @@ const Rewards = () => {
   return (
     <div className="userRewardsContainer">
         <div className="rewardsHeading">
-          <h1>Rewards Trackers</h1>
+          <h3>Rewards Trackers</h3>
         </div>
       <div className="rewardsChart" >
           <div className="userChart" style={{width: 500}}>

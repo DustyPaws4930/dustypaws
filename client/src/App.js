@@ -6,14 +6,14 @@ import Event from "./components/Event/Event";
 import EventForm from "./components/Event/EventForm";
 import SingleEvent from "./components/Event/SingleEvent";
 import Profile from "./components/User/Settings/Profile";
-<<<<<<< Updated upstream
-=======
+// <<<<<<< Updated upstream
+// =======
 import Login from "./components/User/Login";
 import SignUp from "./components/User/SignUp";
-import NGOSignUp from "./components/NGO/Signup";
+// import NGOSignUp from "./components/NGO/Signup";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ToastContainer } from "react-toastify";
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
 
 const App = () => {
   return (
