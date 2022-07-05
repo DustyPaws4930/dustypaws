@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AnimatedNumber from "../AnimatedNumber/AnimatedNumber";
 import CardImages1 from "../project-files/13.png";
 import CardImages2 from "../project-files/1 6.png";
@@ -9,9 +9,31 @@ import reportBGImage2 from "../project-files/report-bg-image2.png";
 import reportMobile1 from "../project-files/form-mobile-image.png";
 import reportMobile from "../project-files/form-mobile-image1.png";
 import figPie from "../project-files/Figpie.png";
-import Footer from "../Footer/Footer";
 import Report from "../Complaint/Report";
+import PieChart from "../Charts/PieChart";
+import UserData from "../../Data";
+import Confirmation from "../Complaint/Confirmation";
 const HomePage = (props) => {
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.month),
+    datasets: [
+      {
+        label: "Rewards",
+        data: UserData.map((data) => data.userGain),
+        backgroundColor: ["#285b53", "#deb141", "#ff3333"],
+        borderColor: "#ddd",
+        borderWidth: 2,
+      },
+    ],
+  });
+
+  const [showReportForm, setShowReportForm] = useState(true);
+  let [emailNews, setEmailNews] = useState("");
+  let HandleReportConfirmation = (e) => {
+    e.preventDefault();
+    setShowReportForm(!showReportForm);
+  };
+
   return (
     <div className="Home">
       <section className="landing">
@@ -31,8 +53,8 @@ const HomePage = (props) => {
           <h4>Donation Count</h4>
         </div>
         <div className="charts">
-          <div>
-            <img src={figPie} alt="pie chart" />
+          <div className="userChart" style={{ width: 400 }}>
+            <PieChart chartData={userData} />
           </div>
           <h4>Help Count</h4>
         </div>
@@ -51,7 +73,7 @@ const HomePage = (props) => {
           <h2>Our Featuers</h2>
           <div id="card1" className="featurecard">
             <div className="img-container">
-              <img src={CardImages3} alt="img1" />
+              <img src={CardImages3} alt="card1" />
             </div>
             <p>
               Register Complaints accoring to there Priority of assistance
@@ -60,7 +82,7 @@ const HomePage = (props) => {
           </div>
           <div id="card2" className="featurecard">
             <div className="img-container">
-              <img src={CardImages2} alt="img2" />
+              <img src={CardImages2} alt="card2" />
             </div>
             <p>
               Earn Rewards and get recognized on basis of information provided
@@ -69,7 +91,7 @@ const HomePage = (props) => {
           </div>
           <div id="card3" className="featurecard">
             <div className="img-container">
-              <img src={CardImages1} alt="img2" />
+              <img src={CardImages1} alt="card3" />
             </div>
             <p>
               Earn Rewards and get recognized on basis of information provided
@@ -90,35 +112,21 @@ const HomePage = (props) => {
         <div className="circles"></div>
       </section>
       <section className="report-wrapper">
-        <img
-          src={reportMobile}
-          alt=" report image"
-          className="report-mobile2"
-        />
-        <Report />
+        <img src={reportMobile} alt=" report" className="report-mobile2" />
+        <>
+          {showReportForm ? (
+            <Report HandleReportConfirmation={HandleReportConfirmation} />
+          ) : (
+            <Confirmation HandleReportConfirmation={HandleReportConfirmation} />
+          )}
+        </>
         <section className="report-images">
-          <img src={reportImage} alt="report image" className="report-image3" />
+          <img src={reportImage} alt="report" className="report-image3" />
         </section>
-        <img
-          src={reportBGImage1}
-          alt=" report image"
-          className="report-image1"
-        />
-        <img
-          src={reportBGImage2}
-          alt=" report image"
-          className="report-image2"
-        />
-        <img
-          src={reportMobile1}
-          alt=" report image"
-          className="report-mobile1"
-        />
-        <img
-          src={reportMobile}
-          alt=" report image"
-          className="report-mobile2"
-        />
+        <img src={reportBGImage1} alt=" report1" className="report-image1" />
+        <img src={reportBGImage2} alt=" report2" className="report-image2" />
+        <img src={reportMobile1} alt=" report3" className="report-mobile1" />
+        <img src={reportMobile} alt=" report4" className="report-mobile2" />
       </section>
       <section className="newsletter">
         <div className="newsletter-wrapper">
@@ -132,9 +140,20 @@ const HomePage = (props) => {
               type="email"
               name="newsletter-email"
               id="newsletterEmail"
+              value={emailNews}
+              onChange={(e) => {
+                setEmailNews(e.target.value);
+              }}
               placeholder="Enter your email"
             />
-            <button type="submit">Submit </button>
+            <button
+              type="submit"
+              onClick={(e) => {
+                alert("You are subscribed for the news letter");
+              }}
+            >
+              Submit
+            </button>
           </div>
         </div>
       </section>

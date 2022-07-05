@@ -1,23 +1,64 @@
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteToken, getToken } from "../../Common";
 import { User } from "../Home";
 import PopUp from "../ModelPopups/PopUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
+import AnimatedDropdown from "../dropdown/AnimatedDropdown";
+import { toast } from "react-toastify";
 
 const Navbar = (props) => {
-  let loggedInUser = useContext(User);
+  // let loggedInUser = useContext(User);
+  let navigate = useNavigate();
+
+  const options = ["Event", "Partners"];
+  const initialText = "Explore";
+  const navDropStyle = {
+    boxShadow: "10px 10px 50px #aaaaaa",
+  };
+  const [activeUser, setActiveUser] = useState(false);
+  // function handleUserClick(event){
+  //   setActiveUser
+  // }
+
+  function handleDropDown(option) {
+    console.log(`Navbar`, option);
+    switch (option) {
+      case "Event":
+        navigate("/event", { replace: true });
+        break;
+      case "Partners":
+        navigate("/Partners", { replace: true });
+        break;
+      default:
+        break;
+    }
+  }
+
+  const [loggedInUser, setLoggedInUser] = useState({});
+  useEffect(() => {
+    let userToken = getToken();
+
+    if (userToken == null) {
+      return;
+    } else if (
+      userToken !== null &&
+      userToken !== "undefined" &&
+      userToken !== ""
+    ) {
+      setLoggedInUser(userToken?.user);
+    }
+  }, []);
 
   const [loginPopUp, setLoginPopUp] = useState(false);
 
   const [signUpPopUp, setSignUpPopUp] = useState(false);
 
   const RenderNavBar = () => {
-    console.log(loggedInUser);
     if (loggedInUser?.role === "ngo") {
       return (
         <Link to="/eventform">
@@ -27,18 +68,16 @@ const Navbar = (props) => {
     } else {
       return (
         <>
-          <ul className="dropDown">
-            <li className="btn btn-drop">
-              Explore <FontAwesomeIcon icon={faCaretDown} />
-            </li>
-            <li className="dropDown-options active">
-              <Link to="/event">Event</Link>
-              <Link to="/event">Partners</Link>
-            </li>
+          <ul className="nav-dropDown">
+            <AnimatedDropdown
+              onOptionSelect={handleDropDown}
+              options={options}
+              initialText={initialText}
+            />
           </ul>
-          <Link to="/#reportSection">
+          <a href="/#reportSection">
             <li>Report</li>
-          </Link>
+          </a>
           <Link to="/donate">
             <li>Donate</li>
           </Link>
@@ -51,8 +90,17 @@ const Navbar = (props) => {
   };
   const HandleLogoutClick = () => {
     deleteToken();
-    window.location.href = "/";
-    alert("Logged out!!");
+
+    toast.warning("Logged out!!", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2200);
   };
 
   const ShowSignUpPopUp = (e) => {
@@ -88,7 +136,7 @@ const Navbar = (props) => {
       return (
         <>
           <div className="securityWrapper">
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/signup">Sign&nbsp;Up</Link>
             <Link to="/login">Login</Link>
           </div>
         </>
@@ -109,10 +157,19 @@ const Navbar = (props) => {
         <ul>
           {RenderNavBar()}
           <div>
-            <li className="nav-dropDown">
-              <FontAwesomeIcon icon={faUser} />
-              <FontAwesomeIcon icon={faCaretDown} />
-              <div className="user-profile">{HandleLoggedInUI()}</div>
+            <li
+              className="nav-dropDown"
+              onClick={(e) => {
+                setActiveUser(!activeUser);
+              }}
+            >
+              <div className="user-icons">
+                <FontAwesomeIcon icon={faUser} />
+                <FontAwesomeIcon icon={faCaretDown} />
+              </div>
+              <div className="user-profile" id={activeUser ? "activeUser" : ""}>
+                {HandleLoggedInUI()}
+              </div>
             </li>
           </div>
         </ul>

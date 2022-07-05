@@ -1,12 +1,19 @@
-import React from 'react'
-import './Event.css';
+import React from "react";
+import "./Event.css";
 import Header from "../Header/Header";
-import Carousel from  "react-multi-carousel"
+import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getApiPath, getToken, UploadFile } from "../../Common";
+import axios from "axios";
+import { toast } from "react-toastify";
+import eventBGImage from "../project-files/event-bg-image.svg";
+import Pagination from "../PaginationComponent/Pagination.js";
 
 const EventForm = () => {
-
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -26,142 +33,199 @@ const EventForm = () => {
       items: 1,
     },
   };
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
+  const [eventData, setEventData] = useState({
+    title: "",
+    description: "",
+    address: "",
+    date: new Date().toLocaleDateString("en-CA"),
+    price: "",
+    createdBy: "",
+    Image: "",
+  });
+
+  const [fectchedEvents, setFetchedEvents] = useState([]);
+
+  useEffect(() => {
+    let userToken = getToken();
+
+    let fetchEventsURl = getApiPath() + "event/fetchAll";
+
+    if (userToken == null) {
+      return;
+    } else if (
+      userToken !== null &&
+      userToken !== "undefined" &&
+      userToken !== ""
+    ) {
+      setLoggedInUser(userToken?.user);
+    }
+
+    axios
+      .get(fetchEventsURl)
+      .then((res) => {
+        console.log(res.data);
+        setFetchedEvents(res.data);
+      })
+      .catch((err) => {
+        alert("Error occured while getting events");
+        console.log(`Error occured ${err}`);
+      });
+  }, []);
+
+  const HandleInputChange = (e) => {
+    e.preventDefault();
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setEventData({ ...eventData, [name]: value });
+  };
+
+  const HandleFormSubmit = (e) => {
+    e.preventDefault();
+    eventData.createdBy = loggedInUser._id;
+
+    const registerEventUrl = getApiPath() + "event/register";
+    console.log(eventData);
+    axios
+      .post(registerEventUrl, eventData)
+      .then((res) => {
+        toast.success(res.data.message, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+
+        setTimeout(() => {
+          setFetchedEvents(fectchedEvents.concat([res.data.Event]));
+        }, 2200);
+      })
+      .catch((err) => {
+        toast.error(`${err.response.data.message}!`, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        console.log(err.response.data.message);
+      });
+  };
+
+  // File change event handler
+  const handleFileChange = async (e) => {
+    UploadFile(e.target.files[0]).then((uploadedImage) => {
+      eventData.Image = uploadedImage;
+    });
+  };
+  let fetchEventsURl = getApiPath() + "event/fetchAll";
   return (
-    
     <>
-      <Header/>
-      <div className='event-ngo'>
-          <form action="">
-                <div className="event-form">
-                    <label>
-                    Title
-                    <input type="text" name="title" />
-                    </label>
-                </div>
-                <div className="event-form">
-                    <label>
-                    Description
-                    <input type="text" name="description" />
-                    </label>
-                </div>
-                <div className="event-form">
-                    <label for="img">
-                    Upload image:
-                    <input type="file" id="img" name="img" accept="image/*"></input>
-                    </label>
-                </div>
-                <div className="event-form">
-                    <label>
-                    Location
-                    
-                    </label>
-                </div>
-                <div className="event-form">
-                    <label>
-                    Date:
-                    <input type="date" name="eventDate" />
-                    </label>
-                </div>
-                <div className="event-form">
-                    <label>
-                    Time:
-                    <input type="time" name="eventTime" />
-                    </label>
-                </div>
-                <div className='event-form'>
-                  <label>
-                      price
-                      <input type="number" name="price" />
-                  </label>
-                </div>
-                <input type="submit" value="Submit" />
+      <Header />
+      <div className="event-ngo">
+        <h2> Events</h2>
+        <div className="event-form-wrapper">
+          <form
+            action="/"
+            onSubmit={(e) => {
+              HandleFormSubmit(e);
+            }}
+          >
+            <div className="event-form">
+              <label>Title</label>
+              <input
+                type="text"
+                value={eventData.title}
+                onChange={(e) => {
+                  HandleInputChange(e);
+                }}
+                name="title"
+                id="title"
+              />
+            </div>
+            <div className="event-form">
+              <label>Description</label>
+              <input
+                type="text"
+                value={eventData.description}
+                onChange={(e) => {
+                  HandleInputChange(e);
+                }}
+                name="description"
+                id="description"
+              />
+            </div>
+            <div className="event-form">
+              <label htmlFor="img">Upload image:</label>
+              <input
+                onChange={(e) => {
+                  handleFileChange(e);
+                }}
+                type="file"
+                id="img"
+                name="img"
+                accept="image/*"
+              ></input>
+            </div>
+            <div className="event-form">
+              <label>Location</label>
+              <input
+                type="text"
+                value={eventData.address}
+                onChange={(e) => {
+                  HandleInputChange(e);
+                }}
+                name="address"
+                id="address"
+              />
+            </div>
+            <div className="event-form">
+              <label>Date:</label>
+              <input
+                type="date"
+                value={eventData.date}
+                onChange={(e) => {
+                  HandleInputChange(e);
+                }}
+                name="eventDate"
+              />
+            </div>
+            <div className="event-form">
+              <label>Time:</label>
+              <input type="time" name="eventTime" />
+            </div>
+            <div className="event-form">
+              <label>price</label>
+              <input
+                type="number"
+                value={eventData.price}
+                onChange={(e) => {
+                  HandleInputChange(e);
+                }}
+                name="price"
+              />
+            </div>
+            <div className="event-form">
+              <button type="submit" className="btn-submit">
+                Submit
+              </button>
+            </div>
           </form>
-          <img src="" alt="animation" />
+        </div>
+        <div className="event-bg-image">
+          <img src={eventBGImage} alt="eventBGImage" />
+        </div>
       </div>
-
-
-      <div>
-        <h3>Created Events</h3>
+      <div className="NGO-Events">
+        <div>
+          <h3>Created Events</h3>
+        </div>
+        <Pagination apiUrl={fetchEventsURl} />
       </div>
-      <div>
-        <Carousel 
-         responsive={responsive}
-         swipeable={false}
-         draggable={false}
-         showDots={true}
-         dotListClass="custom-dot-list-style"
-         itemClass="carousel-item">
-
-          <div className='card'>
-              <div className='card-body'>
-                <div className='card-date'>
-                    <p>display date </p>
-                </div>
-                <img src="" alt="" />
-                <h2 className='card-title'>title</h2>
-                <p className='card-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum harum possimus ut quia architecto ipsa. Unde deleniti consectetur veniam soluta? Minima dolorem vitae incidunt totam maxime fugit similique soluta quod.</p>
-                <Link to='/singleEvent'><button>View More...</button></Link>
-                <i className='fa fa-heart-o'></i> 
-                <img src='' alt="dustbin" />
-                <Link to='/eventEdit'><img src="" alt="edit" /></Link>
-            </div>
-          </div>
-
-          <div className='card'>
-              <div className='card-body'>
-                <div className='card-date'>
-                    <p>display date </p>
-                </div>
-                <img src="" alt="" />
-                <h2 className='card-title'>title</h2>
-                <p className='card-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum harum possimus ut quia architecto ipsa. Unde deleniti consectetur veniam soluta? Minima dolorem vitae incidunt totam maxime fugit similique soluta quod.</p>
-                <Link to='/singleEvent'><button>View More...</button></Link>
-                <i className='fa fa-heart-o'></i> 
-                <img src='' alt="dustbin" />
-                <Link to='/eventEdit'><img src="" alt="edit" /></Link>
-            </div>
-          </div>
-
-          <div className='card'>
-              <div className='card-body'>
-                <div className='card-date'>
-                    <p>display date </p>
-                </div>
-                <img src="" alt="" />
-                <h2 className='card-title'>title</h2>
-                <p className='card-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum harum possimus ut quia architecto ipsa. Unde deleniti consectetur veniam soluta? Minima dolorem vitae incidunt totam maxime fugit similique soluta quod.</p>
-                <Link to='/singleEvent'><button>View More...</button></Link>
-                <i className='fa fa-heart-o'></i> 
-                <img src='' alt="dustbin" />
-                <Link to='/eventEdit'><img src="" alt="edit" /></Link>
-            </div>
-          </div>
-
-          <div className='card'>
-              <div className='card-body'>
-                <div className='card-date'>
-                    <p>display date </p>
-                </div>
-                <img src="" alt="" />
-                <h2 className='card-title'>title</h2>
-                <p className='card-description'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum harum possimus ut quia architecto ipsa. Unde deleniti consectetur veniam soluta? Minima dolorem vitae incidunt totam maxime fugit similique soluta quod.</p>
-                <Link to='/singleEvent'><button>View More...</button></Link>
-                <i className='fa fa-heart-o'></i> 
-                <img src='' alt="dustbin" />
-                <Link to='/eventEdit'><img src="" alt="edit" /></Link>
-            </div>
-          </div>
-
-
-        </Carousel>
-      </div>
-      <div>
-        {/* <Footer /> */}
-      </div>
-
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default EventForm
+export default EventForm;

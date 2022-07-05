@@ -10,7 +10,7 @@ const router = express.Router();
 // router.post("/signup", );
 
 //All complaint routes
-router.post("/register", ImageUpload, Register);
+router.post("/register", Register);
 router.get("/getReports/:userId", GetReportByUserId);
 router.get("/fetch", GetAllComplaints);
 export default router;

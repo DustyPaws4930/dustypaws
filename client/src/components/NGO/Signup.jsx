@@ -1,32 +1,26 @@
 import axios from "axios";
 import React, { useState } from "react";
+
 import jwt from "jwt-decode";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 import "./SignUp.css";
 import Header from "../Header/Header";
-import LoginBg from "../project-files/Login-Bg-image.svg";
+import LoginBg from "../project-files/Login-Bg-image.png";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const SignUp = () => {
+const Signup = () => {
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
-    isNgo: false,
+    isNgo: true,
+    securityKey: "",
   });
-  const [securityKey, setSecurityKey] = useState("");
-
   const HandleInputChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-
-    if (name === "isNgo") {
-      value = e.target.checked;
-      setUser({ ...user, [name]: value });
-    } else {
-      setUser({ ...user, [name]: value });
-    }
+    setUser({ ...user, [name]: value });
   };
 
   const handleSubmit = (e) => {
@@ -38,7 +32,7 @@ const SignUp = () => {
     axios
       .post(SignUPURL, user)
       .then((res) => {
-        toast.success("Signed Up!!", {
+        toast.success("Signed Up as NGO!!", {
           position: "top-center",
           autoClose: 1000,
           hideProgressBar: false,
@@ -51,18 +45,9 @@ const SignUp = () => {
         }, 2200);
       })
       .catch((err) => {
-        toast.error(`${err.response.data.message}!`, {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-        });
-        console.log(err.response.data.message);
+        console.log("Error" + err.response.data);
+        alert("Error: " + err.response.data);
       });
-  };
-
-  const HandleSecurityCheck = (event) => {
-    event.preventDefault();
   };
 
   return (
@@ -72,8 +57,10 @@ const SignUp = () => {
         <div className="sign-up-image-section">
           <img src={LoginBg} alt="LoginBg" />
         </div>
+
         <div className="signup-form-wrapper">
-          <h2>Sign Up</h2>{" "}
+          <h2>Sign Up</h2>
+
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="labelInputWrapper">
               <label htmlFor="username">User Name</label>
@@ -97,7 +84,6 @@ const SignUp = () => {
                 onChange={(event) => HandleInputChange(event)}
               />
             </div>
-
             <div className="labelInputWrapper">
               <label htmlFor="password">Password</label>
               <input
@@ -109,12 +95,23 @@ const SignUp = () => {
                 onChange={(event) => HandleInputChange(event)}
               />
             </div>
+            <div className="labelInputWrapper">
+              <label htmlFor="securityKey">Security Key</label>
+              <input
+                type="text"
+                name="securityKey"
+                id="securityKey"
+                value={user.securityKey}
+                placeholder="Security Key"
+                onChange={(event) => HandleInputChange(event)}
+              />
+            </div>
             <div className="SubmitBtnWrapper">
               <button>Sign Up</button>
             </div>
             <p>
-              Are you an NGO user?
-              <Link to="/NGO/signup">Sign Up here</Link>
+              Are you an user?
+              <Link to="/signup">Sign Up here</Link>
             </p>
             <p>
               Already a user?
@@ -132,4 +129,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Signup;

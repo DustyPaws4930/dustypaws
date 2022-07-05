@@ -2,7 +2,7 @@ section.landing {
   position: relative;
   /* background-color: aqua; */
   background: url(../components/project-files/hero_image.png);
-  height: 420px;
+  height: 500px;
   object-fit: cover;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -10,13 +10,15 @@ section.landing {
 }
 
 h4.landing-text {
-  margin: 3rem 30%;
+  width: 400px;
+  margin: 1rem auto 3rem auto;
   text-align: center;
   font-size: 1.5rem;
 }
 /* section button{
     position: absolute;
 } */
+
 section > button {
   position: absolute;
   left: 50%;
@@ -27,8 +29,6 @@ section > button {
   font-weight: bold;
 }
 section.statistics {
-  margin: 1rem;
-  padding: 1rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -46,6 +46,10 @@ section.statistics h3 {
   flex: 1 1 auto;
 }
 
+.statCount > h3 > div {
+  font-size: 2rem;
+}
+
 .charts {
   flex: 1 1 auto;
 }
@@ -61,11 +65,18 @@ section.statistics h3 {
   border-radius: 2px;
   background: var(--primary-color);
   color: white;
+  border: 2px solid var(--primary-color);
+  font-weight: bold;
+}
+
+.description button#donate:hover {
+  background-color: white;
+  transition: 0.4s;
+  color: #3e6b64;
 }
 
 section.features {
   display: flex;
-  margin: 1rem 0;
   align-items: center;
   position: relative;
 }
@@ -81,6 +92,11 @@ section.features {
   padding: 0.8rem 2.5rem;
   text-decoration: none;
   color: black;
+  border: 2px solid var(--secondary-color);
+}
+a#report-case:hover {
+  background-color: white;
+  transition: 0.3s;
 }
 
 section .feature-subsection1 {
@@ -239,8 +255,10 @@ section.newsletter input[type="email"]:focus {
 }
 section.newsletter div {
   display: flex;
+  gap: 10px;
   align-items: center;
 }
+
 section.newsletter button {
   padding: 5px 20px;
   margin: 0 1rem;
@@ -311,6 +329,7 @@ footer p {
     background-size: 100% 100%;
   }
   h4.landing-text {
+    width: unset;
     font-size: 1rem;
     margin: 5rem 20%;
   }

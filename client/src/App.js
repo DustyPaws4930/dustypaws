@@ -10,10 +10,10 @@ import Profile from "./components/User/Settings/Profile";
 // =======
 import Login from "./components/User/Login";
 import SignUp from "./components/User/SignUp";
-// import NGOSignUp from "./components/NGO/Signup";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import NGOSignUp from "./components/NGO/Signup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ToastContainer } from "react-toastify";
-// >>>>>>> Stashed changes
+import Pagination from './components/PaginationComponent/Pagination'
 
 const App = () => {
   return (
@@ -22,6 +22,12 @@ const App = () => {
         <Routes>
           <Route path="/login" caseSensitive={false} element={<Login />} />
           <Route path="/signup" caseSensitive={false} element={<SignUp />} />
+          <Route path="/pagination" caseSensitive={false} element={<Pagination />} />
+          <Route
+            path="/NGO/signup"
+            caseSensitive={false}
+            element={<NGOSignUp />}
+          />
           <Route path="/" caseSensitive={false} element={<Home />} />
 
           <Route path="/about" caseSensitive={false} element={<About />} />
@@ -46,6 +52,17 @@ const App = () => {
           <Route path="*" element={<Home />} />
         </Routes>
       </Router>
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

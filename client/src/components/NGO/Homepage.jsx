@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 import {
   GoogleMap,
   withScriptjs,
@@ -12,6 +13,7 @@ import { getApiPath } from "../../Common";
 import yellowIcon from "../images/Yellow_location.png";
 import redIcon from "../images/Red_Locaion.png";
 import greenIcon from "../images/Green_Location.png";
+import "./NGO-Home.css"
 
 const Homepage = (props) => {
   const [currentCoordinate, setCurrentCoordinates] = useState({
@@ -20,6 +22,16 @@ const Homepage = (props) => {
   });
   const [complaintsArr, setComplaintsArr] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(2);
+  const initialText='Change Status';
+  const options = ["Accept", "Completed", "Spam"];
+  const [isActive, setIsActive] = useState(false);
+  
+
+  function handleSelectedDrop(event){
+    // console.log(event.target.value);
+    // setSelected(event.target.value);
+  }
+
   useEffect((e) => {
     // navigator.geolocation.getCurrentPosition(function (position) {
     //   setCurrentCoordinates({
@@ -47,7 +59,6 @@ const Homepage = (props) => {
 
   // GetIcon
   const GetIcon = (complaint) => {
-    console.log(redIcon);
     if (complaint.priority === 0) {
       return redIcon;
     } else if (complaint.priority === 1) {
@@ -73,11 +84,11 @@ const Homepage = (props) => {
             <Marker
               key={complaint._id}
               position={{
-                lat: parseFloat(JSON.parse(complaint.location).lat),
-                lng: parseFloat(JSON.parse(complaint.location).long),
+                lat: parseFloat(complaint.location.lat),
+                lng: parseFloat(complaint.location.long),
               }}
               onClick={() => {
-                setCurrentCoordinates(JSON.parse(complaint.location));
+                setCurrentCoordinates(complaint.location);
                 setSelectedComplaint(complaint);
               }}
               icon={{
@@ -91,8 +102,8 @@ const Homepage = (props) => {
         {selectedComplatint && (
           <InfoWindow
             position={{
-              lat: JSON.parse(selectedComplatint.location).lat,
-              lng: JSON.parse(selectedComplatint.location).long,
+              lat: selectedComplatint.location.lat,
+              lng: selectedComplatint.location.long,
             }}
           >
             <div>
@@ -107,14 +118,19 @@ const Homepage = (props) => {
   const WrappedMap = withScriptjs(withGoogleMap(Map));
 
   return (
-    <div>
-      <WrappedMap
-        isMarkerShown
-        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw "
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `400px`, width: `auto` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-      />
+    <div className="NGO-Home">
+      <h2 className="NGO-Title">
+        Recent Complaints
+      </h2>
+      <div className="map-container">
+        <WrappedMap
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw "
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px`, width: `auto` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+      </div>
 
       <div className="complaintContainer">
         <div className="headerSettingContainer">
@@ -140,17 +156,19 @@ const Homepage = (props) => {
                       height: 100,
                       width: 200,
                     }}
-                    src={"data:image/jpg;base64," + complaint.Image}
+                    src={complaint.Image}
                     alt={complaint.title}
                   />
                 </div>
                 <h4>{complaint.title}</h4>
                 <p>{complaint.description}</p>
-                <select>
-                  <option value="Accept">Accept</option>
+                <div className="status-dropdown">
+                  {/* <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>
                   <option value="Complete">Complete</option>
-                  <option value="Spam">Spam</option>
-                </select>
+                  <option value="Spam">Spam</option> */}
+                  <AnimatedDropdown options={options} initialText={initialText}  />
+                  {/* {selected} */}
+                </div>
               </div>
             );
           })}

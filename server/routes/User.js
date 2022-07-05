@@ -1,5 +1,12 @@
 import express from "express";
-import { GetUser, Login, SignUp, Update } from "../controllers/user.js";
+import {
+  GetAllUsers,
+  GetUser,
+  Login,
+  SignUp,
+  TrackWhishlist,
+  Update,
+} from "../controllers/user.js";
 import {
   LoginValidation,
   SignUpValidation,
@@ -11,5 +18,7 @@ router.post("/signup", SignUpValidation, SignUp);
 router.post("/login", LoginValidation, Login);
 router.get("/:id", GetUser);
 router.patch("/update/:id", Update);
+router.patch("/whishlist/:id", TrackWhishlist);
+router.get("/getAllUsers", GetAllUsers);
 
 export default router;

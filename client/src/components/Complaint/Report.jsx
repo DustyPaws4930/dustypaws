@@ -1,41 +1,43 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { getApiPath, getToken } from "../../Common";
+import { getApiPath, getToken, UploadFile } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
-let Report = () => {
+let Report = (props) => {
   // ***Declare all variables here***
   let PopUpContent;
   let [popUp, setPopUp] = useState(false);
-  let [priority, setPriority] = useState(0);
-  let [loggedInUser, setLoggedInUser] = useState({});
-  let [complaintImage, setComplaintImage] = useState();
   let [reportData, setReportData] = useState({
     title: "",
     description: "",
-    Image: File,
+    Image: "",
     name: "",
+    priority: 0,
     phoneNumber: "",
+    location: {},
+    userId: "",
   });
+  let [fileName, setFileName] = useState("");
 
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
-
     if (userToken == null) {
       return;
     } else if (
       userToken !== null &&
       userToken !== "undefined" &&
       userToken !== ""
-    );
-    setLoggedInUser(userToken?.user);
-  }, [setLoggedInUser]);
+    ) {
+      reportData.userId = userToken?.user._id;
+    }
+  }, [reportData]);
   const [currentCoordinate, setCurrentCoordinates] = useState({
     lat: "",
     long: "",
@@ -67,47 +69,46 @@ let Report = () => {
   const handleSubmitBtn = (e) => {
     e.preventDefault();
 
-    var bodyFormData = new FormData();
-    bodyFormData.append("title", reportData.title);
-    bodyFormData.append("description", reportData.description);
-    bodyFormData.append("name", reportData.name);
-    bodyFormData.append("contactNumber", reportData.phoneNumber);
-    bodyFormData.append("Image", complaintImage);
-    bodyFormData.append("priority", priority);
-    bodyFormData.append("location", JSON.stringify(currentCoordinate));
-    if (
-      loggedInUser !== null &&
-      loggedInUser !== "undefined" &&
-      loggedInUser !== ""
-    ) {
-      bodyFormData.append("userId", loggedInUser._id);
-    }
+    reportData.location = currentCoordinate;
+    console.log(reportData);
 
     const reportUrl = getApiPath() + "complaint/register";
-    axios({
-      method: "POST",
-      url: reportUrl,
-      data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-      .then((res) => {
-        console.log(res);
-        alert(res.data.message);
+    axios
+      .post(reportUrl, reportData)
+      .then(() => {
+        toast.success("Complaint registered", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+
+        setTimeout(() => {
+          props.HandleReportConfirmation(e);
+        }, 2200);
       })
       .catch((err) => {
-        //handle error
-        console.log(err);
+        toast.error(`${err.response.data.message}!`, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        console.log(err.response.data.message);
       });
   };
 
   // File change event handler
-  const handleFileChange = (e) => {
-    setComplaintImage(e.target.files[0]);
+  const handleFileChange = async (e) => {
+    setFileName(e.target.files[0].name);
+    UploadFile(e.target.files[0]).then((uploadedImage) => {
+      reportData.Image = uploadedImage;
+    });
   };
 
   // Priority change event handler
   const HandlePriorityChange = (e) => {
-    setPriority(e.target.id);
+    reportData.priority = e.target.id;
   };
 
   if (popUp) {
@@ -151,17 +152,26 @@ let Report = () => {
             />
           </div>
           <div className="labelInputWrapper">
-            <label htmlFor="img">Upload image:</label>
-            <input
-              onChange={(e) => {
-                handleFileChange(e);
-              }}
-              type="file"
-              id="img"
-              name="img"
-              accept="image/*"
-            ></input>
+            <label htmlFor="myFile">Upload image:</label>
+            <div className="button-div">
+              <div className="chooseFileContainer">
+                Choose File
+                <input
+                  type="file"
+                  id="myFile"
+                  name="chooseFileBtn"
+                  className="fileOriginalBtn"
+                  accept="image/*"
+                  onChange={(e) => {
+                    handleFileChange(e);
+                  }}
+                  aria-hidden="false"
+                ></input>
+              </div>
+              <label className="imageFileName">{fileName}</label>
+            </div>
           </div>
+
           <div className="labelInputWrapper">
             <label>Name</label>
             <input
@@ -185,9 +195,9 @@ let Report = () => {
             />
           </div>
           <div className="LocationWrapper">
-            <label>Location</label>
+            <label>Location :</label>
             <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
-              Get Location
+              Auto Detect
             </a>
           </div>
           {PopUpContent}
