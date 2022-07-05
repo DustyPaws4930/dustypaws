@@ -157,7 +157,7 @@ nav ul .user-profile {
   .active {
     display: block;
     position: absolute;
-    top: 20%;
+    top: 13%;
     right: 5%;
     background: white;
     z-index: 99;
@@ -169,12 +169,12 @@ nav ul .user-profile {
     visibility: visible;
   }
   .active > ul > * {
-    border: 2px solid var(--secondary-color);
+    border: 1px solid var(--secondary-color);
     width: 100%;
     text-align: center;
     font-weight: 500;
     color: white;
-    background-color: var(--primary-button);
+    background-color: var(--primary-button-faded);
   }
   .active ul > ul {
     margin: 0;
@@ -188,9 +188,5 @@ nav ul .user-profile {
   nav ul .user-profile a {
     color: white;
     font-weight: 500;
-  }
-
-  .nav-dropDown .user-icons {
-    margin: 1rem;
   }
 }

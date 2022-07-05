@@ -67,7 +67,6 @@ section.statistics h3 {
   color: white;
   border: 2px solid var(--primary-color);
   font-weight: bold;
-
 }
 
 .description button#donate:hover {
@@ -260,8 +259,6 @@ section.newsletter div {
   align-items: center;
 }
 
-
-
 section.newsletter button {
   padding: 5px 20px;
   margin: 0 1rem;
@@ -332,6 +329,7 @@ footer p {
     background-size: 100% 100%;
   }
   h4.landing-text {
+    width: unset;
     font-size: 1rem;
     margin: 5rem 20%;
   }
