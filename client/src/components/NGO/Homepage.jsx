@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 import {
   GoogleMap,
   withScriptjs,
@@ -21,11 +22,14 @@ const Homepage = (props) => {
   });
   const [complaintsArr, setComplaintsArr] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(2);
-  const [selected, setSelected] = useState('');
+  const initialText='Change Status';
+  const options = ["Accept", "Completed", "Spam"];
+  const [isActive, setIsActive] = useState(false);
+  
 
   function handleSelectedDrop(event){
-    console.log(event.target.value);
-    setSelected(event.target.value);
+    // console.log(event.target.value);
+    // setSelected(event.target.value);
   }
 
   useEffect((e) => {
@@ -158,11 +162,13 @@ const Homepage = (props) => {
                 </div>
                 <h4>{complaint.title}</h4>
                 <p>{complaint.description}</p>
-                <select>
-                  <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>
+                <div className="status-dropdown">
+                  {/* <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>
                   <option value="Complete">Complete</option>
-                  <option value="Spam">Spam</option>
-                </select>
+                  <option value="Spam">Spam</option> */}
+                  <AnimatedDropdown options={options} initialText={initialText}  />
+                  {/* {selected} */}
+                </div>
               </div>
             );
           })}

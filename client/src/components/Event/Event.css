@@ -144,8 +144,8 @@ hr {
 }
 .card-date {
   /* background-color: aqua; */
-  position: absolute;
-  width: 30px;
+  /* position: absolute; */
+  /* width: 30px; */
   height: auto;
   top: 15px;
   left: 30px;
@@ -331,4 +331,17 @@ hr {
   background-color: white;
   transition: .3s;
   color: var(--primary-button);
+}
+
+.NGO-Events .pagination-component {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.NGO-Events ul.pagination-nav-container {
+  grid-column: 1/-1;
+}
+
+.NGO-Events{
+  max-width: 90%;
+  margin: auto;
 }

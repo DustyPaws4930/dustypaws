@@ -10,7 +10,8 @@ import { useEffect } from "react";
 import { getApiPath, getToken, UploadFile } from "../../Common";
 import axios from "axios";
 import { toast } from "react-toastify";
-import eventBGImage from "../project-files/event-bg-image.svg"
+import eventBGImage from "../project-files/event-bg-image.svg";
+import Pagination from "../PaginationComponent/Pagination.js";
 
 const EventForm = () => {
   const responsive = {
@@ -118,23 +119,21 @@ const EventForm = () => {
       eventData.Image = uploadedImage;
     });
   };
-
+  let fetchEventsURl = getApiPath() + "event/fetchAll";
   return (
     <>
       <Header />
       <div className="event-ngo">
-        <h2>Create Event</h2>
+        <h2> Events</h2>
         <div className="event-form-wrapper">
-        <form
-          action="/"
-          onSubmit={(e) => {
-            HandleFormSubmit(e);
-          }}
-        >
-          <div className="event-form">
-            <label>
-              Title
-            </label>
+          <form
+            action="/"
+            onSubmit={(e) => {
+              HandleFormSubmit(e);
+            }}
+          >
+            <div className="event-form">
+              <label>Title</label>
               <input
                 type="text"
                 value={eventData.title}
@@ -144,11 +143,9 @@ const EventForm = () => {
                 name="title"
                 id="title"
               />
-          </div>
-          <div className="event-form">
-            <label>
-              Description
-            </label>
+            </div>
+            <div className="event-form">
+              <label>Description</label>
               <input
                 type="text"
                 value={eventData.description}
@@ -158,11 +155,9 @@ const EventForm = () => {
                 name="description"
                 id="description"
               />
-          </div>
-          <div className="event-form">
-            <label htmlFor="img">
-              Upload image:
-            </label>
+            </div>
+            <div className="event-form">
+              <label htmlFor="img">Upload image:</label>
               <input
                 onChange={(e) => {
                   handleFileChange(e);
@@ -172,11 +167,9 @@ const EventForm = () => {
                 name="img"
                 accept="image/*"
               ></input>
-          </div>
-          <div className="event-form">
-            <label>
-              Location
-            </label>
+            </div>
+            <div className="event-form">
+              <label>Location</label>
               <input
                 type="text"
                 value={eventData.address}
@@ -186,11 +179,9 @@ const EventForm = () => {
                 name="address"
                 id="address"
               />
-          </div>
-          <div className="event-form">
-            <label>
-              Date:
-            </label>
+            </div>
+            <div className="event-form">
+              <label>Date:</label>
               <input
                 type="date"
                 value={eventData.date}
@@ -199,17 +190,13 @@ const EventForm = () => {
                 }}
                 name="eventDate"
               />
-          </div>
-          <div className="event-form">
-            <label>
-              Time:
-            </label>
+            </div>
+            <div className="event-form">
+              <label>Time:</label>
               <input type="time" name="eventTime" />
-          </div>
-          <div className="event-form">
-            <label>
-              price
-            </label>
+            </div>
+            <div className="event-form">
+              <label>price</label>
               <input
                 type="number"
                 value={eventData.price}
@@ -218,51 +205,23 @@ const EventForm = () => {
                 }}
                 name="price"
               />
-          </div>
-          <div className="event-form"><button type="submit" className="btn-submit">Submit</button></div>
-        </form>
+            </div>
+            <div className="event-form">
+              <button type="submit" className="btn-submit">
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
         <div className="event-bg-image">
           <img src={eventBGImage} alt="eventBGImage" />
         </div>
       </div>
-      <div>
-        <h3>Created Events</h3>
-      </div>
-      <div>
-        <Carousel
-          responsive={responsive}
-          swipeable={false}
-          draggable={false}
-          showDots={true}
-          dotListClass="custom-dot-list-style"
-          itemClass="carousel-item"
-        >
-          {fectchedEvents.map((evnt, idx) => {
-            return (
-              <div key={idx} className="CardWrapper">
-                <div className="card">
-                  <div className="card-body">
-                    <div className="card-date">
-                      <p>{evnt.date}</p>
-                    </div>
-                    <img src={evnt.Image} alt={evnt.title} />
-                    <h2 className="card-title">{evnt.title}</h2>
-                    <p className="card-description">{evnt.description}</p>
-                    <Link to="/singleEvent">
-                      <button>View More...</button>
-                    </Link>
-                    <i className="fa fa-heart-o"></i>
-                    <img src="" alt="dustbin" />
-                    <Link to="/eventEdit">
-                      <img src="" alt="edit" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </Carousel>
+      <div className="NGO-Events">
+        <div>
+          <h3>Created Events</h3>
+        </div>
+        <Pagination apiUrl={fetchEventsURl} />
       </div>
       <Footer />
     </>

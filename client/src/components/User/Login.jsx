@@ -4,7 +4,7 @@ import jwt from "jwt-decode";
 import axios from "axios";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 import Header from "../Header/Header";
-import LoginBg from "../project-files/Login-Bg-image.png";
+import LoginBg from "../project-files/Login-Bg-image.svg";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
