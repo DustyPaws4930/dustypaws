@@ -10,7 +10,7 @@ export const getToken = () => {
   if (token !== "undefined" && token !== null) {
     return jwt(token);
   } else {
-    return "";
+    return null;
   }
 };
 

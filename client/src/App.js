@@ -20,8 +20,8 @@ const App = () => {
     <>
       <Router>
         <Routes>
-          {/* <Route path="/login" caseSensitive={false} element={<Login />} /> */}
-          {/* <Route path="/signup" caseSensitive={false} element={<SignUp />} /> */}
+          <Route path="/login" caseSensitive={false} element={<Login />} />
+          <Route path="/signup" caseSensitive={false} element={<SignUp />} />
           <Route path="/" caseSensitive={false} element={<Home />} />
 
           <Route path="/about" caseSensitive={false} element={<About />} />
