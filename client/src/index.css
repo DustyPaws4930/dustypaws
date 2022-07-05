@@ -7,6 +7,7 @@
   --red-color: #e04444;
   --primary-button: var(--primary-color);
   --secondary-button: var(--secondary-color);
+  --primary-button-faded : rgba(40, 91, 83,0.95);
   --disabled-button: #a8a7a4;
   --quicksand: "Quicksand";
 }

@@ -26,6 +26,7 @@ const Header = () => {
           <button onClick={() => setShowNav(!showNav)}>
             <FontAwesomeIcon icon={navICon} />
           </button>
+
         </div>
         <Navbar showNav={showNav} />
         {/* {menu} */}

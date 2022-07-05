@@ -25,6 +25,7 @@ header .primary-logo {
 nav ul {
   list-style: none;
   display: flex;
+  align-items: center;
   flex-direction: row;
   padding: 0;
 }
@@ -35,63 +36,9 @@ header svg {
 .securityWrapper {
   display: flex;
   flex-direction: column;
+  margin: auto;
   gap: 1rem;
   padding: 1rem 2rem;
-}
-@media screen and (max-width: 768px) {
-  .feature-subsection2 {
-    display: none;
-  }
-  nav ul {
-    flex-direction: column;
-    margin: 0;
-  }
-  nav ul li {
-    padding-bottom: 2px;
-  }
-  nav {
-    width: 100%;
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    transition: .5s;
-  }
-  .hamburger {
-    display: block;
-  }
-  .hamburger button {
-    width: 35px;
-    height: 35px;
-    border-radius: 4px;
-    background-color: var(--primary-button);
-    color: white;
-  }
-  .active {
-    display: block;
-    position: absolute;
-    top: 15%;
-    right: 5%;
-    background: white;
-    z-index: 99;
-    height: 0;
-    max-height: auto;
-    transition: 1s;
-    max-width: 35%;
-    opacity: 1;
-    visibility: visible;
-  }
-  .active ul > *{
-    border: 2px solid var(--secondary-color); 
-    width: 100%;
-    text-align: center;
-    font-weight: 500;
-    color: white;
-    background-color: var(--primary-button);
-  }
-  .active ul > ul{
-    margin: 0;
-    padding: 1rem;
-  }
 }
 
 nav a {
@@ -99,8 +46,12 @@ nav a {
   text-decoration: none;
 }
 
-.dropDown {
+.nav-dropDown {
   margin: 1rem;
+}
+
+.nav-dropDown .Animated-dropdown {
+  width: 110px;
 }
 .AuthenticationWrapper {
   display: flex;
@@ -156,19 +107,86 @@ nav ul .dropDown:hover .dropDown-options {
 nav ul .user-profile {
   display: none;
   position: absolute;
+  transform: translate(-30px, 20px);
   background-color: #f9f9f9;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-nav ul .nav-dropDown:hover .user-profile {
+#activeUser {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
 }
 
-li.dropDown-options.active a{
-  border: 2px solid var(--primary-button)
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .feature-subsection2 {
+    display: none;
+  }
+  nav ul {
+    flex-direction: column;
+    margin: 0;
+  }
+  nav ul li {
+    padding-bottom: 2px;
+  }
+  nav {
+    width: 100%;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .Animated-dropdown .dropdown-content {
+    position: relative;
+  }
+  .Animated-dropdown .dropdown-btn {
+    background: inherit;
+    color: inherit;
+  }
+  .hamburger {
+    display: block;
+  }
+  .hamburger button {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+    background-color: var(--primary-button);
+    color: white;
+  }
+  .active {
+    display: block;
+    position: absolute;
+    top: 13%;
+    right: 5%;
+    background: white;
+    z-index: 99;
+    height: 0;
+    max-height: auto;
+    transition: 1s;
+    max-width: 35%;
+    opacity: 1;
+    visibility: visible;
+  }
+  .active > ul > * {
+    border: 1px solid var(--secondary-color);
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    color: white;
+    background-color: var(--primary-button-faded);
+  }
+  .active ul > ul {
+    margin: 0;
+  }
+  nav ul .user-profile {
+    transform: none !important;
+    position: relative;
+    background: inherit;
+    box-shadow: none;
+  }
+  nav ul .user-profile a {
+    color: white;
+    font-weight: 500;
+  }
 }
