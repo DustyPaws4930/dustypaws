@@ -13,11 +13,6 @@
   grid-row: 1/3;
 }
 
-.sign-up-image-section img {
-  max-width  :65%; 
-  max-height : 80%;
-  object-fit : contain;
-}
 
 .sign-up-body {
   display: grid;
