@@ -5,9 +5,11 @@ import jwt from "jwt-decode";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 import "./SignUp.css";
 import Header from "../Header/Header";
-import LoginBg from "../project-files/Login-Bg-image.png";
+import LoginBg from "../project-files/Login-Bg-image.svg";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import leftCorner from "../project-files/left_corner_login.svg";
+import rightCorner from "../project-files/right_corner_login.svg";
 
 const Signup = () => {
   const [user, setUser] = useState({
@@ -55,6 +57,8 @@ const Signup = () => {
       <Header />
       <div className="sign-up-body">
         <div className="sign-up-image-section">
+          <img src={leftCorner} alt="leftCorner" className="leftCornerBg" />
+          <img src={rightCorner} alt="rightCorner" className="rightCornerBg" />
           <img src={LoginBg} alt="LoginBg" />
         </div>
 

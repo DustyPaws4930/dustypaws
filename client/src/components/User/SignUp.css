@@ -13,7 +13,6 @@
   grid-row: 1/3;
 }
 
-
 .sign-up-body {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -89,6 +88,10 @@
 
 .sign-up {
   position: relative;
+}
+
+.sign-up-body{
+  padding: 3rem 3rem;
 }
 
 .signup-footer h3 {
