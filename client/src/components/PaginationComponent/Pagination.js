@@ -35,38 +35,34 @@ const Pagination = (props) => {
 
   // Handle page click
   function handlePageClick({ selected: selectedPage }) {
-    console.log("selectedPage", selectedPage);
     setCurrentPage(selectedPage);
   }
-  // 0,10,20,30,40....
 
   const offset = currentPage * PerPage;
   const currentPageData = data
     .slice(offset, offset + PerPage)
     .map((result, index) => {
       return (
-        <>
-          <div key={index} className="CardWrapper">
-            <div className="card">
-              <div className="card-body">
-                <div className="card-date">
-                  <p>{result.date}</p>
-                </div>
-                <img src={result.Image} alt={result.title} />
-                <h2 className="card-title">{result.title}</h2>
-                <p className="card-description">{result.description}</p>
-                <Link to="/singleEvent">
-                  <button>View More...</button>
-                </Link>
-                <i className="fa fa-heart-o"></i>
-                <img src="" alt="dustbin" />
-                <Link to="/eventEdit">
-                  <img src="" alt="edit" />
-                </Link>
+        <div key={index} className="CardWrapper">
+          <div className="card">
+            <div className="card-body">
+              <div className="card-date">
+                <p>{result.date}</p>
               </div>
+              <img src={result.Image} alt={result.title} />
+              <h2 className="card-title">{result.title}</h2>
+              <p className="card-description">{result.description}</p>
+              <Link to="/singleEvent">
+                <button>View More...</button>
+              </Link>
+              <i className="fa fa-heart-o"></i>
+              <img src="" alt="dustbin" />
+              <Link to="/eventEdit">
+                <img src="" alt="edit" />
+              </Link>
             </div>
           </div>
-        </>
+        </div>
       );
     });
   // console.log("currentPageData", currentPageData);
