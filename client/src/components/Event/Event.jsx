@@ -1,6 +1,5 @@
 // import React, { useEffect, useState } from 'react'
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Event.css";
 // import Header from '../Header/Header';
@@ -65,10 +64,12 @@ const Event = (props) => {
 
   const [recentEvents, setRecentEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
-  const [allPartners, setAllPartners] = useState([]);
 
   let [popUp, setPopUp] = useState(false);
   let [selectedEvent, setSelectedEvent] = useState({});
+  // let [loggedInEvent, setLoggedInUser] = useState({});
+
+  // let userWhishlistedEvents = [];
   let PopUpContent = "";
   useEffect(function getAllEvents() {
     let eventURL = getApiPath() + "event/fetchAll";
@@ -88,13 +89,11 @@ const Event = (props) => {
 
         // Get Upcoming Event
         newDate.setMonth(new Date().getMonth() + 1);
-        console.log(recntData);
 
         let upcoingData = result.data.filter((obj) => {
           return new Date(obj.date) > new Date();
         });
 
-        console.log(upcoingData);
         // Set recent Events
         setRecentEvents(recntData);
 
@@ -103,19 +102,19 @@ const Event = (props) => {
       })
       .catch((error) => console.log(error));
 
-    let ourPartnersURL = getApiPath() + "user/getNGOUsers";
-    axios
-      .get(ourPartnersURL)
-      .then((res) => {
-        let ngoUsers = res.data.filter((userData) => {
-          return userData.role === "ngo";
-        });
-        setAllPartners(ngoUsers);
-        console.log(ngoUsers);
-      })
-      .catch((err) => {
-        console.log(`Error occured: ${err}`);
-      });
+    // Code Commented as per new senario: Showing static Data
+    // let ourPartnersURL = getApiPath() + "user/getNGOUsers";
+    // axios
+    //   .get(ourPartnersURL)
+    //   .then((res) => {
+    //     let ngoUsers = res.data.filter((userData) => {
+    //       return userData.role === "ngo";
+    //     });
+    //     setAllPartners(ngoUsers);
+    //   })
+    //   .catch((err) => {
+    //     console.log(`Error occured: ${err}`);
+    //   });
   }, []);
 
   const TogglePopUp = () => {
@@ -284,13 +283,13 @@ const Event = (props) => {
             margin={70}
             center={true}
           >
-            {allPartners.map((partner, idx) => {
-              return (
-                <div key={idx} className="item">
-                  <h3>{partner.username}</h3>
-                </div>
-              );
-            })}
+            {/* {allPartners.map((partner, idx) => { */}
+            {/* return ( */}
+            <div className="item">
+              <h3>NGO Name</h3>
+            </div>
+            {/* ); */}
+            {/* })} */}
           </OwlCarousel>
         </div>
       </div>

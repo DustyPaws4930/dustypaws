@@ -135,13 +135,25 @@ export const Update = async (req, res) => {
 
 export const TrackWhishlist = async (req, res) => {
   let id = req.params.id;
-  User.find({ id: id }, async (err, user) => {
+  let whishlistEventId = req.body.eventId;
+  let isWishlisted = req.body.eventState;
+  User.findById(id, async (err, user) => {
     if (!err) {
-      let whishlistEventId = req.body.eventId;
-      user.whistlist.push(whishlistEventId);
+      if (isWishlisted) {
+        user.whistlist.push(whishlistEventId);
+      } else {
+        user.whistlist = user.whistlist.filter((eventid) => {
+          return eventid !== whishlistEventId;
+        });
+      }
       user = await User.findByIdAndUpdate(id, user, { new: true });
-
-      res.status(200).json(user);
+      const token = jwt.sign(
+        {
+          user,
+        },
+        "Langara123"
+      );
+      res.status(200).json({ user: token });
     } else {
       res
         .status(400)
@@ -159,6 +171,8 @@ export const GetAllUsers = (req, res) => {
     }
   });
 };
+
+export const WishlistEvent = (req, res) => {};
 
 // // SV:
 // ToDo: This code here work perfect in the error handling.

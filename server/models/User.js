@@ -31,9 +31,11 @@ let userModel = mongoose.Schema({
     type: String,
     default: "user",
   },
-  whistlist:{
-    type: []
-  }
+  whistlist: {
+    type: Array,
+    default: [],
+  },
+  default: [],
 });
 
 const User = mongoose.model("User", userModel);
