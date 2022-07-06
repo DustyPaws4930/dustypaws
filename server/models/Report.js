@@ -50,6 +50,10 @@ const ReportSchema = new mongoose.Schema({
   phoneNumber: {
     type: Number,
   },
+  state: {
+    type: String,
+    default: "Submitted",
+  },
 });
 
 let ReportModel = mongoose.model("Report", ReportSchema);

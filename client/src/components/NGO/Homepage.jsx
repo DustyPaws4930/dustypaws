@@ -13,7 +13,7 @@ import { getApiPath } from "../../Common";
 import yellowIcon from "../images/Yellow_location.png";
 import redIcon from "../images/Red_Locaion.png";
 import greenIcon from "../images/Green_Location.png";
-import "./NGO-Home.css"
+import "./NGO-Home.css";
 
 const Homepage = (props) => {
   const [currentCoordinate, setCurrentCoordinates] = useState({
@@ -22,12 +22,11 @@ const Homepage = (props) => {
   });
   const [complaintsArr, setComplaintsArr] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(2);
-  const initialText='Change Status';
+  const initialText = "Change Status";
   const options = ["Accept", "Completed", "Spam"];
   const [isActive, setIsActive] = useState(false);
-  
 
-  function handleSelectedDrop(event){
+  function handleSelectedDrop(event) {
     // console.log(event.target.value);
     // setSelected(event.target.value);
   }
@@ -54,7 +53,7 @@ const Homepage = (props) => {
   let ShowOnMap = (e, coordinates) => {
     e.preventDefault();
     setCurrentCoordinates(coordinates);
-    setZoomLevel(10);
+    setZoomLevel(20);
   };
 
   // GetIcon
@@ -119,9 +118,7 @@ const Homepage = (props) => {
 
   return (
     <div className="NGO-Home">
-      <h2 className="NGO-Title">
-        Recent Complaints
-      </h2>
+      <h2 className="NGO-Title">Recent Complaints</h2>
       <div className="map-container">
         <WrappedMap
           isMarkerShown
@@ -146,7 +143,7 @@ const Homepage = (props) => {
                 key={idx}
                 className="cardWrapper"
                 onClick={(e) => {
-                  ShowOnMap(e, JSON.parse(complaint.location));
+                  ShowOnMap(e, complaint.location);
                 }}
               >
                 <div className="imageWrapper">
@@ -166,7 +163,15 @@ const Homepage = (props) => {
                   {/* <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>
                   <option value="Complete">Complete</option>
                   <option value="Spam">Spam</option> */}
-                  <AnimatedDropdown options={options} initialText={initialText}  />
+                  <AnimatedDropdown
+                    options={options}
+                    reportId={complaint._id}
+                    initialText={
+                      complaint.state === "Submitted"
+                        ? initialText
+                        : complaint.state
+                    }
+                  />
                   {/* {selected} */}
                 </div>
               </div>
