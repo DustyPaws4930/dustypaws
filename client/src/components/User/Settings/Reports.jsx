@@ -13,7 +13,6 @@ const Reports = () => {
       axios
         .get(fetchReportUrl)
         .then((res) => {
-          console.log(res.data);
           setUserComplaints(res.data.complaints);
         })
         .catch((err) => {
@@ -47,10 +46,8 @@ const Reports = () => {
     <div className="userReportContainer">
       <h3>Reported Cases</h3>
       <div className="CasesContainer">
-        <p>{RenderComplaints()}</p>
-        
-        <a  className="reportedcase-btn">View All</a>
-        
+        {RenderComplaints()}
+        <a className="reportedcase-btn">View All</a>
       </div>
     </div>
   );
