@@ -11,7 +11,8 @@ import SignUp from "./components/User/SignUp";
 import NGOSignUp from "./components/NGO/Signup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ToastContainer } from "react-toastify";
-import Pagination from './components/PaginationComponent/Pagination'
+import Pagination from "./components/PaginationComponent/Pagination";
+import AllEvents from "./components/Event/AllEvents";
 
 const App = () => {
   return (
@@ -20,7 +21,11 @@ const App = () => {
         <Routes>
           <Route path="/login" caseSensitive={false} element={<Login />} />
           <Route path="/signup" caseSensitive={false} element={<SignUp />} />
-          <Route path="/pagination" caseSensitive={false} element={<Pagination />} />
+          <Route
+            path="/pagination"
+            caseSensitive={false}
+            element={<Pagination />}
+          />
           <Route
             path="/NGO/signup"
             caseSensitive={false}
@@ -46,6 +51,11 @@ const App = () => {
             element={<EventForm />}
           />
           <Route path="/profile" caseSensitive={false} element={<Profile />} />
+          <Route
+            path="/whishlistedEvents"
+            caseSensitive={false}
+            element={<AllEvents />}
+          />
 
           <Route path="*" element={<Home />} />
         </Routes>
