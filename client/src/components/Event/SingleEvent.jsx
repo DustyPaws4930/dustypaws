@@ -64,18 +64,22 @@ const SingleEvent = (props) => {
               <p>{Moment(event.date).format("LLLL")}</p>
               <p>{event.address}</p>
               <p>{event.description}</p>
-              <div className="EventControls">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setEventWishlisted(!eventWishlisted);
-                    WishlistHandler(!eventWishlisted);
-                  }}
-                >
-                  {eventWishlisted ? "Wishlisted" : "Wishlist"}
-                </button>
-                <button>Book Event</button>
-              </div>
+              {loggerdInUserId && loggerdInUserId !== "" ? (
+                <div className="EventControls">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setEventWishlisted(!eventWishlisted);
+                      WishlistHandler(!eventWishlisted);
+                    }}
+                  >
+                    {eventWishlisted ? "Wishlisted" : "Wishlist"}
+                  </button>
+                  <button>Book Event</button>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
