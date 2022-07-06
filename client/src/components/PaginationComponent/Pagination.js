@@ -23,14 +23,12 @@ const Pagination = (props) => {
 
   const PerPage = props.PerPage ? props.PerPage : 6;
   const apiUrl = props.apiUrl ? props.apiUrl : "";
-  console.log(apiUrl);
   // Loading data
   useEffect(() => {
     fetchData();
   }, []);
   function fetchData() {
     axios.get(apiUrl).then((result) => {
-      console.log(result.data);
       setData(result.data);
     });
   }
@@ -43,8 +41,6 @@ const Pagination = (props) => {
   // 0,10,20,30,40....
 
   const offset = currentPage * PerPage;
-  console.log("offset", offset);
-
   const currentPageData = data
     .slice(offset, offset + PerPage)
     .map((result, index) => {

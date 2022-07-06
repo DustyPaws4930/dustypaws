@@ -65,7 +65,6 @@ const EventForm = () => {
     axios
       .get(fetchEventsURl)
       .then((res) => {
-        console.log(res.data);
         setFetchedEvents(res.data);
       })
       .catch((err) => {
@@ -91,6 +90,15 @@ const EventForm = () => {
     axios
       .post(registerEventUrl, eventData)
       .then((res) => {
+        setEventData({
+          title: "",
+          description: "",
+          address: "",
+          date: new Date().toLocaleDateString("en-CA"),
+          price: "",
+          createdBy: "",
+          Image: "",
+        });
         toast.success(res.data.message, {
           position: "top-center",
           autoClose: 1000,
@@ -188,12 +196,8 @@ const EventForm = () => {
                 onChange={(e) => {
                   HandleInputChange(e);
                 }}
-                name="eventDate"
+                name="date"
               />
-            </div>
-            <div className="event-form">
-              <label>Time:</label>
-              <input type="time" name="eventTime" />
             </div>
             <div className="event-form">
               <label>price</label>
