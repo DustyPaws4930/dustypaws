@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ToastContainer } from "react-toastify";
 import Pagination from "./components/PaginationComponent/Pagination";
 import AllEvents from "./components/Event/AllEvents";
+import AllReports from "./components/Complaint/AllReports";
 
 const App = () => {
   return (
@@ -56,7 +57,11 @@ const App = () => {
             caseSensitive={false}
             element={<AllEvents />}
           />
-
+          <Route
+            path="/allReports"
+            caseSensitive={false}
+            element={<AllReports />}
+          />
           <Route path="*" element={<Home />} />
         </Routes>
       </Router>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { getApiPath, getLoggedInUser } from "../../../Common";
+import { Link } from "react-router-dom";
 
 const Reports = () => {
   const [userComplaints, setUserComplaints] = useState([]);
@@ -47,7 +48,10 @@ const Reports = () => {
       <h3>Reported Cases</h3>
       <div className="CasesContainer">
         {RenderComplaints()}
-        <a className="reportedcase-btn">View All</a>
+
+        <Link to="/allReports">
+          View All
+        </Link>
       </div>
     </div>
   );
