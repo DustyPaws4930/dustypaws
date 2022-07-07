@@ -120,7 +120,7 @@ html {
 }
 hr {
   width: 50%;
-  text-align: center;
+  margin: auto;
   margin-bottom: 5em;
 }
 .btn-eventt-details {

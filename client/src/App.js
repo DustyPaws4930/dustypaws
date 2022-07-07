@@ -14,6 +14,7 @@ import NGOSignUp from "./components/NGO/Signup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ToastContainer } from "react-toastify";
 import Pagination from './components/PaginationComponent/Pagination'
+import Donate from "./components/Donate/Donate";
 
 const App = () => {
   return (
@@ -35,6 +36,8 @@ const App = () => {
           <Route path="/report" caseSensitive={false} element={<Home />} />
 
           <Route path="/event" caseSensitive={false} element={<Event />} />
+
+          <Route path="/donate" caseSensitive={false} element={<Donate />} />
 
           <Route
             path="/singleEvent"

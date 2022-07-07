@@ -13,6 +13,7 @@ import Report from "../Complaint/Report";
 import PieChart from "../Charts/PieChart";
 import UserData from "../../Data";
 import Confirmation from "../Complaint/Confirmation";
+import { Link } from "react-router-dom";
 const HomePage = (props) => {
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.month),
@@ -65,7 +66,7 @@ const HomePage = (props) => {
             consectetur adipisicing elit. Amet quaerat, accusamus molestiae
             alias ab aspernatur magni dolor sit ut qui!
           </p>
-          <button id="donate">Donate</button>
+          <Link to='/donate'><button id="donate">Donate</button></Link>
         </div>
       </section>
       <section className="features">
