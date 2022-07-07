@@ -101,20 +101,6 @@ const Event = (props) => {
         setUpcomingEvents(upcoingData);
       })
       .catch((error) => console.log(error));
-
-    // Code Commented as per new senario: Showing static Data
-    // let ourPartnersURL = getApiPath() + "user/getNGOUsers";
-    // axios
-    //   .get(ourPartnersURL)
-    //   .then((res) => {
-    //     let ngoUsers = res.data.filter((userData) => {
-    //       return userData.role === "ngo";
-    //     });
-    //     setAllPartners(ngoUsers);
-    //   })
-    //   .catch((err) => {
-    //     console.log(`Error occured: ${err}`);
-    //   });
   }, []);
 
   const TogglePopUp = () => {

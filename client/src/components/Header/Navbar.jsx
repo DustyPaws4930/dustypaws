@@ -26,7 +26,6 @@ const Navbar = (props) => {
   // }
 
   function handleDropDown(option) {
-    console.log(`Navbar`, option);
     switch (option) {
       case "Event":
         navigate("/event", { replace: true });

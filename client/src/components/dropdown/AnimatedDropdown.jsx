@@ -12,35 +12,36 @@ const AnimatedDropdown = (props) => {
   const [selected, setSelected] = useState(props.initialText);
   // const options = ["Accept", "Completed", "Spam"];
 
-  function handleDropDown(event) {
+  function handleItemSelect(event) {
     setSelected(event.target.textContent);
     setIsActive(false);
     if (props.onOptionSelect) {
       props.onOptionSelect(event.target.textContent);
+    } else {
+      let updateComplaintUrl =
+        getApiPath() + `complaint/updateById/${props.reportId}`;
+      axios
+        .patch(updateComplaintUrl, {
+          state: event.target.textContent,
+        })
+        .then((res) => {
+          setToken(res.data.user);
+          toast.success(res.data.message, {
+            position: "top-center",
+            autoClose: 500,
+            hideProgressBar: false,
+            closeOnClick: true,
+          });
+        })
+        .catch((err) => {
+          toast.error(err.message, {
+            position: "top-center",
+            autoClose: 500,
+            hideProgressBar: false,
+            closeOnClick: true,
+          });
+        });
     }
-    let updateComplaintUrl =
-      getApiPath() + `complaint/updateById/${props.reportId}`;
-    axios
-      .patch(updateComplaintUrl, {
-        state: event.target.textContent,
-      })
-      .then((res) => {
-        setToken(res.data.user);
-        toast.success(res.data.message, {
-          position: "top-center",
-          autoClose: 500,
-          hideProgressBar: false,
-          closeOnClick: true,
-        });
-      })
-      .catch((err) => {
-        toast.error(err.message, {
-          position: "top-center",
-          autoClose: 500,
-          hideProgressBar: false,
-          closeOnClick: true,
-        });
-      });
   }
 
   return (
@@ -61,7 +62,7 @@ const AnimatedDropdown = (props) => {
               <div
                 key={idx}
                 id={idx}
-                onClick={handleDropDown}
+                onClick={handleItemSelect}
                 className="dropdown-item"
               >
                 {option}
