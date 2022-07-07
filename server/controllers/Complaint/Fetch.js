@@ -53,10 +53,22 @@ export const UpdateComplaintById = async (req, res) => {
 
       UserModel.findByIdAndUpdate(fetchedUser._id, fetchedUser, {
         new: true,
-      }).then((res) => {
-      });
-
-      res.status(200).json({ message: `Report Updated!` });
+      })
+        .then((user) => {
+          const token = jwt.sign(
+            {
+              user,
+            },
+            "Langara123"
+          );
+          res.status(200).json({ user: token, message: "Status Updated" });
+        })
+        .catch((err) => {
+          console.log(err);
+          res
+            .status(500)
+            .json({ message: `Error occured while updating State ${err}` });
+        });
     }
   } catch (err) {
     console.log(err);
