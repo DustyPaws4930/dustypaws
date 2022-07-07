@@ -18,12 +18,15 @@ const AnimatedDropdown = (props) => {
     if (props.onOptionSelect) {
       props.onOptionSelect(event.target.textContent);
     }
-
     let updateComplaintUrl =
       getApiPath() + `complaint/updateById/${props.reportId}`;
     axios
-      .patch(updateComplaintUrl, { state: event.target.textContent })
+      .patch(updateComplaintUrl, {
+        state: event.target.textContent,
+      })
       .then((res) => {
+        console.log("asds");
+
         toast.success(res.data.message, {
           position: "top-center",
           autoClose: 500,

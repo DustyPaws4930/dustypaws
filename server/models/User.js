@@ -24,8 +24,7 @@ let userModel = mongoose.Schema({
     type: String,
   },
   rewardsEarned: {
-    type: Number,
-    default: 0,
+    type: [],
   },
   role: {
     type: String,
@@ -35,7 +34,6 @@ let userModel = mongoose.Schema({
     type: Array,
     default: [],
   },
-  default: [],
 });
 
 const User = mongoose.model("User", userModel);
