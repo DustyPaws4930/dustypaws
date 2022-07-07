@@ -34,7 +34,6 @@ const Info = () => {
     if (userToken !== null && userToken !== "undefined" && userToken !== "") {
       setLoggedInUser(userToken.user);
       setUserInfo(userToken.user);
-      console.log(userToken.user);
     }
   }, [setLoggedInUser]);
 
