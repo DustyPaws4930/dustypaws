@@ -102,7 +102,7 @@ img.leftCornerBg {
   /* transform: translate(-3rem, -3rem); */
   width: 300px;
   left: 0%;
-  top:20%;
+  /* top:20%; */
 }
 img.rightCornerBg {
   position: absolute;
