@@ -7,6 +7,8 @@ import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.svg";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import leftCorner from "../project-files/left_corner_login.svg"
+import rightCorner from "../project-files/right_corner_login.svg"
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -70,6 +72,8 @@ const SignUp = () => {
       <Header />
       <div className="sign-up-body">
         <div className="sign-up-image-section">
+          <img src={leftCorner} alt="leftCorner" className="leftCornerBg" />
+          <img src={rightCorner} alt="rightCorner" className="rightCornerBg" />
           <img src={LoginBg} alt="LoginBg" />
         </div>
         <div className="signup-form-wrapper">

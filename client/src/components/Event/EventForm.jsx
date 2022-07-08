@@ -12,6 +12,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import eventBGImage from "../project-files/event-bg-image.svg";
 import Pagination from "../PaginationComponent/Pagination.js";
+import mobileImg1 from "../project-files/report-mobile-top.svg"
+import mobileImg2 from "../project-files/report-mobile-bottom.svg"
+
 
 const EventForm = () => {
   const responsive = {
@@ -132,7 +135,8 @@ const EventForm = () => {
     <>
       <Header />
       <div className="event-ngo">
-        <h2> Events</h2>
+        <h2> Create Events</h2>
+        <img src={mobileImg1} alt="" className="mobile-img-1" />
         <div className="event-form-wrapper">
           <form
             action="/"
@@ -217,13 +221,14 @@ const EventForm = () => {
             </div>
           </form>
         </div>
+        <img src={mobileImg2} alt="" className="mobile-img-2" />
         <div className="event-bg-image">
           <img src={eventBGImage} alt="eventBGImage" />
         </div>
       </div>
       <div className="NGO-Events">
         <div>
-          <h3>Created Events</h3>
+          <h3 className="NGO-Events-header">Created Events</h3>
         </div>
         <Pagination apiUrl={fetchEventsURl} />
       </div>

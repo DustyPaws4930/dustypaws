@@ -288,7 +288,7 @@ hr {
 /* event page NGO */
 
 .event-form-wrapper {
-  max-width: 400px;
+  width: 350px;
 }
 
 .event-form {
@@ -296,7 +296,7 @@ hr {
   padding: 20px;
   flex-direction: column;
 }
-.event-form input{
+.event-form input {
   border: none;
   border-bottom: 2px solid gray;
 }
@@ -304,32 +304,30 @@ hr {
   font-size: 1.1rem;
 }
 
-.event-bg-image{
+.event-bg-image {
   max-width: 400px;
 }
-.event-bg-image img{
+.event-bg-image img {
   width: 90%;
   display: block;
   margin: auto;
 }
-.event-ngo h2{
+.event-ngo h2 {
   text-align: center;
   grid-column: 1/-1;
   margin: 2rem;
-  
 }
 
-.event-ngo button{
+.event-ngo button {
   padding: 10px;
   border: 1px solid var(--primary-button);
   background: var(--primary-button);
   color: white;
   font-weight: 600;
-
 }
-.event-ngo button:hover{
+.event-ngo button:hover {
   background-color: white;
-  transition: .3s;
+  transition: 0.3s;
   color: var(--primary-button);
 }
 
@@ -341,7 +339,42 @@ hr {
   grid-column: 1/-1;
 }
 
-.NGO-Events{
+.NGO-Events {
   max-width: 90%;
   margin: auto;
+}
+.mobile-img-1, .mobile-img-2{
+  display: none;
+}
+
+.NGO-Events-header {
+  margin: 1rem;
+}
+
+@media screen and (max-width: 1100px) {
+  .NGO-Events .pagination-component {
+    grid-template-columns: 1fr 1fr;
+  }
+  .event-bg-image {
+    display: none;
+  }
+  .event-ngo {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .mobile-img-1, .mobile-img-2{
+    display: block;
+    max-width: 70%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .NGO-Events .pagination-component {
+    grid-template-columns: 1fr;
+  }
+  .event-ngo {
+    max-width: unset;
+  }
+  
 }

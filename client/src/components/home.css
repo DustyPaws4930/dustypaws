@@ -1,7 +1,7 @@
 section.landing {
   position: relative;
   /* background-color: aqua; */
-  background: url(../components/project-files/hero_image.png);
+  background: url(../components/project-files/her.svg);
   height: 500px;
   object-fit: cover;
   background-size: 100% 100%;
@@ -10,14 +10,18 @@ section.landing {
 }
 
 h4.landing-text {
-  width: 400px;
-  margin: 1rem auto 3rem auto;
+  width: 600px;
+  /* margin: 1rem auto 3rem auto; */
   text-align: center;
   font-size: 1.5rem;
+  padding: 8rem 2rem 3rem 2rem;
 }
-/* section button{
-    position: absolute;
-} */
+
+.reportCaseContainer {
+  width: 600px;
+  display: flex;
+  justify-content: center;
+}
 
 section > button {
   position: absolute;
@@ -36,6 +40,9 @@ section.statistics {
 }
 section.statistics > div {
   margin: 2rem;
+}
+.description p {
+  margin: 2rem 1rem;
 }
 section.statistics h4,
 section.statistics h3 {
@@ -80,11 +87,6 @@ section.features {
   align-items: center;
   position: relative;
 }
-.reportCaseContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 #report-case {
   background-color: var(--secondary-color);
@@ -100,6 +102,7 @@ a#report-case:hover {
 }
 
 section .feature-subsection1 {
+  padding: 2rem 1rem;
   flex-basis: 90%;
   border-radius: 0 272.5px 272.5px 0;
   background: var(--primary-color);
@@ -121,7 +124,7 @@ section .feature-subsection1 {
 .featurecard {
   background: #fffcf3;
   max-width: 200px;
-  padding: 2rem;
+  padding: 1.7rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -129,6 +132,7 @@ section .feature-subsection1 {
 }
 .featurecard p {
   text-align: center;
+  font-weight: 600;
 }
 .img-container {
   max-width: 150px;
@@ -137,13 +141,13 @@ section .feature-subsection1 {
   position: absolute;
 }
 #card1 > .img-container {
-  transform: translateY(-100px);
+  transform: translateY(-85px);
 }
 #card2 > .img-container {
-  transform: translateY(-80px);
+  transform: translateY(-105px);
 }
 #card3 > .img-container {
-  transform: translateY(-130px);
+  transform: translateY(-95px);
 }
 
 .feature-subsection2 {
@@ -287,12 +291,11 @@ section.report-wrapper .report-image1 {
   overflow: hidden;
 }
 img.report-image2 {
-  height: 100%;
   width: auto;
   position: absolute;
   right: -50%;
   overflow: hidden;
-  top: 15%;
+  bottom: -8%;
   z-index: 1;
 }
 
@@ -314,16 +317,28 @@ footer p {
 /* mobile view */
 @media screen and (max-width: 768px) {
   .report-image3,
-  .report-image2,
   .report-image1 {
     display: none;
+  }
+
+  .report-mobile1,
+  .report-mobile2 {
+    display: block;
+    width: 65%;
+  }
+  .report-mobile2 {
+    display: block;
+  }
+  img.report-image2 {
+    right: 0;
+    bottom: -2%;
   }
   .header-wrapper {
     flex-direction: column;
   }
   section.landing {
-    height: 350px;
-    background: url(../components/project-files/hero_image.png);
+    /* height: 350px; */
+    background: url(../components/project-files/hero-mobile.svg);
     object-fit: cover;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -331,8 +346,18 @@ footer p {
   h4.landing-text {
     width: unset;
     font-size: 1rem;
-    margin: 5rem 20%;
+    /* margin: 5rem 20%; */
   }
+  .reportCaseContainer {
+    width: unset;
+  }
+  section.statistics{
+    flex-direction: column;
+  }
+  p.btn-donate {
+    text-align: center;
+  }
+
   section .feature-subsection1 {
     display: flex;
     flex-direction: column;
@@ -341,10 +366,61 @@ footer p {
     border-radius: 10px;
     flex-basis: 100%;
     padding: 1rem;
+    padding-bottom: 10rem;
+    margin-bottom: 2rem;
   }
-  .circle {
+  /* .circle {
     display: none;
+  } */
+
+  /* Circles -------------------------------- Mobile*/
+
+  #circle1 {
+    right: 15%;
+    bottom: 25%;
+    top: unset;
   }
+  #circle2 {
+    right: 40%;
+    top: unset;
+    bottom: 7%;
+  }
+  #circle3 {
+    height: 30px;
+    width: 30px;
+    right: 55%;
+    top: unset;
+    bottom: 13%;
+  }
+  #circle4 {
+    height: 45px;
+    width: 45px;
+    right: 32%;
+    top: unset;
+    bottom: 14%;
+  }
+  #circle5 {
+    right: 10%;
+    top: unset;
+    bottom: 17%;
+    width: 30px;
+    height: 30px;
+  }
+  #circle6 {
+    height: 15px;
+    width: 15px;
+    right: 20%;
+    top: unset;
+    bottom: 10%;
+  }
+  #circle7 {
+    height: 15px;
+    width: 15px;
+    right: 65%;
+    top: unset;
+    bottom: 7%;
+  }
+
   .featurecard {
     margin: 4rem;
   }

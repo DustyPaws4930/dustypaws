@@ -8,6 +8,7 @@
   margin: auto;
   position: relative;
   height: 100%;
+  padding: 3rem 3rem;
 }
 .sign-up-image-section {
   grid-row: 1/3;
@@ -19,6 +20,7 @@
   grid-template-columns: 3fr 2fr;
   justify-items: center;
   align-items: center;
+  gap: 1rem;
 }
 .signup-form-wrapper {
   /* position: absolute; */
@@ -93,4 +95,18 @@
 
 .signup-footer h3 {
   grid-row: 2/3;
+}
+
+img.leftCornerBg {
+  position: absolute;
+  /* transform: translate(-3rem, -3rem); */
+  width: 300px;
+  left: 0%;
+  /* top:20%; */
+}
+img.rightCornerBg {
+  position: absolute;
+  width: 300px;
+  bottom: 0;
+  right: 35%;
 }

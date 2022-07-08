@@ -153,7 +153,7 @@ nav ul .user-profile {
   .active {
     display: block;
     position: absolute;
-    top: 13%;
+    top: 15%;
     right: 5%;
     background: white;
     z-index: 99;

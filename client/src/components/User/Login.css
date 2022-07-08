@@ -80,3 +80,17 @@
 .login-footer span {
   color: #c1bfbf;
 }
+
+img.leftCornerBg {
+  position: absolute;
+  transform: translate(-3rem, -3rem);
+  width: 300px;
+  left: 0%;
+}
+img.rightCornerBg {
+  position: absolute;
+  /* width: 400ox; */
+  width: 300px;
+  bottom: 0;
+  right: 35%;
+}
