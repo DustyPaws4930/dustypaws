@@ -192,20 +192,32 @@ let Report = (props) => {
 
           <div className="labelInputWrapper">
             <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={reportData.name}
-              onChange={(e) => onInputChange(e)}
-              placeholder="your name"
-            />
+            <div className="InputLinkWrapper">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                maxLength={28}
+                value={reportData.name}
+                onChange={(e) => onInputChange(e)}
+                placeholder="your name"
+              />
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  setReportData({ ...reportData, ["name"]: "Anonymous" });
+                }}
+              >
+                Set Anonymous
+              </a>
+            </div>
           </div>
           <div className="labelInputWrapper">
             <label>Phone Number</label>
             <input
               type="tel"
               name="phoneNumber"
+              maxLength={10}
               id="phoneNumber"
               value={reportData.phoneNumber}
               onChange={(e) => onInputChange(e)}

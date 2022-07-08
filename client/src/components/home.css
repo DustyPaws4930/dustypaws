@@ -4,7 +4,7 @@ section.landing {
   background: url(../components/project-files/her.svg);
   height: 500px;
   object-fit: cover;
-  background-size: 100% 100%;
+  background-size: 100%;
   background-repeat: no-repeat;
   /* background-repeat:repeat-x; */
 }
@@ -103,7 +103,7 @@ a#report-case:hover {
 
 section .feature-subsection1 {
   padding: 2rem 1rem;
-  flex-basis: 90%;
+  flex-basis: 89%;
   border-radius: 0 272.5px 272.5px 0;
   background: var(--primary-color);
   padding-left: 5%;
@@ -234,7 +234,7 @@ section.newsletter {
 section .newsletter-wrapper {
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
   background: #fffaef;
-  padding: 6rem 4rem;
+  height: 250px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -259,13 +259,14 @@ section.newsletter input[type="email"]:focus {
 }
 section.newsletter div {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
+  justify-content: center;
 }
 
 section.newsletter button {
   padding: 5px 20px;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   background-color: var(--secondary-color);
   border-radius: 2px;
 }
@@ -351,9 +352,7 @@ footer p {
   .reportCaseContainer {
     width: unset;
   }
-  section.statistics{
-    flex-direction: column;
-  }
+
   p.btn-donate {
     text-align: center;
   }

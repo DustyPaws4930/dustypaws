@@ -19,7 +19,7 @@
 }
 
 .PopUpContent {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -27,32 +27,32 @@
   line-height: 1.5;
   /* background-color: white; */
   padding: 1rem;
-  border-radius: 5px
+  border-radius: 5px;
 }
-.closeBtnContainer, .enter-location-wrapper {
+.closeBtnContainer,
+.enter-location-wrapper {
   display: flex;
   justify-content: flex-end;
   padding: 1rem;
-  
 }
-.closeBtnContainer button{
-  padding: .6rem 1rem;
+.closeBtnContainer button {
+  padding: 0.6rem 1rem;
   color: var(--primary-color);
   font-weight: bolder;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
 
-.closeBtnContainer button:hover{
-  background-color: var( --red-color);
-  transition: .4s;
+.closeBtnContainer button:hover {
+  background-color: var(--red-color);
+  transition: 0.4s;
 }
 
-.enter-location-wrapper{
-margin: 1rem 5rem;
+.enter-location-wrapper {
+  margin: 1rem 5rem;
 }
 
-.MapWrapper{
-  margin:2rem 6rem;
+.MapWrapper {
+  margin: 2rem 6rem;
 }
 button.enter-lacation-btn {
   padding: 0.8rem 2.25rem;
@@ -62,8 +62,32 @@ button.enter-lacation-btn {
   font-weight: bold;
 }
 
-button.enter-lacation-btn:hover{
+button.enter-lacation-btn:hover {
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   position: cursor;
+}
+.ContainerElement {
+  height: 400px;
+  width: 600px;
+}
+@media screen and (max-width: 768px) {
+  .MapWrapper {
+    margin: 0;
+  }
+  .closeBtnContainer {
+    padding: 0;
+  }
+  .PopUpContent {
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .ContainerElement {
+    max-width: 100%;
+    max-height: 200px;
+  }
+  .OverlayShadow {
+    width: 100%;
+    height: 100%;
+  }
 }

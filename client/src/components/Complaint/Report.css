@@ -4,6 +4,8 @@
 
 .labelInputWrapper input {
   margin: 1rem;
+  padding: 0.2rem;
+  font-size: 1rem;
   border-bottom: 1px solid gray;
 }
 
@@ -170,4 +172,14 @@ section.report-complaint {
   width: 20ch;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.InputLinkWrapper {
+  display: grid;
+  position: relative;
+}
+.InputLinkWrapper a {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
 }

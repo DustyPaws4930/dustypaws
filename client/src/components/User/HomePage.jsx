@@ -109,7 +109,6 @@ const HomePage = (props) => {
         <div className="circle" id="circle5"></div>
         <div className="circle" id="circle6"></div>
         <div className="circle" id="circle7"></div>
-        <div className="circles"></div>
       </section>
       <section className="report-wrapper">
       <img src={reportMobile1} alt=" report3" className="report-mobile1" />
