@@ -91,31 +91,30 @@
     margin-top: 50px;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 500px) and (min-width: 300px){
     .donate-card{
         /* background-color: cadetblue; */
         display: grid;
-        /* grid-template-columns: 1fr 1fr; */
         grid-template-columns: repeat(1, 1fr);
-        grid-gap: 90px;
-        /* max-width: 1200px; */
-        margin: 0 50px ;
-        /* margin: 30px 100px; */
-        /* justify-content: center; */
+        grid-gap: 50px;
+        margin: 0 40px ;
     }
     .donate-card1{
         /* background-color: cadetblue; */
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        grid-gap: 90px;
-        margin:  0 50px;
+        grid-gap: 50px;
+        margin:  0 40px;
      
     }
     .donate-card-img1:nth-child(1){
-        margin-top: 90px;
+        margin-top: 50px;
+    }
+    .donate-card-img1:nth-child(2){
+        margin-top: 0;
     }
     .donate-card-img1:nth-child(4){
-        margin-bottom: 90px;
+        margin-bottom: 50px;
     }
     .donate-intro-container{
         /* background-color: aqua; */
@@ -125,6 +124,16 @@
     .card-load-more button{
         margin: 50px;
     }
-    
+    .donate-card-content{
+        color: white;
+        /* position: relative; */
+        padding: 20px;  
+    }
+    .donate-card-content h2{
+        margin: 20px;
+    }
+    .donate-card-content p{
+        margin:  20px;
+    }
     
 }
