@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import dayjs from "dayjs";
+
 let userModel = mongoose.Schema({
   username: {
     type: String,
@@ -31,9 +33,14 @@ let userModel = mongoose.Schema({
     type: String,
     default: "user",
   },
-  whistlist:{
-    type: []
-  }
+  whistlist: {
+    type: [],
+  },
+
+  createdAt: {
+    type: Date,
+    default: dayjs().format("YYYY-MM-DD"),
+  },
 });
 
 const User = mongoose.model("User", userModel);

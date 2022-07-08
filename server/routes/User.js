@@ -1,4 +1,5 @@
 import express from "express";
+import { GetNGOUserVisualizationData } from "../controllers/Complaint/Fetch.js";
 import {
   GetAllNGOUsers,
   GetUser,
@@ -19,6 +20,10 @@ router.post("/login", LoginValidation, Login);
 router.get("/:id", GetUser);
 router.patch("/update/:id", Update);
 router.patch("/whishlist/:id", TrackWhishlist);
+<<<<<<< Updated upstream
 router.get("/getAllUsers", GetAllNGOUsers);
+=======
+router.get("/ngodata", GetNGOUserVisualizationData);
+>>>>>>> Stashed changes
 
 export default router;

@@ -5,29 +5,6 @@ import UserModel from "../../models/User.js";
 
 import moment from "moment";
 
-export const GetReportByUserId = (req, res) => {
-  let { userId } = req.params;
-  ReportModel.find({ userId: userId }).then((complaints, err) => {
-    if (err) {
-      console.log("Error " + err);
-      res.status(500).json({ message: err.message });
-    } else {
-      res.status(200).json({ complaints });
-    }
-  });
-};
-
-export const GetAllComplaints = (req, res) => {
-  ReportModel.find({}).then((complaints, err) => {
-    if (err) {
-      console.log("Error " + err);
-      res.status(500).json({ message: err.message });
-    } else {
-      res.status(200).json({ complaints });
-    }
-  });
-};
-
 export const GetReportCount = (req, res) => {
   ReportModel.find({})
     .count()
@@ -36,6 +13,7 @@ export const GetReportCount = (req, res) => {
         console.log("Error " + err);
         res.status(500).json({ message: err.message });
       } else {
+        console.log("count " + count);
         res.status(200).json({ count });
       }
     });
@@ -46,9 +24,9 @@ export const GetNGOUserVisualizationData = async (req, res) => {
   const monthsArray = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
   const monthCOunt = {};
   monthsArray.forEach(element => {
-    const firstdate = moment().month(element).startOf("month").format("DD-MM-YYYY");
+    const firstdate = moment().month(element).startOf("month");
     console.log(firstdate);
-    const lastdate = moment().month(element).endOf("month").format("DD-MM-YYYY");
+    const lastdate = moment().month(element).endOf("month");
   console.log(lastdate);
   const count = UserModel.find({
     $and: [
@@ -60,8 +38,20 @@ export const GetNGOUserVisualizationData = async (req, res) => {
         },
       },
     ],
-  }).count();
-    monthCOunt[element] = count;
+  }).count().then((count, err) => {
+    if (err) {
+      console.log("Error " + err);
+      // res.status(500).json({ message: err.message });
+    } else {
+      console.log("count " + count);
+      monthCOunt[element] = count;
+        console.log("dewwwwwwwwwwwwwwwwwwwwwwwwwwwwww         ",monthCOunt);
+
+      // res.status(200).json({ count });
+    }
+  });;
+  // console.log(count);
+
 
   });
 
@@ -69,15 +59,17 @@ export const GetNGOUserVisualizationData = async (req, res) => {
     return new Date(year, month, 1).format("DD-MM-YYYY");
   }
 
-  const firstdate = moment().startOf("month").format("DD-MM-YYYY");
-  console.log(firstdate);
+  // const firstdate = moment().startOf("month").format("DD-MM-YYYY");
+  // console.log(firstdate);
 
-  const lastdate = moment().month().endOf("month").format("DD-MM-YYYY");
-  console.log(lastdate);
+  // const lastdate = moment().month().endOf("month").format("DD-MM-YYYY");
+  // console.log(lastdate);
+  // console.log("dewwwwwwwwwwwwwwwwwwwwwwwwwwwwww         ",monthCOunt);
   if (err) {
     console.log("Error " + err);
     res.status(500).json({ message: err.message });
   } else {
+
   res.status(200).json( monthCOunt );
   }
   

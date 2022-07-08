@@ -3,7 +3,9 @@ import { Register } from "../controllers/Complaint/Register.js";
 import ImageUpload from "../middlewares/ImageUpload.js";
 import {
   GetAllComplaints,
+  GetNGOUserVisualizationData,
   GetReportByUserId,
+  GetReportCount,
 } from "../controllers/Complaint/Fetch.js";
 const router = express.Router();
 
@@ -12,5 +14,6 @@ const router = express.Router();
 //All complaint routes
 router.post("/register", Register);
 router.get("/getReports/:userId", GetReportByUserId);
+router.get("/getReportCount/", GetReportCount);
 router.get("/fetch", GetAllComplaints);
 export default router;
