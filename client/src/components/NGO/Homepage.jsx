@@ -14,6 +14,7 @@ import yellowIcon from "../images/Yellow_location.png";
 import redIcon from "../images/Red_Locaion.png";
 import greenIcon from "../images/Green_Location.png";
 import "./NGO-Home.css";
+import { toast } from "react-toastify";
 
 const Homepage = (props) => {
   // default coordinates of Vancouver
@@ -107,6 +108,32 @@ const Homepage = (props) => {
     );
   }
 
+  function HandleComplaintDropDown(option, reportID) {
+    alert(reportID);
+    let updateComplaintUrl = getApiPath() + `complaint/updateById/${reportID}`;
+    axios
+      .patch(updateComplaintUrl, {
+        state: option,
+      })
+      .then((res) => {
+        toast.success(res.data.message, {
+          position: "top-center",
+          autoClose: 500,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.response.data.message, {
+          position: "top-center",
+          autoClose: 500,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+      });
+  }
+
   const WrappedMap = withScriptjs(withGoogleMap(Map));
 
   return (
@@ -128,6 +155,9 @@ const Homepage = (props) => {
         </div>
         <div className="cardsContainer">
           {complaintsArr.map((complaint, idx) => {
+            {
+              console.log(complaint._id);
+            }
             return (
               <div
                 key={idx}
@@ -161,6 +191,7 @@ const Homepage = (props) => {
                   <option value="Spam">Spam</option> */}
                   <AnimatedDropdown
                     options={options}
+                    HandleComplaintDropDown={HandleComplaintDropDown}
                     reportId={complaint._id}
                     initialText={
                       complaint.state === "Submitted"

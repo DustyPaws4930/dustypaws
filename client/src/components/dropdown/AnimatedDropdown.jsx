@@ -17,29 +17,9 @@ const AnimatedDropdown = (props) => {
     setIsActive(false);
     if (props.onOptionSelect) {
       props.onOptionSelect(event.target.textContent);
+    } else if (props.HandleComplaintDropDown) {
+      props.HandleComplaintDropDown(event.target.textContent, props.reportId);
     } else {
-      let updateComplaintUrl =
-        getApiPath() + `complaint/updateById/${props.reportId}`;
-      axios
-        .patch(updateComplaintUrl, {
-          state: event.target.textContent,
-        })
-        .then((res) => {
-          toast.success(res.data.message, {
-            position: "top-center",
-            autoClose: 500,
-            hideProgressBar: false,
-            closeOnClick: true,
-          });
-        })
-        .catch((err) => {
-          toast.error(err.message, {
-            position: "top-center",
-            autoClose: 500,
-            hideProgressBar: false,
-            closeOnClick: true,
-          });
-        });
     }
   }
 
