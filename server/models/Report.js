@@ -33,6 +33,11 @@ const ReportSchema = new mongoose.Schema({
     type: Object,
   },
 
+  address: {
+    type: String,
+    default: "",
+  },
+
   priority: {
     type: Number,
     min: 0,

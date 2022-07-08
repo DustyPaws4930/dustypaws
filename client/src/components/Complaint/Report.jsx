@@ -8,8 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import Geocode from "react-geocode";
 
 let Report = (props) => {
+  Geocode.setLanguage("en");
+  Geocode.setApiKey("AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw");
   // ***Declare all variables here***
   let PopUpContent;
   let [popUp, setPopUp] = useState(false);
@@ -21,6 +24,7 @@ let Report = (props) => {
     priority: 0,
     phoneNumber: "",
     location: {},
+    address: "",
     userId: "",
   });
   let [fileName, setFileName] = useState("");
@@ -42,6 +46,7 @@ let Report = (props) => {
     lat: "",
     long: "",
   });
+  const [currentAddress, setCurrentAddress] = useState("");
   // To show the popup
   const TogglePopUp = () => {
     setPopUp(!popUp);
@@ -54,6 +59,17 @@ let Report = (props) => {
         long: position.coords.longitude,
       });
 
+      Geocode.fromLatLng(
+        position.coords.latitude,
+        position.coords.longitude
+      ).then(
+        (response) => {
+          setCurrentAddress(response.results[0].formatted_address);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
       TogglePopUp();
     });
   };
@@ -70,6 +86,8 @@ let Report = (props) => {
     e.preventDefault();
 
     reportData.location = currentCoordinate;
+    reportData.address = currentAddress;
+
     console.log(reportData);
 
     const reportUrl = getApiPath() + "complaint/register";

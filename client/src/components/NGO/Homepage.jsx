@@ -17,11 +17,11 @@ import "./NGO-Home.css";
 
 const Homepage = (props) => {
   const [currentCoordinate, setCurrentCoordinates] = useState({
-    lat: 20,
-    long: 20,
+    lat: 49.28273,
+    long: -123.120735,
   });
   const [complaintsArr, setComplaintsArr] = useState([]);
-  const [zoomLevel, setZoomLevel] = useState(2);
+  const [zoomLevel, setZoomLevel] = useState(10);
   const initialText = "Change Status";
   const options = ["Accept", "Completed", "Spam"];
   const [isActive, setIsActive] = useState(false);
@@ -32,13 +32,6 @@ const Homepage = (props) => {
   }
 
   useEffect((e) => {
-    // navigator.geolocation.getCurrentPosition(function (position) {
-    //   setCurrentCoordinates({
-    //     lat: position.coords.latitude,
-    //     long: position.coords.longitude,
-    //   });
-    // });
-
     let complaintsUrl = getApiPath() + "complaint/fetch";
     axios
       .get(complaintsUrl)
@@ -138,6 +131,9 @@ const Homepage = (props) => {
         </div>
         <div className="cardsContainer">
           {complaintsArr.map((complaint, idx) => {
+            {
+              console.log(complaint);
+            }
             return (
               <div
                 key={idx}
@@ -158,6 +154,7 @@ const Homepage = (props) => {
                   />
                 </div>
                 <h4>{complaint.title}</h4>
+                <p>{complaint.address !== "" ? complaint.address : ""}</p>
                 <p>{complaint.description}</p>
                 <div className="status-dropdown">
                   {/* <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>

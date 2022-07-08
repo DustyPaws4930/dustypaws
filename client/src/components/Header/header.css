@@ -46,10 +46,6 @@ nav a {
   text-decoration: none;
 }
 
-.nav-dropDown {
-  margin: 1rem;
-}
-
 .nav-dropDown .Animated-dropdown {
   width: 110px;
 }
