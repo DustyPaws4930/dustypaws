@@ -109,7 +109,6 @@ const Homepage = (props) => {
   }
 
   function HandleComplaintDropDown(option, reportID) {
-    alert(reportID);
     let updateComplaintUrl = getApiPath() + `complaint/updateById/${reportID}`;
     axios
       .patch(updateComplaintUrl, {
@@ -122,6 +121,9 @@ const Homepage = (props) => {
           hideProgressBar: false,
           closeOnClick: true,
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
       })
       .catch((err) => {
         console.log(err);
@@ -155,9 +157,6 @@ const Homepage = (props) => {
         </div>
         <div className="cardsContainer">
           {complaintsArr.map((complaint, idx) => {
-            {
-              console.log(complaint._id);
-            }
             return (
               <div
                 key={idx}
