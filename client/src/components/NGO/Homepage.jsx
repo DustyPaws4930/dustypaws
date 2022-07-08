@@ -16,6 +16,7 @@ import greenIcon from "../images/Green_Location.png";
 import "./NGO-Home.css";
 
 const Homepage = (props) => {
+  // default coordinates of Vancouver
   const [currentCoordinate, setCurrentCoordinates] = useState({
     lat: 49.28273,
     long: -123.120735,
@@ -26,22 +27,21 @@ const Homepage = (props) => {
   const options = ["Accept", "Completed", "Spam"];
   const [isActive, setIsActive] = useState(false);
 
-  function handleSelectedDrop(event) {
-    // console.log(event.target.value);
-    // setSelected(event.target.value);
-  }
-
-  useEffect((e) => {
-    let complaintsUrl = getApiPath() + "complaint/fetch";
-    axios
-      .get(complaintsUrl)
-      .then((res) => {
-        setComplaintsArr(res.data.complaints);
-      })
-      .catch((err) => {
-        console.log("Error :" + err);
-      });
-  }, []);
+  useEffect(
+    (e) => {
+      let complaintsUrl = getApiPath() + "complaint/fetch";
+      axios
+        .get(complaintsUrl)
+        .then((res) => {
+          setComplaintsArr(res.data.complaints);
+          console.log(res.data.complaints);
+        })
+        .catch((err) => {
+          console.log("Error :" + err);
+        });
+    },
+    [setComplaintsArr]
+  );
 
   let ShowOnMap = (e, coordinates) => {
     e.preventDefault();
@@ -125,19 +125,18 @@ const Homepage = (props) => {
       <div className="complaintContainer">
         <div className="headerSettingContainer">
           <h1>Complaints</h1>
-          <div className="settingContainer">
-            <h3>Setting Popup</h3>
-          </div>
         </div>
         <div className="cardsContainer">
           {complaintsArr.map((complaint, idx) => {
-            {
-              console.log(complaint);
-            }
             return (
               <div
                 key={idx}
                 className="cardWrapper"
+                id={
+                  complaint.state === "Completed" || complaint.state === "Spam"
+                    ? "setCompleted"
+                    : ""
+                }
                 onClick={(e) => {
                   ShowOnMap(e, complaint.location);
                 }}
@@ -154,7 +153,7 @@ const Homepage = (props) => {
                   />
                 </div>
                 <h4>{complaint.title}</h4>
-                <p>{complaint.address !== "" ? complaint.address : ""}</p>
+                <p>{complaint.address}</p>
                 <p>{complaint.description}</p>
                 <div className="status-dropdown">
                   {/* <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>

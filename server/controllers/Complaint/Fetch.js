@@ -61,7 +61,6 @@ export const UpdateComplaintById = async (req, res) => {
             },
             "Langara123"
           );
-          res.status(200).json({ user: token, message: "Status Updated" });
         })
         .catch((err) => {
           console.log(err);
@@ -70,6 +69,7 @@ export const UpdateComplaintById = async (req, res) => {
             .json({ message: `Error occured while updating State ${err}` });
         });
     }
+    res.status(200).json({ message: "Status Updated" });
   } catch (err) {
     console.log(err);
     res

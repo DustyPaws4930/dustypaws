@@ -25,7 +25,6 @@ const AnimatedDropdown = (props) => {
           state: event.target.textContent,
         })
         .then((res) => {
-          setToken(res.data.user);
           toast.success(res.data.message, {
             position: "top-center",
             autoClose: 500,

@@ -236,7 +236,7 @@ let Report = (props) => {
 
               <button
                 className="priority-flag high"
-                id="2"
+                id="1"
                 name="priorityLow"
                 type="button"
                 onClick={(e) => {
@@ -248,7 +248,7 @@ let Report = (props) => {
 
               <button
                 className="priority-flag moderate"
-                id="1"
+                id="2"
                 name="priorityModerate"
                 type="button"
                 onClick={(e) => {

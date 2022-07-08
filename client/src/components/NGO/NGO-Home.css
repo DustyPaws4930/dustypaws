@@ -49,16 +49,10 @@ div.NGO-Home .map-container {
   background: var(--primary-color);
   border: 2px solid var(--secondary-color);
 }
-
-/* .cardWrapper select option:nth-child(1){
-    background: var(--secondary-color);
+#setCompleted {
+  pointer-events: none;
+  background-color: #eee;
 }
-.cardWrapper select option:nth-child(2){
-    background: var(--primary-color);
-}
-.cardWrapper select option:nth-child(3){
-    background: var(--red-color);
-} */
 
 .cardsContainer .cardWrapper .imageWrapper {
   margin: 1rem;
@@ -85,5 +79,5 @@ div.NGO-Home .map-container {
 @media screen and (max-width: 768px) {
   div.NGO-Home .map-container {
     padding: 2rem 1rem;
-}
+  }
 }
