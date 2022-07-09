@@ -1,4 +1,5 @@
 import React from "react";
+import wishlistImage from '../../images/WishlistIcon.png'
 
 const Whislist = () => {
   return (
@@ -8,26 +9,26 @@ const Whislist = () => {
         <div className="eventWrapper">
           <p>Event Name</p>
           <img
-            src="https://cdn-icons.flaticon.com/png/512/3870/premium/3870922.png?token=exp=1656292606~hmac=e532c4c424c575976bbc84804db2e8dd"
+            src={wishlistImage}
             alt=""
           />
         </div>
         <div className="eventWrapper">
           <p>Event Name</p>
           <img
-            src="https://cdn-icons.flaticon.com/png/512/3870/premium/3870922.png?token=exp=1656292606~hmac=e532c4c424c575976bbc84804db2e8dd"
+            src={wishlistImage}
             alt=""
           />
         </div>
         <div className="eventWrapper">
           <p>Event Name</p>
           <img
-            src="https://cdn-icons.flaticon.com/png/512/3870/premium/3870922.png?token=exp=1656292606~hmac=e532c4c424c575976bbc84804db2e8dd"
+            src={wishlistImage}
             alt=""
           />
         </div>
 
-        <a className="wishlist-btn">View All</a>
+       <div className="wish-btn"> <p className="wishlist-btn">View All</p></div>
       </div>
     </div>
   );

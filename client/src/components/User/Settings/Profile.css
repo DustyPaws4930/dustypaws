@@ -30,25 +30,41 @@ html{
 .userInfoContainer form{
     display: flex;
     flex-direction: column;
-    padding:  0 20px;
+    justify-content: center;
 }
+
 .headerContainer{
+    /* background-color: aqua; */
     text-align: center;
+    align-content: center;
+    padding: 25px;
 }
 .formDetails{
     /* background-color: yellow; */
     display: flex;
     justify-content: center;
+    /* margin: 20px; */
 }
 .userImage{
-    background-image: url(../../images/User_Profile_Image.png);
-    width: 100%;
-    height: 300px;
+    /* background-image: url(../../images/User_Profile_Image.png); */
+    display:  block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 100px;
+}
+.formWrapper h3{
+    padding: 5px 20px;
+    margin-top: 40px;
+}
+.labelInputWrapper input{
+    background-color: rgba(232, 200, 122, 0);
+    border: 0;
+    border-bottom: 1px solid black !important;
     display: flex;
-    justify-content: center;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+.containerInfoWrapper h4{
+    margin: 5px 20px;
 }
 .UserUpdateBtn{
     /* background-color: yellow; */
@@ -57,13 +73,24 @@ html{
     text-align: center;
     padding-bottom: 30px;
 }
+.labelInputWrapper{
+    margin: 10px 5px;
+}
+.basicInfoWrapper h4{
+    margin: 30px 20px;
+}
+
+.security h4{
+    margin: 30px 20px;
+    display: flex;
+}
 .UserUpdateBtn input{
     background-color: #deb141;
     padding: 20px 100px;
     font-weight: bold;
 }
 
-/* ==================================== */
+/* ===========Rewards========================= */
 
 .userRewardsContainer{
     background-color: rgba(105, 140, 135, .5);
@@ -106,7 +133,7 @@ html{
     padding: 20px 50px;
 }
 
-/* ======================================== */
+/* =============Report=========================== */
 
 .userReportContainer{
     background-color: rgba(105, 140, 135, .5);
@@ -119,9 +146,8 @@ html{
     /* text-align: center; */
     display: inline-block;
     /* background-color: aqua; */
-    /* justify-content: center; */
-    /* align-items: center; */
     text-align: center;
+    padding-top: 15px;
     height: 5vh;
 }
 .CasesContainer{
@@ -139,12 +165,16 @@ html{
 .CasesContainer p{
     text-align: center;
 }
-.reportedcase-btn{
-    margin: 0 20px;
+.report-btn p{
     text-align: right;
+    /* margin: 0 20px; */
+    font-weight: bold;
+    padding-left: 10px;
+    /* padding-top: 20px; */
+    
 }
 
-/* ========================================== */
+/* ===============WishList=========================== */
 
 .wishlistEvents{
     background-color: rgba(232, 200, 122, 0.4);
@@ -166,26 +196,31 @@ html{
 }
 .eventWrapper{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
     margin: 20px;
     border: 2px solid #deb141;
     border-radius: 2px;
-    padding: 20px 0;
+    /* padding: 20px 0; */
 
 
 }
 .eventWrapper img{
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 100%;
     /* margin: auto; */
 
 }
 .eventContainer p{
     font-weight: bold;
+    padding-left: 10px;
 }
-.wishlistEvents a{
+.wish-btn{
+    margin-top: 20px;
+}
+.wish-btn p{
     text-align: right;
     margin: 0 20px;
-    /* padding: 20px; */
+    /* padding-top: 20px; */
     
 }

@@ -48,8 +48,9 @@ const Reports = () => {
       <h3>Reported Cases</h3>
       <div className="CasesContainer">
         <p>{RenderComplaints()}</p>
-        
-        <a  className="reportedcase-btn">View All</a>
+        {userComplaints ? null :
+        <div className="report-btn"> <p>View All</p></div>
+        }
         
       </div>
     </div>

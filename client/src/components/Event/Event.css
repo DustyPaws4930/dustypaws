@@ -117,6 +117,7 @@ html {
   border: none;
   color: black;
   font-weight: bolder;
+  margin-top: 15px;
 }
 hr {
   width: 50%;
@@ -154,20 +155,13 @@ hr {
   /* background-color: #295b53; */
   width: 100%;
   height: auto;
-  /* vertical-align: auto; */
-  /* padding: 20px; */
-  /* text-align: center; */
-  /* position: relative; */
 }
 .owl-theme {
-  /* margin: 20px; */
-  /* margin: auto; */
   text-align: center;
-  /* margin-right: -100px; */
 }
 .owl-item.active {
   margin: 0;
-  /* padding: -50px; */
+
 }
 .owl-item.active.center .item {
   transform: scale(1);
@@ -218,13 +212,13 @@ hr {
 }
 
 /* #295B53 */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 389px) and (min-width: 360px){
   .featured-event {
     /* background-color: cadetblue; */
     display: flex;
     margin: 10px;
     padding: 0;
-    height: 85vh;
+    height: 100vh;
   }
   .featured-event-heading {
     margin: 0;
@@ -238,7 +232,119 @@ hr {
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 40px;
+    top: 80px;
+    /* change here for image placement */
+    margin: 10px;
+    border: 5px solid #295b53;
+    border-radius: 5px;
+    padding: 200px 30px 20px 30px;
+    /* change here for image placement */
+  }
+  .featured-event-img {
+    /* visibility: hidden; */
+    position: absolute;
+    left: 10%;
+    top: 250px;
+    /* overflow: hidden; */
+    width: 80%;
+    height: 35%;
+    border-radius: 10px;
+    background-image: url("../images/Event_Feature_Hero.jpg");
+    padding-bottom: 20px;
+  }
+  .featured-event-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .featured-event-description {
+    text-align: center;
+  }
+  .btn-feature-event {
+    display: flex;
+    justify-content: center;
+  }
+}
+/* event page NGO */
+
+.event-form-wrapper {
+  max-width: 400px;
+}
+
+.event-form {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+.event-form input {
+  border: none;
+  border-bottom: 2px solid gray;
+}
+.event-form label {
+  font-size: 1.1rem;
+}
+
+.event-bg-image {
+  max-width: 400px;
+}
+.event-bg-image img {
+  width: 90%;
+  display: block;
+  margin: auto;
+}
+.event-ngo h2 {
+  text-align: center;
+  grid-column: 1/-1;
+  margin: 2rem;
+}
+
+.event-ngo button {
+  padding: 10px;
+  border: 1px solid var(--primary-button);
+  background: var(--primary-button);
+  color: white;
+  font-weight: 600;
+}
+.event-ngo button:hover {
+  background-color: white;
+  transition: 0.3s;
+  color: var(--primary-button);
+}
+
+.NGO-Events .pagination-component {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.NGO-Events ul.pagination-nav-container {
+  grid-column: 1/-1;
+}
+
+.NGO-Events {
+  max-width: 90%;
+  margin: auto;
+}
+@media only screen and (max-width: 500px) and (min-width: 390px){
+  .featured-event {
+    /* background-color: cadetblue; */
+    display: flex;
+    margin: 10px;
+    padding: 0;
+    height: 90vh;
+  }
+  .featured-event-heading {
+    margin: 0;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .Event-Mobile {
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 100px;
     /* change here for image placement */
     margin: 10px;
     border: 5px solid #295b53;
@@ -256,10 +362,13 @@ hr {
     height: 35%;
     border-radius: 10px;
     background-image: url("../images/Event_Feature_Hero.jpg");
+    padding-bottom: 20px;
   }
   .featured-event-date {
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 20px 0;
   }
   .featured-event-description {
     text-align: center;

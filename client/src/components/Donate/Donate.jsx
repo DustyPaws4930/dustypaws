@@ -42,8 +42,8 @@ const Donate = (props) => {
           <div className="donate-card-img">
             <div className="donate-card-dark">
                 <div className="donate-card-content">
-                  <h2>People For Animal</h2>
-                  <p>We are dedicated to help stray animals across India we are providing our services across 20 states.</p>
+                  <h2>Sanjay Gandhi Animal Care</h2>
+                  <p>We save stray animals and also help people to adopt them</p>
                   <div className="card-btn"><button>Donate</button></div>
                 </div>
                
@@ -53,8 +53,8 @@ const Donate = (props) => {
           <div className="donate-card-img">
             <div className="donate-card-dark">
                 <div className="donate-card-content">
-                  <h2>People For Animal</h2>
-                  <p>We are dedicated to help stray animals across India we are providing our services across 20 states.</p>
+                  <h2>PETA India</h2>
+                  <p>Animals are not for our to experiment wear and entertainment or Abuse</p>
                   <div className="card-btn"><button>Donate</button></div>
                 </div>
                 {/* <div><button>Donate</button></div> */}
@@ -64,8 +64,8 @@ const Donate = (props) => {
           <div className="donate-card-img">
             <div className="donate-card-dark">
                 <div className="donate-card-content">
-                  <h2>People For Animal</h2>
-                  <p>We are dedicated to help stray animals across India we are providing our services across 20 states.</p>
+                    <h2>Animal Rahat</h2>
+                    <p>From helping terrified dogs, cats and wildlife trapped in deep. Open wells to staoping the abuse</p>
                   <div className="card-btn"><button>Donate</button></div>
                 </div>
                 {/* <div><button>Donate</button></div> */}
@@ -78,8 +78,8 @@ const Donate = (props) => {
                   <div className="donate-card-img1">
                   <div className="donate-card-dark">
                       <div className="donate-card-content">
-                        <h2>People For Animal</h2>
-                        <p>We are dedicated to help stray animals across India we are providing our services across 20 states.</p>
+                        <h2>Animal Rahat</h2>
+                        <p>From helping terrified dogs, cats and wildlife trapped in deep. Open wells to staoping the abuse</p>
                         <div className="card-btn"><button>Donate</button></div>
                       </div>
                   </div>

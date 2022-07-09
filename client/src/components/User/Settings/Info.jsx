@@ -4,7 +4,7 @@ import axios from "axios";
 import jwt from "jwt-decode";
 import { getApiPath, getToken, setToken } from "../../../Common";
 import { toast } from "react-toastify";
-// import { UserProfileImage } from "../../project-files/13.png"
+import UserProfileImage  from "../../project-files/13.png"
 
 const Info = () => {
   const [userInfo, setUserInfo] = useState({
@@ -82,14 +82,14 @@ const Info = () => {
           <h3>Test Username</h3>
         </div>
         <div className="userImage">
-          <img src="" alt="" />
+          <img src={UserProfileImage} alt="" />
         </div>
         <div className="formDetails">
           <div className="formWrapper">
             <h3>About</h3>
 
             <div className="containerInfoWrapper">
-              <h5>Contact Information</h5>
+              <h4>Contact Information</h4>
               <div className="labelInputWrapper">
                 <label htmlFor="username">Username</label>
                 <input
@@ -145,7 +145,7 @@ const Info = () => {
               </div>
             </div>
             <div className="basicInfoWrapper">
-              <h5>Basic Information</h5>
+              <h4>Basic Information</h4>
 
               <div className="labelInputWrapper">
                 <label htmlFor="dob">Date of Birth</label>
@@ -180,8 +180,8 @@ const Info = () => {
                 </select>
               </div>
             </div>
-            <div className="securityWrapper">
-              <h5>Security and Privacy</h5>
+            <div className="security">
+              <h4>Security and Privacy</h4>
 
               <div className="labelInputWrapper">
                 <label htmlFor="password">Update Password</label>
