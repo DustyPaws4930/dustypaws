@@ -92,14 +92,14 @@ const Navbar = (props) => {
 
     toast.warning("Logged out!!", {
       position: "top-center",
-      autoClose: 1000,
+      autoClose: 100,
       hideProgressBar: false,
       closeOnClick: true,
     });
 
     setTimeout(() => {
       window.location.href = "/";
-    }, 2200);
+    }, 500);
   };
 
   const ShowSignUpPopUp = (e) => {
