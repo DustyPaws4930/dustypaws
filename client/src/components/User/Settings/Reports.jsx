@@ -27,7 +27,7 @@ const Reports = () => {
   const RenderComplaints = () => {
     let loggedInUser = getLoggedInUser();
     if (loggedInUser !== "") {
-      return userComplaints.map((complaints, idx) => {
+      return userComplaints.splice(0, 3).map((complaints, idx) => {
         return (
           <div key={idx} className="caseWrapper">
             <h4>{complaints.title}</h4>
@@ -49,12 +49,10 @@ const Reports = () => {
   return (
     <div className="userReportContainer">
       <h3>Reported Cases</h3>
-      <div className="CasesContainer">
-        {RenderComplaints()}
-
-      </div>
-      <Link className="ViewAllBtn" to="/allReports">View All</Link>
-
+      <div className="CasesContainer">{RenderComplaints()}</div>
+      <Link className="ViewAllBtn" to="/allReports">
+        View All
+      </Link>
     </div>
   );
 };
