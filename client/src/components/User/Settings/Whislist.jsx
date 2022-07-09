@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getApiPath, getToken } from "../../../Common";
-
+import { getApiPath, getLoggedInUser, getToken } from "../../../Common";
+import WhishlistIcon from "../../images/WishlistIcon.png";
 const Whislist = () => {
   const [whislistedEvents, setWhishlistedEvents] = useState([]);
   useEffect(() => {
@@ -18,24 +18,34 @@ const Whislist = () => {
       }
     }
   }, [setWhishlistedEvents]);
+
+  function RenderWishlistEvents() {
+    let loggedInUser = getLoggedInUser();
+    if (loggedInUser !== "" && whislistedEvents.length > 0) {
+      return whislistedEvents.slice(0, 3).map((whishlistEvent, idx) => {
+        return (
+          <div className="eventWrapper" key={idx}>
+            <p>{whishlistEvent.title}</p>
+            <img src={WhishlistIcon} alt={whishlistEvent.title} />
+          </div>
+        );
+      });
+    } else {
+      return (
+        <div className="caseWrapper">
+          <p>No Events To display.</p>
+        </div>
+      );
+    }
+  }
   return (
     <div className="wishlistEvents">
       <h3>Wishlisted Events</h3>
-      <div className="eventContainer">
-        {whislistedEvents.slice(0, 3).map((whishlistEvent, idx) => {
-          return (
-            <div className="eventWrapper" key={idx}>
-              <p>{whishlistEvent.title}</p>
-              <img
-                src="https://cdn-icons.flaticon.com/png/512/3870/premium/3870922.png?token=exp=1656292606~hmac=e532c4c424c575976bbc84804db2e8dd"
-                alt=""
-              />
-            </div>
-          );
-        })}
-
-        <Link to="/whishlistedEvents">View All</Link>
-      </div>
+      <div className="eventContainer">{RenderWishlistEvents()}</div>
+      
+      <Link className="ViewAllBtn" to="/whishlistedEvents">
+        View All
+      </Link>
     </div>
   );
 };

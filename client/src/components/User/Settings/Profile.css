@@ -88,6 +88,27 @@ html {
 .formDetails .securityWrapper .labelInputWrapper input {
   margin: 1rem 0;
 }
+.caseWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1rem;
+  margin: 1rem;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--primary-color);
+}
+.ViewAllBtn {
+  color: black;
+  text-decoration: none;
+  margin-right: 1rem;
+  cursor: pointer;
+  text-align: right;
+  height: max-content;
+}
+.ReportIconBtn {
+  background-color: transparent;
+}
 
 .userImage {
   background-image: url(../../images/User_Profile_Image.png);
@@ -162,10 +183,12 @@ html {
   display: grid;
   grid-column-start: 3;
   grid-row-start: 2;
+  grid-template-rows: 1fr 3fr 1fr;
 }
 .userReportContainer h3 {
   /* text-align: center; */
   display: inline-block;
+  margin-top: 1rem;
   /* background-color: aqua; */
   /* justify-content: center; */
   /* align-items: center; */
@@ -198,14 +221,12 @@ html {
   background-color: rgba(232, 200, 122, 0.4);
   border: 5px solid #deb141;
   display: grid;
-  grid-column-start: 2;
-  grid-row-start: 2;
+  grid-template-rows: 1fr 3fr 1fr;
 }
 .wishlistEvents h3 {
   display: flex;
+  margin-top: 1rem;
   justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 .eventContainer {
   display: flex;
@@ -226,9 +247,4 @@ html {
 }
 .eventContainer p {
   font-weight: bold;
-}
-.wishlistEvents a {
-  text-align: right;
-  margin: 0 20px;
-  /* padding: 20px; */
 }

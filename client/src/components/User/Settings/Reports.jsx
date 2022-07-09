@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { getApiPath, getLoggedInUser } from "../../../Common";
 import { Link } from "react-router-dom";
+import ReportIcon from "../../images/Report_Icon_UserSettings.png";
 
 const Reports = () => {
   const [userComplaints, setUserComplaints] = useState([]);
@@ -29,8 +30,10 @@ const Reports = () => {
       return userComplaints.map((complaints, idx) => {
         return (
           <div key={idx} className="caseWrapper">
-            <p>{complaints.title}</p>
-            <button>Icon Image</button>
+            <h4>{complaints.title}</h4>
+            <button className="ReportIconBtn">
+              <img src={ReportIcon} alt={complaints.title} />
+            </button>
           </div>
         );
       });
@@ -49,10 +52,9 @@ const Reports = () => {
       <div className="CasesContainer">
         {RenderComplaints()}
 
-        <Link to="/allReports">
-          View All
-        </Link>
       </div>
+      <Link className="ViewAllBtn" to="/allReports">View All</Link>
+
     </div>
   );
 };
