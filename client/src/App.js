@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import Pagination from "./components/PaginationComponent/Pagination";
 import AllEvents from "./components/Event/AllEvents";
 import AllReports from "./components/Complaint/AllReports";
+import Donate from "./components/Donate/Donate";
 
 const App = () => {
   return (
@@ -41,6 +42,8 @@ const App = () => {
           <Route path="/report" caseSensitive={false} element={<Home />} />
 
           <Route path="/event" caseSensitive={false} element={<Event />} />
+
+          <Route path="/donate" caseSensitive={false} element={<Donate />} />
 
           <Route
             path="/singleEvent"

@@ -13,6 +13,7 @@ import Report from "../Complaint/Report";
 import PieChart from "../Charts/PieChart";
 import UserData from "../../Data";
 import Confirmation from "../Complaint/Confirmation";
+import { Link } from "react-router-dom";
 const HomePage = (props) => {
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.month),
@@ -65,7 +66,9 @@ const HomePage = (props) => {
             consectetur adipisicing elit. Amet quaerat, accusamus molestiae
             alias ab aspernatur magni dolor sit ut qui!
           </p>
-          <p className="btn-donate"><button id="donate">Donate</button></p>
+          <Link to="/donate">
+            <button id="donate">Donate</button>
+          </Link>
         </div>
       </section>
       <section className="features">
@@ -111,7 +114,7 @@ const HomePage = (props) => {
         <div className="circle" id="circle7"></div>
       </section>
       <section className="report-wrapper">
-      <img src={reportMobile1} alt=" report3" className="report-mobile1" />
+        <img src={reportMobile1} alt=" report3" className="report-mobile1" />
         <>
           {showReportForm ? (
             <Report HandleReportConfirmation={HandleReportConfirmation} />
@@ -124,7 +127,7 @@ const HomePage = (props) => {
         </section>
         <img src={reportBGImage1} alt=" report1" className="report-image1" />
         <img src={reportBGImage2} alt=" report2" className="report-image2" />
-        
+
         <img src={reportMobile} alt=" report4" className="report-mobile2" />
       </section>
       <section className="newsletter">
