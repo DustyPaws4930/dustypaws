@@ -101,8 +101,10 @@ export const Update = async (req, res) => {
   let phoneNumber = req.body.phoneNumber;
   let address = req.body.address;
   let Dob = req.body.Dob;
+  let selectedEmoji = req.body.selectedEmoji;
   let gender = req.body.gender;
 
+  console.log(selectedEmoji);
   const salt = await bcrypt.genSalt(10);
   // now we set user password to hashed password
   password = await bcrypt.hash(password, salt);
@@ -113,6 +115,7 @@ export const Update = async (req, res) => {
     phoneNumber,
     address,
     Dob,
+    selectedEmoji,
     gender,
   };
   console.log(userObj);

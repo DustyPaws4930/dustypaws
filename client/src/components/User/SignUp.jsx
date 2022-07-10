@@ -68,13 +68,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up">
+    <div className="sign-up user">
       <Header />
       <div className="sign-up-body">
         <div className="sign-up-image-section">
           <img src={leftCorner} alt="leftCorner" className="leftCornerBg" />
           <img src={rightCorner} alt="rightCorner" className="rightCornerBg" />
-          <img src={LoginBg} alt="LoginBg" />
+          <img src={LoginBg} alt="LoginBg" className="sign-bg-img"/>
         </div>
         <div className="signup-form-wrapper">
           <h2>Sign Up</h2>{" "}

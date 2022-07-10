@@ -27,6 +27,28 @@ html {
   grid-row-end: 3;
   /* width: 40vh; */
 }
+
+.userImageWrapper {
+  height: 120px;
+  width: 120px;
+  position: relative;
+  background-color: #deb141;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userImageWrapper > img {
+  height: 125px;
+  width: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .userInfoContainer form {
   display: flex;
   flex-direction: column;
@@ -36,7 +58,7 @@ html {
   text-align: center;
 }
 
-.headerContainer > h3 {
+.headerContainer > h2 {
   margin: 1rem;
 }
 .containerInfoWrapper {
@@ -101,9 +123,10 @@ html {
 .ViewAllBtn {
   color: black;
   text-decoration: none;
-  margin-right: 1rem;
+  margin: 0.5rem 1rem;
   cursor: pointer;
   text-align: right;
+
   height: max-content;
 }
 .ReportIconBtn {
@@ -111,15 +134,47 @@ html {
 }
 
 .userImage {
-  background-image: url(../../images/User_Profile_Image.png);
   width: 100%;
-  height: 300px;
   display: flex;
   justify-content: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+.editEmojiBtn {
+  background-color: transparent;
+  height: max-content;
+  width: max-content;
+  background-color: rgba(40, 91, 83, 0.3);
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  position: absolute;
+  top: 310px;
+}
+.closeBtnContainer {
+  padding: 0;
+  margin-right: 10px;
+}
+.EmojiWrapContainer {
+  background-color: #f6f6f6;
+  border-radius: 1rem;
+  border: 1px solid var(--secondary-color);
+  margin-bottom: 1rem;
+  box-shadow: 2px 1px 12px 7px rgba(0, 0, 0, 0.1);
+}
+
+.EmojiContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.EmojiContainer img {
+  width: 60px;
+  height: 60px;
+}
+
 .UserUpdateBtn {
   /* background-color: yellow; */
   display: flex;
@@ -183,7 +238,8 @@ html {
   display: grid;
   grid-column-start: 3;
   grid-row-start: 2;
-  grid-template-rows: 1fr 3fr 1fr;
+  gap: 0.5rem;
+  grid-template-rows: 1fr 3fr max-content;
 }
 .userReportContainer h3 {
   /* text-align: center; */
@@ -221,7 +277,8 @@ html {
   background-color: rgba(232, 200, 122, 0.4);
   border: 5px solid #deb141;
   display: grid;
-  grid-template-rows: 1fr 3fr 1fr;
+  gap: 0.5rem;
+  grid-template-rows: 1fr 3fr max-content;
 }
 .wishlistEvents h3 {
   display: flex;

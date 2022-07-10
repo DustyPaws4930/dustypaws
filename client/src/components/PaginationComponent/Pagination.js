@@ -5,10 +5,9 @@ import axios from "axios";
 import "./pagination.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import NGOEventCard from "../cards/NGOEventCard";
+import AnimatedDropdown from "../dropdown/AnimatedDropdown";
+import NGORequestCard from "../cards/NGORequestCard";
 
 //  Component Props
 
@@ -20,16 +19,22 @@ const Pagination = (props) => {
   // States to handle
   const [currentPage, setCurrentPage] = useState(0);
   const [data, setData] = useState([]);
+  const pageName = props.cardName;
+  // console.log(pageName);
 
   const PerPage = props.PerPage ? props.PerPage : 6;
   const apiUrl = props.apiUrl ? props.apiUrl : "";
   // Loading data
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [apiUrl]);
   function fetchData() {
     axios.get(apiUrl).then((result) => {
       setData(result.data);
+      if (pageName == "NGO-Home") {
+        setData(result.data.complaints);
+      }
+      console.log(result.data.complaints);
     });
   }
 
@@ -42,28 +47,13 @@ const Pagination = (props) => {
   const currentPageData = data
     .slice(offset, offset + PerPage)
     .map((result, index) => {
-      return (
-        <div key={index} className="CardWrapper">
-          <div className="card">
-            <div className="card-body">
-              <div className="card-date">
-                <p>{result.date}</p>
-              </div>
-              <img src={result.Image} alt={result.title} />
-              <h2 className="card-title">{result.title}</h2>
-              <p className="card-description">{result.description}</p>
-              <Link to="/singleEvent">
-                <button>View More...</button>
-              </Link>
-              <i className="fa fa-heart-o"></i>
-              <img src="" alt="dustbin" />
-              <Link to="/eventEdit">
-                <img src="" alt="edit" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      );
+      if (pageName == "EventForm") {
+        return <NGOEventCard index={index} result={result} key={index} />;
+      }
+      if (pageName == "NGO-Home") {
+        console.log("NGO-Home");
+        return <NGORequestCard result={result} index={index} key={index} />;
+      }
     });
   // console.log("currentPageData", currentPageData);
 

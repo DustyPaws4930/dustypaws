@@ -45,9 +45,11 @@ html {
   background-color: #698c87;
 } */
 .card-body {
-  margin: 30px;
-  box-shadow: 2px 6px 16px 1px rgba(40, 91, 83, 0.58);
+  margin: 2rem auto;
+  /* box-shadow: 2px 6px 16px 1px rgba(40, 91, 83, 0.58); */
   /* change this */
+  border: 1px solid var(--primary-button);
+  width: 350px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -146,10 +148,59 @@ hr {
   /* background-color: aqua; */
   /* position: absolute; */
   /* width: 30px; */
-  height: auto;
-  top: 15px;
-  left: 30px;
+  display: none;
 }
+h2.card-title {
+  font-size: 1.15rem;
+  margin: .5rem 1rem;
+}
+p.card-description {
+  margin: 0.5rem 1rem;
+}
+
+.btn-container {
+  margin: 2rem auto;
+  display: flex;
+  max-width: 80%;
+  gap: 1rem;
+  /* margin: auto; */
+  /* background: #295b53; */
+}
+
+.btn-container a{
+  /* margin: 5px; */
+  padding: .7rem;
+  flex-grow: 1;
+  max-width: 120px;
+  /* background: #295b53; */
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+  text-align: center;
+  border-radius: 2px;
+  justify-content: space-around;
+}
+
+.btn-container a.btn.btn-view{
+  border: 1px solid var(--secondary-color);
+  background: var(--secondary-color);
+}
+.btn-container a.btn.btn-view:hover{
+  background: white;
+  transition: .4s;
+}
+
+.btn-container a.btn.btn-edit {
+  border: 1px solid var(--primary-button);
+}
+.btn-container a.btn.btn-edit:hover{
+  background: var(--primary-button);
+  color:white;
+  transition: .4s;
+}
+
+
+
 .our-partners-content {
   /* background-color: #295b53; */
   width: 100%;
