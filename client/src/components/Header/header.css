@@ -11,9 +11,26 @@ header {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 10%);
 }
 
+.user-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+
+.userDropDown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 header img {
   height: 75px;
   width: auto;
+}
+
+.userAvatar img {
+  width: 25px;
+  height: 25px;
 }
 header .primary-logo {
   flex-basis: 20%;

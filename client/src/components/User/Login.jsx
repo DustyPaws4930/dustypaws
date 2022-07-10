@@ -60,13 +60,13 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-page-container">
       <Header />
       <div className="login-page">
         <div className="login-bg">
           <img src={leftCorner} alt="leftCorner" className="leftCornerBg" />
           <img src={rightCorner} alt="rightCorner" className="rightCornerBg" />
-          <img src={LoginBg} alt="LoginBg" />
+          <img src={LoginBg} alt="LoginBg" className="login-bg-img" />
         </div>
         <div className="form-wrapper">
           <div className="login-form">

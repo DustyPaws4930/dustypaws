@@ -51,12 +51,35 @@ div.NGO-Home .map-container {
 }
 #setCompleted {
   pointer-events: none;
-  background-color: #eee;
+  /* background-color: #eee; */
 }
 
 .cardsContainer .cardWrapper .imageWrapper {
   margin: 1rem;
 }
+
+.Spam .dropdown-btn {
+  background: #ee8282;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.Completed .dropdown-btn {
+  background: #245b02;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white;
+}
+.Accept .dropdown-btn {
+  background: #deb141;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.Change.Status .dropdown-btn {
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color)
+}
+
 @media screen and (max-width: 1000px) {
   .cardsContainer .cardWrapper {
     padding: 2rem;
