@@ -30,6 +30,7 @@
   margin: 3rem auto ;
   grid-column: 2/3;
   width: 350px;
+  max-height: 450px;
   border: 2px solid #deb141;
   background: #f8f8f8;
   padding: 1rem;
