@@ -11,6 +11,12 @@ import Header from "./Header";
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 import { toast } from "react-toastify";
 
+import BirdAvatar from "../images/Bird_Avatar.png";
+import PandaAvatar from "../images/Panda_Avatar.png";
+import HamsterAvatar from "../images/Hamster_Avatar.png";
+import DogAvatar from "../images/Dog_Avatar.png";
+import CatAvatar from "../images/Cat_Avatar.png";
+import Edit_UserImage from "../images/Edit_Profile.png";
 const Navbar = (props) => {
   // let loggedInUser = useContext(User);
   let navigate = useNavigate();
@@ -39,6 +45,7 @@ const Navbar = (props) => {
   }
 
   const [loggedInUser, setLoggedInUser] = useState({});
+  let [selectedUserEmoji, setSelectedUserEmoji] = useState(BirdAvatar);
   useEffect(() => {
     let userToken = getToken();
 
@@ -50,9 +57,31 @@ const Navbar = (props) => {
       userToken !== ""
     ) {
       setLoggedInUser(userToken?.user);
+      SetImageForUI(userToken?.user.selectedEmoji);
     }
   }, []);
 
+  function SetImageForUI(name) {
+    switch (name) {
+      case "Bird":
+        setSelectedUserEmoji(BirdAvatar);
+        break;
+      case "Dog":
+        setSelectedUserEmoji(DogAvatar);
+        break;
+      case "Hamster":
+        setSelectedUserEmoji(HamsterAvatar);
+        break;
+      case "Cat":
+        setSelectedUserEmoji(CatAvatar);
+        break;
+      case "Panda":
+        setSelectedUserEmoji(PandaAvatar);
+        break;
+      default:
+        setSelectedUserEmoji(BirdAvatar);
+    }
+  }
   const [loginPopUp, setLoginPopUp] = useState(false);
 
   const [signUpPopUp, setSignUpPopUp] = useState(false);
@@ -163,9 +192,14 @@ const Navbar = (props) => {
               }}
             >
               <div className="user-icons">
-                <FontAwesomeIcon icon={faUser} />
-                <FontAwesomeIcon icon={faCaretDown} />
+                <div className="userAvatar">
+                  <img src={selectedUserEmoji} alt="User Avatar" />
+                </div>
+                <div className="userDropDown">
+                  <FontAwesomeIcon icon={faCaretDown} />
+                </div>
               </div>
+
               <div className="user-profile" id={activeUser ? "activeUser" : ""}>
                 {HandleLoggedInUI()}
               </div>

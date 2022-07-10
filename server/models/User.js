@@ -30,6 +30,10 @@ let userModel = mongoose.Schema({
     type: String,
     default: "user",
   },
+  selectedEmoji: {
+    type: String,
+    default: "Bird",
+  },
   whistlist: {
     type: Array,
     default: [],

@@ -12,10 +12,6 @@ const PopUp = (props) => {
         <GMap currentCoordinate={props.currentCoordinate} />
       </div>
     );
-  } else if (props.showLogin) {
-    renderedContent = <Login />;
-  } else if (props.showSignUp) {
-    renderedContent = <SignUp />;
   } else {
     <div className="SomeContent">
       <p>
