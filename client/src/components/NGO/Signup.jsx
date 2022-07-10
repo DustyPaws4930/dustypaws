@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import jwt from "jwt-decode";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
-import "./SignUp.css";
+import "./SignUpNGO.css";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.svg";
 import { Link } from "react-router-dom";
@@ -53,13 +53,13 @@ const Signup = () => {
   };
 
   return (
-    <div className="sign-up">
+    <div className="sign-up ngo">
       <Header />
       <div className="sign-up-body">
         <div className="sign-up-image-section">
           <img src={leftCorner} alt="leftCorner" className="leftCornerBg" />
           <img src={rightCorner} alt="rightCorner" className="rightCornerBg" />
-          <img src={LoginBg} alt="LoginBg" />
+          <img src={LoginBg} alt="LoginBg" className="sign-bg-img"/>
         </div>
 
         <div className="signup-form-wrapper">
