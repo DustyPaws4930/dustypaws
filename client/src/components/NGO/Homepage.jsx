@@ -15,6 +15,7 @@ import redIcon from "../images/Red_Locaion.png";
 import greenIcon from "../images/Green_Location.png";
 import "./NGO-Home.css";
 import { toast } from "react-toastify";
+import Pagination from "../PaginationComponent/Pagination";
 
 const Homepage = (props) => {
   // default coordinates of Vancouver
@@ -27,6 +28,7 @@ const Homepage = (props) => {
   const initialText = "Change Status";
   const options = ["Accept", "Completed", "Spam"];
   const [isActive, setIsActive] = useState(false);
+  let complaintsUrl = getApiPath() + "complaint/fetch";
 
   useEffect(
     (e) => {
@@ -156,53 +158,7 @@ const Homepage = (props) => {
           <h1>Complaints</h1>
         </div>
         <div className="cardsContainer">
-          {complaintsArr.map((complaint, idx) => {
-            return (
-              <div
-                key={idx}
-                className="cardWrapper"
-                id={
-                  complaint.state === "Completed" || complaint.state === "Spam"
-                    ? "setCompleted"
-                    : ""
-                }
-                onClick={(e) => {
-                  ShowOnMap(e, complaint.location);
-                }}
-              >
-                <div className="imageWrapper">
-                  <img
-                    style={{
-                      resizeMode: "stretch",
-                      height: 100,
-                      width: 200,
-                    }}
-                    src={complaint.Image}
-                    alt={complaint.title}
-                  />
-                </div>
-                <h4>{complaint.title}</h4>
-                <p>{complaint.address}</p>
-                <p>{complaint.description}</p>
-                <div className="status-dropdown">
-                  {/* <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>
-                  <option value="Complete">Complete</option>
-                  <option value="Spam">Spam</option> */}
-                  <AnimatedDropdown
-                    options={options}
-                    HandleComplaintDropDown={HandleComplaintDropDown}
-                    reportId={complaint._id}
-                    initialText={
-                      complaint.state === "Submitted"
-                        ? initialText
-                        : complaint.state
-                    }
-                  />
-                  {/* {selected} */}
-                </div>
-              </div>
-            );
-          })}
+        <Pagination apiUrl={complaintsUrl} cardName="NGO-Home" ShowOnMap={ShowOnMap} options={options} HandleComplaintDropDown={HandleComplaintDropDown} initialText={initialText}/>
         </div>
       </div>
     </div>

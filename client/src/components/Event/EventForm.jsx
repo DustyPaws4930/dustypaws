@@ -230,7 +230,7 @@ const EventForm = () => {
         <div>
           <h3 className="NGO-Events-header">Created Events</h3>
         </div>
-        <Pagination apiUrl={fetchEventsURl} />
+        <Pagination apiUrl={fetchEventsURl} cardName="EventForm" />
       </div>
       <Footer />
     </>
