@@ -51,7 +51,7 @@ div.NGO-Home .map-container {
 }
 #setCompleted {
   pointer-events: none;
-  background-color: #eee;
+  /* background-color: #eee; */
 }
 
 .cardsContainer .cardWrapper .imageWrapper {
