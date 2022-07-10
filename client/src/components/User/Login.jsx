@@ -28,6 +28,7 @@ const Login = () => {
   const handleSubmitBtn = (e) => {
     e.preventDefault();
     const loginUrl = getApiPath() + "user/login";
+    console.log(loginUrl);
     axios
       .post(loginUrl, loginInfo)
       .then((res) => {
