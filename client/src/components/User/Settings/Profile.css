@@ -53,9 +53,10 @@ html{
     width: 50%;
     height: 100px;
 }
+
 .formWrapper h3{
     padding: 5px 20px;
-    margin-top: 40px;
+    margin-top: 100px;
 }
 .labelInputWrapper input{
     background-color: rgba(232, 200, 122, 0);
@@ -156,6 +157,7 @@ html{
     flex-direction: column;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     /* align-content: center; */
     margin: 20px;
     border-radius: 2px;
@@ -196,7 +198,7 @@ html{
 }
 .eventWrapper{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 20px;
     border: 2px solid #deb141;
