@@ -12,9 +12,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import eventBGImage from "../project-files/event-bg-image.svg";
 import Pagination from "../PaginationComponent/Pagination.js";
-import mobileImg1 from "../project-files/report-mobile-top.svg"
-import mobileImg2 from "../project-files/report-mobile-bottom.svg"
-
+import mobileImg1 from "../project-files/report-mobile-top.svg";
+import mobileImg2 from "../project-files/report-mobile-bottom.svg";
 
 const EventForm = () => {
   const responsive = {
@@ -50,6 +49,7 @@ const EventForm = () => {
 
   const [fectchedEvents, setFetchedEvents] = useState([]);
 
+  let [fileName, setFileName] = useState("");
   useEffect(() => {
     let userToken = getToken();
 
@@ -126,6 +126,7 @@ const EventForm = () => {
 
   // File change event handler
   const handleFileChange = async (e) => {
+    setFileName(e.target.files[0].name);
     UploadFile(e.target.files[0]).then((uploadedImage) => {
       eventData.Image = uploadedImage;
     });
@@ -170,15 +171,23 @@ const EventForm = () => {
             </div>
             <div className="event-form">
               <label htmlFor="img">Upload image:</label>
-              <input
-                onChange={(e) => {
-                  handleFileChange(e);
-                }}
-                type="file"
-                id="img"
-                name="img"
-                accept="image/*"
-              ></input>
+              <div className="Eventbutton-div">
+                <div className="chooseFileContainer">
+                  Choose File
+                  <input
+                    type="file"
+                    id="myFile"
+                    name="chooseFileBtn"
+                    className="fileOriginalBtn"
+                    accept="image/*"
+                    onChange={(e) => {
+                      handleFileChange(e);
+                    }}
+                    aria-hidden="false"
+                  ></input>
+                </div>
+                <label className="imageFileName">{fileName}</label>
+              </div>
             </div>
             <div className="event-form">
               <label>Location</label>
