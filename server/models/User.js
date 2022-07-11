@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import dayjs from "dayjs";
+
 let userModel = mongoose.Schema({
   username: {
     type: String,
@@ -30,6 +32,7 @@ let userModel = mongoose.Schema({
     type: String,
     default: "user",
   },
+<<<<<<< HEAD
   selectedEmoji: {
     type: String,
     default: "Bird",
@@ -37,6 +40,15 @@ let userModel = mongoose.Schema({
   whistlist: {
     type: Array,
     default: [],
+=======
+  whistlist: {
+    type: [],
+  },
+
+  createdAt: {
+    type: Date,
+    default: dayjs().format("YYYY-MM-DD"),
+>>>>>>> dev_parminder
   },
 });
 

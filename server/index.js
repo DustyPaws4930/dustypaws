@@ -14,6 +14,7 @@ dotenv.config();
 import UserRoutes from "./routes/User.js";
 import ComplaintRoutes from "./routes/Complaint.js";
 import EventRoutes from "./routes/Event.js";
+import DataRoutes from "./routes/DataCount.js";
 
 // SV: Initializing the Application
 const app = express();
@@ -51,6 +52,9 @@ app.use("/complaint", ComplaintRoutes);
 
 //****** Event Routes ******
 app.use("/event", EventRoutes);
+
+//****** Data Routes ******
+app.use("/data", DataRoutes);
 
 
 // let say you wanted to fetch the data but we need to first perform authentication.
