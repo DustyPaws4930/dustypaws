@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import Geocode from "react-geocode";
-
+import PropagateLoader from "react-spinners/PropagateLoader";
 let Report = (props) => {
   Geocode.setLanguage("en");
   Geocode.setApiKey("AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw");
@@ -29,6 +29,7 @@ let Report = (props) => {
   });
   let [fileName, setFileName] = useState("");
 
+  let [color, setColor] = useState("#ffffff");
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
@@ -47,6 +48,9 @@ let Report = (props) => {
     long: "",
   });
   const [currentAddress, setCurrentAddress] = useState("");
+
+  let [loading, setLoading] = useState(false);
+
   // To show the popup
   const TogglePopUp = () => {
     setPopUp(!popUp);
@@ -118,15 +122,29 @@ let Report = (props) => {
 
   // File change event handler
   const handleFileChange = async (e) => {
-    setFileName(e.target.files[0].name);
-    UploadFile(e.target.files[0]).then((uploadedImage) => {
-      reportData.Image = uploadedImage;
-    });
+    setFileName(e.target.files[0]?.name);
+    setLoading(true);
+    console.log(loading);
+    UploadFile(e.target.files[0])
+      .then((uploadedImage) => {
+        setLoading(false);
+        console.log(loading);
+        reportData.Image = uploadedImage;
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
   // Priority change event handler
   const HandlePriorityChange = (e) => {
     reportData.priority = e.target.id;
+  };
+  const override = {
+    display: "block",
+    margin: "0 0 0 6rem",
+    borderColor: "red",
+    backgroundColor: "#deb141",
   };
 
   if (popUp) {
@@ -186,7 +204,16 @@ let Report = (props) => {
                   aria-hidden="false"
                 ></input>
               </div>
-              <label className="imageFileName">{fileName}</label>
+              {loading ? (
+                <PropagateLoader
+                  color="#deb141"
+                  loading={loading}
+                  cssOverride={override}
+                  size={14}
+                />
+              ) : (
+                <label className="imageFileName">{fileName}</label>
+              )}
             </div>
           </div>
 
