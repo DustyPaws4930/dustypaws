@@ -4,7 +4,9 @@ import jwt from "jwt-decode";
 import axios from "axios";
 import { getApiPath, setToken, setTokenTimeout } from "../../Common";
 import Header from "../Header/Header";
-import LoginBg from "../project-files/Login-Bg-image.png";
+import LoginBg from "../project-files/Login-Bg-image.svg";
+import leftCorner from "../project-files/left_corner_login.svg";
+import rightCorner from "../project-files/right_corner_login.svg";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -26,6 +28,7 @@ const Login = () => {
   const handleSubmitBtn = (e) => {
     e.preventDefault();
     const loginUrl = getApiPath() + "user/login";
+    console.log(loginUrl);
     axios
       .post(loginUrl, loginInfo)
       .then((res) => {
@@ -46,22 +49,25 @@ const Login = () => {
         }, 2200);
       })
       .catch((err) => {
-        toast.error(`${err.response.data.message}!`, {
+        console.log(err);
+        toast.error(`${err.response.data?.message}!`, {
           position: "top-center",
           autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: true,
         });
-        console.log(err.response.data.message);
+        console.log(err.response.data?.message);
       });
   };
 
   return (
-    <div>
+    <div className="login-page-container">
       <Header />
       <div className="login-page">
         <div className="login-bg">
-          <img src={LoginBg} alt="LoginBg" />
+          <img src={leftCorner} alt="leftCorner" className="leftCornerBg" />
+          <img src={rightCorner} alt="rightCorner" className="rightCornerBg" />
+          <img src={LoginBg} alt="LoginBg" className="login-bg-img" />
         </div>
         <div className="form-wrapper">
           <div className="login-form">

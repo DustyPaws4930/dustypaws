@@ -6,7 +6,7 @@ export const Register = (req, res) => {
   let description = req.body.description;
   let createdBy = req.body.createdBy;
   let address = req.body.address;
-  let date = req.body.Date;
+  let date = req.body.date;
   let price = req.body.price;
   let img = req.body.Image;
 
@@ -19,7 +19,6 @@ export const Register = (req, res) => {
     date: date,
     price: price,
   });
-
   console.log("Event object: " + eventObj);
   eventObj.save((err, savedEvent) => {
     if (!err) {

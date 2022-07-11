@@ -6,7 +6,9 @@ import {
   GetNGOUserVisualizationData,
   GetReportByUserId,
   GetReportCount,
+  UpdateComplaintById,
 } from "../controllers/Complaint/Fetch.js";
+
 const router = express.Router();
 
 // router.post("/signup", );
@@ -16,4 +18,5 @@ router.post("/register", Register);
 router.get("/getReports/:userId", GetReportByUserId);
 router.get("/getReportCount/", GetReportCount);
 router.get("/fetch", GetAllComplaints);
+router.patch("/updateById/:id", UpdateComplaintById);
 export default router;

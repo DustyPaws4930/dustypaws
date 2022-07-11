@@ -4,6 +4,8 @@
 
 .labelInputWrapper input {
   margin: 1rem;
+  padding: 0.2rem;
+  font-size: 1rem;
   border-bottom: 1px solid gray;
 }
 
@@ -94,5 +96,90 @@ section.report-complaint {
   font-weight: bold;
 }
 
-.submit > button:hover {
+.confirmation {
+  padding: 5rem 0;
+  border-right: 2px solid var(--primary-color);
+  height: 60%;
+  margin: auto;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.confirmation p {
+  padding: 0 2rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.confirmation button {
+  background: var(--primary-color);
+  padding: 0.8rem 1.2rem;
+  color: white;
+  font-weight: 500;
+  border: 1px solid var(--primary-color);
+}
+
+.confirmation button:hover {
+  background: white;
+  transition: 0.4s;
+}
+
+.chooseFileContainer {
+  background-color: var(--primary-button);
+  box-shadow: 2px 1px 12px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: relative;
+  color: white;
+  border-radius: 2px;
+  float: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 0.8rem 1rem;
+}
+
+.button-div {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 1rem 0 1rem;
+  width: max-content;
+}
+
+.button-div input[type="file"] {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  width: 100%;
+}
+
+.fileOriginalBtn {
+  position: absolute;
+  z-index: 1000;
+  opacity: 0;
+  cursor: pointer;
+  right: 0;
+  top: 0;
+  font-size: 24px;
+  width: 100px;
+}
+
+.imageFileName {
+  width: 20ch;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.InputLinkWrapper {
+  display: grid;
+  position: relative;
+}
+.InputLinkWrapper a {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
 }

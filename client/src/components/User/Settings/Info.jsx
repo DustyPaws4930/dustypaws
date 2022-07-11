@@ -3,12 +3,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
 import { getApiPath, getToken, setToken } from "../../../Common";
-
+import { toast } from "react-toastify";
+import EmojiPopUp from "../../ModelPopups/EmojiPopUp";
 // import { UserProfileImage } from "../../project-files/13.png"
 
-
-
-
+import BirdAvatar from "../../images/Bird_Avatar.png";
+import PandaAvatar from "../../images/Panda_Avatar.png";
+import HamsterAvatar from "../../images/Hamster_Avatar.png";
+import DogAvatar from "../../images/Dog_Avatar.png";
+import CatAvatar from "../../images/Cat_Avatar.png";
+import Edit_UserImage from "../../images/Edit_Profile.png";
 const Info = () => {
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -17,8 +21,13 @@ const Info = () => {
     address: "",
     Dob: "",
     gender: "",
+    selectedEmoji: "Bird",
     password: "password",
   });
+
+  let [popUp, setPopUp] = useState(false);
+  let [selectedUserEmoji, setSelectedUserEmoji] = useState(BirdAvatar);
+  let [avatarName, setAvatarName] = useState("");
   const [loggedInUser, setLoggedInUser] = useState({});
 
   const allGenders = ["Man", "Woman", "Non-Binary", "Prefer not to answer"];
@@ -36,8 +45,8 @@ const Info = () => {
     let userToken = getToken();
     if (userToken !== null && userToken !== "undefined" && userToken !== "") {
       setLoggedInUser(userToken.user);
-      setUserInfo(JSON.parse(JSON.stringify(userToken.user)));
-      console.log(userToken.user);
+      setUserInfo(userToken.user);
+      SetImageForUI(userToken.user?.selectedEmoji);
     }
   }, [setLoggedInUser]);
 
@@ -46,19 +55,84 @@ const Info = () => {
     e.preventDefault();
     console.log(userInfo);
 
+    userInfo.selectedEmoji = avatarName;
     let updateUrl = getApiPath() + `user/update/${loggedInUser._id}`;
+
     axios
       .patch(updateUrl, userInfo)
       .then((res) => {
-        const userToken = jwt(res.data.user); // decode your token here
-        setToken(res.data.user);
-        alert(res.data.message);
-        setUserInfo({ ...userInfo, userInfo: userToken });
+        toast.success(res.data.message, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+
+        setTimeout(() => {
+          const userToken = jwt(res.data.user); // decode your token here
+          setToken(res.data.user);
+          setUserInfo({ ...userInfo, userInfo: userToken });
+        }, 2200);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(`${err.response.data.message}!`, {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        console.log(err.response.data.message);
       });
   };
+
+  // To show the popup
+  const TogglePopUp = () => {
+    setPopUp(!popUp);
+  };
+
+  const HandleEditEmoji = (e) => {
+    e.preventDefault();
+    TogglePopUp();
+  };
+  const setSelectedImage = (e) => {
+    let name = e.target.name;
+
+    SetImageForUI(name);
+  };
+
+  let PopUpContent = "";
+  if (popUp) {
+    PopUpContent = (
+      <EmojiPopUp
+        setSelectedImage={setSelectedImage}
+        TogglePopUp={TogglePopUp}
+      />
+    );
+  }
+
+  function SetImageForUI(name) {
+    userInfo.selectedEmoji = name;
+    setAvatarName(name);
+    switch (name) {
+      case "Bird":
+        setSelectedUserEmoji(BirdAvatar);
+        break;
+      case "Dog":
+        setSelectedUserEmoji(DogAvatar);
+        break;
+      case "Hamster":
+        setSelectedUserEmoji(HamsterAvatar);
+        break;
+      case "Cat":
+        setSelectedUserEmoji(CatAvatar);
+        break;
+      case "Panda":
+        setSelectedUserEmoji(PandaAvatar);
+        break;
+      default:
+        setSelectedUserEmoji(BirdAvatar);
+    }
+  }
 
   return (
     <div className="userInfoContainer">
@@ -68,17 +142,29 @@ const Info = () => {
         }}
       >
         <div className="headerContainer">
-          <h1>Test Username</h1>
+          <h2>{userInfo.username}</h2>
         </div>
         <div className="userImage">
-            <img src="" alt="" />
+          <div className="userImageWrapper">
+            <img src={selectedUserEmoji} alt="User Icon" />
+          </div>
+          <button
+            className="editEmojiBtn"
+            onClick={(e) => {
+              HandleEditEmoji(e);
+            }}
+          >
+            <img src={Edit_UserImage} alt="" />
+          </button>
         </div>
+        {PopUpContent}
         <div className="formDetails">
-            <div className="formWrapper">
-              <h3>About</h3>
+          <div className="formWrapper">
+            <h3>About</h3>
 
-              <div className="containerInfoWrapper">
-                <h5>Contact Information</h5>
+            <div className="containerInfoWrapper">
+              <h4 className="ContactInfoHeader">Contact Information</h4>
+              <div className="upperInfoWrapper">
                 <div className="labelInputWrapper">
                   <label htmlFor="username">Username</label>
                   <input
@@ -133,9 +219,10 @@ const Info = () => {
                   </div>
                 </div>
               </div>
-              <div className="basicInfoWrapper">
-                <h5>Basic Information</h5>
-
+            </div>
+            <div className="basicInfoWrapper">
+              <h4 className="ContactInfoHeader">Basic Information</h4>
+              <div className="midInfoWrapper">
                 <div className="labelInputWrapper">
                   <label htmlFor="dob">Date of Birth</label>
                   <input
@@ -169,23 +256,25 @@ const Info = () => {
                   </select>
                 </div>
               </div>
-              <div className="securityWrapper">
-                <h5>Security and Privacy</h5>
+            </div>
+            <div className="securityWrapper">
+              <h3>Security and Privacy</h3>
 
-                <div className="labelInputWrapper">
-                  <label htmlFor="password">Update Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    value={userInfo.password}
-                    onChange={(e) => {
-                      HandleOnChange(e);
-                    }}
-                    id="password"
-                  />
-                </div>
+              <div className="labelInputWrapper">
+                <label htmlFor="password">Update Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="New password"
+                  value={userInfo.password}
+                  onChange={(e) => {
+                    HandleOnChange(e);
+                  }}
+                  id="password"
+                />
               </div>
             </div>
+          </div>
         </div>
         <div className="UserUpdateBtn">
           <input type="submit" value="Update" />

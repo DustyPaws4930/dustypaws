@@ -1,18 +1,51 @@
 import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteToken, getToken } from "../../Common";
 import { User } from "../Home";
 import PopUp from "../ModelPopups/PopUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
+import AnimatedDropdown from "../dropdown/AnimatedDropdown";
+import { toast } from "react-toastify";
 
+import BirdAvatar from "../images/Bird_Avatar.png";
+import PandaAvatar from "../images/Panda_Avatar.png";
+import HamsterAvatar from "../images/Hamster_Avatar.png";
+import DogAvatar from "../images/Dog_Avatar.png";
+import CatAvatar from "../images/Cat_Avatar.png";
+import Edit_UserImage from "../images/Edit_Profile.png";
 const Navbar = (props) => {
   // let loggedInUser = useContext(User);
+  let navigate = useNavigate();
+
+  const options = ["Event", "Partners"];
+  const initialText = "Explore";
+  const navDropStyle = {
+    boxShadow: "10px 10px 50px #aaaaaa",
+  };
+  const [activeUser, setActiveUser] = useState(false);
+  // function handleUserClick(event){
+  //   setActiveUser
+  // }
+
+  function handleDropDown(option) {
+    switch (option) {
+      case "Event":
+        navigate("/event", { replace: true });
+        break;
+      case "Partners":
+        navigate("/Partners", { replace: true });
+        break;
+      default:
+        break;
+    }
+  }
 
   const [loggedInUser, setLoggedInUser] = useState({});
+  let [selectedUserEmoji, setSelectedUserEmoji] = useState(BirdAvatar);
   useEffect(() => {
     let userToken = getToken();
 
@@ -24,9 +57,31 @@ const Navbar = (props) => {
       userToken !== ""
     ) {
       setLoggedInUser(userToken?.user);
+      SetImageForUI(userToken?.user.selectedEmoji);
     }
   }, []);
 
+  function SetImageForUI(name) {
+    switch (name) {
+      case "Bird":
+        setSelectedUserEmoji(BirdAvatar);
+        break;
+      case "Dog":
+        setSelectedUserEmoji(DogAvatar);
+        break;
+      case "Hamster":
+        setSelectedUserEmoji(HamsterAvatar);
+        break;
+      case "Cat":
+        setSelectedUserEmoji(CatAvatar);
+        break;
+      case "Panda":
+        setSelectedUserEmoji(PandaAvatar);
+        break;
+      default:
+        setSelectedUserEmoji(BirdAvatar);
+    }
+  }
   const [loginPopUp, setLoginPopUp] = useState(false);
 
   const [signUpPopUp, setSignUpPopUp] = useState(false);
@@ -41,18 +96,12 @@ const Navbar = (props) => {
     } else {
       return (
         <>
-          <ul className="dropDown">
-            <li className="btn btn-drop">
-              Explore <FontAwesomeIcon icon={faCaretDown} />
-            </li>
-            <li className="dropDown-options active">
-              <div>
-                <Link to="/event">Event</Link>
-              </div>
-              <div>
-                <Link to="/event">Partners</Link>
-              </div>
-            </li>
+          <ul className="nav-dropDown">
+            <AnimatedDropdown
+              onOptionSelect={handleDropDown}
+              options={options}
+              initialText={initialText}
+            />
           </ul>
           <a href="/#reportSection">
             <li>Report</li>
@@ -69,8 +118,17 @@ const Navbar = (props) => {
   };
   const HandleLogoutClick = () => {
     deleteToken();
-    window.location.href = "/";
-    alert("Logged out!!");
+
+    toast.warning("Logged out!!", {
+      position: "top-center",
+      autoClose: 100,
+      hideProgressBar: false,
+      closeOnClick: true,
+    });
+
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 500);
   };
 
   const ShowSignUpPopUp = (e) => {
@@ -106,7 +164,7 @@ const Navbar = (props) => {
       return (
         <>
           <div className="securityWrapper">
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/signup">Sign&nbsp;Up</Link>
             <Link to="/login">Login</Link>
           </div>
         </>
@@ -127,10 +185,24 @@ const Navbar = (props) => {
         <ul>
           {RenderNavBar()}
           <div>
-            <li className="nav-dropDown">
-              <FontAwesomeIcon icon={faUser} />
-              <FontAwesomeIcon icon={faCaretDown} />
-              <div className="user-profile">{HandleLoggedInUI()}</div>
+            <li
+              className="nav-dropDown"
+              onClick={(e) => {
+                setActiveUser(!activeUser);
+              }}
+            >
+              <div className="user-icons">
+                <div className="userAvatar">
+                  <img src={selectedUserEmoji} alt="User Avatar" />
+                </div>
+                <div className="userDropDown">
+                  <FontAwesomeIcon icon={faCaretDown} />
+                </div>
+              </div>
+
+              <div className="user-profile" id={activeUser ? "activeUser" : ""}>
+                {HandleLoggedInUI()}
+              </div>
             </li>
           </div>
         </ul>

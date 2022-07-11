@@ -26,8 +26,7 @@ let userModel = mongoose.Schema({
     type: String,
   },
   rewardsEarned: {
-    type: Number,
-    default: 0,
+    type: [],
   },
   role: {
     type: String,
@@ -40,6 +39,10 @@ let userModel = mongoose.Schema({
   createdAt: {
     type: Date,
     default: dayjs().format("YYYY-MM-DD"),
+  },
+  selectedEmoji: {
+    type: String,
+    default: "Bird",
   },
 });
 

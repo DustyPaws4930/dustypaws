@@ -5,10 +5,9 @@ html {
 .event-ngo {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10rem;
-}
-.event-form {
-  padding: 20px;
+  max-width: 50%;
+  align-items: center;
+  margin: auto;
 }
 .card img {
   width: 100%;
@@ -43,9 +42,11 @@ html {
   background-color: #698c87;
 } */
 .card-body {
-  margin: 30px;
-  box-shadow: 2px 6px 16px 1px rgba(40, 91, 83, 0.58);
+  margin: 2rem auto;
+  /* box-shadow: 2px 6px 16px 1px rgba(40, 91, 83, 0.58); */
   /* change this */
+  border: 1px solid var(--primary-button);
+  width: 350px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -118,7 +119,7 @@ html {
 }
 hr {
   width: 50%;
-  text-align: center;
+  margin: auto;
   margin-bottom: 5em;
 }
 .btn-eventt-details {
@@ -142,12 +143,57 @@ hr {
 }
 .card-date {
   /* background-color: aqua; */
-  position: absolute;
-  width: 30px;
-  height: auto;
-  top: 15px;
-  left: 30px;
+  /* position: absolute; */
+  /* width: 30px; */
+  display: none;
 }
+h2.card-title {
+  font-size: 1.15rem;
+  margin: 0.5rem 1rem;
+}
+p.card-description {
+  margin: 0.5rem 1rem;
+}
+
+.btn-container {
+  margin: 1rem;
+  display: flex;
+  gap: 1rem;
+  /* margin: auto; */
+  /* background: #295b53; */
+}
+
+.btn-container a {
+  /* margin: 5px; */
+  padding: 0.7rem;
+  flex-grow: 1;
+  /* background: #295b53; */
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+  text-align: center;
+  border-radius: 2px;
+  justify-content: space-around;
+}
+
+.btn-container a.btn.btn-view {
+  border: 1px solid var(--secondary-color);
+  background: var(--secondary-color);
+}
+.btn-container a.btn.btn-view:hover {
+  background: white;
+  transition: 0.4s;
+}
+
+.btn-container a.btn.btn-edit {
+  border: 1px solid var(--primary-button);
+}
+.btn-container a.btn.btn-edit:hover {
+  background: var(--primary-button);
+  color: white;
+  transition: 0.4s;
+}
+
 .our-partners-content {
   /* background-color: #295b53; */
   width: 100%;
@@ -198,20 +244,6 @@ hr {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-/* .item-black {
-  background-color: black;
-  text-align: center;
-  border-radius: 30px;
-  opacity: 1;
-  z-index: 1;
-  align-items: center;
-  border-radius: 30px;
-  text-align: center;
-  opacity: 0.7;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
 
 /* to be changed according to the gif */
 .featured-event-img {
@@ -224,9 +256,7 @@ hr {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.footer {
-  margin-top: 40px;
-}
+
 .our-partners-heading {
   margin-bottom: 50px;
 }
@@ -264,7 +294,7 @@ hr {
     /* visibility: hidden; */
     position: absolute;
     left: 10%;
-    top: 350px;
+    top: 250px;
     /* overflow: hidden; */
     width: 80%;
     height: 35%;
@@ -281,5 +311,118 @@ hr {
   .btn-feature-event {
     display: flex;
     justify-content: center;
+  }
+}
+/* event page NGO */
+
+.event-form-wrapper {
+  width: 350px;
+}
+
+.event-form {
+  display: flex;
+  padding: 0.8rem;
+  flex-direction: column;
+}
+.event-form input {
+  border: none;
+  border-bottom: 2px solid gray;
+}
+
+.event-form input[type="text"],
+input[type="Date"],
+input[type="Number"] {
+  margin: 1rem 0;
+}
+
+.event-form label {
+  font-size: 1.1rem;
+}
+
+.event-bg-image {
+  max-width: 400px;
+}
+
+.Eventbutton-div {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0;
+  width: max-content;
+}
+
+.event-bg-image img {
+  width: 90%;
+  display: block;
+  margin: auto;
+}
+.event-ngo h2 {
+  text-align: center;
+  grid-column: 1/-1;
+  margin: 2rem;
+}
+
+.event-ngo button {
+  padding: 10px;
+  border: 1px solid var(--primary-button);
+  background: var(--primary-button);
+  color: white;
+  font-weight: 600;
+}
+.event-ngo button:hover {
+  background-color: white;
+  transition: 0.3s;
+  color: var(--primary-button);
+}
+
+.NGO-Events .pagination-component {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.NGO-Events ul.pagination-nav-container {
+  grid-column: 1/-1;
+}
+
+.NGO-Events {
+  max-width: 90%;
+  margin: auto;
+}
+
+/* TEst */
+.mobile-img-1,
+.mobile-img-2 {
+  display: none;
+}
+
+.NGO-Events-header {
+  margin: 1rem;
+}
+
+@media screen and (max-width: 1100px) {
+  .NGO-Events .pagination-component {
+    grid-template-columns: 1fr 1fr;
+  }
+  .event-bg-image {
+    display: none;
+  }
+  .event-ngo {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .mobile-img-1,
+  .mobile-img-2 {
+    display: block;
+    max-width: 70%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .NGO-Events .pagination-component {
+    grid-template-columns: 1fr;
+  }
+  .event-ngo {
+    max-width: unset;
   }
 }

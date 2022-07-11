@@ -1,0 +1,11 @@
+.EventContentWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.EventControls {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}

@@ -1,0 +1,35 @@
+/* .pagination-component img {
+  max-width: 300px;
+} */
+
+.pagination-component a:hover {
+  cursor: pointer;
+}
+.pagination-component ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  justify-content: space-evenly;
+  max-width: 30%;
+  margin: 2rem auto;
+}
+
+/* .pagination-component  */
+
+.pagination-component ul li {
+  /* padding: 1rem; */
+  height: 2rem;
+  width: 2rem;
+  font-weight: 500;
+  padding: 1rem;
+  border: 2px solid var(--primary-button);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.pagination-component .pagination-active {
+  background: var(--primary-button);
+  color: white;
+  border-radius: 4px;
+}

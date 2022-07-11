@@ -34,6 +34,11 @@ const ReportSchema = new mongoose.Schema({
     type: Object,
   },
 
+  address: {
+    type: String,
+    default: "",
+  },
+
   priority: {
     type: Number,
     min: 0,
@@ -50,6 +55,10 @@ const ReportSchema = new mongoose.Schema({
 
   phoneNumber: {
     type: Number,
+  },
+  state: {
+    type: String,
+    default: "Submitted",
   },
 });
 

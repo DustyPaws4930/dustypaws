@@ -8,8 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import Geocode from "react-geocode";
 
 let Report = (props) => {
+  Geocode.setLanguage("en");
+  Geocode.setApiKey("AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw");
   // ***Declare all variables here***
   let PopUpContent;
   let [popUp, setPopUp] = useState(false);
@@ -21,8 +24,10 @@ let Report = (props) => {
     priority: 0,
     phoneNumber: "",
     location: {},
+    address: "",
     userId: "",
   });
+  let [fileName, setFileName] = useState("");
 
   // ***Declare Functions here***F
   useEffect(() => {
@@ -41,6 +46,7 @@ let Report = (props) => {
     lat: "",
     long: "",
   });
+  const [currentAddress, setCurrentAddress] = useState("");
   // To show the popup
   const TogglePopUp = () => {
     setPopUp(!popUp);
@@ -53,6 +59,17 @@ let Report = (props) => {
         long: position.coords.longitude,
       });
 
+      Geocode.fromLatLng(
+        position.coords.latitude,
+        position.coords.longitude
+      ).then(
+        (response) => {
+          setCurrentAddress(response.results[0].formatted_address);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
       TogglePopUp();
     });
   };
@@ -69,6 +86,8 @@ let Report = (props) => {
     e.preventDefault();
 
     reportData.location = currentCoordinate;
+    reportData.address = currentAddress;
+
     console.log(reportData);
 
     const reportUrl = getApiPath() + "complaint/register";
@@ -99,6 +118,7 @@ let Report = (props) => {
 
   // File change event handler
   const handleFileChange = async (e) => {
+    setFileName(e.target.files[0].name);
     UploadFile(e.target.files[0]).then((uploadedImage) => {
       reportData.Image = uploadedImage;
     });
@@ -150,33 +170,54 @@ let Report = (props) => {
             />
           </div>
           <div className="labelInputWrapper">
-            <label htmlFor="img">Upload image:</label>
-            <input
-              onChange={(e) => {
-                handleFileChange(e);
-              }}
-              type="file"
-              id="img"
-              name="img"
-              accept="image/*"
-            ></input>
+            <label htmlFor="myFile">Upload image:</label>
+            <div className="button-div">
+              <div className="chooseFileContainer">
+                Choose File
+                <input
+                  type="file"
+                  id="myFile"
+                  name="chooseFileBtn"
+                  className="fileOriginalBtn"
+                  accept="image/*"
+                  onChange={(e) => {
+                    handleFileChange(e);
+                  }}
+                  aria-hidden="false"
+                ></input>
+              </div>
+              <label className="imageFileName">{fileName}</label>
+            </div>
           </div>
+
           <div className="labelInputWrapper">
             <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={reportData.name}
-              onChange={(e) => onInputChange(e)}
-              placeholder="your name"
-            />
+            <div className="InputLinkWrapper">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                maxLength={28}
+                value={reportData.name}
+                onChange={(e) => onInputChange(e)}
+                placeholder="your name"
+              />
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  setReportData({ ...reportData, ["name"]: "Anonymous" });
+                }}
+              >
+                Set Anonymous
+              </a>
+            </div>
           </div>
           <div className="labelInputWrapper">
             <label>Phone Number</label>
             <input
               type="tel"
               name="phoneNumber"
+              maxLength={10}
               id="phoneNumber"
               value={reportData.phoneNumber}
               onChange={(e) => onInputChange(e)}
@@ -207,7 +248,7 @@ let Report = (props) => {
 
               <button
                 className="priority-flag high"
-                id="2"
+                id="1"
                 name="priorityLow"
                 type="button"
                 onClick={(e) => {
@@ -219,7 +260,7 @@ let Report = (props) => {
 
               <button
                 className="priority-flag moderate"
-                id="1"
+                id="2"
                 name="priorityModerate"
                 type="button"
                 onClick={(e) => {

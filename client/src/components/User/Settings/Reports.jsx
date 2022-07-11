@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { getApiPath, getLoggedInUser } from "../../../Common";
+import { Link } from "react-router-dom";
+import ReportIcon from "../../images/Report_Icon_UserSettings.png";
 
 const Reports = () => {
   const [userComplaints, setUserComplaints] = useState([]);
@@ -13,7 +15,6 @@ const Reports = () => {
       axios
         .get(fetchReportUrl)
         .then((res) => {
-          console.log(res.data);
           setUserComplaints(res.data.complaints);
         })
         .catch((err) => {
@@ -26,11 +27,13 @@ const Reports = () => {
   const RenderComplaints = () => {
     let loggedInUser = getLoggedInUser();
     if (loggedInUser !== "") {
-      return userComplaints.map((complaints, idx) => {
+      return userComplaints.splice(0, 3).map((complaints, idx) => {
         return (
           <div key={idx} className="caseWrapper">
-            <p>{complaints.title}</p>
-            <button>Icon Image</button>
+            <h4>{complaints.title}</h4>
+            <button className="ReportIconBtn">
+              <img src={ReportIcon} alt={complaints.title} />
+            </button>
           </div>
         );
       });
@@ -46,12 +49,10 @@ const Reports = () => {
   return (
     <div className="userReportContainer">
       <h3>Reported Cases</h3>
-      <div className="CasesContainer">
-        <p>{RenderComplaints()}</p>
-        
-        <a  className="reportedcase-btn">View All</a>
-        
-      </div>
+      <div className="CasesContainer">{RenderComplaints()}</div>
+      <Link className="ViewAllBtn" to="/allReports">
+        View All
+      </Link>
     </div>
   );
 };

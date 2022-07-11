@@ -10,7 +10,7 @@ export const Register = (req, res) => {
   let userId = req.body.userId;
   let location = req.body.location;
   let img = req.body.Image;
-
+  let address = req.body.address;
   let reportObj = new ReportModel({
     title: title,
     description: description,
@@ -19,6 +19,7 @@ export const Register = (req, res) => {
     userId: userId,
     location: location,
     priority: priority,
+    address: address,
     Image: img,
   });
 
