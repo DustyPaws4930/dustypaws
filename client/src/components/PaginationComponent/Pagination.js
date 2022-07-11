@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import NGOEventCard from "../cards/NGOEventCard";
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 import NGORequestCard from "../cards/NGORequestCard";
+import SingleEvent from "../Event/SingleEvent";
 
 //  Component Props
 
@@ -24,6 +25,8 @@ const Pagination = (props) => {
 
   const PerPage = props.PerPage ? props.PerPage : 6;
   const apiUrl = props.apiUrl ? props.apiUrl : "";
+  let [selectedEvent, setSelectedEvent] = useState({});
+  let [popUp, setPopUp] = useState(false);
   // Loading data
   useEffect(() => {
     fetchData();
@@ -43,12 +46,30 @@ const Pagination = (props) => {
     setCurrentPage(selectedPage);
   }
 
+  const TogglePopUp = (event) => {
+    setSelectedEvent(event);
+    setPopUp(!popUp);
+  };
+  let PopUpContent;
+  if (popUp) {
+    PopUpContent = (
+      <SingleEvent TogglePopUp={TogglePopUp} eventData={selectedEvent} />
+    );
+  }
+
   const offset = currentPage * PerPage;
   const currentPageData = data
     .slice(offset, offset + PerPage)
     .map((result, index) => {
       if (pageName == "EventForm") {
-        return <NGOEventCard index={index} result={result} key={index} />;
+        return (
+          <NGOEventCard
+            index={index}
+            TogglePopUp={TogglePopUp}
+            result={result}
+            key={index}
+          />
+        );
       }
       if (pageName == "NGO-Home") {
         console.log("NGO-Home");
@@ -64,6 +85,7 @@ const Pagination = (props) => {
     <div className="pagination-component">
       {/* <h1>React Pagination</h1> */}
       {currentPageData}
+      {PopUpContent}
       <ReactPaginate
         previousLabel={`<`}
         nextLabel={`>`}

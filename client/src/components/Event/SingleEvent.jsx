@@ -8,11 +8,10 @@ import { useEffect } from "react";
 const SingleEvent = (props) => {
   let event = props.eventData;
   let [eventWishlisted, setEventWishlisted] = useState(false);
-  let [loggerdInUserId, setLoggedInUserId] = useState("");
+  let [loggerdInUser, setLoggedInUser] = useState(undefined);
 
   const WishlistHandler = (eventState) => {
-    let wishlistURl = getApiPath() + `user/whishlist/${loggerdInUserId}`;
-    console.log(eventState);
+    let wishlistURl = getApiPath() + `user/whishlist/${loggerdInUser._id}`;
     axios
       .patch(wishlistURl, { eventId: event._id, eventState })
       .then((res) => {
@@ -33,8 +32,8 @@ const SingleEvent = (props) => {
         userToken !== "undefined" &&
         userToken !== ""
       ) {
-        let id = userToken?.user._id;
-        setLoggedInUserId(id);
+        let user = userToken?.user;
+        setLoggedInUser(user);
         let whishlistedEvent = userToken?.user.whistlist;
         for (var i = 0; i < whishlistedEvent.length; i++) {
           if (whishlistedEvent[i] === event._id) {
@@ -43,7 +42,7 @@ const SingleEvent = (props) => {
         }
       }
     },
-    [loggerdInUserId]
+    [setLoggedInUser]
   );
 
   return (
@@ -64,7 +63,12 @@ const SingleEvent = (props) => {
               <p>{Moment(event.date).format("LLLL")}</p>
               <p>{event.address}</p>
               <p>{event.description}</p>
-              {loggerdInUserId && loggerdInUserId !== "" ? (
+
+              {console.log(loggerdInUser)}
+              {loggerdInUser &&
+              loggerdInUser !== "" &&
+              loggerdInUser !== undefined &&
+              loggerdInUser.role !== "ngo" ? (
                 <div className="EventControls">
                   <button
                     onClick={(e) => {

@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 const NGOEventCard = (props) => {
+  const GetLocationNShowPopUp = (e) => {
+    e.preventDefault();
+  };
   return (
     <div key={props.index + 1} className="CardWrapper">
       <div className="card">
@@ -17,12 +20,15 @@ const NGOEventCard = (props) => {
           <h2 className="card-title">{props.result.title}</h2>
           <p className="card-description">{props.result.description}</p>
           <div className="btn-container">
-            <Link to="/singleEvent" className="btn btn-view">
-              View More
-            </Link>
-            <Link to="/eventEdit" className="btn btn-edit">
-              Edit
-            </Link>
+            <a
+              className="btn btn-view"
+              onClick={(e) => {
+                e.preventDefault();
+                props.TogglePopUp(props.result);
+              }}
+            >
+              View
+            </a>
           </div>
         </div>
       </div>
