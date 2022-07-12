@@ -13,64 +13,61 @@ export const GetReportCount = (req, res) => {
         console.log("Error " + err);
         res.status(500).json({ message: err.message });
       } else {
-        console.log("count " + count);
-        res.status(200).json({ count });
+        res.status(200).json({ count: count });
       }
     });
 };
 
 export const GetNGOUserVisualizationData = async (req, res) => {
-
-  const monthsArray = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
-  const monthCOunt = {};
-  monthsArray.forEach(element => {
+  const monthsArray = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthCOunt = [];
+  monthsArray.forEach((element,index) => {
     const firstdate = moment().month(element).startOf("month");
-    console.log(firstdate);
+    console.log("firstdate     " + firstdate.toISOString());
     const lastdate = moment().month(element).endOf("month");
-  console.log(lastdate);
-  const count = UserModel.find({
-    $and: [
-      {role:"ngo"},
-      {
-        createdAt: {
-          $gte: firstdate,
-          $lt: lastdate,
+    console.log("lastdate   ", lastdate.toISOString());
+    const count = UserModel.find({
+      $and: [
+        { role: "ngo" },
+        {
+          createdAt: {
+            $gte: firstdate.toISOString(),
+            $lt: lastdate.toISOString(),
+          },
         },
-      },
-    ],
-  }).count().then((count, err) => {
-    if (err) {
-      console.log("Error " + err);
-      // res.status(500).json({ message: err.message });
-    } else {
-      console.log("count " + count);
-      monthCOunt[element] = count;
-        console.log("dewwwwwwwwwwwwwwwwwwwwwwwwwwwwww         ",monthCOunt);
-
-      // res.status(200).json({ count });
-    }
-  });;
-  // console.log(count);
-
-
+      ],
+    })
+      .count()
+      .then((count, err) => {
+        if (err) {
+          console.log("Error " + err);
+          // res.status(500).json({ message: err.message });
+        } else {
+          console.log("count count 59 " + count);
+          monthCOunt.push({
+            month: element,
+            count: count,
+          });
+          console.log(monthCOunt);
+          console.log("67");
+          if (index == 11) {
+            res.status(200).json(monthCOunt);
+          }
+        }
+      });
   });
 
-  function getFirstDayOfMonth(year, month) {
-    return new Date(year, month, 1).format("DD-MM-YYYY");
-  }
-
-  // const firstdate = moment().startOf("month").format("DD-MM-YYYY");
-  // console.log(firstdate);
-
-  // const lastdate = moment().month().endOf("month").format("DD-MM-YYYY");
-  // console.log(lastdate);
-  // console.log("dewwwwwwwwwwwwwwwwwwwwwwwwwwwwww         ",monthCOunt);
-  if (err) {
-    console.log("Error " + err);
-    res.status(500).json({ message: err.message });
-  } else {
-
-  res.status(200).json( monthCOunt );
-  }
-  
 };

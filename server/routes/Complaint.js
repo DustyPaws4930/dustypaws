@@ -1,9 +1,7 @@
 import express from "express";
 import { Register } from "../controllers/Complaint/Register.js";
-import ImageUpload from "../middlewares/ImageUpload.js";
 import {
   GetAllComplaints,
-  GetNGOUserVisualizationData,
   GetReportByUserId,
   UpdateComplaintById,
   GetReportCount,
