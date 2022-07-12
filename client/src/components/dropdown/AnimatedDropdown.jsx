@@ -25,7 +25,10 @@ const AnimatedDropdown = (props) => {
 
   return (
     <>
-      <div className={`Animated-dropdown ${selected}`} id={isActive ? `active` : "disabled"}>
+      <div
+        className={`Animated-dropdown ${selected}`}
+        id={isActive ? `active` : "disabled"}
+      >
         <div
           className="dropdown-btn"
           onClick={(e) => {

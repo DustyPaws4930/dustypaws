@@ -4,13 +4,17 @@ import React, { useEffect, useState } from "react";
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 
 const NGORequestCard = (props) => {
+  const HandleComplaintDropDown = (option, reportId) => {
+    props.HandleComplaintDropDown(option, reportId);
+  };
+
   return (
     <>
       <div
         key={props.index}
         className="cardWrapper"
         id={
-            props.result.state === "Completed" || props.result.state === "Spam"
+          props.result.state === "Completed" || props.result.state === "Spam"
             ? "setCompleted"
             : ""
         }
@@ -32,13 +36,17 @@ const NGORequestCard = (props) => {
         <h4>{props.result.title}</h4>
         <p>{props.result.address}</p>
         <p>{props.result.description}</p>
+
+        {console.log(props.result.title + " " + props.result.state)}
         <div className="status-dropdown">
           <AnimatedDropdown
             options={props.options}
-            HandleComplaintDropDown={props.HandleComplaintDropDown}
+            HandleComplaintDropDown={HandleComplaintDropDown}
             reportId={props.result._id}
             initialText={
-                props.result.state === "Submitted" ? props.initialText : props.result.state
+              props.result.state === "Submitted"
+                ? props.initialText
+                : props.result.state
             }
           />
         </div>

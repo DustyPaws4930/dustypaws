@@ -60,8 +60,9 @@ const SingleEvent = (props) => {
             </div>
             <div className="ContentWrapper">
               <h1 className="eventContentTitle">{event.title}</h1>
-              <p>{Moment(event.date).format("LLLL")}</p>
+              <p>{Moment(event.date).format("ll")}</p>
               <p>{event.address}</p>
+              <p>{event.price}</p>
               <p>{event.description}</p>
 
               {console.log(loggerdInUser)}

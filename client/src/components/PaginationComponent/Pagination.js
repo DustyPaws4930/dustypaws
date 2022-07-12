@@ -27,8 +27,12 @@ const Pagination = (props) => {
   const apiUrl = props.apiUrl ? props.apiUrl : "";
   let [selectedEvent, setSelectedEvent] = useState({});
   let [popUp, setPopUp] = useState(false);
+
+  let [initialText, setInitialText] = useState("");
+
   // Loading data
   useEffect(() => {
+    setInitialText(props.initialText);
     fetchData();
   }, [apiUrl]);
   function fetchData() {
@@ -57,6 +61,14 @@ const Pagination = (props) => {
     );
   }
 
+  let HandleDropDownEvent = (option, reportId) => {
+    props.HandleComplaintDropDown(option, reportId);
+  };
+
+  let ShowOnMapEvent = (e, location) => {
+    props.ShowOnMap(e, location);
+  };
+
   const offset = currentPage * PerPage;
   const currentPageData = data
     .slice(offset, offset + PerPage)
@@ -73,7 +85,17 @@ const Pagination = (props) => {
       }
       if (pageName == "NGO-Home") {
         console.log("NGO-Home");
-        return <NGORequestCard result={result} index={index} key={index} />;
+        return (
+          <NGORequestCard
+            result={result}
+            options={props.options}
+            ShowOnMap={ShowOnMapEvent}
+            initialText={initialText}
+            HandleComplaintDropDown={HandleDropDownEvent}
+            index={index}
+            key={index}
+          />
+        );
       }
     });
   // console.log("currentPageData", currentPageData);

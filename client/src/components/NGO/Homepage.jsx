@@ -48,6 +48,7 @@ const Homepage = (props) => {
 
   let ShowOnMap = (e, coordinates) => {
     e.preventDefault();
+
     setCurrentCoordinates(coordinates);
     setZoomLevel(20);
   };
@@ -158,7 +159,14 @@ const Homepage = (props) => {
           <h1>Complaints</h1>
         </div>
         <div className="cardsContainer">
-        <Pagination apiUrl={complaintsUrl} cardName="NGO-Home" ShowOnMap={ShowOnMap} options={options} HandleComplaintDropDown={HandleComplaintDropDown} initialText={initialText}/>
+          <Pagination
+            apiUrl={complaintsUrl}
+            cardName="NGO-Home"
+            ShowOnMap={ShowOnMap}
+            options={options}
+            HandleComplaintDropDown={HandleComplaintDropDown}
+            initialText={initialText}
+          />
         </div>
       </div>
     </div>
