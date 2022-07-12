@@ -1,5 +1,6 @@
 import express from "express";
 import { GetNGOUserVisualizationData } from "../controllers/Complaint/Fetch.js";
+import { GetReportCount } from "../controllers/datacount/Fetch.js";
 import {
   GetAllUsers,
   GetUser,
@@ -28,7 +29,7 @@ router.get("/getAllUsers", GetAllUsers);
 router.patch("/update/:id", Update);
 router.patch("/whishlist/:id", TrackWhishlist);
 
-router.get("/getAllUsers", GetAllNGOUsers);
+router.get("/getAllUsers", GetReportCount);
 router.get("/ngodata", GetNGOUserVisualizationData);
 
 export default router;

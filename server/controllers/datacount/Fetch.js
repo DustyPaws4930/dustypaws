@@ -6,7 +6,7 @@ import UserModel from "../../models/User.js";
 import moment from "moment";
 
 export const GetReportCount = (req, res) => {
-  ReportModel.find({})
+  ReportModel.find({role:"ngo"})
     .count()
     .then((count, err) => {
       if (err) {

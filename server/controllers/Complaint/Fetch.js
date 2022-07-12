@@ -80,7 +80,7 @@ export const GetNGOUserVisualizationData = async (req, res) => {
     res.status(500).json({ message: err.message });
   } else {
   res.status(200).json( monthCOunt );
-  }
+  }}
   
 export const UpdateComplaintById = async (req, res) => {
   let id = req.params.id;
@@ -147,5 +147,4 @@ export const UpdateComplaintById = async (req, res) => {
       res.status(500).json({ message: `Error occured while updating State` });
     }
   }
-}
 };
