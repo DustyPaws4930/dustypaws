@@ -1,5 +1,10 @@
-
-
+.PopUpContainer{
+  /* border: 2px solid #deb141; */
+  background-color: rgba(41, 91, 83, 0.7);
+}
+.PopUpContent{
+  border: 1px solid #deb141;
+}
 .EventControls {
   display: flex;
   flex-direction: row;
@@ -11,7 +16,8 @@
   /* margin: 20px; */
 }
 .EventControls button{
-  background-color: #deb141;
+  background-color: #295b53;
+  color: white;
   padding: 10px 20px;
   margin-top: 20px;
   font-weight: bolder;
@@ -94,7 +100,7 @@
   }
   
 }
-@media only screen and (max-width: 1200px) and (min-width: 501px){
+@media only screen and (max-width: 2000px) and (min-width: 501px){
   .EventContentWrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

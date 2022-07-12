@@ -46,9 +46,9 @@ const SingleEvent = (props) => {
                     setEventWishlisted(!eventWishlisted);
                   }}
                 >
-                  {eventWishlisted ? "Wishlisted" : "Wishlist"}
+                  {eventWishlisted ? "Wishlisted" : "Add to Wishlist"}
                 </button>
-                <button>Book Event</button>
+                {/* <button>Book Event</button> */}
               </div>
             </div>
           </div>
