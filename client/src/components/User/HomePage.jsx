@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimatedNumber from "../AnimatedNumber/AnimatedNumber";
 import CardImages1 from "../project-files/third-box.svg";
 import CardImages2 from "../project-files/second-box.svg";
@@ -14,7 +14,28 @@ import PieChart from "../Charts/PieChart";
 import UserData from "../../Data";
 import Confirmation from "../Complaint/Confirmation";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { getApiPath } from "../../Common";
 const HomePage = (props) => {
+  const [reportCountData, setReportCountData] = useState();
+
+  const reportCountUrl = getApiPath() + "data/getReportCount/";
+
+        useEffect(
+          (e) => {
+            axios
+              .get(reportCountUrl)
+              .then((res) => {
+                setReportCountData(res.data.count);
+                console.log(res.data.count);
+              })
+              .catch((err) => {
+                console.log("Error :" + err);
+              });
+          },
+          [setReportCountData]
+        );
+
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.month),
     datasets: [
@@ -50,8 +71,8 @@ const HomePage = (props) => {
       </section>
       <section className="statistics">
         <div className="statCount">
-          <h3>{<AnimatedNumber end={100000} start={0} timer={10} />}</h3>
-          <h4>Donation Count</h4>
+          <h3>{<AnimatedNumber end={reportCountData} start={0} timer={10} />}</h3>
+          <h4>Report Count</h4>
         </div>
         <div className="charts">
           <div className="userChart" style={{ width: 400 }}>
