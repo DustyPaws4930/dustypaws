@@ -54,12 +54,13 @@ const Event = (props) => {
     },
     480: {
       items: 3,
-      // marginleft: "10px",
+      marginleft: "10px",
       marginRight: "10px",
       center: true,
     },
     0: {
       items: 1,
+      // center: true,
     },
   };
 
@@ -192,10 +193,10 @@ const Event = (props) => {
                   <div className="card-content">
                     <div className="card-heading-wishlist">
                       <h4 className="card-title">{event.title}</h4>
-                      <img
+                      {/* <img
                         src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
                         alt="wishlist"
-                      />
+                      /> */}
                     </div>
                     <p className="card-description">{event.description}</p>
                     <div className="btn-eventt-details">
@@ -241,10 +242,10 @@ const Event = (props) => {
                   <div className="card-content">
                     <div className="card-heading-wishlist">
                       <h4 className="card-title">{event.title}</h4>
-                      <img
+                      {/* <img
                         src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
                         alt="wishlist"
-                      />
+                      /> */}
                     </div>
                     <p className="card-description">{event.description}</p>
                     <div className="btn-eventt-details">

@@ -324,6 +324,13 @@ hr {
   max-width: 90%;
   margin: auto;
 }
+.card-description{
+  /* background-color: aqua; */
+  padding: 20px 0;
+}
+.our-partners-content{
+  margin-bottom: 40px;
+}
 @media only screen and (max-width: 500px) and (min-width: 390px){
   .featured-event {
     /* background-color: cadetblue; */
@@ -361,7 +368,7 @@ hr {
     width: 80%;
     height: 35%;
     border-radius: 10px;
-    background-image: url("../images/Event_Feature_Hero.jpg");
+    /* background-image: url("../images/Event_Feature_Hero.jpg"); */
     padding-bottom: 20px;
   }
   .featured-event-date {
@@ -435,4 +442,8 @@ hr {
 .NGO-Events {
   max-width: 90%;
   margin: auto;
+}
+.card-description{
+  /* background-color: aqua; */
+  padding: 20px 0;
 }
