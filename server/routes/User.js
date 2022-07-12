@@ -1,4 +1,5 @@
 import express from "express";
+import { GetNGOUserVisualizationData } from "../controllers/Complaint/Fetch.js";
 import {
   GetAllUsers,
   GetUser,
@@ -26,5 +27,7 @@ router.get("/getAllUsers", GetAllUsers);
 // All Update routes
 router.patch("/update/:id", Update);
 router.patch("/whishlist/:id", TrackWhishlist);
+router.get("/getAllUsers", GetAllNGOUsers);
+router.get("/ngodata", GetNGOUserVisualizationData);
 
 export default router;
