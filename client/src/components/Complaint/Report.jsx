@@ -181,14 +181,15 @@ let Report = (props) => {
           </div>
           <div className="labelInputWrapper">
             <label>Description</label>
-            <input
-              type="text"
+            <textarea
               name="description"
-              id="description"
+              id="reportDescription"
               value={reportData.description}
               onChange={(event) => onInputChange(event)}
               placeholder="please briefly describe the event"
-            />
+              cols="30"
+              rows="10"
+            ></textarea>
           </div>
           <div className="labelInputWrapper">
             <label htmlFor="myFile">Upload image:</label>
