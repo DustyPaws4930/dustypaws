@@ -17,6 +17,13 @@ h4.landing-text {
   padding: 8rem 2rem 3rem 2rem;
 }
 
+.userChart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+}
+
 .reportCaseContainer {
   width: 600px;
   display: flex;

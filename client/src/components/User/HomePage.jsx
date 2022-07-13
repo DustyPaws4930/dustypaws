@@ -64,7 +64,7 @@ const HomePage = (props) => {
           <h4>Report Count</h4>
         </div>
         <div className="charts">
-          <div className="userChart" style={{ width: 400 }}>
+          <div className="userChart">
             <PieChart />
           </div>
           <h4>Help Count</h4>

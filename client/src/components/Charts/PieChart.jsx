@@ -4,12 +4,21 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getApiPath } from "../../Common";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const PieChart = () => {
-
   const [ngoUserData, setNgoUserData] = useState({});
+  let [loading, setLoading] = useState(false);
+  const override = {
+    display: "block",
+    margin: "0 0 0 6rem",
+    borderColor: "red",
+    backgroundColor: "#deb141",
+  };
   useEffect(() => {
     let datCountURl = getApiPath() + "data/getNGOUserCount/";
+
+    setLoading(true);
     axios
       .get(datCountURl)
       .then((res) => {
@@ -26,6 +35,8 @@ const PieChart = () => {
             },
           ],
         });
+
+        setLoading(false);
       })
       .catch((err) => {
         console.log(`Error occured while getting data count ${err}`);
@@ -34,10 +45,15 @@ const PieChart = () => {
   return (
     <>
       <div>
-        {Object.keys(ngoUserData).length > 0 ? (
+        {Object.keys(ngoUserData).length > 0 && !loading ? (
           <Pie data={ngoUserData} />
         ) : (
-          "Loading.."
+          <PropagateLoader
+            color="#deb141"
+            loading={loading}
+            cssOverride={override}
+            size={14}
+          />
         )}
       </div>
     </>
