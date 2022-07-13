@@ -9,15 +9,14 @@ import Footer from "../../Footer/Footer";
 import { getToken } from "../../../Common";
 
 const Profile = () => {
- 
   return (
     <div>
       <Header />
       <div className="profile-user">
         <Info />
-        <Reports />
         <Rewards />
         <Whislist />
+        <Reports />
       </div>
       <Footer />
     </div>

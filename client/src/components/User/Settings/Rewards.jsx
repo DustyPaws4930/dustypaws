@@ -47,7 +47,7 @@ const Rewards = () => {
         <h1>Rewards Trackers</h1>
       </div>
       <div className="rewardsChart">
-        <div className="userChart" style={{ width: 500 }}>
+        <div className="userChart" >
           {Object.keys(userRewards).length > 0 ? (
             <>
               <LineChart chartData={userRewards} />

@@ -44,7 +44,7 @@ const Whislist = () => {
       <div className="eventContainer">{RenderWishlistEvents()}</div>
       
       <Link className="ViewAllBtn" to="/whishlistedEvents">
-        View All
+        View Events
       </Link>
     </div>
   );

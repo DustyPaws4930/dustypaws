@@ -341,9 +341,7 @@ footer p {
     right: 0;
     bottom: -2%;
   }
-  .header-wrapper {
-    flex-direction: column;
-  }
+ 
   section.landing {
     /* height: 350px; */
     background: url(../components/project-files/hero-mobile.svg);
