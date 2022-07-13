@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // import "./pagination.css";
 
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
@@ -8,8 +8,7 @@ const NGORequestCard = (props) => {
     props.HandleComplaintDropDown(option, reportId);
   };
 
-  let Difference_In_Time =
-    Date.now().getTime() - props.result.createdAt.getTime();
+  let Difference_In_Time = new Date().getTime();
   let timeAgo;
   if (Difference_In_Time / (1000 * 60) < 60) {
     timeAgo = Difference_In_Time + " mins ago";

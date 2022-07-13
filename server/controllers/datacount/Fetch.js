@@ -33,13 +33,27 @@ export const GetNGOUserVisualizationData = async (req, res) => {
     "November",
     "December",
   ];
-  const monthCOunt = [];
-  monthsArray.forEach((element,index) => {
+  const monthCount = [];
+  monthsArray.forEach(async (element, index) => {
     const firstdate = moment().month(element).startOf("month");
-    console.log("firstdate     " + firstdate.toISOString());
     const lastdate = moment().month(element).endOf("month");
-    console.log("lastdate   ", lastdate.toISOString());
-    const count = UserModel.find({
+    let count = await getNGOUserCountPerMonth(firstdate, lastdate);
+    monthCount.push({
+      month: element,
+      count: count,
+    });
+    if (index == monthsArray.length - 1) {
+      console.log(monthCount);
+      console.log(monthCount.length);
+
+      res.status(200).json(monthCount);
+    }
+  });
+};
+
+async function getNGOUserCountPerMonth(firstdate, lastdate) {
+  try {
+    let count = await UserModel.find({
       $and: [
         { role: "ngo" },
         {
@@ -49,25 +63,9 @@ export const GetNGOUserVisualizationData = async (req, res) => {
           },
         },
       ],
-    })
-      .count()
-      .then((count, err) => {
-        if (err) {
-          console.log("Error " + err);
-          // res.status(500).json({ message: err.message });
-        } else {
-          console.log("count count 59 " + count);
-          monthCOunt.push({
-            month: element,
-            count: count,
-          });
-          console.log(monthCOunt);
-          console.log("67");
-          if (index == 11) {
-            res.status(200).json(monthCOunt);
-          }
-        }
-      });
-  });
-
-};
+    }).count();
+    return count;
+  } catch (err) {
+    return 0;
+  }
+}

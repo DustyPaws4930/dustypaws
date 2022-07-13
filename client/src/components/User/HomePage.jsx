@@ -8,10 +8,8 @@ import reportBGImage1 from "../project-files/report-bg-image.png";
 import reportBGImage2 from "../project-files/rabbit-report-image.svg";
 import reportMobile1 from "../project-files/report-mobile-top.svg";
 import reportMobile from "../project-files/report-mobile-bottom.svg";
-import figPie from "../project-files/Figpie.png";
 import Report from "../Complaint/Report";
 import PieChart from "../Charts/PieChart";
-import UserData from "../../Data";
 import Confirmation from "../Complaint/Confirmation";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -19,35 +17,24 @@ import { getApiPath } from "../../Common";
 const HomePage = (props) => {
   const [reportCountData, setReportCountData] = useState();
 
-  const reportCountUrl = getApiPath() + "data/getReportCount/";
-
-        useEffect(
-          (e) => {
-            axios
-              .get(reportCountUrl)
-              .then((res) => {
-                setReportCountData(res.data.count);
-                console.log(res.data.count);
-              })
-              .catch((err) => {
-                console.log("Error :" + err);
-              });
-          },
-          [setReportCountData]
-        );
-
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.month),
-    datasets: [
-      {
-        label: "Rewards",
-        data: UserData.map((data) => data.userGain),
-        backgroundColor: ["#285b53", "#deb141", "#ff3333"],
-        borderColor: "#ddd",
-        borderWidth: 2,
-      },
-    ],
-  });
+  useEffect(
+    (e) => {
+      const reportCountUrl = getApiPath() + "data/getReportCount/";
+      axios
+        .get(reportCountUrl)
+        .then((res) => {
+          if (res.data.count < 10000) {
+            setReportCountData(10000);
+          } else {
+            setReportCountData(res.data.count);
+          }
+        })
+        .catch((err) => {
+          console.log("Error :" + err);
+        });
+    },
+    [setReportCountData]
+  );
 
   const [showReportForm, setShowReportForm] = useState(true);
   let [emailNews, setEmailNews] = useState("");
@@ -71,12 +58,14 @@ const HomePage = (props) => {
       </section>
       <section className="statistics">
         <div className="statCount">
-          <h3>{<AnimatedNumber end={reportCountData} start={0} timer={10} />}</h3>
+          <h3>
+            {<AnimatedNumber end={reportCountData} start={0} timer={10} />}
+          </h3>
           <h4>Report Count</h4>
         </div>
         <div className="charts">
           <div className="userChart" style={{ width: 400 }}>
-            <PieChart chartData={userData} />
+            <PieChart />
           </div>
           <h4>Help Count</h4>
         </div>

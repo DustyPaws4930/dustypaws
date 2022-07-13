@@ -1,28 +1,47 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getApiPath } from "../../Common";
 
-const PieChart = ({ chartData }) => {
-  const [dataCount, setDataCount] = useState([]);
+const PieChart = () => {
 
+  const [ngoUserData, setNgoUserData] = useState({});
   useEffect(() => {
     let datCountURl = getApiPath() + "data/getNGOUserCount/";
-
     axios
       .get(datCountURl)
       .then((res) => {
         console.log(res.data);
-        setDataCount(res.data);
+        setNgoUserData({
+          labels: res.data.map((data) => data.month),
+          datasets: [
+            {
+              label: "NGO User Joined",
+              data: res.data.map((data) => data.count),
+              backgroundColor: ["#deb141"],
+              borderColor: "#285b53",
+              borderWidth: 2,
+            },
+          ],
+        });
       })
       .catch((err) => {
         console.log(`Error occured while getting data count ${err}`);
       });
-  }, [setDataCount]);
-  return <div>{/* <Pie data={dataCount} /> */}</div>;
+  }, [setNgoUserData]);
+  return (
+    <>
+      <div>
+        {Object.keys(ngoUserData).length > 0 ? (
+          <Pie data={ngoUserData} />
+        ) : (
+          "Loading.."
+        )}
+      </div>
+    </>
+  );
 };
 
 export default PieChart;
