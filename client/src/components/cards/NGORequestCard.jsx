@@ -7,15 +7,16 @@ const NGORequestCard = (props) => {
   const HandleComplaintDropDown = (option, reportId) => {
     props.HandleComplaintDropDown(option, reportId);
   };
-
-  let Difference_In_Time = new Date().getTime();
+  console.log(props.result);
+  let Difference_In_Time =
+    new Date().getTime() - new Date(props.result.reportDate).getTime();
   let timeAgo;
   if (Difference_In_Time / (1000 * 60) < 60) {
-    timeAgo = Difference_In_Time + " mins ago";
+    timeAgo = Math.trunc(Difference_In_Time) + " mins ago";
   } else if (Difference_In_Time / (1000 * 3600) < 24) {
-    timeAgo = Difference_In_Time / (1000 * 3600) + " hours ago";
+    timeAgo = Math.trunc(Difference_In_Time / (1000 * 3600)) + " hours ago";
   } else if (Difference_In_Time / (1000 * 3600 * 24) < 31) {
-    timeAgo = Difference_In_Time / (1000 * 3600 * 24) + " days ago";
+    timeAgo = Math.trunc(Difference_In_Time / (1000 * 3600 * 24)) + " days ago";
   }
   return (
     <>
@@ -44,7 +45,7 @@ const NGORequestCard = (props) => {
         </div>
         <h4>{props.result.title}</h4>
         <p>{props.result.address}</p>
-        <p>{timeAgo}</p>
+
         <p>{props.result.description}</p>
 
         {console.log(props.result.title + " " + props.result.state)}
@@ -59,6 +60,7 @@ const NGORequestCard = (props) => {
                 : props.result.state
             }
           />
+          <p>{timeAgo}</p>
         </div>
       </div>
     </>

@@ -28,6 +28,17 @@ div.NGO-Home .map-container {
   border: 2px solid var(--primary-color);
   border-radius: 6px;
 }
+
+.reportTitleTimeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reportTitleTimeWrapper p {
+  font-size: 0.7rem;
+}
+
 .cardsContainer .cardWrapper > * {
   margin: 0 1rem;
   padding: 0 1rem;
@@ -77,7 +88,13 @@ div.NGO-Home .map-container {
 }
 .Change.Status .dropdown-btn {
   border-radius: 8px;
-  border: 1px solid var(--secondary-color)
+  border: 1px solid var(--secondary-color);
+}
+.status-dropdown{
+  display: flex;
+  padding: 1rem 0;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 @media screen and (max-width: 1000px) {

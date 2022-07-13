@@ -14,6 +14,7 @@ import eventBGImage from "../project-files/event-bg-image.svg";
 import Pagination from "../PaginationComponent/Pagination.js";
 import mobileImg1 from "../project-files/report-mobile-top.svg";
 import mobileImg2 from "../project-files/report-mobile-bottom.svg";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const EventForm = () => {
   const responsive = {
@@ -50,6 +51,8 @@ const EventForm = () => {
   const [fectchedEvents, setFetchedEvents] = useState([]);
 
   let [fileName, setFileName] = useState("");
+  let [loading, setLoading] = useState(false);
+
   useEffect(() => {
     let userToken = getToken();
 
@@ -127,10 +130,20 @@ const EventForm = () => {
   // File change event handler
   const handleFileChange = async (e) => {
     setFileName(e.target.files[0].name);
+    setLoading(true);
     UploadFile(e.target.files[0]).then((uploadedImage) => {
       eventData.Image = uploadedImage;
+      setLoading(false);
     });
   };
+
+  const override = {
+    display: "block",
+    margin: "0 0 0 6rem",
+    borderColor: "red",
+    backgroundColor: "#deb141",
+  };
+
   let fetchEventsURl = getApiPath() + "event/fetchAll";
   return (
     <>
@@ -159,15 +172,17 @@ const EventForm = () => {
             </div>
             <div className="event-form">
               <label>Description</label>
-              <input
-                type="text"
+              <textarea
+                name="description"
+                id="description"
+                cols="10"
                 value={eventData.description}
                 onChange={(e) => {
                   HandleInputChange(e);
                 }}
-                name="description"
-                id="description"
-              />
+                rows="10"
+                placeholder="Your event description over here."
+              ></textarea>
             </div>
             <div className="event-form">
               <label htmlFor="img">Upload image:</label>
@@ -186,7 +201,16 @@ const EventForm = () => {
                     aria-hidden="false"
                   ></input>
                 </div>
-                <label className="imageFileName">{fileName}</label>
+                {loading ? (
+                  <PropagateLoader
+                    color="#deb141"
+                    loading={loading}
+                    cssOverride={override}
+                    size={14}
+                  />
+                ) : (
+                  <label className="imageFileName">{fileName}</label>
+                )}
               </div>
             </div>
             <div className="event-form">

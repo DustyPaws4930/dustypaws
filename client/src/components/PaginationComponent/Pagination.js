@@ -18,7 +18,7 @@ import SingleEvent from "../Event/SingleEvent";
 
 const Pagination = (props) => {
   // States to handle
-  const [currentPage, setCurrentPage] = useState(0);
+  let [currentPage, setCurrentPage] = useState(0);
   const [data, setData] = useState([]);
   const pageName = props.cardName;
   // console.log(pageName);
@@ -69,22 +69,14 @@ const Pagination = (props) => {
     props.ShowOnMap(e, location);
   };
 
-  const offset = currentPage * PerPage;
-  const currentPageData = data
-    .slice(offset, offset + PerPage)
-    .map((result, index) => {
-      if (pageName == "EventForm") {
-        return (
-          <NGOEventCard
-            index={index}
-            TogglePopUp={TogglePopUp}
-            result={result}
-            key={index}
-          />
-        );
-      }
-      if (pageName == "NGO-Home") {
-        console.log("NGO-Home");
+  let offset = currentPage * PerPage;
+
+  let currentPageData;
+  if (pageName === "NGO-Home") {
+    currentPageData = data
+      .slice(offset, offset + PerPage)
+      
+      .map((result, index) => {
         return (
           <NGORequestCard
             result={result}
@@ -96,12 +88,26 @@ const Pagination = (props) => {
             key={index}
           />
         );
-      }
+      });
+  } else if (pageName == "EventForm") {
+    currentPageData = data.slice(offset, offset + PerPage).map((result, index) => {
+      return (
+        <NGOEventCard
+          index={index}
+          TogglePopUp={TogglePopUp}
+          result={result}
+          key={index}
+        />
+      );
     });
+  }
+
+  console.log(currentPageData);
+
   // console.log("currentPageData", currentPageData);
 
   // total pages Calculator
-  const pageCount = Math.ceil(data.length / PerPage);
+  let pageCount = Math.ceil(data.length / PerPage);
 
   return (
     <div className="pagination-component">
