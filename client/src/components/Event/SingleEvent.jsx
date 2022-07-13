@@ -1,22 +1,59 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Moment from "moment";
-import EventCalender  from "../images/Event_Calender.png";
-import Loaction from '../images/location.png'
-import TicketPrice from '../images/Ticket.png'
+import EventCalender from "../images/Event_Calender.png";
+import Loaction from "../images/location.png";
+import TicketPrice from "../images/Ticket.png";
 import "./SingleEvent.css";
-
+import axios from "axios";
+import { getApiPath, getToken, setToken } from "../../Common";
+import { useEffect } from "react";
 
 const SingleEvent = (props) => {
   let event = props.eventData;
   let [eventWishlisted, setEventWishlisted] = useState(false);
+  let [loggerdInUser, setLoggedInUser] = useState(undefined);
+
+  const WishlistHandler = (eventState) => {
+    let wishlistURl = getApiPath() + `user/whishlist/${loggerdInUser._id}`;
+    axios
+      .patch(wishlistURl, { eventId: event._id, eventState })
+      .then((res) => {
+        setToken(res.data.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(
+    (e) => {
+      let userToken = getToken();
+      if (userToken == null) {
+        return;
+      } else if (
+        userToken !== null &&
+        userToken !== "undefined" &&
+        userToken !== ""
+      ) {
+        let user = userToken?.user;
+        setLoggedInUser(user);
+        let whishlistedEvent = userToken?.user.whistlist;
+        for (var i = 0; i < whishlistedEvent.length; i++) {
+          if (whishlistedEvent[i] === event._id) {
+            setEventWishlisted(true);
+          }
+        }
+      }
+    },
+    [setLoggedInUser]
+  );
 
   return (
     <div className="PopUpContainer">
       <div className="OverlayShadow">
         <div className="PopUpContent">
           <div className="closeBtnContainer">
-            <button onClick={props.TogglePopUp}    className="closePopUpBtn">
+            <button onClick={props.TogglePopUp} className="closePopUpBtn">
               X
             </button>
           </div>
@@ -28,7 +65,7 @@ const SingleEvent = (props) => {
               <h1 className="eventContentTitle">{event.title}</h1>
               <div className="event-date">
                 <img src={EventCalender} alt="" />
-                <p>{Moment(event.date).format("LLLL")}</p>
+                <p>{Moment(event.date).format("ll")}</p>
               </div>
               <div className="event-address">
                 <img src={Loaction} alt="" />
@@ -36,18 +73,30 @@ const SingleEvent = (props) => {
               </div>
               <div className="event-price">
                 <img src={TicketPrice} alt="" />
-                <p>fetch price</p>
+                <p>{event.price}</p>
               </div>
               <p>{event.description}</p>
               <div className="EventControls">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setEventWishlisted(!eventWishlisted);
-                  }}
-                >
-                  {eventWishlisted ? "Wishlisted" : "Add to Wishlist"}
-                </button>
+                {console.log(loggerdInUser)}
+                {loggerdInUser &&
+                loggerdInUser !== "" &&
+                loggerdInUser !== undefined &&
+                loggerdInUser.role !== "ngo" ? (
+                  <div className="EventControls">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setEventWishlisted(!eventWishlisted);
+                        WishlistHandler(!eventWishlisted);
+                      }}
+                    >
+                      {eventWishlisted ? "Wishlisted" : "Wishlist"}
+                    </button>
+                    <button>Book Event</button>
+                  </div>
+                ) : (
+                  ""
+                )}
                 {/* <button>Book Event</button> */}
               </div>
             </div>

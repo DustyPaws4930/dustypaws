@@ -12,6 +12,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import eventBGImage from "../project-files/event-bg-image.svg";
 import Pagination from "../PaginationComponent/Pagination.js";
+import mobileImg1 from "../project-files/report-mobile-top.svg";
+import mobileImg2 from "../project-files/report-mobile-bottom.svg";
 
 const EventForm = () => {
   const responsive = {
@@ -47,6 +49,7 @@ const EventForm = () => {
 
   const [fectchedEvents, setFetchedEvents] = useState([]);
 
+  let [fileName, setFileName] = useState("");
   useEffect(() => {
     let userToken = getToken();
 
@@ -65,7 +68,6 @@ const EventForm = () => {
     axios
       .get(fetchEventsURl)
       .then((res) => {
-        console.log(res.data);
         setFetchedEvents(res.data);
       })
       .catch((err) => {
@@ -91,6 +93,15 @@ const EventForm = () => {
     axios
       .post(registerEventUrl, eventData)
       .then((res) => {
+        setEventData({
+          title: "",
+          description: "",
+          address: "",
+          date: new Date().toLocaleDateString("en-CA"),
+          price: "",
+          createdBy: "",
+          Image: "",
+        });
         toast.success(res.data.message, {
           position: "top-center",
           autoClose: 1000,
@@ -115,6 +126,7 @@ const EventForm = () => {
 
   // File change event handler
   const handleFileChange = async (e) => {
+    setFileName(e.target.files[0].name);
     UploadFile(e.target.files[0]).then((uploadedImage) => {
       eventData.Image = uploadedImage;
     });
@@ -124,7 +136,8 @@ const EventForm = () => {
     <>
       <Header />
       <div className="event-ngo">
-        <h2> Events</h2>
+        <h2> Create Events</h2>
+        <img src={mobileImg1} alt="" className="mobile-img-1" />
         <div className="event-form-wrapper">
           <form
             action="/"
@@ -158,15 +171,23 @@ const EventForm = () => {
             </div>
             <div className="event-form">
               <label htmlFor="img">Upload image:</label>
-              <input
-                onChange={(e) => {
-                  handleFileChange(e);
-                }}
-                type="file"
-                id="img"
-                name="img"
-                accept="image/*"
-              ></input>
+              <div className="Eventbutton-div">
+                <div className="chooseFileContainer">
+                  Choose File
+                  <input
+                    type="file"
+                    id="myFile"
+                    name="chooseFileBtn"
+                    className="fileOriginalBtn"
+                    accept="image/*"
+                    onChange={(e) => {
+                      handleFileChange(e);
+                    }}
+                    aria-hidden="false"
+                  ></input>
+                </div>
+                <label className="imageFileName">{fileName}</label>
+              </div>
             </div>
             <div className="event-form">
               <label>Location</label>
@@ -188,12 +209,8 @@ const EventForm = () => {
                 onChange={(e) => {
                   HandleInputChange(e);
                 }}
-                name="eventDate"
+                name="date"
               />
-            </div>
-            <div className="event-form">
-              <label>Time:</label>
-              <input type="time" name="eventTime" />
             </div>
             <div className="event-form">
               <label>price</label>
@@ -213,15 +230,16 @@ const EventForm = () => {
             </div>
           </form>
         </div>
+        <img src={mobileImg2} alt="" className="mobile-img-2" />
         <div className="event-bg-image">
           <img src={eventBGImage} alt="eventBGImage" />
         </div>
       </div>
       <div className="NGO-Events">
         <div>
-          <h3>Created Events</h3>
+          <h3 className="NGO-Events-header">Created Events</h3>
         </div>
-        <Pagination apiUrl={fetchEventsURl} />
+        <Pagination apiUrl={fetchEventsURl} cardName="EventForm" />
       </div>
       <Footer />
     </>

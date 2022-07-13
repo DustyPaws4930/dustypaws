@@ -13,48 +13,44 @@ import { getApiPath } from "../../Common";
 import yellowIcon from "../images/Yellow_location.png";
 import redIcon from "../images/Red_Locaion.png";
 import greenIcon from "../images/Green_Location.png";
-import "./NGO-Home.css"
+import "./NGO-Home.css";
+import { toast } from "react-toastify";
+import Pagination from "../PaginationComponent/Pagination";
 
 const Homepage = (props) => {
+  // default coordinates of Vancouver
   const [currentCoordinate, setCurrentCoordinates] = useState({
-    lat: 20,
-    long: 20,
+    lat: 49.28273,
+    long: -123.120735,
   });
   const [complaintsArr, setComplaintsArr] = useState([]);
-  const [zoomLevel, setZoomLevel] = useState(2);
-  const initialText='Change Status';
+  const [zoomLevel, setZoomLevel] = useState(10);
+  const initialText = "Change Status";
   const options = ["Accept", "Completed", "Spam"];
   const [isActive, setIsActive] = useState(false);
-  
+  let complaintsUrl = getApiPath() + "complaint/fetch";
 
-  function handleSelectedDrop(event){
-    // console.log(event.target.value);
-    // setSelected(event.target.value);
-  }
-
-  useEffect((e) => {
-    // navigator.geolocation.getCurrentPosition(function (position) {
-    //   setCurrentCoordinates({
-    //     lat: position.coords.latitude,
-    //     long: position.coords.longitude,
-    //   });
-    // });
-
-    let complaintsUrl = getApiPath() + "complaint/fetch";
-    axios
-      .get(complaintsUrl)
-      .then((res) => {
-        setComplaintsArr(res.data.complaints);
-      })
-      .catch((err) => {
-        console.log("Error :" + err);
-      });
-  }, []);
+  useEffect(
+    (e) => {
+      let complaintsUrl = getApiPath() + "complaint/fetch";
+      axios
+        .get(complaintsUrl)
+        .then((res) => {
+          setComplaintsArr(res.data.complaints);
+          console.log(res.data.complaints);
+        })
+        .catch((err) => {
+          console.log("Error :" + err);
+        });
+    },
+    [setComplaintsArr]
+  );
 
   let ShowOnMap = (e, coordinates) => {
     e.preventDefault();
+
     setCurrentCoordinates(coordinates);
-    setZoomLevel(10);
+    setZoomLevel(20);
   };
 
   // GetIcon
@@ -115,13 +111,39 @@ const Homepage = (props) => {
     );
   }
 
+  function HandleComplaintDropDown(option, reportID) {
+    let updateComplaintUrl = getApiPath() + `complaint/updateById/${reportID}`;
+    axios
+      .patch(updateComplaintUrl, {
+        state: option,
+      })
+      .then((res) => {
+        toast.success(res.data.message, {
+          position: "top-center",
+          autoClose: 500,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.response.data.message, {
+          position: "top-center",
+          autoClose: 500,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+      });
+  }
+
   const WrappedMap = withScriptjs(withGoogleMap(Map));
 
   return (
     <div className="NGO-Home">
-      <h2 className="NGO-Title">
-        Recent Complaints
-      </h2>
+      <h2 className="NGO-Title">Recent Complaints</h2>
       <div className="map-container">
         <WrappedMap
           isMarkerShown
@@ -135,43 +157,16 @@ const Homepage = (props) => {
       <div className="complaintContainer">
         <div className="headerSettingContainer">
           <h1>Complaints</h1>
-          <div className="settingContainer">
-            <h3>Setting Popup</h3>
-          </div>
         </div>
         <div className="cardsContainer">
-          {complaintsArr.map((complaint, idx) => {
-            return (
-              <div
-                key={idx}
-                className="cardWrapper"
-                onClick={(e) => {
-                  ShowOnMap(e, JSON.parse(complaint.location));
-                }}
-              >
-                <div className="imageWrapper">
-                  <img
-                    style={{
-                      resizeMode: "stretch",
-                      height: 100,
-                      width: 200,
-                    }}
-                    src={complaint.Image}
-                    alt={complaint.title}
-                  />
-                </div>
-                <h4>{complaint.title}</h4>
-                <p>{complaint.description}</p>
-                <div className="status-dropdown">
-                  {/* <option value="Accept" onChange={(event) => {handleSelectedDrop(event)}}>Accept</option>
-                  <option value="Complete">Complete</option>
-                  <option value="Spam">Spam</option> */}
-                  <AnimatedDropdown options={options} initialText={initialText}  />
-                  {/* {selected} */}
-                </div>
-              </div>
-            );
-          })}
+          <Pagination
+            apiUrl={complaintsUrl}
+            cardName="NGO-Home"
+            ShowOnMap={ShowOnMap}
+            options={options}
+            HandleComplaintDropDown={HandleComplaintDropDown}
+            initialText={initialText}
+          />
         </div>
       </div>
     </div>

@@ -11,9 +11,26 @@ header {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 15%), 0 6px 20px 0 rgb(0 0 0 / 10%);
 }
 
+.user-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+
+.userDropDown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 header img {
-  height: 100px;
+  height: 75px;
   width: auto;
+}
+
+.userAvatar img {
+  width: 25px;
+  height: 25px;
 }
 header .primary-logo {
   flex-basis: 20%;
@@ -44,10 +61,6 @@ header svg {
 nav a {
   color: black;
   text-decoration: none;
-}
-
-.nav-dropDown {
-  margin: 1rem;
 }
 
 .nav-dropDown .Animated-dropdown {
@@ -157,7 +170,7 @@ nav ul .user-profile {
   .active {
     display: block;
     position: absolute;
-    top: 13%;
+    top: 15%;
     right: 5%;
     background: white;
     z-index: 99;

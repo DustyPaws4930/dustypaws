@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
+import dayjs from "dayjs";
+
+import moment from 'moment';
+
 let userModel = mongoose.Schema({
   username: {
     type: String,
@@ -24,16 +28,25 @@ let userModel = mongoose.Schema({
     type: String,
   },
   rewardsEarned: {
-    type: Number,
-    default: 0,
+    type: [],
   },
   role: {
     type: String,
     default: "user",
   },
-  whistlist:{
-    type: []
-  }
+
+  createdAt: {
+    type: Date,
+    default: moment(new Date()).toISOString(),
+  },
+  selectedEmoji: {
+    type: String,
+    default: "Bird",
+  },
+  whistlist: {
+    type: Array,
+    default: [],
+  },
 });
 
 const User = mongoose.model("User", userModel);

@@ -4,6 +4,8 @@
 
 .labelInputWrapper input {
   margin: 1rem;
+  padding: 0.2rem;
+  font-size: 1rem;
   border-bottom: 1px solid gray;
 }
 
@@ -57,9 +59,10 @@ section.report-complaint {
   border: 2px solid #ff3333;
 }
 .priority-buttons .emergency:hover {
-  background: white;
   transition: 0.4s;
-  color: #ff3333;
+  /* background: white;
+  color: #ff3333; */
+  transform: translateY(-5px);
 }
 
 .priority-buttons .high {
@@ -67,10 +70,31 @@ section.report-complaint {
   border: 2px solid #deb141;
 }
 
+.emergency-active {
+  color: #ff3333 !important;
+  border: 2px solid #ff3333 !important;
+  background: white !important;
+  box-shadow: 2px 1px 12px 7px rgba(0, 0, 0, 0.1);
+}
+.High-active {
+  color: #deb141 !important;
+  border: 2px solid #deb141 !important;
+  background: white !important;
+  box-shadow: 2px 1px 12px 7px rgba(0, 0, 0, 0.1);
+}
+.Moderate-active {
+  color: #285b53 !important;
+  border: 2px solid #285b53 !important;
+  background: white !important;
+  box-shadow: 2px 1px 12px 7px rgba(0, 0, 0, 0.1);
+}
+
 .priority-buttons .high:hover {
-  background: white;
+  /* background: white; */
   transition: 0.4s;
-  color: #deb141;
+  transform: translateY(-5px);
+
+  /* color: #deb141; */
 }
 
 .priority-buttons .moderate {
@@ -79,9 +103,11 @@ section.report-complaint {
 }
 
 .priority-buttons .moderate:hover {
-  background: white;
+  /* background: white; */
   transition: 0.4s;
-  color: #285b53;
+  transform: translateY(-5px);
+
+  /* color: #285b53; */
 }
 
 .submit > button {
@@ -170,4 +196,14 @@ section.report-complaint {
   width: 20ch;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.InputLinkWrapper {
+  display: grid;
+  position: relative;
+}
+.InputLinkWrapper a {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
 }

@@ -41,6 +41,7 @@ export const SignUp = async (req, res) => {
 };
 
 export const Login = async (req, res) => {
+  console.log("here");
   let email = req.body.email;
   let password = req.body.password;
 
@@ -100,8 +101,10 @@ export const Update = async (req, res) => {
   let phoneNumber = req.body.phoneNumber;
   let address = req.body.address;
   let Dob = req.body.Dob;
+  let selectedEmoji = req.body.selectedEmoji;
   let gender = req.body.gender;
 
+  console.log(selectedEmoji);
   const salt = await bcrypt.genSalt(10);
   // now we set user password to hashed password
   password = await bcrypt.hash(password, salt);
@@ -112,6 +115,7 @@ export const Update = async (req, res) => {
     phoneNumber,
     address,
     Dob,
+    selectedEmoji,
     gender,
   };
   console.log(userObj);
@@ -135,13 +139,25 @@ export const Update = async (req, res) => {
 
 export const TrackWhishlist = async (req, res) => {
   let id = req.params.id;
-  User.find({ id: id }, async (err, user) => {
+  let whishlistEventId = req.body.eventId;
+  let isWishlisted = req.body.eventState;
+  User.findById(id, async (err, user) => {
     if (!err) {
-      let whishlistEventId = req.body.eventId;
-      user.whistlist.push(whishlistEventId);
+      if (isWishlisted) {
+        user.whistlist.push(whishlistEventId);
+      } else {
+        user.whistlist = user.whistlist.filter((eventid) => {
+          return eventid !== whishlistEventId;
+        });
+      }
       user = await User.findByIdAndUpdate(id, user, { new: true });
-
-      res.status(200).json(user);
+      const token = jwt.sign(
+        {
+          user,
+        },
+        "Langara123"
+      );
+      res.status(200).json({ user: token });
     } else {
       res
         .status(400)
@@ -159,6 +175,8 @@ export const GetAllUsers = (req, res) => {
     }
   });
 };
+
+export const WishlistEvent = (req, res) => {};
 
 // // SV:
 // ToDo: This code here work perfect in the error handling.

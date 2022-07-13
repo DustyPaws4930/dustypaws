@@ -8,9 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
-
+import Geocode from "react-geocode";
+import PropagateLoader from "react-spinners/PropagateLoader";
 let Report = (props) => {
+  Geocode.setLanguage("en");
+  Geocode.setApiKey("AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw");
   // ***Declare all variables here***
+  let [buttonChange, setButtonChange] = useState("");
   let PopUpContent;
   let [popUp, setPopUp] = useState(false);
   let [reportData, setReportData] = useState({
@@ -21,10 +25,12 @@ let Report = (props) => {
     priority: 0,
     phoneNumber: "",
     location: {},
+    address: "",
     userId: "",
   });
   let [fileName, setFileName] = useState("");
 
+  let [color, setColor] = useState("#ffffff");
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
@@ -42,6 +48,10 @@ let Report = (props) => {
     lat: "",
     long: "",
   });
+  const [currentAddress, setCurrentAddress] = useState("");
+
+  let [loading, setLoading] = useState(false);
+
   // To show the popup
   const TogglePopUp = () => {
     setPopUp(!popUp);
@@ -54,6 +64,17 @@ let Report = (props) => {
         long: position.coords.longitude,
       });
 
+      Geocode.fromLatLng(
+        position.coords.latitude,
+        position.coords.longitude
+      ).then(
+        (response) => {
+          setCurrentAddress(response.results[0].formatted_address);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
       TogglePopUp();
     });
   };
@@ -70,6 +91,8 @@ let Report = (props) => {
     e.preventDefault();
 
     reportData.location = currentCoordinate;
+    reportData.address = currentAddress;
+
     console.log(reportData);
 
     const reportUrl = getApiPath() + "complaint/register";
@@ -100,15 +123,31 @@ let Report = (props) => {
 
   // File change event handler
   const handleFileChange = async (e) => {
-    setFileName(e.target.files[0].name);
-    UploadFile(e.target.files[0]).then((uploadedImage) => {
-      reportData.Image = uploadedImage;
-    });
+    setFileName(e.target.files[0]?.name);
+    setLoading(true);
+    console.log(loading);
+    UploadFile(e.target.files[0])
+      .then((uploadedImage) => {
+        setLoading(false);
+        console.log(loading);
+        reportData.Image = uploadedImage;
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
 
   // Priority change event handler
   const HandlePriorityChange = (e) => {
     reportData.priority = e.target.id;
+    setButtonChange(e.target.innerHTML);
+    console.log(e.target.innerHTML);
+  };
+  const override = {
+    display: "block",
+    margin: "0 0 0 6rem",
+    borderColor: "red",
+    backgroundColor: "#deb141",
   };
 
   if (popUp) {
@@ -168,26 +207,47 @@ let Report = (props) => {
                   aria-hidden="false"
                 ></input>
               </div>
-              <label className="imageFileName">{fileName}</label>
+              {loading ? (
+                <PropagateLoader
+                  color="#deb141"
+                  loading={loading}
+                  cssOverride={override}
+                  size={14}
+                />
+              ) : (
+                <label className="imageFileName">{fileName}</label>
+              )}
             </div>
           </div>
 
           <div className="labelInputWrapper">
             <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={reportData.name}
-              onChange={(e) => onInputChange(e)}
-              placeholder="your name"
-            />
+            <div className="InputLinkWrapper">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                maxLength={28}
+                value={reportData.name}
+                onChange={(e) => onInputChange(e)}
+                placeholder="your name"
+              />
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  setReportData({ ...reportData, ["name"]: "Anonymous" });
+                }}
+              >
+                Set Anonymous
+              </a>
+            </div>
           </div>
           <div className="labelInputWrapper">
             <label>Phone Number</label>
             <input
               type="tel"
               name="phoneNumber"
+              maxLength={10}
               id="phoneNumber"
               value={reportData.phoneNumber}
               onChange={(e) => onInputChange(e)}
@@ -205,7 +265,11 @@ let Report = (props) => {
             <label>Priority Flag</label>
             <div className="priority-buttons">
               <button
-                className="priority-flag emergency"
+                className={` ${
+                  buttonChange === "Emergency"
+                    ? "disabled emergency-active"
+                    : "priority-flag emergency"
+                }`}
                 id="0"
                 name="priorityEmergency"
                 type="button"
@@ -213,12 +277,17 @@ let Report = (props) => {
                   HandlePriorityChange(e);
                 }}
               >
+                {console.log(buttonChange)}
                 Emergency
               </button>
 
               <button
-                className="priority-flag high"
-                id="2"
+                className={`${
+                  buttonChange == "High"
+                    ? "disabled High-active"
+                    : "priority-flag high"
+                }`}
+                id="1"
                 name="priorityLow"
                 type="button"
                 onClick={(e) => {
@@ -229,8 +298,12 @@ let Report = (props) => {
               </button>
 
               <button
-                className="priority-flag moderate"
-                id="1"
+                className={`${
+                  buttonChange == "Moderate"
+                    ? "disabled Moderate-active"
+                    : "priority-flag moderate"
+                }`}
+                id="2"
                 name="priorityModerate"
                 type="button"
                 onClick={(e) => {

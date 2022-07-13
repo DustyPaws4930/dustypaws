@@ -1,32 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimatedNumber from "../AnimatedNumber/AnimatedNumber";
-import CardImages1 from "../project-files/13.png";
-import CardImages2 from "../project-files/1 6.png";
-import CardImages3 from "../project-files/15.png";
-import reportImage from "../project-files/report-form-img.png";
+import CardImages1 from "../project-files/third-box.svg";
+import CardImages2 from "../project-files/second-box.svg";
+import CardImages3 from "../project-files/first-box.svg";
+import reportImage from "../project-files/event-bg-image.svg";
 import reportBGImage1 from "../project-files/report-bg-image.png";
-import reportBGImage2 from "../project-files/report-bg-image2.png";
-import reportMobile1 from "../project-files/form-mobile-image.png";
-import reportMobile from "../project-files/form-mobile-image1.png";
-import figPie from "../project-files/Figpie.png";
+import reportBGImage2 from "../project-files/rabbit-report-image.svg";
+import reportMobile1 from "../project-files/report-mobile-top.svg";
+import reportMobile from "../project-files/report-mobile-bottom.svg";
 import Report from "../Complaint/Report";
 import PieChart from "../Charts/PieChart";
-import UserData from "../../Data";
 import Confirmation from "../Complaint/Confirmation";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { getApiPath } from "../../Common";
 const HomePage = (props) => {
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.month),
-    datasets: [
-      {
-        label: "Rewards",
-        data: UserData.map((data) => data.userGain),
-        backgroundColor: ["#285b53", "#deb141", "#ff3333"],
-        borderColor: "#ddd",
-        borderWidth: 2,
-      },
-    ],
-  });
+  const [reportCountData, setReportCountData] = useState();
+
+  useEffect(
+    (e) => {
+      const reportCountUrl = getApiPath() + "data/getReportCount/";
+      axios
+        .get(reportCountUrl)
+        .then((res) => {
+          if (res.data.count < 10000) {
+            setReportCountData(10000);
+          } else {
+            setReportCountData(res.data.count);
+          }
+        })
+        .catch((err) => {
+          console.log("Error :" + err);
+        });
+    },
+    [setReportCountData]
+  );
 
   const [showReportForm, setShowReportForm] = useState(true);
   let [emailNews, setEmailNews] = useState("");
@@ -50,12 +58,14 @@ const HomePage = (props) => {
       </section>
       <section className="statistics">
         <div className="statCount">
-          <h3>{<AnimatedNumber end={100000} start={0} timer={10} />}</h3>
-          <h4>Donation Count</h4>
+          <h3>
+            {<AnimatedNumber end={reportCountData} start={0} timer={10} />}
+          </h3>
+          <h4>Report Count</h4>
         </div>
         <div className="charts">
-          <div className="userChart" style={{ width: 400 }}>
-            <PieChart chartData={userData} />
+          <div className="userChart">
+            <PieChart />
           </div>
           <h4>Help Count</h4>
         </div>
@@ -66,7 +76,9 @@ const HomePage = (props) => {
             consectetur adipisicing elit. Amet quaerat, accusamus molestiae
             alias ab aspernatur magni dolor sit ut qui!
           </p>
-          <Link to='/donate'><button id="donate">Donate</button></Link>
+          <Link to="/donate">
+            <button id="donate">Donate</button>
+          </Link>
         </div>
       </section>
       <section className="features">
@@ -110,10 +122,9 @@ const HomePage = (props) => {
         <div className="circle" id="circle5"></div>
         <div className="circle" id="circle6"></div>
         <div className="circle" id="circle7"></div>
-        <div className="circles"></div>
       </section>
       <section className="report-wrapper">
-        <img src={reportMobile} alt=" report" className="report-mobile2" />
+        <img src={reportMobile1} alt=" report3" className="report-mobile1" />
         <>
           {showReportForm ? (
             <Report HandleReportConfirmation={HandleReportConfirmation} />
@@ -126,7 +137,7 @@ const HomePage = (props) => {
         </section>
         <img src={reportBGImage1} alt=" report1" className="report-image1" />
         <img src={reportBGImage2} alt=" report2" className="report-image2" />
-        <img src={reportMobile1} alt=" report3" className="report-mobile1" />
+
         <img src={reportMobile} alt=" report4" className="report-mobile2" />
       </section>
       <section className="newsletter">

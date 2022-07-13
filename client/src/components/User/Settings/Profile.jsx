@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Info from "./Info";
 import Reports from "./Reports";
 import Rewards from "./Rewards";
 import Whislist from "./Whislist";
 import Header from "../../Header/Header";
-import "./Profile.css"
+import "./Profile.css";
 import Footer from "../../Footer/Footer";
+import { getToken } from "../../../Common";
 
 const Profile = () => {
+ 
   return (
     <div>
       <Header />

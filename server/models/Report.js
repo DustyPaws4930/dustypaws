@@ -20,6 +20,7 @@ const ReportSchema = new mongoose.Schema({
     reuired: true,
   },
 
+
   reportDate: {
     type: Date,
     default: new Date(),
@@ -31,6 +32,11 @@ const ReportSchema = new mongoose.Schema({
 
   location: {
     type: Object,
+  },
+
+  address: {
+    type: String,
+    default: "",
   },
 
   priority: {
@@ -49,6 +55,10 @@ const ReportSchema = new mongoose.Schema({
 
   phoneNumber: {
     type: Number,
+  },
+  state: {
+    type: String,
+    default: "Submitted",
   },
 });
 
