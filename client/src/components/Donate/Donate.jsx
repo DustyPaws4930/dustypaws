@@ -37,7 +37,12 @@ const Donate = (props) => {
                   providing our services across 20 states.
                 </p>
                 <div className="card-btn">
-                  <button>Donate</button>
+                  <a
+                    href="https://peopleforanimalsindia.org/donate.php"
+                    target="_blank"
+                  >
+                    Donate
+                  </a>
                 </div>
               </div>
             </div>
@@ -49,7 +54,12 @@ const Donate = (props) => {
                 <h2>Sanjay Gandhi Animal Care</h2>
                 <p>We save stray animals and also help people to adopt them</p>
                 <div className="card-btn">
-                  <button>Donate</button>
+                  <a
+                    href="http://www.sanjaygandhianimalcarecentre.org/payment.asp"
+                    target="_blank"
+                  >
+                    Donate
+                  </a>
                 </div>
               </div>
             </div>
@@ -64,10 +74,12 @@ const Donate = (props) => {
                   or Abuse
                 </p>
                 <div className="card-btn">
-                  <button>Donate</button>
+                  <a href="https://www.petaindia.com/donate/" target="_blank">
+                    Donate
+                  </a>
                 </div>
               </div>
-              {/* <div><button>Donate</button></div> */}
+              {/* <div><a>Donate</a></div> */}
             </div>
           </div>
 
@@ -80,10 +92,15 @@ const Donate = (props) => {
                   deep. Open wells to staoping the abuse
                 </p>
                 <div className="card-btn">
-                  <button>Donate</button>
+                  <a
+                    href="https://support.animalrahat.com/page/17220/donate/1?en_txn7=Navigation::AR-Donate-Now-Main-Top&supporter.appealCode=IXXXWBXXXXJ&_ga=2.66494253.241485109.1655854671-505459502.1655854671"
+                    target="_blank"
+                  >
+                    Donate
+                  </a>
                 </div>
               </div>
-              {/* <div><button>Donate</button></div> */}
+              {/* <div><a>Donate</a></div> */}
             </div>
           </div>
         </section>
@@ -99,7 +116,12 @@ const Donate = (props) => {
                     deep. Open wells to staoping the abuse
                   </p>
                   <div className="card-btn">
-                    <button>Donate</button>
+                    <a
+                      href="https://support.animalrahat.com/page/17220/donate/1?en_txn7=Navigation::AR-Donate-Now-Main-Top&supporter.appealCode=IXXXWBXXXXJ&_ga=2.66494253.241485109.1655854671-505459502.1655854671"
+                      target="_blank"
+                    >
+                      Donate
+                    </a>
                   </div>
                 </div>
               </div>
@@ -114,7 +136,12 @@ const Donate = (props) => {
                     providing our services across 20 states.
                   </p>
                   <div className="card-btn">
-                    <button>Donate</button>
+                    <a
+                      href="https://peopleforanimalsindia.org/donate.php"
+                      target="_blank"
+                    >
+                      Donate
+                    </a>
                   </div>
                 </div>
               </div>
@@ -129,7 +156,12 @@ const Donate = (props) => {
                     providing our services across 20 states.
                   </p>
                   <div className="card-btn">
-                    <button>Donate</button>
+                    <a
+                      href="https://peopleforanimalsindia.org/donate.php"
+                      target="_blank"
+                    >
+                      Donate
+                    </a>
                   </div>
                 </div>
               </div>
@@ -144,7 +176,12 @@ const Donate = (props) => {
                     providing our services across 20 states.
                   </p>
                   <div className="card-btn">
-                    <button>Donate</button>
+                    <a
+                      href="https://peopleforanimalsindia.org/donate.php"
+                      target="_blank"
+                    >
+                      Donate
+                    </a>
                   </div>
                 </div>
               </div>
