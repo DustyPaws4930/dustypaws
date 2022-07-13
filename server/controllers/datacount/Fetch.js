@@ -43,9 +43,7 @@ export const GetNGOUserVisualizationData = async (req, res) => {
       count: count,
     });
     if (index == monthsArray.length - 1) {
-      console.log(monthCount);
       console.log(monthCount.length);
-
       res.status(200).json(monthCount);
     }
   });
