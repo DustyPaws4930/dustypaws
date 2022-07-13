@@ -109,12 +109,13 @@ html {
 .btn-feature-event {
   text-align: center;
 }
-.btn-feature-event button {
+.btn-feature-event a {
   background-color: #deb141;
   float: left;
   padding: 10px 70px;
   border: none;
   color: black;
+  text-decoration: none;
   font-weight: bolder;
   margin-top: 15px;
 }
@@ -205,7 +206,6 @@ p.card-description {
 }
 .owl-item.active {
   margin: 0;
-
 }
 .owl-item.active.center .item {
   transform: scale(1);
@@ -222,7 +222,12 @@ p.card-description {
   transform: scale(0.8);
   opacity: 0.7;
   transition: all 0.3s;
-  background-image: url("../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg");
+  background: linear-gradient(
+      0deg,
+      rgba(40, 91, 83, 0.3),
+      rgba(40, 91, 83, 0.3)
+    ),
+    url("../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg");
   height: 100%;
   width: 100%;
   background-position: center;
@@ -256,7 +261,7 @@ p.card-description {
 }
 
 /* #295B53 */
-@media only screen and (max-width: 389px) and (min-width: 360px){
+@media only screen and (max-width: 389px) and (min-width: 360px) {
   .featured-event {
     /* background-color: cadetblue; */
     display: flex;
@@ -385,14 +390,14 @@ input[type="Number"] {
   max-width: 90%;
   margin: auto;
 }
-.card-description{
+.card-description {
   /* background-color: aqua; */
   padding: 20px 0;
 }
-.our-partners-content{
+.our-partners-content {
   margin-bottom: 40px;
 }
-@media only screen and (max-width: 500px) and (min-width: 390px){
+@media only screen and (max-width: 500px) and (min-width: 390px) {
   .featured-event {
     /* background-color: cadetblue; */
     display: flex;
@@ -504,7 +509,7 @@ input[type="Number"] {
   max-width: 90%;
   margin: auto;
 }
-.card-description{
+.card-description {
   /* background-color: aqua; */
   padding: 20px 0;
 }

@@ -27,14 +27,12 @@ let About = (props) => {
             <div className="Our-impact">
               <h1>Our Impact</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                facilis molestias necessitatibus nemo exercitationem repellat
-                magnam ipsam earum a! Doloremque adipisci suscipit voluptatibus
-                eum commodi? Porro at delectus quidem adipisci? Lorem ipsum
-                dolor sit, amet consectetur adipisicing elit. Iusto perferendis
-                officia cum quod. Facere nihil quod sequi tenetur doloremque
-                alias ab vel, provident aliquid nostrum, dolores quam, et
-                excepturi corrupti.
+                Our responsive web applications make it easier for people and
+                non-governmental organizations (NGOs) who wants to help stray
+                animals by minimizing the hassle to find person to contact for
+                assistance and provide better living conditions to animals along
+                with rewards for users who provides information Unlike other
+                activist sites for animal help.
               </p>
             </div>
           </div>
@@ -45,10 +43,11 @@ let About = (props) => {
           <div className="team-intro">
             <h3>Meet Our Team</h3>
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
-              et facilis magni vero nulla ad error in quam possimus quod
-              molestias similique velit fuga provident id, nesciunt culpa
-              distinctio suscipit.
+              Our team consists of 6 members from India, and their backgrounds
+              range from graphic design to UX/UI design to full-stack
+              programming. As a team, we strive to use technology not just to
+              answer daily issues but also to improve society through our
+              products and raise social consciousness.
             </p>
           </div>
         </section>

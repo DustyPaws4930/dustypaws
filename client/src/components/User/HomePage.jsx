@@ -47,8 +47,8 @@ const HomePage = (props) => {
     <div className="Home">
       <section className="landing">
         <h4 className="landing-text">
-          Our responsive web applications make it easier for people and
-          non-governmental organizations (NGOs) who wants to.
+          Most reported animal abuse comes in the form of neglect, with direct
+          violence occurring less. Only you can make a difference.
         </h4>
         <div className="reportCaseContainer">
           <a href="#reportSection" id="report-case">
@@ -71,10 +71,9 @@ const HomePage = (props) => {
         </div>
         <div className="description">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio nulla
-            ex labore et similique corporis! Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Amet quaerat, accusamus molestiae
-            alias ab aspernatur magni dolor sit ut qui!
+            Find a local Non Profit organizations that works for animal welfare
+            to donate today. Dusty Paws acts as an interface to redirect user to
+            specific NGO’s donation portal.
           </p>
           <Link to="/donate">
             <button id="donate">Donate</button>
@@ -89,26 +88,23 @@ const HomePage = (props) => {
               <img src={CardImages3} alt="card1" />
             </div>
             <p>
-              Register Complaints accoring to there Priority of assistance
-              required
+              To specify how urgently you need Dusty Paws to contact you, use
+              the priority function.
             </p>
           </div>
           <div id="card2" className="featurecard">
             <div className="img-container">
               <img src={CardImages2} alt="card2" />
             </div>
-            <p>
-              Earn Rewards and get recognized on basis of information provided
-              by the user.
-            </p>
+            <p>Earn Rewards by reporting situations with precise information</p>
           </div>
           <div id="card3" className="featurecard">
             <div className="img-container">
               <img src={CardImages1} alt="card3" />
             </div>
             <p>
-              Earn Rewards and get recognized on basis of information provided
-              by the user.
+              With only one click, rescue stray animals. For more accurate
+              location information, use a real-time location tracker.
             </p>
           </div>
         </div>

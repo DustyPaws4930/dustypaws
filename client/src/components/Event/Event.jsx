@@ -130,19 +130,18 @@ const Event = (props) => {
             <div className="featured-event-description">
               <h4>Awareness Drive for stray animals</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum consequuntur, amet id nobis, numquam laudantium
-                excepturi fugit quaerat aspernatur, illo ipsumipsa esse
-                architecto deleniti beatae doloribus. Minus, fuga obcaecati!
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Aperiam cumque voluptas sit rem eaque animi nisi, consequatur
-                repellendus asperiores maiores, consectetur aut maxime,
-                excepturi odio? Nesciunt veniam excepturi in quis.
+                This adage certainly rings true for the person who decides to
+                take the stray dog into their heart and home, as the love and
+                loyalty of a four-legged friend enriches a person’s life
+                immeasurably.
               </p>
               <div className="btn-feature-event">
-                <Link to="/singleEvent">
-                  <button>View</button>
-                </Link>
+                <a
+                  href="https://www.dogtipper.com/blog/2021/04/world-stray-animals-day-2.html"
+                  target="_blank"
+                >
+                  View
+                </a>
               </div>
             </div>
           </div>
@@ -273,10 +272,45 @@ const Event = (props) => {
             {/* {allPartners.map((partner, idx) => { */}
             {/* return ( */}
             <div className="item">
-              <h3>NGO Name</h3>
+              <h3>People For Animal</h3>
+              <p>
+                Animals in India need your help. People For Animals receives 99%
+                of its funding from people like you. Your donation, however
+                small is vital to the continuation of our work and makes a
+                difference to the ................
+              </p>
             </div>
-            {/* ); */}
-            {/* })} */}
+            <div className="item">
+              <h3>Sanjay Gandhi Animal Care</h3>
+              <p>
+                The Sanjay Gandhi Animal Care Centre (SGACC) is India's oldest
+                and Delhi's largest all-animal shelter.
+              </p>
+            </div>
+            <div className="item">
+              <h3>PETA India</h3>
+              <p>
+                Together, we can make the world a better place for all beings.
+                Your donation will go to work
+              </p>
+            </div>
+            <div className="item">
+              <h3>Animal Rahat</h3>
+              <p>
+                Animal Rahat (rahat means “relief” in Hindi) is a unique program
+                that aims to help some of the most neglected animals in the
+                world—the bullocks, donkeys, and other working animals of
+                India......
+              </p>
+            </div>
+            <div className="item">
+              <h3>Vet Helpline India (P) Ltd</h3>
+              <p>
+                We help organizations conduct studies and implement development
+                projects in the field of animal health care, animal welfare,
+                livestock development, food safety, and public health.....
+              </p>
+            </div>
           </OwlCarousel>
         </div>
       </div>
