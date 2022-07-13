@@ -260,7 +260,7 @@ const Event = (props) => {
           <OwlCarousel
             className="owl-theme"
             responsiveClass={true}
-            responsive={owl}
+            responsive={responsive}
             items="5"
             autoplay={false}
             dots={false}

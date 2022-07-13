@@ -14,6 +14,8 @@ import Confirmation from "../Complaint/Confirmation";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { getApiPath } from "../../Common";
+import { toast } from "react-toastify";
+
 const HomePage = (props) => {
   const [reportCountData, setReportCountData] = useState();
 
@@ -42,6 +44,10 @@ const HomePage = (props) => {
     e.preventDefault();
     setShowReportForm(!showReportForm);
   };
+
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
 
   return (
     <div className="Home">
@@ -149,6 +155,7 @@ const HomePage = (props) => {
               name="newsletter-email"
               id="newsletterEmail"
               value={emailNews}
+              pattern=".+@gmail\.com"
               onChange={(e) => {
                 setEmailNews(e.target.value);
               }}
@@ -157,7 +164,25 @@ const HomePage = (props) => {
             <button
               type="submit"
               onClick={(e) => {
-                alert("You are subscribed for the news letter");
+                if (
+                  emailNews !== "" &&
+                  emailNews !== undefined &&
+                  isValidEmail(emailNews)
+                )
+                  toast.success("You are subscribed for the newsletters", {
+                    position: "top-center",
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                  });
+                else {
+                  toast.error("Enter the valid email", {
+                    position: "top-center",
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                  });
+                }
               }}
             >
               Submit

@@ -1,31 +1,24 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteToken, getToken } from "../../Common";
-import { User } from "../Home";
 import PopUp from "../ModelPopups/PopUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
-import Header from "./Header";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 import { toast } from "react-toastify";
-
 import BirdAvatar from "../images/Bird_Avatar.png";
 import PandaAvatar from "../images/Panda_Avatar.png";
 import HamsterAvatar from "../images/Hamster_Avatar.png";
 import DogAvatar from "../images/Dog_Avatar.png";
 import CatAvatar from "../images/Cat_Avatar.png";
-import Edit_UserImage from "../images/Edit_Profile.png";
 const Navbar = (props) => {
   // let loggedInUser = useContext(User);
   let navigate = useNavigate();
 
   const options = ["Event", "Partners"];
   const initialText = "Explore";
-  const navDropStyle = {
-    boxShadow: "10px 10px 50px #aaaaaa",
-  };
   const [activeUser, setActiveUser] = useState(false);
   // function handleUserClick(event){
   //   setActiveUser

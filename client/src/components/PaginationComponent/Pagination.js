@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
 import axios from "axios";
 import "./pagination.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import NGOEventCard from "../cards/NGOEventCard";
-import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 import NGORequestCard from "../cards/NGORequestCard";
 import SingleEvent from "../Event/SingleEvent";
 
@@ -34,11 +30,11 @@ const Pagination = (props) => {
   useEffect(() => {
     setInitialText(props.initialText);
     fetchData();
-  }, [apiUrl]);
+  }, [apiUrl, fetchData, props.initialText]);
   function fetchData() {
     axios.get(apiUrl).then((result) => {
       setData(result.data);
-      if (pageName == "NGO-Home") {
+      if (pageName === "NGO-Home") {
         setData(result.data.complaints);
       }
       console.log(result.data.complaints);
@@ -75,7 +71,7 @@ const Pagination = (props) => {
   if (pageName === "NGO-Home") {
     currentPageData = data
       .slice(offset, offset + PerPage)
-      
+
       .map((result, index) => {
         return (
           <NGORequestCard
@@ -89,17 +85,19 @@ const Pagination = (props) => {
           />
         );
       });
-  } else if (pageName == "EventForm") {
-    currentPageData = data.slice(offset, offset + PerPage).map((result, index) => {
-      return (
-        <NGOEventCard
-          index={index}
-          TogglePopUp={TogglePopUp}
-          result={result}
-          key={index}
-        />
-      );
-    });
+  } else if (pageName === "EventForm") {
+    currentPageData = data
+      .slice(offset, offset + PerPage)
+      .map((result, index) => {
+        return (
+          <NGOEventCard
+            index={index}
+            TogglePopUp={TogglePopUp}
+            result={result}
+            key={index}
+          />
+        );
+      });
   }
 
   console.log(currentPageData);
