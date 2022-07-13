@@ -140,7 +140,7 @@ let Report = (props) => {
   // Priority change event handler
   const HandlePriorityChange = (e) => {
     reportData.priority = e.target.id;
-    setButtonChange(e.target.innerHTML)
+    setButtonChange(e.target.innerHTML);
     console.log(e.target.innerHTML);
   };
   const override = {
@@ -265,7 +265,11 @@ let Report = (props) => {
             <label>Priority Flag</label>
             <div className="priority-buttons">
               <button
-                className={` ${ buttonChange =="Emergency" ? "disabled emergency-active" : "priority-flag emergency"}`}
+                className={` ${
+                  buttonChange === "Emergency"
+                    ? "disabled emergency-active"
+                    : "priority-flag emergency"
+                }`}
                 id="0"
                 name="priorityEmergency"
                 type="button"
@@ -278,7 +282,11 @@ let Report = (props) => {
               </button>
 
               <button
-                className={`${buttonChange == "High" ? "disabled High-active" : "priority-flag high"}`}
+                className={`${
+                  buttonChange == "High"
+                    ? "disabled High-active"
+                    : "priority-flag high"
+                }`}
                 id="1"
                 name="priorityLow"
                 type="button"
@@ -290,7 +298,11 @@ let Report = (props) => {
               </button>
 
               <button
-                className={`${buttonChange == "Moderate" ? "disabled Moderate-active" : "priority-flag moderate"}`}
+                className={`${
+                  buttonChange == "Moderate"
+                    ? "disabled Moderate-active"
+                    : "priority-flag moderate"
+                }`}
                 id="2"
                 name="priorityModerate"
                 type="button"
