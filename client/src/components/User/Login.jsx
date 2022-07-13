@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { isValidElement, useState } from "react";
 import "./Login.css";
 import jwt from "jwt-decode";
 import axios from "axios";
-import { getApiPath, setToken, setTokenTimeout } from "../../Common";
+import {
+  getApiPath,
+  isValidEmail,
+  setToken,
+  setTokenTimeout,
+} from "../../Common";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.svg";
 import leftCorner from "../project-files/left_corner_login.svg";
@@ -27,6 +32,16 @@ const Login = () => {
 
   const handleSubmitBtn = (e) => {
     e.preventDefault();
+
+    if (!isValidEmail(loginInfo.email)) {
+      toast.error("Email not Valid", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+      });
+      return;
+    }
     const loginUrl = getApiPath() + "user/login";
     console.log(loginUrl);
     axios
@@ -81,7 +96,7 @@ const Login = () => {
               <div className="labelInputWrapper">
                 <label htmlFor="email">Email: </label>
                 <input
-                  type="text"
+                  type="email"
                   onChange={(event) => onInputChange(event)}
                   name="email"
                   id="email"
@@ -103,7 +118,7 @@ const Login = () => {
                 <button>Log In</button>
               </div>
               <div className="box-footer">
-                <label htmlFor="|">Not a member?</label>{" "}
+                <label htmlFor="|">Not a member?</label>
                 <label htmlFor="|">
                   <Link to="/signup">SignUp</Link>
                 </label>

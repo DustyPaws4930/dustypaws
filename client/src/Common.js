@@ -15,6 +15,9 @@ export const getToken = () => {
     return null;
   }
 };
+export function isValidEmail(email) {
+  return /\S+@\S+\.\S+/.test(email);
+}
 
 export const UploadFile = async (file) => {
   try {

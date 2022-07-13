@@ -2,7 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 
 import jwt from "jwt-decode";
-import { getApiPath, setToken, setTokenTimeout } from "../../Common";
+import {
+  getApiPath,
+  isValidEmail,
+  setToken,
+  setTokenTimeout,
+} from "../../Common";
 import "./SignUpNGO.css";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.svg";
@@ -28,7 +33,15 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
-
+    if (!isValidEmail(user.email)) {
+      toast.error("Email not Valid", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+      });
+      return;
+    }
     const SignUPURL = getApiPath() + "user/signup";
     console.log(user);
     axios
@@ -59,7 +72,7 @@ const Signup = () => {
         <div className="sign-up-image-section">
           <img src={leftCorner} alt="leftCorner" className="leftCornerBg" />
           <img src={rightCorner} alt="rightCorner" className="rightCornerBg" />
-          <img src={LoginBg} alt="LoginBg" className="sign-bg-img"/>
+          <img src={LoginBg} alt="LoginBg" className="sign-bg-img" />
         </div>
 
         <div className="signup-form-wrapper">
@@ -80,7 +93,7 @@ const Signup = () => {
             <div className="labelInputWrapper">
               <label htmlFor="email">Email</label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 value={user.email}
                 id="email"
@@ -115,11 +128,11 @@ const Signup = () => {
             </div>
             <p>
               Are you an user?
-              <Link to="/signup">Sign Up here</Link>
+              <Link to="/signup"> Sign Up here</Link>
             </p>
             <p>
               Already a user?
-              <Link to="/login">Login Here</Link>
+              <Link to="/login"> Login Here</Link>
             </p>
           </form>
         </div>

@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { getApiPath } from "../../Common";
 import { toast } from "react-toastify";
-
+import { isValidEmail } from "../../Common";
 const HomePage = (props) => {
   const [reportCountData, setReportCountData] = useState();
 
@@ -44,10 +44,6 @@ const HomePage = (props) => {
     e.preventDefault();
     setShowReportForm(!showReportForm);
   };
-
-  function isValidEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-  }
 
   return (
     <div className="Home">
