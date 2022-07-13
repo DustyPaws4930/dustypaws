@@ -37,7 +37,7 @@ const Navbar = (props) => {
         navigate("/event", { replace: true });
         break;
       case "Partners":
-        navigate("/Partners", { replace: true });
+        navigate("/event", { replace: true });
         break;
       default:
         break;
