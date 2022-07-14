@@ -10,11 +10,9 @@ const Rewards = () => {
 
   useEffect(() => {
     let userToken = getToken();
-    console.log(userToken.user._id);
     axios
       .get(getApiPath() + `user/${userToken.user._id}`)
       .then((res) => {
-        console.log(res)
         let Urewards = res.data.rewardsEarned;
         if (Urewards !== "" && Urewards !== undefined) {
           setUserRewards({

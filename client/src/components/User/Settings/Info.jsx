@@ -2,7 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
-import { getApiPath, getToken, setToken } from "../../../Common";
+import {
+  getApiPath,
+  GetDehashedPassword,
+  getToken,
+  setToken,
+} from "../../../Common";
 import { toast } from "react-toastify";
 import EmojiPopUp from "../../ModelPopups/EmojiPopUp";
 // import { UserProfileImage } from "../../project-files/13.png"
@@ -259,7 +264,6 @@ const Info = () => {
             </div>
             <div className="securityWrapper">
               <h3>Security and Privacy</h3>
-
               <div className="labelInputWrapper">
                 <label htmlFor="password">Update Password</label>
                 <input

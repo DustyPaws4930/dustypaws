@@ -8,13 +8,17 @@ export const SignUp = async (req, res) => {
   let password = req.body.password;
   let role = req.body.isNgo ? "ngo" : "user";
 
-  const salt = await bcrypt.genSalt(10);
+  let hashedPassword = GetHashPassword(password);
+
+  // dehash method
+
+  // const salt = await bcrypt.genSalt(10);
   // now we set user password to hashed password
-  password = await bcrypt.hash(password, salt);
+  // password = await bcrypt.hash(password, salt);
   let userObj = new User({
     username: username,
     email: email,
-    password: password,
+    password: hashedPassword,
     role: role,
   });
   console.log(`User obj: ${userObj}`);
@@ -54,7 +58,9 @@ export const Login = async (req, res) => {
           message: `User not found`,
         });
       } else if (!err) {
-        if (await bcrypt.compare(password, user.password)) {
+        let userPassword = GetDehashPassword(user.password);
+        if (password === userPassword) {
+          user.password = userPassword;
           const token = jwt.sign(
             {
               user,
@@ -176,7 +182,16 @@ export const GetAllUsers = (req, res) => {
   });
 };
 
-export const WishlistEvent = (req, res) => {};
+function GetHashPassword(password) {
+  let buff = new Buffer(password);
+  let hashedPassword = buff.toString("base64");
+  return hashedPassword;
+}
+
+function GetDehashPassword(hashedPassword) {
+  let dehashedPassword = new Buffer(hashedPassword, "base64");
+  return dehashedPassword.toString("ascii");
+}
 
 // // SV:
 // ToDo: This code here work perfect in the error handling.
