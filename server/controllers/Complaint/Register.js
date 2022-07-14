@@ -21,6 +21,7 @@ export const Register = (req, res) => {
     priority: priority,
     address: address,
     Image: img,
+    reportDate: new Date(),
   });
 
   console.log("Report object: " + reportObj);
