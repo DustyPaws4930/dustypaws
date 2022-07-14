@@ -2,43 +2,44 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import UserData from "../../../Data";
 import LineChart from "../../Charts/LineChart";
-import { getToken } from "../../../Common";
-
+import { getApiPath, getToken } from "../../../Common";
+import axios from "axios";
 const Rewards = () => {
   const [userRewards, setUserRewards] = useState({});
   let [totalRewardsPoints, setTotalRewardsPoints] = useState(0);
 
   useEffect(() => {
     let userToken = getToken();
-    if (userToken == null) {
-      return;
-    } else if (
-      userToken !== null &&
-      userToken !== "undefined" &&
-      userToken !== ""
-    ) {
-      let Urewards = userToken?.user.rewardsEarned;
-      if (Urewards !== "" && Urewards !== undefined) {
-        setUserRewards({
-          labels: Urewards.map((data) => data.month),
-          datasets: [
-            {
-              label: "Rewards",
-              data: Urewards.map((data) => data.rewards),
-              backgroundColor: ["#deb141"],
-              borderColor: "#285b53",
-              borderWidth: 2,
-            },
-          ],
-        });
+    console.log(userToken.user._id);
+    axios
+      .get(getApiPath() + `user/${userToken.user._id}`)
+      .then((res) => {
+        console.log(res)
+        let Urewards = res.data.rewardsEarned;
+        if (Urewards !== "" && Urewards !== undefined) {
+          setUserRewards({
+            labels: Urewards.map((data) => data.month),
+            datasets: [
+              {
+                label: "Rewards",
+                data: Urewards.map((data) => data.rewards),
+                backgroundColor: ["#deb141"],
+                borderColor: "#285b53",
+                borderWidth: 2,
+              },
+            ],
+          });
 
-        let points = 0;
-        Urewards.map((data) => {
-          return (points += data.rewards);
-        });
-        setTotalRewardsPoints(points);
-      }
-    }
+          let points = 0;
+          Urewards.map((data) => {
+            return (points += data.rewards);
+          });
+          setTotalRewardsPoints(points);
+        }
+      })
+      .catch((err) => {
+        console.log("unable to get request user");
+      });
   }, [setUserRewards, setTotalRewardsPoints]);
 
   return (
@@ -47,7 +48,7 @@ const Rewards = () => {
         <h1>Rewards Trackers</h1>
       </div>
       <div className="rewardsChart">
-        <div className="userChart" >
+        <div className="userChart">
           {Object.keys(userRewards).length > 0 ? (
             <>
               <LineChart chartData={userRewards} />

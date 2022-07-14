@@ -82,7 +82,7 @@ export const Login = async (req, res) => {
 
 export const GetUser = (req, res) => {
   let id = req.params.id;
-  User.find({ id: id }, (err, user) => {
+  User.findById(id, (err, user) => {
     if (!err) {
       res.status(200).json(user);
     } else {
