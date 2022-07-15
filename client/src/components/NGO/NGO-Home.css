@@ -119,3 +119,32 @@ div.NGO-Home .map-container {
     padding: 2rem 1rem;
   }
 }
+@media screen and (max-width: 400px){
+  .cardsContainer .cardWrapper{
+    grid-template-columns: 1fr;
+    grid-template-rows: unset;
+    padding: 1rem;
+  }
+  .cardsContainer .cardWrapper h4{
+    font-size: 1.4rem;
+  }
+  .cardsContainer .cardWrapper .imageWrapper {
+    grid-row: 1/2;
+    margin: 0;
+    width: 100%;
+  }
+  .cardsContainer .cardWrapper .imageWrapper img{
+    width: 100% !important;
+    height: 150px !important;
+    object-fit: cover;
+    
+  }
+  .cardsContainer .cardWrapper .status-dropdown{
+    align-items: center;
+    margin: 1rem auto !important;
+  }
+  .Animated-dropdown .dropdown-btn{
+    padding: 8px;
+    border-radius: 4px;
+  }
+}
