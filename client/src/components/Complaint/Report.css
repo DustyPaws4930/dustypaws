@@ -62,7 +62,7 @@ section.report-complaint {
   transition: 0.4s;
   /* background: white;
   color: #ff3333; */
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
 }
 
 .priority-buttons .high {
@@ -92,7 +92,7 @@ section.report-complaint {
 .priority-buttons .high:hover {
   /* background: white; */
   transition: 0.4s;
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
 
   /* color: #deb141; */
 }
@@ -105,7 +105,7 @@ section.report-complaint {
 .priority-buttons .moderate:hover {
   /* background: white; */
   transition: 0.4s;
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
 
   /* color: #285b53; */
 }

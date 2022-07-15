@@ -84,15 +84,31 @@ html {
 .featured-event-date {
   /* background-color: aqua; */
   display: flex;
+  position: relative;
 }
 .featured-event-date img {
-  padding-right: 20px;
   display: inline;
   width: 60px;
-  height: 40px;
+  height: 60px;
   float: left;
 }
+
+.DaysTag {
+  position: absolute;
+  color: white;
+  left: 12px;
+  top: 16px;
+}
+@media screen and (max-width: 768px) {
+  .DaysTag {
+    left: 104px;
+    top: 35px;
+  }
+}
 .featured-event-date p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   float: right;
 }
 
@@ -138,10 +154,15 @@ hr {
 .recent-event-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0.5rem;
 }
 .upcoming-event-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0.5rem;
+}
+.our-partners-container {
+  padding: 0.5rem;
 }
 .card-date {
   /* background-color: aqua; */
@@ -211,6 +232,7 @@ p.card-description {
   transform: scale(1);
   opacity: 1;
   border-radius: 10px;
+  width: 100%;
   background-position: center;
 }
 .item {
@@ -220,7 +242,7 @@ p.card-description {
   border-radius: 30px;
   text-align: center;
   transform: scale(0.8);
-  opacity: 0.7;
+  opacity: 0.8;
   transition: all 0.3s;
   background: linear-gradient(
       0deg,
@@ -228,7 +250,6 @@ p.card-description {
       rgba(40, 91, 83, 0.3)
     ),
     url("../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg");
-  height: 100%;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -483,6 +504,7 @@ input[type="Number"] {
     align-items: center;
     padding: 20px 0;
   }
+
   .featured-event-description {
     text-align: center;
   }

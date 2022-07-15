@@ -16,7 +16,7 @@ import axios from "axios";
 import EventCalenderImg from "../images/Event_Calender.png";
 import { getApiPath } from "../../Common";
 import SingleEvent from "./SingleEvent";
-
+import DaysToGoIcon from "../images/Days_ToGo.png";
 const Event = (props) => {
   const responsive = {
     superLargeDesktop: {
@@ -28,40 +28,65 @@ const Event = (props) => {
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1024, min: 700 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 700, min: 0 },
       items: 1,
     },
   };
 
-  const owl = {
-    1000: {
-      items: 5,
-      // margin: "0px",
-      marginleft: "100px",
-      marginRight: "100px",
-      center: true,
+  const [owlState, setOwlState] = useState({
+    responsive: {
+      0: {
+        items: 1,
+      },
+      450: {
+        items: 2,
+      },
+      768: {
+        items: 3,
+        marginleft: "10px",
+        marginRight: "10px",
+        center: true,
+      },
+      1000: {
+        items: 5,
+        marginleft: "100px",
+        marginRight: "100px",
+        center: true,
+      },
     },
-    768: {
-      items: 3,
-      marginleft: "100px",
-      marginRight: "100px",
-      center: true,
-    },
-    480: {
-      items: 3,
-      marginleft: "10px",
-      marginRight: "10px",
-      center: true,
-    },
-    0: {
-      items: 1,
-      // center: true,
-    },
-  };
+  });
+
+  // const owl = {
+  //   1000: {
+  //     items: 5,
+  //     // margin: "0px",
+  //     marginleft: "100px",
+  //     marginRight: "100px",
+  //     center: true,
+  //   },
+  //   768: {
+  //     items: 3,
+  //     marginleft: "100px",
+  //     marginRight: "100px",
+  //     center: true,
+  //   },
+  //   480: {
+  //     items: 3,
+  //     marginleft: "10px",
+  //     marginRight: "10px",
+  //     center: true,
+  //   },
+  //   0: {
+  //     items: 1,
+  //     marginleft: "auto",
+  //     marginRight: "auto",
+  //     center: true,
+  //   },
+  // };
 
   const [recentEvents, setRecentEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
@@ -124,7 +149,7 @@ const Event = (props) => {
           </div>
           <div className="Event-Mobile">
             <div className="featured-event-date">
-              <img id="CalenderIcon" src={EventCalenderImg} alt="" />
+              <img id="CalenderIcon" src={DaysToGoIcon} alt="" />
               <p>Days to go</p>
             </div>
             <div className="featured-event-description">
@@ -259,19 +284,20 @@ const Event = (props) => {
         <div className="our-partners-content">
           <OwlCarousel
             className="owl-theme"
-            responsiveClass={true}
-            responsive={responsive}
-            items="5"
-            autoplay={false}
+            loop
+            center
+            margin={1}
+            autoplay={true}
             dots={false}
-            mouseDrag
-            loop={true}
-            margin={70}
-            center={true}
+            touchDrag={true}
+            lazyLoad={true}
+            responsive={owlState} // add this line
+            animateOut={"fadeOut"}
+            animateIn={"flipInX"}
           >
             {/* {allPartners.map((partner, idx) => { */}
             {/* return ( */}
-            <div className="item">
+            <div className="item" key={1}>
               <h3>People For Animal</h3>
               <p>
                 Animals in India need your help. People For Animals receives 99%
@@ -280,21 +306,21 @@ const Event = (props) => {
                 difference to the ................
               </p>
             </div>
-            <div className="item">
+            <div className="item" key={2}>
               <h3>Sanjay Gandhi Animal Care</h3>
               <p>
                 The Sanjay Gandhi Animal Care Centre (SGACC) is India's oldest
                 and Delhi's largest all-animal shelter.
               </p>
             </div>
-            <div className="item">
+            <div className="item" key={3}>
               <h3>PETA India</h3>
               <p>
                 Together, we can make the world a better place for all beings.
                 Your donation will go to work
               </p>
             </div>
-            <div className="item">
+            <div className="item" key={4}>
               <h3>Animal Rahat</h3>
               <p>
                 Animal Rahat (rahat means “relief” in Hindi) is a unique program
@@ -303,7 +329,7 @@ const Event = (props) => {
                 India......
               </p>
             </div>
-            <div className="item">
+            <div className="item" key={5}>
               <h3>Vet Helpline India (P) Ltd</h3>
               <p>
                 We help organizations conduct studies and implement development
