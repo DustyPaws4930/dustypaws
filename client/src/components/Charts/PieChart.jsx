@@ -11,7 +11,7 @@ const PieChart = () => {
   let [loading, setLoading] = useState(false);
   const override = {
     display: "block",
-    margin: "0 0 0 6rem",
+    margin: "0 0 0.8rem 0",
     borderColor: "red",
     backgroundColor: "#deb141",
   };
@@ -52,7 +52,7 @@ const PieChart = () => {
             color="#deb141"
             loading={loading}
             cssOverride={override}
-            size={14}
+            size={12}
           />
         )}
       </div>

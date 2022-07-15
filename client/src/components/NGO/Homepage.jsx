@@ -84,7 +84,6 @@ const Homepage = (props) => {
                 lng: parseFloat(complaint.location.long),
               }}
               onClick={() => {
-                setCurrentCoordinates(complaint.location);
                 setSelectedComplaint(complaint);
               }}
               icon={{
