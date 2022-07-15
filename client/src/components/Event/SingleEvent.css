@@ -4,6 +4,7 @@
 }
 .PopUpContent{
   border: 1px solid #deb141;
+  /* height: 85vh; */
 }
 .EventControls {
   display: flex;
@@ -12,7 +13,8 @@
 }
 .EventImageWrapper img{
   width: 100%;
-  height: 50%;
+  height: 40%;
+  border-radius: 10px;
   /* margin: 20px; */
 }
 .EventControls button{
@@ -22,15 +24,7 @@
   margin-top: 20px;
   font-weight: bolder;
 }
-.ContentWrapper{
-  margin: 0 30px;
-}
-.ContentWrapper h1{
-  margin-bottom: 20px ;
-}
-.ContentWrapper p{
-  margin: 15px 0;
-}
+
 .event-date{
   /* display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -73,30 +67,41 @@
 
   .EventContentWrapper {
     /* background-color: cadetblue; */
-    display: grid;
+    display: block;
     grid-template-rows: auto auto;
     width: 330px;
-    /* height: vh; */
+    /* height: ; */
     /* gap: 0px; */
+    width: fit-content;
     
+  }
+  .PopUpContent{
+    border: 1px solid #deb141;
+    /* height: 85vh; */
+    width: 100%;
   }
   .EventImageWrapper img{
     height: 200px;
+    /* width: fit-content; */
+    /* margin-left: -12px; */
   }
   .PopUpContent{
-    padding: 5px;
-    margin-top: -10px;
+    width: fit-content;
+    /* padding: 5px; */
+    /* margin-top: -10px; */
   }
-  .ContentWrapper {
-    margin: 20px;
-    
-  }
-  .ContentWrapper h1{
-    margin-bottom: 15px ;
-    /* margin-top: -90px; */
+  
+  .ContentWrapper h3{
+    /* margin-bottom: 20px ; */
+    color: #295b53;
+    /* width: 50px; */
+    /* margin-left: -10px; */
+    word-wrap: break-word;
   }
   .ContentWrapper p{
-    margin: 10px;
+    /* margin: 10px 0; */
+    padding: 10px 0;
+    word-wrap: break-word;
   }
   
 }
@@ -106,6 +111,18 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
     width: 800px;
-    height: 60vh;
+    height: 80vh;
+    
   }
+  .ContentWrapper{
+    margin: 0 30px;
+  }
+  .ContentWrapper h3{
+    margin-bottom: 20px ;
+    color: #295b53;
+  }
+  .ContentWrapper p{
+    margin: 10px 0;
+  }
+  
 }

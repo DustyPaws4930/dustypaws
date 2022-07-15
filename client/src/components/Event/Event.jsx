@@ -41,6 +41,7 @@ const Event = (props) => {
     responsive: {
       0: {
         items: 1,
+        center: "true"
       },
       450: {
         items: 2,
