@@ -1,22 +1,25 @@
 // import React, { useEffect, useState } from 'react'
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./Event.css";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Event.css';
 // import Header from '../Header/Header';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import Footer from "../Footer/Footer.jsx";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import Header from "../Header/Header";
-import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
-import axios from "axios";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import Footer from '../Footer/Footer.jsx';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import Header from '../Header/Header';
+import Event_Page_Card_Dog from '../images/Event_Page_Card_Dog.jpg';
+import axios from 'axios';
 // import WishlistIcon from "../images/WishlistIcon.png";
-import EventCalenderImg from "../images/Event_Calender.png";
-import { getApiPath } from "../../Common";
-import SingleEvent from "./SingleEvent";
-import DaysToGoIcon from "../images/Days_ToGo.png";
+import EventCalenderImg from '../images/Event_Calender.png';
+import { getApiPath } from '../../Common';
+import SingleEvent from './SingleEvent';
+import DaysToGoIcon from '../images/Days_ToGo.png';
+import Paws from '../project-files/paws.svg';
+import Paws2 from '../project-files/paws2.svg';
+
 const Event = (props) => {
   const responsive = {
     superLargeDesktop: {
@@ -41,26 +44,25 @@ const Event = (props) => {
     responsive: {
       0: {
         items: 1,
-        center: "true"
+        center: 'true',
       },
       450: {
         items: 2,
       },
       768: {
         items: 3,
-        marginleft: "10px",
-        marginRight: "10px",
+        marginleft: '10px',
+        marginRight: '10px',
         center: true,
       },
       1000: {
         items: 5,
-        marginleft: "100px",
-        marginRight: "100px",
+        marginleft: '100px',
+        marginRight: '100px',
         center: true,
       },
     },
   });
- 
 
   // const owl = {
   //   1000: {
@@ -98,9 +100,9 @@ const Event = (props) => {
   // let [loggedInEvent, setLoggedInUser] = useState({});
 
   // let userWhishlistedEvents = [];
-  let PopUpContent = "";
+  let PopUpContent = '';
   useEffect(function getAllEvents() {
-    let eventURL = getApiPath() + "event/fetchAll";
+    let eventURL = getApiPath() + 'event/fetchAll';
 
     // Get All Events
     axios
@@ -181,96 +183,113 @@ const Event = (props) => {
       <hr />
 
       {/* RECENT EVENTS */}
-      <div className="recent-event-container">
-        <div className="recent-event-heading">
-          <h3>Recent Event</h3>
+      <div className="recent-event-wrapper">
+        <div className="foot-prints">
+          <img src={Paws} alt="paws" />
         </div>
-        <div className="recent-event-content">
-          <Carousel
-            responsive={responsive}
-            swipeable={false}
-            draggable={false}
-            showDots={true}
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item"
-          >
-            {recentEvents.map((event, idx) => (
-              <div key={idx} className="card">
-                <div className="card-body">
-                  {/* <div className='card-date'>
+        <div className="recent-event-container">
+          {/* <div className="foot-prints">
+            <img src={Paws} alt="paws" />
+          </div> */}
+          <div className="recent-evet-heading">
+            <h2>Recent Event</h2>
+          </div>
+          <div className="recent-event-content">
+            <Carousel
+              responsive={responsive}
+              swipeable={false}
+              draggable={false}
+              showDots={true}
+              dotListClass="custom-dot-list-style"
+              itemClass="carousel-item"
+            >
+              {recentEvents.map((event, idx) => (
+                <div key={idx} className="card">
+                  <div className="card-body">
+                    {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                  <img src={event.Image} alt="Card_Hero_Image" />
-                  <div className="card-content">
-                    <div className="card-heading-wishlist">
-                      <h4 className="card-title">{event.title}</h4>
-                    </div>
-                    <p className="card-description">{event.description}</p>
-                    <div className="btn-eventt-details">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setSelectedEvent(event);
-                          TogglePopUp();
-                        }}
-                      >
-                        Event Details
-                      </button>
+                    <img src={event.Image} alt="Card_Hero_Image" />
+                    <div className="card-content">
+                      <div className="card-heading-wishlist">
+                        <h4 className="card-title">{event.title}</h4>
+                        {/* <img
+                        src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
+                        alt="wishlist"
+                      /> */}
+                      </div>
+                      <p className="card-description">{event.description}</p>
+                      <div className="btn-eventt-details">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedEvent(event);
+                            TogglePopUp();
+                          }}
+                        >
+                          Event Details
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </Carousel>
+              ))}
+            </Carousel>
+          </div>
         </div>
       </div>
 
       {/* UPCOMING EVENTS */}
-      <div className="upcoming-event-container">
-        <div className="upcoming-event-heading">
-          <h3>Upcoming Event</h3>
+      <div className="upcoming-event-wrapper">
+        <div className="foot-prints">
+          <img src={Paws2} alt="paws" />
         </div>
-        <div className="upcoming-event-content">
-          <Carousel
-            responsive={responsive}
-            swipeable={false}
-            draggable={false}
-            showDots={true}
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item"
-          >
-            {upcomingEvents.map((event, idx) => (
-              <div key={idx} className="card">
-                <div className="card-body">
-                  {/* <div className='card-date'>
+        <div className="upcoming-event-container">
+          <div className="upcoming-evet-heading">
+            <h2>Upcoming Event</h2>
+          </div>
+          <div className="upcoming-event-content">
+            <Carousel
+              responsive={responsive}
+              swipeable={false}
+              draggable={false}
+              showDots={true}
+              dotListClass="custom-dot-list-style"
+              itemClass="carousel-item"
+            >
+              {upcomingEvents.map((event, idx) => (
+                <div key={idx} className="card">
+                  <div className="card-body">
+                    {/* <div className='card-date'>
                           <img src="https://cdn-icons.flaticon.com/png/512/2740/premium/2740596.png?token=exp=1655976101~hmac=ee24fa289b78d2da49995ba8d659d3d0" alt="" />
                       </div> */}
-                  <img src={event.Image} alt="Card_Hero_Image" />
-                  <div className="card-content">
-                    <div className="card-heading-wishlist">
-                      <h4 className="card-title">{event.title}</h4>
-                      {/* <img
+                    <img src={event.Image} alt="Card_Hero_Image" />
+                    <div className="card-content">
+                      <div className="card-heading-wishlist">
+                        <h4 className="card-title">{event.title}</h4>
+                        {/* <img
                         src="https://cdn-icons.flaticon.com/png/512/3132/premium/3132924.png?token=exp=1655972418~hmac=7f4e298da5e90666a083e130513c26e1"
                         alt="wishlist"
                       /> */}
-                    </div>
-                    <p className="card-description">{event.description}</p>
-                    <div className="btn-eventt-details">
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setSelectedEvent(event);
-                          TogglePopUp();
-                        }}
-                      >
-                        Event Details
-                      </button>
+                      </div>
+                      <p className="card-description">{event.description}</p>
+                      <div className="btn-eventt-details">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedEvent(event);
+                            TogglePopUp();
+                          }}
+                        >
+                          Event Details
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </Carousel>
+              ))}
+            </Carousel>
+          </div>
         </div>
       </div>
 
@@ -290,8 +309,8 @@ const Event = (props) => {
             touchDrag={true}
             lazyLoad={true}
             responsive={owlState} // add this line
-            animateOut={"fadeOut"}
-            animateIn={"flipInX"}
+            animateOut={'fadeOut'}
+            animateIn={'flipInX'}
           >
             {/* {allPartners.map((partner, idx) => { */}
             {/* return ( */}

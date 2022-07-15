@@ -59,6 +59,7 @@ export const Login = async (req, res) => {
         });
       } else if (!err) {
         let userPassword = GetDehashPassword(user.password);
+        console.log(`Your actual password is : ${userPassword}`);
         if (password === userPassword) {
           user.password = userPassword;
           const token = jwt.sign(
@@ -110,10 +111,9 @@ export const Update = async (req, res) => {
   let selectedEmoji = req.body.selectedEmoji;
   let gender = req.body.gender;
 
-  console.log(selectedEmoji);
-  const salt = await bcrypt.genSalt(10);
+  console.log(gender);
   // now we set user password to hashed password
-  password = await bcrypt.hash(password, salt);
+  password = GetHashPassword(password);
   let userObj = {
     username,
     email,

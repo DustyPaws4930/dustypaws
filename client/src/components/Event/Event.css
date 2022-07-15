@@ -152,23 +152,44 @@ hr {
   font-weight: bolder;
 }
 .recent-event-container {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0.5rem;
 }
-.recent-event-heading{
+.recent-event-heading {
   padding-left: 25px;
+}
+.upcoming-event-wrapper,
+.recent-event-wrapper {
+  position: relative;
+}
+.recent-event-wrapper .foot-prints {
+  width: 150px;
+  position: absolute;
+  right: 0;
+  top: 10%;
+  overflow: hidden;
 }
 .upcoming-event-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0.5rem;
 }
-.upcoming-event-heading{
+.upcoming-event-heading {
   padding-left: 25px;
 }
 .our-partners-container {
   padding: 0.5rem;
+}
+.upcoming-event-wrapper .foot-prints {
+  width: 150px;
+  position: absolute;
+  top: 10%;
+  overflow: hidden;
+}
+.card {
+  background: white;
 }
 .card-date {
   /* background-color: aqua; */
@@ -252,7 +273,7 @@ h2.card-title {
       rgba(40, 91, 83, 0.3),
       rgba(40, 91, 83, 0.3)
     ),
-    url("../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg");
+    url('../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg');
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -280,7 +301,7 @@ h2.card-title {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-image: url("../images/Event_Feature_Hero.jpg");
+  background-image: url('../images/Event_Feature_Hero.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -329,7 +350,7 @@ h2.card-title {
     width: 80%;
     height: 35%;
     border-radius: 10px;
-    background-image: url("../images/Event_Feature_Hero.jpg");
+    background-image: url('../images/Event_Feature_Hero.jpg');
     padding-bottom: 20px;
   }
   .featured-event-date {
@@ -362,9 +383,9 @@ h2.card-title {
   border-bottom: 2px solid gray;
 }
 
-.event-form input[type="text"],
-input[type="Date"],
-input[type="Number"] {
+.event-form input[type='text'],
+input[type='Date'],
+input[type='Number'] {
   margin: 1rem 0;
 }
 
@@ -421,7 +442,7 @@ input[type="Number"] {
   max-width: 90%;
   margin: auto;
 }
-.card-content p{
+.card-content p {
   display: -webkit-box;
   overflow: hidden;
   overflow-wrap: normal;
@@ -431,7 +452,6 @@ input[type="Number"] {
   -webkit-box-orient: vertical;
   height: 80px;
   margin-bottom: 20px;
-  
 }
 .our-partners-content {
   margin-bottom: 40px;
@@ -445,6 +465,9 @@ input[type="Number"] {
   .NGO-Events .pagination-component {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
+  .foot-prints {
+    display: none;
   }
   .event-bg-image {
     display: none;
@@ -502,7 +525,7 @@ input[type="Number"] {
     /* visibility: hidden; */
     position: absolute;
     left: 10%;
-    top: 200px; 
+    top: 200px;
     /* ========================================================= */
     /* overflow: hidden; */
     width: 80%;
