@@ -181,6 +181,9 @@ const Event = (props) => {
 
       {/* RECENT EVENTS */}
       <div className="recent-event-container">
+        <div className="foot-prints">
+          
+        </div>
         <div className="recent-evet-heading">
           <h2>Recent Event</h2>
         </div>
