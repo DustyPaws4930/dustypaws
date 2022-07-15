@@ -17,7 +17,10 @@ const AllEvents = () => {
         let eventURl =
           getApiPath() + `event/getById/${userToken.user.whistlist[index]}`;
         axios.get(eventURl).then((res) => {
-          setWhishlistedEvents(whislistedEvents.concat(res.data));
+          setWhishlistedEvents((whislistedEvents) => [
+            ...whislistedEvents,
+            res.data,
+          ]);
         });
       }
     }
