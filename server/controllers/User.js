@@ -59,6 +59,7 @@ export const Login = async (req, res) => {
         });
       } else if (!err) {
         let userPassword = GetDehashPassword(user.password);
+        console.log(`Your actual password is : ${userPassword}`);
         if (password === userPassword) {
           user.password = userPassword;
           const token = jwt.sign(

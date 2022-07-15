@@ -157,6 +157,18 @@ hr {
   margin: 0 auto;
   padding: 0.5rem;
 }
+
+.upcoming-event-wrapper, .recent-event-wrapper{
+  position: relative;
+}
+.recent-event-wrapper .foot-prints {
+  
+  width: 150px;
+  position: absolute;
+  right: 0;
+  top: 10%;
+  overflow: hidden;
+}
 .upcoming-event-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -164,6 +176,15 @@ hr {
 }
 .our-partners-container {
   padding: 0.5rem;
+}
+.upcoming-event-wrapper .foot-prints {
+  width: 150px;
+  position: absolute;
+  top: 10%;
+  overflow: hidden;
+}
+.card{
+  background: white;
 }
 .card-date {
   /* background-color: aqua; */
@@ -434,6 +455,9 @@ input[type="Number"] {
   .NGO-Events .pagination-component {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
+  .foot-prints{
+    display: none;
   }
   .event-bg-image {
     display: none;

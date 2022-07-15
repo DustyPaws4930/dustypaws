@@ -13,36 +13,37 @@ const Whislist = () => {
         let eventURl =
           getApiPath() + `event/getById/${userToken.user.whistlist[index]}`;
         axios.get(eventURl).then((res) => {
-          setWhishlistedEvents(whislistedEvents.concat(res.data));
+          setWhishlistedEvents((whislistedEvents) => [
+            ...whislistedEvents,
+            res.data,
+          ]);
         });
       }
     }
   }, [setWhishlistedEvents]);
 
-  function RenderWishlistEvents() {
-    let loggedInUser = getLoggedInUser();
-    if (loggedInUser !== "" && whislistedEvents.length > 0) {
-      return whislistedEvents.slice(0, 3).map((whishlistEvent, idx) => {
-        return (
-          <div className="eventWrapper" key={idx}>
-            <p>{whishlistEvent.title}</p>
-            <img src={WhishlistIcon} alt={whishlistEvent.title} />
-          </div>
-        );
-      });
-    } else {
-      return (
-        <div className="caseWrapper">
-          <p>No Events To display.</p>
-        </div>
-      );
-    }
-  }
   return (
     <div className="wishlistEvents">
       <h3>Wishlisted Events</h3>
-      <div className="eventContainer">{RenderWishlistEvents()}</div>
-      
+      <div className="eventContainer">
+        {whislistedEvents.length > 0 ? (
+          whislistedEvents.splice(0, 4).map((whishlistEvent, idx) => {
+            return (
+              <div className="eventWrapper" key={idx}>
+                <p>{whishlistEvent.title}</p>
+                <img src={WhishlistIcon} alt={whishlistEvent.title} />
+              </div>
+            );
+          })
+        ) : (
+          <>
+            <div className="caseWrapper">
+              <p>No Events To display.</p>
+            </div>
+          </>
+        )}
+      </div>
+
       <Link className="ViewAllBtn" to="/whishlistedEvents">
         View Events
       </Link>
