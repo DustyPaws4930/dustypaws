@@ -78,10 +78,10 @@ button.enter-lacation-btn:hover {
   .closeBtnContainer {
     padding: 0;
   }
-  .PopUpContent {
+  /* .PopUpContent {
     max-width: 300px;
     max-height: 300px;
-  }
+  } */
   .ContainerElement {
     max-width: 100%;
     max-height: 200px;

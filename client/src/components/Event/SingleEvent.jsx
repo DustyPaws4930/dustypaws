@@ -62,7 +62,7 @@ const SingleEvent = (props) => {
               <img src={event.Image} alt={event.title} />
             </div>
             <div className="ContentWrapper">
-              <h1 className="eventContentTitle">{event.title}</h1>
+              <h3 className="eventContentTitle">{event.title}</h3>
               <div className="event-date">
                 <img src={EventCalender} alt="" />
                 <p>{Moment(event.date).format("ll")}</p>
@@ -90,7 +90,7 @@ const SingleEvent = (props) => {
                         WishlistHandler(!eventWishlisted);
                       }}
                     >
-                      {eventWishlisted ? "Wishlisted" : "Wishlist"}
+                      {eventWishlisted ? "Event Wishlisted" : "Add to Wishlist"}
                     </button>
                     <button>Book Event</button>
                   </div>
