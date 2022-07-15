@@ -456,6 +456,9 @@ input[type="Number"] {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
+  .foot-prints{
+    display: none;
+  }
   .event-bg-image {
     display: none;
   }
