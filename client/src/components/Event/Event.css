@@ -156,10 +156,16 @@ hr {
   margin: 0 auto;
   padding: 0.5rem;
 }
+.recent-event-heading{
+  padding-left: 25px;
+}
 .upcoming-event-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0.5rem;
+}
+.upcoming-event-heading{
+  padding-left: 25px;
 }
 .our-partners-container {
   padding: 0.5rem;
@@ -172,9 +178,6 @@ hr {
 }
 h2.card-title {
   font-size: 1.15rem;
-  margin: 0.5rem 1rem;
-}
-p.card-description {
   margin: 0.5rem 1rem;
 }
 
@@ -320,7 +323,8 @@ p.card-description {
     /* visibility: hidden; */
     position: absolute;
     left: 10%;
-    top: 250px;
+    top: 200px;
+    /* ==================================================== */
     /* overflow: hidden; */
     width: 80%;
     height: 35%;
@@ -417,9 +421,17 @@ input[type="Number"] {
   max-width: 90%;
   margin: auto;
 }
-.card-description {
-  /* background-color: aqua; */
-  padding: 20px 0;
+.card-content p{
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 80px;
+  margin-bottom: 20px;
+  
 }
 .our-partners-content {
   margin-bottom: 40px;
@@ -490,7 +502,8 @@ input[type="Number"] {
     /* visibility: hidden; */
     position: absolute;
     left: 10%;
-    top: 250px;
+    top: 200px; 
+    /* ========================================================= */
     /* overflow: hidden; */
     width: 80%;
     height: 35%;

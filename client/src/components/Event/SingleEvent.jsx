@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Moment from "moment";
-import EventCalender from "../images/Event_Calender.png";
-import Loaction from "../images/location.png";
-import TicketPrice from "../images/Ticket.png";
+import EventCalender from "../images/SingleEventDate.png";
+import Loaction from "../images/SingleEventLocation.png";
+import TicketPrice from "../images/SingleEventTicket.png";
 import "./SingleEvent.css";
 import axios from "axios";
 import { getApiPath, getToken, setToken } from "../../Common";
 import { useEffect } from "react";
+import WishlistedSingleEvent from '../images/WishlistedSingleEvent.png'
+
+
 
 const SingleEvent = (props) => {
   let event = props.eventData;
@@ -83,6 +86,11 @@ const SingleEvent = (props) => {
                 loggerdInUser !== undefined &&
                 loggerdInUser.role !== "ngo" ? (
                   <div className="EventControls">
+                    {eventWishlisted ? 
+                    <img src={WishlistedSingleEvent} alt="wishlisted"/>
+                    :
+                    null
+                    }
                     <button
                       onClick={(e) => {
                         e.preventDefault();
@@ -92,7 +100,7 @@ const SingleEvent = (props) => {
                     >
                       {eventWishlisted ? "Event Wishlisted" : "Add to Wishlist"}
                     </button>
-                    <button>Book Event</button>
+                    {/* <button>Book Event</button> */}
                   </div>
                 ) : (
                   ""
