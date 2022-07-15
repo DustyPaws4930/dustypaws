@@ -97,6 +97,7 @@ const Login = () => {
                 <label htmlFor="email">Email: </label>
                 <input
                   type="email"
+                  required
                   onChange={(event) => onInputChange(event)}
                   name="email"
                   id="email"
@@ -106,6 +107,7 @@ const Login = () => {
                 <label htmlFor="password">Password: </label>
                 <input
                   type="password"
+                  required
                   onChange={(event) => onInputChange(event)}
                   name="password"
                   id="password"
