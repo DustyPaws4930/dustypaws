@@ -1,121 +1,105 @@
-.about-us{
-    /* background-color: cadetblue; */
-    
+
+.team-intro {
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 70px auto;
 }
-.team-intro{
-    /* background-color: yellow; */
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  margin: 10px;
+}
+
+.Our-impact {
+  /* background-color: beige; */
+  position: absolute;
+  top: 170px;
+  width: 40%;
+  margin: 0 30px;
+  text-align: center;
+}
+.our-team {
+  /* background-color: coral; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.profile-details {
+  /* background-color: aliceblue; */
+  /* text-align: center; */
+  padding: 0 20px;
+  border-radius: 5px;
+}
+#profile1,
+#profile3,
+#profile5 {
+  border: 3px solid #deb141;
+}
+#profile2,
+#profile4,
+#profile6 {
+  border: 3px solid #295b53;
+}
+.connect-email {
+  clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+  padding: 1px;
+  background: #deb141;
+  margin-top: 100px;
+}
+.connect-email-wrapper {
+  clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+  background: #fffaef;
+  padding: 6rem 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 700px) {
+  .about-us {
+    margin: 0;
+    padding: 0;
+  }
+  .our-team {
+    /* background-color: blueviolet; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    /* margin: 0 70px; */
+  }
+  .Our-impact {
+    /* display: none; */
+    /* background-color: aqua; */
+    position: relative;
+    text-align: center;
+    height: 60vh;
+    top: 10px;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 70px auto;
-}
-
-.social-links img{
-    width: 24px;
-    height: 24px;
-    margin: 10px;
-}
-
-.about-description{
-    /* background-color: rebeccapurple; */
-    /* background-image: url('../images/AboutUS_Hero_Image.png');
-    background-position: cover; 
-    background-repeat: no-repeat;
-    background-size: 100%; 
-    width: 100%;
-    height: 100%; */
-}
-
-.Our-impact{
-    /* background-color: beige; */
+  }
+  .about-description img {
+    background-color: aquamarine;
     position: absolute;
-    top: 170px;
-    width: 40%;
-    margin: 0 30px;
+    top: 400px;
+    height: 250px;
+    width: 100%;
+  }
+  .team-intro {
+    /* background-color: blue; */
+    margin: 0px 20px;
     text-align: center;
-}
-.our-team{
-    /* background-color: coral; */
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 150px;
-    max-width: 1200px;
-    margin: 0 auto;
-
-
-}
-
-.profile-details{
-    /* background-color: aliceblue; */
-    /* text-align: center; */
-    padding: 0 20px ;
-    border-radius: 5px;
-}
-#profile1, #profile3, #profile5{
-    border: 3px solid #deb141;
-}
-#profile2, #profile4, #profile6{
-    border: 3px solid #295b53;
-}
-.connect-email{
-    clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
-    padding: 1px;
-    background: #deb141;
-    margin-top: 100px;
-
-}
-.connect-email-wrapper{
-    clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
-    background: #fffaef;
-    padding: 6rem 4rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-@media screen and (max-width: 700px){
-    .about-us{
-        margin: 0;
-        padding: 0;
-    }
-    .our-team{
-        /* background-color: blueviolet; */
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 30px;
-        /* margin: 0 70px; */
-        width: 50%;
-
-    }
-    .Our-impact{
-        /* display: none; */
-        /* background-color: aqua; */
-        position: relative;
-        text-align: center;
-        height: 60vh;
-        top: 10px;
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .about-description img{
-        background-color: aquamarine;
-        position: absolute;
-        top: 400px;
-        height: 250px;
-        width: 100%;
-        
-    }
-    .team-intro{
-        /* background-color: blue; */
-        margin: 0px 20px;
-        text-align: center;
-        height: 60vh;
-        margin: 80px 0 10px 0;
-       
-    }
-    
+    height: 60vh;
+    margin: 80px 0 10px 0;
+  }
 }
