@@ -18,7 +18,7 @@ const NGOEventCard = (props) => {
           </div>
           <img src={props.result.Image} alt={props.result.title} />
           <h2 className="card-title">{props.result.title}</h2>
-          <p className="card-description">{props.result.description}</p>
+          <p className="NGO_card-description">{props.result.description}</p>
           <div className="btn-container">
             <a
               className="btn btn-view"
