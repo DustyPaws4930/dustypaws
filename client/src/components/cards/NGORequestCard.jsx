@@ -7,7 +7,6 @@ const NGORequestCard = (props) => {
   const HandleComplaintDropDown = (option, reportId) => {
     props.HandleComplaintDropDown(option, reportId);
   };
-  console.log(props.result);
   let Difference_In_Time =
     new Date().getTime() - new Date(props.result.reportDate).getTime();
   let timeAgo;
@@ -47,8 +46,7 @@ const NGORequestCard = (props) => {
         <p>{props.result.address}</p>
 
         <p>{props.result.description}</p>
-
-        {console.log(props.result.title + " " + props.result.state)}
+        {console.log(props.result.state)}
         <div className="status-dropdown">
           <AnimatedDropdown
             options={props.options}

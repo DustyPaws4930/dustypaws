@@ -305,7 +305,7 @@ html {
   margin: 1rem;
   border: 2px solid #deb141;
   border-radius: 0.5rem;
-  padding: 1rem 0;
+  padding: 1rem;
 }
 .eventWrapper img {
   width: 25px;
@@ -335,7 +335,7 @@ html {
     /* width: 80vh; */
     border: 5px solid #285b53;
   }
-  .rewardsChart{
+  .rewardsChart {
     display: flex;
     flex-direction: column;
   }

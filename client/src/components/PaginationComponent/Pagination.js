@@ -28,10 +28,8 @@ const Pagination = (props) => {
 
   // Loading data
   useEffect(() => {
+    console.log(props.initialText);
     setInitialText(props.initialText);
-    fetchData();
-  }, [apiUrl, fetchData, props.initialText]);
-  function fetchData() {
     axios.get(apiUrl).then((result) => {
       setData(result.data);
       if (pageName === "NGO-Home") {
@@ -39,8 +37,7 @@ const Pagination = (props) => {
       }
       console.log(result.data.complaints);
     });
-  }
-
+  }, [apiUrl, setData, setInitialText]);
   // Handle page click
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
@@ -99,10 +96,6 @@ const Pagination = (props) => {
         );
       });
   }
-
-  console.log(currentPageData);
-
-  // console.log("currentPageData", currentPageData);
 
   // total pages Calculator
   let pageCount = Math.ceil(data.length / PerPage);
