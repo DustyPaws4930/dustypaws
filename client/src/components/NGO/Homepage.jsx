@@ -100,6 +100,9 @@ const Homepage = (props) => {
               lat: selectedComplatint.location.lat,
               lng: selectedComplatint.location.long,
             }}
+            onCloseClick={() => {
+              setSelectedComplaint(null);
+            }}
           >
             <div>
               <h3>{selectedComplatint.title}</h3>

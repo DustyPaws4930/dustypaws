@@ -99,6 +99,7 @@ html {
   left: 12px;
   top: 16px;
 }
+
 @media screen and (max-width: 768px) {
   .DaysTag {
     left: 104px;
@@ -121,6 +122,9 @@ html {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+.featured-event-description h4 {
+  margin-bottom: 1rem;
 }
 .btn-feature-event {
   text-align: center;
@@ -273,7 +277,7 @@ h2.card-title {
       rgba(40, 91, 83, 0.3),
       rgba(40, 91, 83, 0.3)
     ),
-    url('../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg');
+    url("../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg");
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -301,7 +305,7 @@ h2.card-title {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-image: url('../images/Event_Feature_Hero.jpg');
+  background-image: url("../images/Event_Feature_Hero.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -350,7 +354,7 @@ h2.card-title {
     width: 80%;
     height: 35%;
     border-radius: 10px;
-    background-image: url('../images/Event_Feature_Hero.jpg');
+    background-image: url("../images/Event_Feature_Hero.jpg");
     padding-bottom: 20px;
   }
   .featured-event-date {
@@ -383,9 +387,9 @@ h2.card-title {
   border-bottom: 2px solid gray;
 }
 
-.event-form input[type='text'],
-input[type='Date'],
-input[type='Number'] {
+.event-form input[type="text"],
+input[type="Date"],
+input[type="Number"] {
   margin: 1rem 0;
 }
 
