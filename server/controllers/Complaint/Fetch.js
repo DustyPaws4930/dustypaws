@@ -43,27 +43,44 @@ export const GetReportCount = (req, res) => {
 };
 
 export const GetNGOUserVisualizationData = async (req, res) => {
-
-  const monthsArray = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
+  const monthsArray = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   const monthCOunt = {};
-  monthsArray.forEach(element => {
-    const firstdate = moment().month(element).startOf("month").format("DD-MM-YYYY");
+  monthsArray.forEach((element) => {
+    const firstdate = moment()
+      .month(element)
+      .startOf("month")
+      .format("DD-MM-YYYY");
     console.log(firstdate);
-    const lastdate = moment().month(element).endOf("month").format("DD-MM-YYYY");
-  console.log(lastdate);
-  const count = UserModel.find({
-    $and: [
-      {role:"ngo"},
-      {
-        createdAt: {
-          $gte: firstdate,
-          $lt: lastdate,
+    const lastdate = moment()
+      .month(element)
+      .endOf("month")
+      .format("DD-MM-YYYY");
+    console.log(lastdate);
+    const count = UserModel.find({
+      $and: [
+        { role: "ngo" },
+        {
+          createdAt: {
+            $gte: firstdate,
+            $lt: lastdate,
+          },
         },
-      },
-    ],
-  }).count();
+      ],
+    }).count();
     monthCOunt[element] = count;
-
   });
 
   function getFirstDayOfMonth(year, month) {
@@ -79,9 +96,10 @@ export const GetNGOUserVisualizationData = async (req, res) => {
     console.log("Error " + err);
     res.status(500).json({ message: err.message });
   } else {
-  res.status(200).json( monthCOunt );
-  }}
-  
+    res.status(200).json(monthCOunt);
+  }
+};
+
 export const UpdateComplaintById = async (req, res) => {
   let id = req.params.id;
   let reportState = req.body.state;

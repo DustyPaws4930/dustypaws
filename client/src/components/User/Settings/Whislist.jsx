@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getApiPath, getLoggedInUser, getToken } from "../../../Common";
+import { getApiPath, getToken } from "../../../Common";
 import WhishlistIcon from "../../images/WishlistIcon.png";
 const Whislist = () => {
   const [whislistedEvents, setWhishlistedEvents] = useState([]);

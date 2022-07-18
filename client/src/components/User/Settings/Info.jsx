@@ -2,12 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
-import {
-  getApiPath,
-  GetDehashedPassword,
-  getToken,
-  setToken,
-} from "../../../Common";
+import { getApiPath, getToken, setToken } from "../../../Common";
 import { toast } from "react-toastify";
 import EmojiPopUp from "../../ModelPopups/EmojiPopUp";
 // import { UserProfileImage } from "../../project-files/13.png"

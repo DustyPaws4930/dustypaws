@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import ReactPaginate from "react-paginate";
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import React from "react";
 
 const NGOEventCard = (props) => {
-  const GetLocationNShowPopUp = (e) => {
-    e.preventDefault();
-  };
+  
   return (
     <div key={props.index + 1} className="CardWrapper">
       <div className="card">

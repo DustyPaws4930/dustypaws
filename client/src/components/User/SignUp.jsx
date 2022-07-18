@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import jwt from "jwt-decode";
-import { getApiPath, isValidEmail, setToken, setTokenTimeout } from "../../Common";
+import { getApiPath, isValidEmail, setToken } from "../../Common";
 import "./SignUp.css";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.svg";
@@ -17,8 +16,6 @@ const SignUp = () => {
     password: "",
     isNgo: false,
   });
-  const [securityKey, setSecurityKey] = useState("");
-
   const HandleInputChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -69,10 +66,6 @@ const SignUp = () => {
         });
         console.log(err.response.data.message);
       });
-  };
-
-  const HandleSecurityCheck = (event) => {
-    event.preventDefault();
   };
 
   return (
