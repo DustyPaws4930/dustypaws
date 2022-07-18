@@ -4,6 +4,7 @@ import { getApiPath, getToken } from "../../Common";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import SingleEvent from "./SingleEvent";
+import "./WishlistedEvent.css";
 const AllEvents = () => {
   let [whislistedEvents, setWhishlistedEvents] = useState([]);
   let [selectedEvent, setSelectedEvent] = useState({});
@@ -37,7 +38,7 @@ const AllEvents = () => {
   }
 
   return (
-    <div>
+    <div className="wishlisted-events">
       <Header />
       <h1>Whishlisted Events</h1>
       <div className="AllEventsWrapper">
@@ -45,18 +46,20 @@ const AllEvents = () => {
           return (
             <div className="eventWrapper" key={idx}>
               <img src={whishlistEvent.Image} alt={whishlistEvent.title} />
-              <h2>{whishlistEvent.title}</h2>
-              <p>{whishlistEvent.description}</p>
-              <div className="btn-eventt-details">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedEvent(whishlistEvent);
-                    TogglePopUp();
-                  }}
-                >
-                  Event Details
-                </button>
+              <div className="event-body">
+                <h2>{whishlistEvent.title}</h2>
+                <p>{whishlistEvent.description}</p>
+                <div className="btn-eventt-details">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedEvent(whishlistEvent);
+                      TogglePopUp();
+                    }}
+                  >
+                    Event Details
+                  </button>
+              </div>
               </div>
             </div>
           );
