@@ -22,7 +22,6 @@ const PieChart = () => {
     axios
       .get(datCountURl)
       .then((res) => {
-        console.log(res.data);
         setNgoUserData({
           labels: res.data.map((data) => data.month),
           datasets: [
