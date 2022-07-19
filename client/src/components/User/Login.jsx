@@ -98,6 +98,7 @@ const Login = () => {
                 <input
                   type="email"
                   required
+                  autoComplete="off"
                   onChange={(event) => onInputChange(event)}
                   name="email"
                   id="email"
@@ -108,6 +109,7 @@ const Login = () => {
                 <input
                   type="password"
                   required
+                  autoComplete="off"
                   onChange={(event) => onInputChange(event)}
                   name="password"
                   id="password"

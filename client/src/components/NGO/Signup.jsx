@@ -87,6 +87,7 @@ const Signup = () => {
                 value={user.username}
                 id="username"
                 required
+                autoComplete="off"
                 onChange={(event) => HandleInputChange(event)}
                 placeholder="User name"
               />
@@ -95,6 +96,7 @@ const Signup = () => {
               <label htmlFor="email">Email</label>
               <input
                 type="email"
+                autoComplete="off"
                 name="email"
                 value={user.email}
                 id="email"
@@ -110,6 +112,7 @@ const Signup = () => {
                 name="password"
                 required
                 id="password"
+                autoComplete="off"
                 value={user.password}
                 placeholder="Password"
                 onChange={(event) => HandleInputChange(event)}
@@ -121,6 +124,7 @@ const Signup = () => {
                 type="password"
                 name="securityKey"
                 id="securityKey"
+                autoComplete="off"
                 required
                 value={user.securityKey}
                 placeholder="Security Key"

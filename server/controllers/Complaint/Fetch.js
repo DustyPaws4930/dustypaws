@@ -63,12 +63,10 @@ export const GetNGOUserVisualizationData = async (req, res) => {
       .month(element)
       .startOf("month")
       .format("DD-MM-YYYY");
-    console.log(firstdate);
     const lastdate = moment()
       .month(element)
       .endOf("month")
       .format("DD-MM-YYYY");
-    console.log(lastdate);
     const count = UserModel.find({
       $and: [
         { role: "ngo" },
@@ -80,12 +78,10 @@ export const GetNGOUserVisualizationData = async (req, res) => {
         },
       ],
     }).count();
-    monthCOunt[element] = count;
+    monthCOunt = {
+      [element]: count,
+    };
   });
-
-  function getFirstDayOfMonth(year, month) {
-    return new Date(year, month, 1).format("DD-MM-YYYY");
-  }
 
   const firstdate = moment().startOf("month").format("DD-MM-YYYY");
   console.log(firstdate);

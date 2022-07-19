@@ -45,6 +45,7 @@ const PieChart = () => {
   return (
     <>
       <div>
+        
         {Object.keys(ngoUserData).length > 0 && !loading ? (
           <Pie data={ngoUserData} />
         ) : (
