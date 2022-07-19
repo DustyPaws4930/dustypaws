@@ -1,6 +1,8 @@
 import React from "react";
 
 const NGOEventCard = (props) => {
+
+  console.log(props.result);
   
   return (
     <div key={props.index + 1} className="CardWrapper">

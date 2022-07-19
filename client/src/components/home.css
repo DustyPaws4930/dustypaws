@@ -154,6 +154,7 @@ section .feature-subsection1 {
   transform: translateY(-105px);
 }
 #card3 > .img-container {
+  z-index: 9;
   transform: translateY(-95px);
 }
 

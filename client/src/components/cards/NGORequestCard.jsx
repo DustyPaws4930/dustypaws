@@ -46,8 +46,8 @@ const NGORequestCard = (props) => {
         <p>{props.result.address}</p>
 
         <p>{props.result.description}</p>
-        {console.log(props.result.state)}
         <div className="status-dropdown">
+          {props.initialText}
           <AnimatedDropdown
             options={props.options}
             HandleComplaintDropDown={HandleComplaintDropDown}
