@@ -29,8 +29,8 @@ const PieChart = () => {
             {
               label: "NGO User Joined",
               data: res.data.map((data) => data.count),
-              backgroundColor: ["#deb141"],
-              borderColor: "#285b53",
+              backgroundColor: ["#deb141", "#285b53"],
+              borderColor: "rgba(0, 0, 0,0.6)",
               borderWidth: 2,
             },
           ],
@@ -45,7 +45,6 @@ const PieChart = () => {
   return (
     <>
       <div>
-        
         {Object.keys(ngoUserData).length > 0 && !loading ? (
           <Pie data={ngoUserData} />
         ) : (
