@@ -37,7 +37,6 @@ const Homepage = (props) => {
         .get(complaintsUrl)
         .then((res) => {
           setComplaintsArr(res.data.complaints);
-          console.log(res.data.complaints);
         })
         .catch((err) => {
           console.log("Error :" + err);
@@ -99,6 +98,9 @@ const Homepage = (props) => {
             position={{
               lat: selectedComplatint.location.lat,
               lng: selectedComplatint.location.long,
+            }}
+            onCloseClick={() => {
+              setSelectedComplaint(null);
             }}
           >
             <div>

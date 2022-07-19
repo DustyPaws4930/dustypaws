@@ -173,6 +173,7 @@ let Report = (props) => {
             <label>Title</label>
             <input
               type="text"
+              required
               onChange={(event) => onInputChange(event)}
               name="title"
               id="title"
@@ -189,6 +190,7 @@ let Report = (props) => {
               placeholder="please briefly describe the event"
               cols="30"
               rows="10"
+              required
             ></textarea>
           </div>
           <div className="labelInputWrapper">
@@ -199,6 +201,7 @@ let Report = (props) => {
                 <input
                   type="file"
                   id="myFile"
+                  required
                   name="chooseFileBtn"
                   className="fileOriginalBtn"
                   accept="image/*"
@@ -226,6 +229,7 @@ let Report = (props) => {
             <div className="InputLinkWrapper">
               <input
                 type="text"
+                required
                 name="name"
                 id="name"
                 maxLength={28}
@@ -248,6 +252,7 @@ let Report = (props) => {
             <input
               type="tel"
               name="phoneNumber"
+              required
               maxLength={10}
               id="phoneNumber"
               value={reportData.phoneNumber}

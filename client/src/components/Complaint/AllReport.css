@@ -51,6 +51,25 @@
   border-radius: 0.5rem;
   border: 2px solid var(--primary-color);
 }
+
+.AllReports .StatusBtn {
+  padding: 1rem 0;
+  border: 1px;
+  text-align: center;
+}
+
+#Submitted {
+  border: 1px solid var(--secondary-color);
+}
+
+#Completed {
+  border: 1px solid var(--primary-color);
+}
+
+#Spam {
+  border: 1px solid red;
+}
+
 /* mobile devices */
 @media screen and (max-width: 1100px) {
   .AllReports {

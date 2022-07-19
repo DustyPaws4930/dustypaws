@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import jwt from "jwt-decode";
-import { getApiPath, isValidEmail, setToken, setTokenTimeout } from "../../Common";
+import { getApiPath, isValidEmail, setToken } from "../../Common";
 import "./SignUp.css";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.svg";
@@ -17,8 +16,6 @@ const SignUp = () => {
     password: "",
     isNgo: false,
   });
-  const [securityKey, setSecurityKey] = useState("");
-
   const HandleInputChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -71,10 +68,6 @@ const SignUp = () => {
       });
   };
 
-  const HandleSecurityCheck = (event) => {
-    event.preventDefault();
-  };
-
   return (
     <div className="sign-up user">
       <Header />
@@ -94,6 +87,7 @@ const SignUp = () => {
                 name="username"
                 value={user.username}
                 id="username"
+                required
                 onChange={(event) => HandleInputChange(event)}
                 placeholder="User name"
               />
@@ -105,6 +99,7 @@ const SignUp = () => {
                 name="email"
                 value={user.email}
                 id="email"
+                required
                 placeholder="Email"
                 onChange={(event) => HandleInputChange(event)}
               />
@@ -113,9 +108,10 @@ const SignUp = () => {
             <div className="labelInputWrapper">
               <label htmlFor="password">Password</label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 id="password"
+                required
                 value={user.password}
                 placeholder="Password"
                 onChange={(event) => HandleInputChange(event)}

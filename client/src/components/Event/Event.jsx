@@ -1,24 +1,23 @@
 // import React, { useEffect, useState } from 'react'
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./Event.css";
+import React, { useEffect, useState } from 'react';
+import './Event.css';
 // import Header from '../Header/Header';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import Footer from "../Footer/Footer.jsx";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import Header from "../Header/Header";
-import Event_Page_Card_Dog from "../images/Event_Page_Card_Dog.jpg";
-import axios from "axios";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import Footer from '../Footer/Footer.jsx';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import Header from '../Header/Header';
+import Event_Page_Card_Dog from '../images/Event_Page_Card_Dog.jpg';
+import axios from 'axios';
 // import WishlistIcon from "../images/WishlistIcon.png";
-import EventCalenderImg from "../images/Event_Calender.png";
-import { getApiPath } from "../../Common";
-import SingleEvent from "./SingleEvent";
-import DaysToGoIcon from "../images/Days_ToGo.png";
-import Paws from "../project-files/paws.svg";
-import Paws2 from "../project-files/paws2.svg";
+import EventCalenderImg from '../images/Event_Calender.png';
+import { getApiPath } from '../../Common';
+import SingleEvent from './SingleEvent';
+import DaysToGoIcon from '../images/Days_ToGo.png';
+import Paws from '../project-files/paws.svg';
+import Paws2 from '../project-files/paws2.svg';
 
 const Event = (props) => {
   const responsive = {
@@ -44,21 +43,21 @@ const Event = (props) => {
     responsive: {
       0: {
         items: 1,
-        center: "true"
+        center: 'true',
       },
       450: {
         items: 2,
       },
       768: {
         items: 3,
-        marginleft: "10px",
-        marginRight: "10px",
+        marginleft: '10px',
+        marginRight: '10px',
         center: true,
       },
       1000: {
         items: 5,
-        marginleft: "100px",
-        marginRight: "100px",
+        marginleft: '100px',
+        marginRight: '100px',
         center: true,
       },
     },
@@ -100,9 +99,9 @@ const Event = (props) => {
   // let [loggedInEvent, setLoggedInUser] = useState({});
 
   // let userWhishlistedEvents = [];
-  let PopUpContent = "";
+  let PopUpContent = '';
   useEffect(function getAllEvents() {
-    let eventURL = getApiPath() + "event/fetchAll";
+    let eventURL = getApiPath() + 'event/fetchAll';
 
     // Get All Events
     axios
@@ -149,7 +148,7 @@ const Event = (props) => {
       <div className="featured-event">
         <div>
           <div className="featured-event-heading">
-            <h1>Featured Event</h1>
+            <h2>Featured Event</h2>
           </div>
           <div className="Event-Mobile">
             <div className="featured-event-date">
@@ -309,8 +308,8 @@ const Event = (props) => {
             touchDrag={true}
             lazyLoad={true}
             responsive={owlState} // add this line
-            animateOut={"fadeOut"}
-            animateIn={"flipInX"}
+            animateOut={'fadeOut'}
+            animateIn={'flipInX'}
           >
             {/* {allPartners.map((partner, idx) => { */}
             {/* return ( */}

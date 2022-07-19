@@ -139,12 +139,14 @@ section.report-complaint {
   background: var(--primary-color);
   padding: 0.8rem 1.2rem;
   color: white;
+  margin-top: 0.5rem;
   font-weight: 500;
   border: 1px solid var(--primary-color);
 }
 
 .confirmation button:hover {
   background: white;
+  color: black;
   transition: 0.4s;
 }
 

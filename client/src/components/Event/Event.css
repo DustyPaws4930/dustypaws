@@ -99,6 +99,7 @@ html {
   left: 12px;
   top: 16px;
 }
+
 @media screen and (max-width: 768px) {
   .DaysTag {
     left: 104px;
@@ -121,6 +122,9 @@ html {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+.featured-event-description h4 {
+  margin-bottom: 1rem;
 }
 .btn-feature-event {
   text-align: center;
@@ -157,12 +161,14 @@ hr {
   margin: 0 auto;
   padding: 0.5rem;
 }
-
-.upcoming-event-wrapper, .recent-event-wrapper{
+.recent-event-heading {
+  padding-left: 25px;
+}
+.upcoming-event-wrapper,
+.recent-event-wrapper {
   position: relative;
 }
 .recent-event-wrapper .foot-prints {
-  
   width: 150px;
   position: absolute;
   right: 0;
@@ -174,6 +180,9 @@ hr {
   margin: 0 auto;
   padding: 0.5rem;
 }
+.upcoming-event-heading {
+  padding-left: 25px;
+}
 .our-partners-container {
   padding: 0.5rem;
 }
@@ -183,7 +192,7 @@ hr {
   top: 10%;
   overflow: hidden;
 }
-.card{
+.card {
   background: white;
 }
 .card-date {
@@ -194,9 +203,6 @@ hr {
 }
 h2.card-title {
   font-size: 1.15rem;
-  margin: 0.5rem 1rem;
-}
-p.card-description {
   margin: 0.5rem 1rem;
 }
 
@@ -342,7 +348,8 @@ p.card-description {
     /* visibility: hidden; */
     position: absolute;
     left: 10%;
-    top: 250px;
+    top: 200px;
+    /* ==================================================== */
     /* overflow: hidden; */
     width: 80%;
     height: 35%;
@@ -393,6 +400,9 @@ input[type="Number"] {
 .event-bg-image {
   max-width: 400px;
 }
+.NGO_card-description {
+  padding: 20px 1rem;
+}
 
 .Eventbutton-div {
   display: flex;
@@ -430,6 +440,7 @@ input[type="Number"] {
 .NGO-Events .pagination-component {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
 }
 .NGO-Events ul.pagination-nav-container {
   grid-column: 1/-1;
@@ -439,9 +450,16 @@ input[type="Number"] {
   max-width: 90%;
   margin: auto;
 }
-.card-description {
-  /* background-color: aqua; */
-  padding: 20px 0;
+.card-content p {
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 80px;
+  margin-bottom: 20px;
 }
 .our-partners-content {
   margin-bottom: 40px;
@@ -456,7 +474,7 @@ input[type="Number"] {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-  .foot-prints{
+  .foot-prints {
     display: none;
   }
   .event-bg-image {
@@ -515,7 +533,8 @@ input[type="Number"] {
     /* visibility: hidden; */
     position: absolute;
     left: 10%;
-    top: 250px;
+    top: 200px;
+    /* ========================================================= */
     /* overflow: hidden; */
     width: 80%;
     height: 35%;
