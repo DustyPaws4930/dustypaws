@@ -66,8 +66,8 @@ const Pagination = (props) => {
   if (pageName === "NGO-Home") {
     currentPageData = data
       .slice(offset, offset + PerPage)
-
       .map((result, index) => {
+        console.log(result.reportDate);
         return (
           <NGORequestCard
             result={result}

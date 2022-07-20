@@ -20,11 +20,15 @@ export const GetReportByUserId = (req, res) => {
 
 export const GetAllComplaints = (req, res) => {
   ReportModel.find({}).then((complaints, err) => {
+    let sortedComplaints = complaints.sort(function (a, b) {
+      return b.reportDate - a.reportDate;
+    });
+
     if (err) {
       console.log("Error " + err);
       res.status(500).json({ message: err.message });
     } else {
-      res.status(200).json({ complaints });
+      res.status(200).json({ complaints: sortedComplaints });
     }
   });
 };

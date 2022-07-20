@@ -29,18 +29,17 @@ const PieChart = () => {
               label: "NGO User Joined",
               data: res.data.map((data) => data.count),
               backgroundColor: ["#deb141", "#285b53"],
-              borderColor: "rgba(0, 0, 0,0.6)",
-              borderWidth: 2,
+              borderWidth: 1,
             },
           ],
         });
-
         setLoading(false);
       })
       .catch((err) => {
         console.log(`Error occured while getting data count ${err}`);
       });
   }, [setNgoUserData]);
+
   return (
     <>
       <div>

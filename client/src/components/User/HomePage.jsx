@@ -69,7 +69,7 @@ const HomePage = (props) => {
           <div className="userChart">
             <PieChart />
           </div>
-          <h4>Help Count</h4>
+          <h4>NGO Count</h4>
         </div>
         <div className="description">
           <p>

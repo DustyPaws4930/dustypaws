@@ -58,7 +58,9 @@ const NGORequestCard = (props) => {
                 : props.result.state
             }
           />
-          <p>{timeAgo}</p>
+          <p>
+            <strong>Reported:</strong> {timeAgo}
+          </p>
         </div>
       </div>
     </>
