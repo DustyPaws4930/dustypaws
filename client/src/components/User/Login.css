@@ -6,7 +6,7 @@
 
 .login-page-container {
   max-height: 100vh;
-  height: calc( 100vh - 80px);
+  height: calc(100vh - 80px);
 }
 .login-page {
   margin: auto;
@@ -23,11 +23,22 @@
   grid-row: 1/3;
   position: relative;
 }
+.inputPasswordIconWrapper {
+  position: relative;
+}
+.inputPasswordIconWrapper input {
+  width: 90%;
+}
+.passwordIcon {
+  position: absolute;
+  right: 22px;
+  top: 8px;
+}
 
 .form-wrapper {
   /* max-width: 400px; */
   /* display: flex; */
-  margin: 3rem auto ;
+  margin: 3rem auto;
   grid-column: 2/3;
   width: 350px;
   max-height: 450px;
@@ -36,7 +47,6 @@
   padding: 1rem;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 .form-wrapper h2 {
   text-transform: uppercase;
@@ -115,7 +125,6 @@
   transform: translate(-50%, -50%);
 }
 
-
 /*  for Mobile browsers */
 
 @media screen and (max-width: 768px) {
@@ -130,7 +139,7 @@
   .form-wrapper {
     grid-row: 2/3;
     grid-column: 1/3;
-    margin:1rem auto;
+    margin: 1rem auto;
   }
   .login-footer {
     grid-row: 1/2;
@@ -144,9 +153,8 @@
   }
   .login-page img.rightCornerBg {
     width: 100px;
-
   }
-  .login-page .login-bg-img{
+  .login-page .login-bg-img {
     width: 142px;
     position: absolute;
     left: 50%;

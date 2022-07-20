@@ -14,12 +14,16 @@ import leftCorner from "../project-files/left_corner_login.svg";
 import rightCorner from "../project-files/right_corner_login.svg";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
@@ -75,6 +79,11 @@ const Login = () => {
       });
   };
 
+  const HandleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="login-page-container">
       <Header />
@@ -106,14 +115,26 @@ const Login = () => {
               </div>
               <div className="labelInputWrapper">
                 <label htmlFor="password">Password: </label>
-                <input
-                  type="password"
-                  required
-                  autoComplete="off"
-                  onChange={(event) => onInputChange(event)}
-                  name="password"
-                  id="password"
-                />
+                <div className="inputPasswordIconWrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    autoComplete="off"
+                    onChange={(event) => onInputChange(event)}
+                    name="password"
+                    id="password"
+                  />
+                  <FontAwesomeIcon
+                    onMouseDown={(e) => {
+                      HandleShowPassword(e);
+                    }}
+                    onMouseUp={(e) => {
+                      HandleShowPassword(e);
+                    }}
+                    className="passwordIcon"
+                    icon={faEyeSlash}
+                  />
+                </div>
                 <p>
                   <a href="#">Forgot Password?</a>
                 </p>
