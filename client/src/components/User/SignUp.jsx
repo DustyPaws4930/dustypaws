@@ -131,10 +131,7 @@ const SignUp = () => {
                   onChange={(event) => HandleInputChange(event)}
                 />
                 <FontAwesomeIcon
-                  onMouseDown={(e) => {
-                    HandleShowPassword(e);
-                  }}
-                  onMouseUp={(e) => {
+                  onClick={(e) => {
                     HandleShowPassword(e);
                   }}
                   className="passwordIcon"

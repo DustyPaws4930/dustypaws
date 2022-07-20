@@ -125,10 +125,7 @@ const Login = () => {
                     id="password"
                   />
                   <FontAwesomeIcon
-                    onMouseDown={(e) => {
-                      HandleShowPassword(e);
-                    }}
-                    onMouseUp={(e) => {
+                    onClick={(e) => {
                       HandleShowPassword(e);
                     }}
                     className="passwordIcon"
