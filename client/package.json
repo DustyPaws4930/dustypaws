@@ -33,6 +33,14 @@
     "react-toastify": "^9.0.5",
     "web-vitals": "^2.1.4"
   },
+  "peerDependencies": {
+    "react": "^12.0.0 || ^13.2.0 || ^14.0.0 || ^15.0.0 || ^16.0.0",
+    "react-dom": "^12.0.0 || ^13.2.0 || ^14.0.0 || ^15.0.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "react": "^12.0.0 || ^13.2.0 || ^14.0.0 || ^15.0.0 || ^16.0.0",
+    "react-dom": "^12.0.0 || ^13.2.0 || ^14.0.0 || ^15.0.0 || ^16.0.0"
+  },
   "scripts": {
     "start": "set PORT=80 && react-scripts start",
     "build": "react-scripts build",
