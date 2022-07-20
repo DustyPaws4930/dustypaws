@@ -20,7 +20,7 @@ const Info = () => {
     email: "",
     address: "",
     Dob: "",
-    gender: "",
+    gender: "Male",
     selectedEmoji: "Bird",
     password: "password",
   });
@@ -30,7 +30,7 @@ const Info = () => {
   let [avatarName, setAvatarName] = useState("");
   const [loggedInUser, setLoggedInUser] = useState({});
 
-  const allGenders = ["Man", "Woman", "Non-Binary", "Prefer not to answer"];
+  const allGenders = ["Male", "Female", "Non-Binary", "Prefer not to answer"];
 
   // Handle input Change
   const HandleOnChange = (e) => {
