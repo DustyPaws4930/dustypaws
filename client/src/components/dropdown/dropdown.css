@@ -5,7 +5,8 @@
 
 .Animated-dropdown {
   position: relative;
-  width: 150px;
+  /* width: 150px; */
+  width: auto;
   /* margin: 100px auto; */
   user-select: none;
 }
@@ -18,6 +19,10 @@
   justify-content: space-between;
   display: flex;
   align-items: center;
+}
+
+.Animated-dropdown .dropdown-btn span{
+  white-space: nowrap;
 }
 
 #active{

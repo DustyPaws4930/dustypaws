@@ -1,9 +1,9 @@
 import React from "react";
-// import "./pagination.css";
-
+import DefaultImage from "../project-files/default-image.svg"
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 
 const NGORequestCard = (props) => {
+   
   const HandleComplaintDropDown = (option, reportId) => {
     props.HandleComplaintDropDown(option, reportId);
   };
@@ -35,10 +35,11 @@ const NGORequestCard = (props) => {
           <img
             style={{
               resizeMode: "stretch",
+              objectFit: "contain",
               height: 100,
-              width: 200,
+              width: 150,
             }}
-            src={props.result.Image}
+            src={props.result.Image ? props.result.Image : DefaultImage}
             alt={props.result.title}
           />
         </div>
@@ -47,7 +48,7 @@ const NGORequestCard = (props) => {
 
         <p>{props.result.description}</p>
         <div className="status-dropdown">
-          {props.initialText}
+          {/* {props.initialText} */}
           <AnimatedDropdown
             options={props.options}
             HandleComplaintDropDown={HandleComplaintDropDown}
