@@ -4,9 +4,6 @@ import { useEffect } from "react";
 import { getApiPath, getToken, UploadFile } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import Geocode from "react-geocode";
 import rewards from "../project-files/rewards-icon.svg";
@@ -14,6 +11,7 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 let Report = (props) => {
   Geocode.setLanguage("en");
   Geocode.setApiKey("AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw");
+
   // ***Declare all variables here***
   let [buttonChange, setButtonChange] = useState("");
   let PopUpContent;
@@ -31,7 +29,6 @@ let Report = (props) => {
   });
   let [fileName, setFileName] = useState("");
 
-  let [color, setColor] = useState("#ffffff");
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
@@ -290,7 +287,7 @@ let Report = (props) => {
 
               <button
                 className={`${
-                  buttonChange == "High"
+                  buttonChange === "High"
                     ? "disabled High-active"
                     : "priority-flag high"
                 }`}
@@ -306,7 +303,7 @@ let Report = (props) => {
 
               <button
                 className={`${
-                  buttonChange == "Moderate"
+                  buttonChange === "Moderate"
                     ? "disabled Moderate-active"
                     : "priority-flag moderate"
                 }`}
@@ -330,7 +327,9 @@ let Report = (props) => {
           <div className="form-footer">
             <div>
               <img src={rewards} alt="rewards" className="rewardsBg" />
-              <p>Want to collect <span> rewards? </span></p>
+              <p>
+                Want to collect <span> rewards? </span>
+              </p>
             </div>
             <h4>LOG IN / SIGN UP</h4>
           </div>
