@@ -122,6 +122,7 @@ const HomePage = (props) => {
         <div className="circle" id="circle7"></div>
       </section>
       <section className="report-wrapper">
+        <h2 className="report-title">Report Case</h2>
         <img src={reportMobile1} alt=" report3" className="report-mobile1" />
         <>
           {showReportForm ? (

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import Geocode from "react-geocode";
+import rewards from "../project-files/rewards-icon.svg";
 import PropagateLoader from "react-spinners/PropagateLoader";
 let Report = (props) => {
   Geocode.setLanguage("en");
@@ -162,7 +163,7 @@ let Report = (props) => {
   return (
     <>
       <section id="reportSection" className="report-complaint">
-        <h1>Report</h1>
+        {/* <h1>Report</h1> */}
         <form
           action="/"
           onSubmit={(e) => {
@@ -187,9 +188,9 @@ let Report = (props) => {
               id="reportDescription"
               value={reportData.description}
               onChange={(event) => onInputChange(event)}
-              placeholder="please briefly describe the event"
+              placeholder=""
               cols="30"
-              rows="10"
+              rows="2"
               required
             ></textarea>
           </div>
@@ -325,6 +326,13 @@ let Report = (props) => {
           <div className="submit">
             {/* <input type="submit" id='submit-complaint' value="Register Complaint" /> */}
             <button type="submit">Register Complaint</button>
+          </div>
+          <div className="form-footer">
+            <div>
+              <img src={rewards} alt="rewards" className="rewardsBg" />
+              <p>Want to collect <span> rewards? </span></p>
+            </div>
+            <h4>LOG IN / SIGN UP</h4>
           </div>
         </form>
       </section>
