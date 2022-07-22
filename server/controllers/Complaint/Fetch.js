@@ -23,7 +23,6 @@ export const GetAllComplaints = (req, res) => {
     let sortedComplaints = complaints.sort(function (a, b) {
       return b.reportDate - a.reportDate;
     });
-
     if (err) {
       console.log("Error " + err);
       res.status(500).json({ message: err.message });

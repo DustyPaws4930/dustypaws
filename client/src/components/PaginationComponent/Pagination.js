@@ -64,22 +64,23 @@ const Pagination = (props) => {
 
   let currentPageData;
   if (pageName === "NGO-Home") {
-    currentPageData = data
-      .slice(offset, offset + PerPage)
-      .map((result, index) => {
-        console.log(result.reportDate);
-        return (
-          <NGORequestCard
-            result={result}
-            options={props.options}
-            ShowOnMap={ShowOnMapEvent}
-            initialText={initialText}
-            HandleComplaintDropDown={HandleDropDownEvent}
-            index={index}
-            key={index}
-          />
-        );
-      });
+    if (data.length > 0) {
+      currentPageData = data
+        .slice(offset, offset + PerPage)
+        .map((result, index) => {
+          return (
+            <NGORequestCard
+              result={result}
+              options={props.options}
+              ShowOnMap={ShowOnMapEvent}
+              initialText={initialText}
+              HandleComplaintDropDown={HandleDropDownEvent}
+              index={index}
+              key={index}
+            />
+          );
+        });
+    }
   } else if (pageName === "EventForm") {
     currentPageData = data
       .slice(offset, offset + PerPage)
