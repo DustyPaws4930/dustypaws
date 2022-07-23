@@ -241,11 +241,13 @@ section .feature-subsection1 {
 
 /* newsletter section css */
 section.newsletter {
+
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
   padding: 1px;
   background: #deb141;
 }
 section .newsletter-wrapper {
+  position: relative;
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
   background: #fffaef;
   height: 250px;

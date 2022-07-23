@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import reportBGImage2 from "../project-files/rabbit-report-image.svg";
 
 import "./About.css";
 
@@ -156,10 +157,13 @@ let About = (props) => {
                 <img src={AboutUsGlobe} alt="globe" />
               </div>
             </div>
+            <img src={reportBGImage2} alt="Bunny" className="bunny"/>
           </div>
         </section>
         <section className="newsletter">
+         
           <div className="newsletter-wrapper">
+          
             <h4>Join Our Newsletter</h4>
             <p>
               Keep yourself updated with latest event and affairs. Subscribe our

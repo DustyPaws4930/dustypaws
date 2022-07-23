@@ -120,7 +120,7 @@ nav ul .dropDown-options {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-header nav a:hover{
+header nav ul > a:hover{
   transform: translateY(-5px);
   transition: .3s;
 }

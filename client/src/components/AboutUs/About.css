@@ -25,6 +25,7 @@
 }
 .our-team {
   /* background-color: coral; */
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10rem;
@@ -62,6 +63,16 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.bunny{
+  width: 100px;
+}
+img.bunny {
+  position: absolute;
+  z-index: 9;
+  right: -148px;
+  bottom: -25px;
 }
 
 @media screen and (max-width: 700px) {
