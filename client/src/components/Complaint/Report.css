@@ -164,6 +164,7 @@ section.report-complaint {
 
 .chooseFileContainer {
   background-color: var(--primary-button);
+  border: 1px solid var(--primary-color);
   position: relative;
   color: white;
   float: left;
@@ -172,8 +173,15 @@ section.report-complaint {
   justify-content: center;
   align-items: center;
   width: max-content;
+
   margin: 0 auto;
   padding: 0.5rem 1rem;
+}
+
+.chooseFileContainer:hover {
+  background-color: white;
+  transition: 0.4s;
+  color: var(--primary-button);
 }
 
 .button-div {
@@ -229,8 +237,8 @@ section.report-complaint {
   font-size: 24px;
   /* 005CB0 */
 }
-.form-footer span{
-  color: #005CB0;
+.form-footer span {
+  color: #005cb0;
 }
 .form-footer h4 {
   margin: 0.5rem;
