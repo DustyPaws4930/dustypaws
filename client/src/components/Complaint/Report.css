@@ -22,6 +22,15 @@
   color: white;
   cursor: pointer;
 }
+.labelInputWrapper span{
+  color: red;
+}
+.LocationWrapper span{
+  color: red;
+}
+.priority-flag-wrapper span{
+  color: red;
+}
 section .labelInputWrapper,
 .priority-flag-wrapper {
   display: flex;

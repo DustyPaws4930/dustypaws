@@ -36,6 +36,7 @@ const Event = (props) => {
     },
     mobile: {
       breakpoint: { max: 700, min: 0 },
+      swipeable: "true",
       items: 1,
     },
   };
@@ -191,13 +192,13 @@ const Event = (props) => {
           {/* <div className="foot-prints">
             <img src={Paws} alt="paws" />
           </div> */}
-          <div className="recent-evet-heading">
+          <div className="recent-event-heading">
             <h2>Recent Event</h2>
           </div>
           <div className="recent-event-content">
             <Carousel
               responsive={responsive}
-              swipeable={false}
+              swipeable={true}
               draggable={false}
               showDots={true}
               dotListClass="custom-dot-list-style"
@@ -218,7 +219,7 @@ const Event = (props) => {
                         alt="wishlist"
                       /> */}
                       </div>
-                      <p className="card-description">{event.description}</p>
+                      <p className="card-description1">{event.description}</p>
                       <div className="btn-eventt-details">
                         <button
                           onClick={(e) => {
@@ -251,7 +252,7 @@ const Event = (props) => {
           <div className="upcoming-event-content">
             <Carousel
               responsive={responsive}
-              swipeable={false}
+              swipeable={true}
               draggable={false}
               showDots={true}
               dotListClass="custom-dot-list-style"
@@ -272,7 +273,7 @@ const Event = (props) => {
                         alt="wishlist"
                       /> */}
                       </div>
-                      <p className="card-description">{event.description}</p>
+                      <p className="card-description1">{event.description}</p>
                       <div className="btn-eventt-details">
                         <button
                           onClick={(e) => {

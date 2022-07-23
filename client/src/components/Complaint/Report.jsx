@@ -170,17 +170,18 @@ let Report = (props) => {
           }}
         >
           <div className="labelInputWrapper">
-            <label>Title</label>
+            <label>Title <span>*</span></label>
             <input
               type="text"
               onChange={(event) => onInputChange(event)}
               name="title"
               id="title"
               value={reportData.title}
+              required
             />
           </div>
           <div className="labelInputWrapper">
-            <label>Description</label>
+            <label>Description <span>*</span></label>
             <textarea
               name="description"
               id="reportDescription"
@@ -189,10 +190,11 @@ let Report = (props) => {
               placeholder="please briefly describe the event"
               cols="30"
               rows="10"
+              required
             ></textarea>
           </div>
           <div className="labelInputWrapper">
-            <label htmlFor="myFile">Upload image:</label>
+            <label htmlFor="myFile">Upload image: <span>*</span></label>
             <div className="button-div">
               <div className="chooseFileContainer">
                 Choose File
@@ -202,8 +204,10 @@ let Report = (props) => {
                   name="chooseFileBtn"
                   className="fileOriginalBtn"
                   accept="image/*"
+                  required
                   onChange={(e) => {
                     handleFileChange(e);
+              
                   }}
                   aria-hidden="false"
                 ></input>
@@ -222,12 +226,13 @@ let Report = (props) => {
           </div>
 
           <div className="labelInputWrapper">
-            <label>Name</label>
+            <label>Name <span>*</span></label>
             <div className="InputLinkWrapper">
               <input
                 type="text"
                 name="name"
                 id="name"
+                required
                 maxLength={28}
                 value={reportData.name}
                 onChange={(e) => onInputChange(e)}
@@ -244,10 +249,11 @@ let Report = (props) => {
             </div>
           </div>
           <div className="labelInputWrapper">
-            <label>Phone Number</label>
+            <label>Phone Number <span>*</span></label>
             <input
               type="tel"
               name="phoneNumber"
+              required
               maxLength={10}
               id="phoneNumber"
               value={reportData.phoneNumber}
@@ -256,14 +262,14 @@ let Report = (props) => {
             />
           </div>
           <div className="LocationWrapper">
-            <label>Location :</label>
+            <label>Location : <span>*</span></label>
             <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
               Auto Detect
             </a>
           </div>
           {PopUpContent}
           <div className="priority-flag-wrapper">
-            <label>Priority Flag</label>
+            <label>Priority Flag <span>*</span></label>
             <div className="priority-buttons">
               <button
                 className={` ${

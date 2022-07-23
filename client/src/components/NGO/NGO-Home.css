@@ -28,7 +28,16 @@ div.NGO-Home .map-container {
   border: 2px solid var(--primary-color);
   border-radius: 6px;
 }
-
+.cardWrapper p{
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 60px;
+}
 .reportTitleTimeWrapper {
   display: flex;
   flex-direction: column;
