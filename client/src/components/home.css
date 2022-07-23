@@ -22,7 +22,7 @@ h4.landing-text {
   justify-content: center;
   align-items: center;
   width: 250px;
-  }
+}
 
 .reportCaseContainer {
   width: 600px;
@@ -44,6 +44,8 @@ section.statistics {
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
+  max-width: 89%;
+  padding-left: 2rem;
 }
 section.statistics > div {
   margin: 2rem;
@@ -71,6 +73,10 @@ section.statistics h3 {
 .description {
   position: relative;
   flex: 1 1 50%;
+}
+.donate-wrapper {
+  display: flex;
+  justify-content: flex-end;
 }
 .description button#donate {
   position: relative;
@@ -345,7 +351,7 @@ footer p {
     right: 0;
     bottom: -2%;
   }
- 
+
   section.landing {
     /* height: 350px; */
     background: url(../components/project-files/hero-mobile.svg);
@@ -439,6 +445,9 @@ footer p {
     margin: 0;
     grid-template-columns: 1fr;
     max-width: 100%;
+  }
+  .donate-wrapper {
+    justify-content: space-around;
   }
 }
 

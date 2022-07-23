@@ -120,16 +120,14 @@ nav ul .dropDown-options {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-
-nav ul .dropDown:hover .dropDown-options {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  flex-direction: column;
+header nav a:hover{
+  transform: translateY(-5px);
+  transition: .3s;
 }
+/* header nav .nav-dropDown:hover{
+  transform: translateY(-5px);
+  transition: .3s;
+} */
 
 .dropDown-options,
 .dropDown-options > Link {

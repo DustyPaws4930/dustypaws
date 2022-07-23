@@ -77,9 +77,11 @@ const HomePage = (props) => {
             to donate today. Dusty Paws acts as an interface to redirect user to
             specific NGO’s donation portal.
           </p>
-          <Link to="/donate">
-            <button id="donate">Donate</button>
-          </Link>
+          <div className="donate-wrapper">
+            <Link to="/donate">
+              <button id="donate">Donate</button>
+            </Link>
+          </div>
         </div>
       </section>
       <section className="features">

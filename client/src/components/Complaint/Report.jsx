@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 import Geocode from "react-geocode";
 import rewards from "../project-files/rewards-icon.svg";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { Link } from "react-router-dom";
+
 let Report = (props) => {
   Geocode.setLanguage("en");
   Geocode.setApiKey("AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw");
@@ -330,9 +332,13 @@ let Report = (props) => {
           <div className="form-footer">
             <div>
               <img src={rewards} alt="rewards" className="rewardsBg" />
-              <p>Want to collect <span> rewards? </span></p>
+              <p>
+                Want to collect <span> rewards? </span>
+              </p>
             </div>
-            <h4>LOG IN / SIGN UP</h4>
+            <h4>
+              <Link to="/login">LOG IN / SIGN UP</Link>
+            </h4>
           </div>
         </form>
       </section>
