@@ -2,6 +2,7 @@ html {
   margin: 0;
   padding: 0;
 }
+
 .event-ngo {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -244,6 +245,12 @@ h2.card-title {
   color: white;
   transition: 0.4s;
 }
+.recent-event-heading h2{
+  padding: 5px;
+}
+.upcoming-evet-heading h2{
+  padding: 0 20px ;
+}
 
 .our-partners-content {
   /* background-color: #295b53; */
@@ -450,7 +457,7 @@ input[type="Number"] {
   max-width: 90%;
   margin: auto;
 }
-.card-content p {
+.card-content .card-description1 {
   display: -webkit-box;
   overflow: hidden;
   overflow-wrap: normal;
@@ -458,8 +465,8 @@ input[type="Number"] {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  height: 80px;
-  margin-bottom: 20px;
+  height: 60px;
+  margin: 20px 0;
 }
 .our-partners-content {
   margin-bottom: 40px;
@@ -612,5 +619,15 @@ input[type="Number"] {
 }
 .card-description {
   /* background-color: aqua; */
-  padding: 20px 0;
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 60px;
+  margin: 20px 20px;
+  /* padding: 20px 0; */
+
 }

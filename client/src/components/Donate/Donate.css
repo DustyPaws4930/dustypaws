@@ -20,9 +20,13 @@
   grid-gap: 3rem;
   max-width: 1200px;
   padding: 0 1rem;
-  margin: 50px auto;
+  /* margin: 50px auto; */
   /* margin: 30px 100px; */
   /* justify-content: center; */
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
 }
 .donate-card1 {
   /* background-color: cadetblue; */
@@ -31,7 +35,11 @@
   grid-gap: 3rem;
   max-width: 1200px;
   padding: 0 1rem;
-  margin: 50px auto;
+  /* margin: 50px auto; */
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
 }
 .donate-card-img {
   background-image: url(../images/Donate_Card_Image.jpeg);
@@ -75,6 +83,8 @@
   text-decoration: none;
   background-color: #deb141;
   font-weight: bolder;
+  position: relative;
+  top: 30px;
 }
 .card-load-more {
   cursor: pointer;
@@ -86,6 +96,7 @@
   background-color: #deb141;
   padding: 20px 50px;
   margin-bottom: 50px;
+  margin-top: 50px;
   font-weight: bolder;
 }
 
