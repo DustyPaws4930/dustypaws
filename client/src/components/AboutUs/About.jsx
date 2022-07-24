@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import reportBGImage2 from "../project-files/rabbit-report-image.svg";
 
 import "./About.css";
 
-import profileImage from "../images/AboutUs_profile_Image.png";
 import AboutHeroImage from "../images/AboutUs_Hero_Image2.png";
 import AboutUsGlobe from "../images/AboutUs_globe.png";
 import AboutUsLinkdin from "../images/AboutUS_linkedin.png";
@@ -19,11 +18,9 @@ import Jaskaran from "../images/Jaskaran.png";
 import Param from "../images/Param.png";
 
 import Behance from "../images/Behance.png";
-import Rabbit from "../images/Rabbit.png";
-// import { linkedIn } from ''
+import Newsletter from "../Newsletter";
 
 let About = (props) => {
-  let [emailNews, setEmailNews] = useState("");
   return (
     <>
       {/* header component fetched */}
@@ -191,42 +188,12 @@ let About = (props) => {
                 <img src={AboutUsGlobe} alt="globe" />
               </div>
             </div>
-            <img src={reportBGImage2} alt="Bunny" className="bunny" />
           </div>
         </section>
-
-        <div className="rabbit">
-          <img src={Rabbit} alt="" />
-        </div>
-        <section className="connect-email">
-          <div className="connect-email-wrapper">
-            <h4>Open to work part time</h4>
-            <p>
-              Feel Free to contact members of Team Earth. Just enter your email
-              and press enter. We will get back soon.
-            </p>
-            <div className="job-section">
-              <input
-                type="email"
-                name="newsletter-email"
-                id="newsletterEmail"
-                value={emailNews}
-                onChange={(e) => {
-                  setEmailNews(e.target.value);
-                }}
-                placeholder="Enter your email"
-              />
-              <button
-                type="submit"
-                onClick={(e) => {
-                  alert("You are subscribed for the news letter");
-                }}
-              >
-                Submit
-              </button>
-            </div>
-          </div>
+        <section className="BunnyImageWrapper">
+          <img src={reportBGImage2} alt=" report2" className="BunnyImage" />
         </section>
+        <Newsletter />
       </main>
 
       {/* Footer component fetched */}

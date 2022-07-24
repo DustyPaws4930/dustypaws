@@ -7,10 +7,6 @@
   max-width: 1200px;
   margin: 70px auto;
 }
-.about-us {
-  /* background-color: cadetblue; */
-  /* overflow: hidden; */
-}
 
 .social-links img {
   width: 24px;
@@ -116,16 +112,6 @@ img.bunny {
     /* margin: 5px; */
   }
 
-  .about-description {
-    /* background-color: rebeccapurple; */
-    /* background-image: url('../images/AboutUS_Hero_Image.png');
-    background-position: cover; 
-    background-repeat: no-repeat;
-    background-size: 100%; 
-    width: 100%;
-    height: 100%; */
-  }
-
   .Our-impact {
     /* background-color: beige; */
     position: absolute;
@@ -188,9 +174,6 @@ img.bunny {
 .connect-email-wrapper p {
   padding: 10px 20px;
 }
-.social-links {
-  /* padding: 10px; */
-}
 .social-links img {
   margin: 0 15px;
 }
@@ -198,20 +181,21 @@ img.bunny {
   padding: 10px;
 }
 .rabbit {
-  /* position: absolute;
-    width: 100px;
-    height: 50px;
-    left: 83rem;
-    top: 113.5rem;
-    z-index: 1; */
-  /* width: auto;
-  position: absolute;
-  right: -50%;
-  overflow: hidden;
-  bottom: -8%;
-  z-index: 1; */
   visibility: hidden;
 }
+.BunnyImageWrapper {
+  position: relative;
+  margin: 3rem 0 0 0;
+}
+.BunnyImage {
+  width: auto;
+  position: absolute;
+  right: 10px;
+  overflow: hidden;
+  z-index: 1;
+  top: -80px;
+}
+
 .job-section {
   display: flex;
   flex-direction: row;
@@ -249,7 +233,6 @@ img.bunny {
     grid-template-columns: 1fr;
     grid-gap: 30px;
     /* margin: 0 70px; */
-    width: 50%;
   }
   .Our-impact {
     /* display: none; */
