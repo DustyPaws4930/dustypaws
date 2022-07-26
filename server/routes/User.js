@@ -8,7 +8,7 @@ import {
   SignUp,
   TrackWhishlist,
   Update,
-} from "../controllers/user.js";
+} from "../controllers/User.js";
 import {
   LoginValidation,
   SignUpValidation,
