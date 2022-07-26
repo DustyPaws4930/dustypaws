@@ -84,7 +84,7 @@ const Homepage = (props) => {
               }}
               icon={{
                 url: GetIcon(complaint),
-                scaledSize: new window.google.maps.Size(30, 30),
+                scaledSize: new window.google.maps.Size(30, 40),
               }}
             />
           );
