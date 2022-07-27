@@ -38,6 +38,7 @@
     margin: 0 30px;
     text-align: center;
 }
+.o
 .our-team{
     /* background-color: coral; */
     display: grid;
@@ -83,11 +84,6 @@
 }
 .connect-email-wrapper p{
     padding: 10px 20px;
-}
-.social-links{
-    /* padding: 10px; */
-    
-
 }
 .social-links img {
    
