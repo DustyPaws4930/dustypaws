@@ -4,6 +4,13 @@
 }
 .donate-intro h1 {
   padding: 30px 0;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+.donate-intro p {
+  max-width: 1200px;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 .donate-card {
   /* background-color: cadetblue; */

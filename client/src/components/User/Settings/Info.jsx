@@ -2,12 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
-import {
-  getApiPath,
-  GetDehashedPassword,
-  getToken,
-  setToken,
-} from "../../../Common";
+import { getApiPath, getToken, setToken } from "../../../Common";
 import { toast } from "react-toastify";
 import EmojiPopUp from "../../ModelPopups/EmojiPopUp";
 // import { UserProfileImage } from "../../project-files/13.png"
@@ -25,7 +20,7 @@ const Info = () => {
     email: "",
     address: "",
     Dob: "",
-    gender: "",
+    gender: "Male",
     selectedEmoji: "Bird",
     password: "password",
   });
@@ -35,7 +30,7 @@ const Info = () => {
   let [avatarName, setAvatarName] = useState("");
   const [loggedInUser, setLoggedInUser] = useState({});
 
-  const allGenders = ["Man", "Woman", "Non-Binary", "Prefer not to answer"];
+  const allGenders = ["Male", "Female", "Non-Binary", "Prefer not to answer"];
 
   // Handle input Change
   const HandleOnChange = (e) => {
@@ -103,6 +98,8 @@ const Info = () => {
     let name = e.target.name;
 
     SetImageForUI(name);
+
+    TogglePopUp();
   };
 
   let PopUpContent = "";

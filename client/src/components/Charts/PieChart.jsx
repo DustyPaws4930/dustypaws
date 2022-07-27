@@ -22,26 +22,24 @@ const PieChart = () => {
     axios
       .get(datCountURl)
       .then((res) => {
-        console.log(res.data);
         setNgoUserData({
           labels: res.data.map((data) => data.month),
           datasets: [
             {
               label: "NGO User Joined",
               data: res.data.map((data) => data.count),
-              backgroundColor: ["#deb141"],
-              borderColor: "#285b53",
-              borderWidth: 2,
+              backgroundColor: ["#deb141", "#285b53"],
+              borderWidth: 1,
             },
           ],
         });
-
         setLoading(false);
       })
       .catch((err) => {
         console.log(`Error occured while getting data count ${err}`);
       });
   }, [setNgoUserData]);
+
   return (
     <>
       <div>

@@ -14,6 +14,10 @@ div.NGO-Home .map-container {
   max-width: 80%;
   margin: auto;
 }
+
+.headerSettingContainer h1 {
+  margin: 1rem 0;
+}
 .cardsContainer {
   max-width: 80%;
   margin: auto;
@@ -21,7 +25,8 @@ div.NGO-Home .map-container {
 
 .cardsContainer .cardWrapper {
   display: grid;
-  grid-template-columns: max-content max-content 2fr 3fr max-content;
+  /* grid-template-columns: max-content max-content 2fr 3fr max-content; */
+  grid-template-columns: 15% 15% 15% 35% 20%;
   align-items: flex-start;
   justify-items: start;
   margin: 2rem 0rem;
@@ -49,7 +54,7 @@ div.NGO-Home .map-container {
 }
 
 .cardsContainer .cardWrapper > * {
-  margin: 1rem;
+  margin: 1rem auto;
 }
 
 /* .cardsContainer .cardWrapper */
@@ -98,7 +103,7 @@ div.NGO-Home .map-container {
   border-radius: 8px;
   border: 1px solid var(--secondary-color);
 }
-.status-dropdown{
+.status-dropdown {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -128,13 +133,13 @@ div.NGO-Home .map-container {
     padding: 2rem 1rem;
   }
 }
-@media screen and (max-width: 400px){
-  .cardsContainer .cardWrapper{
+@media screen and (max-width: 400px) {
+  .cardsContainer .cardWrapper {
     grid-template-columns: 1fr;
     grid-template-rows: unset;
     padding: 1rem;
   }
-  .cardsContainer .cardWrapper h4{
+  .cardsContainer .cardWrapper h4 {
     font-size: 1.4rem;
   }
   .cardsContainer .cardWrapper .imageWrapper {
@@ -142,17 +147,16 @@ div.NGO-Home .map-container {
     margin: 0;
     width: 100%;
   }
-  .cardsContainer .cardWrapper .imageWrapper img{
+  .cardsContainer .cardWrapper .imageWrapper img {
     width: 100% !important;
     height: 150px !important;
     object-fit: cover;
-    
   }
-  .cardsContainer .cardWrapper .status-dropdown{
+  .cardsContainer .cardWrapper .status-dropdown {
     align-items: center;
     margin: 1rem auto !important;
   }
-  .Animated-dropdown .dropdown-btn{
+  .Animated-dropdown .dropdown-btn {
     padding: 8px;
     border-radius: 4px;
   }

@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 import {
   GoogleMap,
   withScriptjs,
@@ -27,9 +26,7 @@ const Homepage = (props) => {
   const [zoomLevel, setZoomLevel] = useState(10);
   const initialText = "Change Status";
   const options = ["Accept", "Completed", "Spam"];
-  const [isActive, setIsActive] = useState(false);
   let complaintsUrl = getApiPath() + "complaint/fetch";
-
   useEffect(
     (e) => {
       let complaintsUrl = getApiPath() + "complaint/fetch";
@@ -37,7 +34,6 @@ const Homepage = (props) => {
         .get(complaintsUrl)
         .then((res) => {
           setComplaintsArr(res.data.complaints);
-          console.log(res.data.complaints);
         })
         .catch((err) => {
           console.log("Error :" + err);
@@ -100,8 +96,16 @@ const Homepage = (props) => {
               lat: selectedComplatint.location.lat,
               lng: selectedComplatint.location.long,
             }}
+            onCloseClick={() => {
+              setSelectedComplaint(null);
+            }}
           >
             <div>
+              <img
+                style={{ width: "100%", height: "30px" }}
+                src={selectedComplatint.Image}
+                alt={selectedComplatint.title}
+              />
               <h3>{selectedComplatint.title}</h3>
             </div>
           </InfoWindow>

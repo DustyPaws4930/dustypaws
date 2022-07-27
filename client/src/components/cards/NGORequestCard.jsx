@@ -1,31 +1,20 @@
 import React from "react";
-// import "./pagination.css";
-
+import DefaultImage from "../project-files/default-image.svg";
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 
 const NGORequestCard = (props) => {
   const HandleComplaintDropDown = (option, reportId) => {
     props.HandleComplaintDropDown(option, reportId);
   };
-  console.log(props.result);
   let Difference_In_Time =
     new Date().getTime() - new Date(props.result.reportDate).getTime();
   let timeAgo;
   if (Difference_In_Time / (1000 * 60) < 60) {
     timeAgo = Math.trunc(Difference_In_Time / (1000 * 60)) + " mins ago";
-    console.log(props.result.reportDate)
-    console.log(new Date().getTime())
-    console.log(new Date(props.result.reportDate).getTime())
-    console.log("mins ago   "+timeAgo)
   } else if (Difference_In_Time / (1000 * 3600) < 24) {
     timeAgo = Math.trunc(Difference_In_Time / (1000 * 3600)) + " hours ago";
-    console.log("hours ago    "+timeAgo)
-    console.log(props.result.reportDate)
   } else if (Difference_In_Time / (1000 * 3600 * 24) < 31) {
     timeAgo = Math.trunc(Difference_In_Time / (1000 * 3600 * 24)) + " days ago";
-    console.log("days  goo   "+timeAgo)
-    console.log(props.result.reportDate)
-
   }
   return (
     <>
@@ -45,10 +34,11 @@ const NGORequestCard = (props) => {
           <img
             style={{
               resizeMode: "stretch",
+              objectFit: "contain",
               height: 100,
-              width: 200,
+              width: 150,
             }}
-            src={props.result.Image}
+            src={props.result.Image ? props.result.Image : DefaultImage}
             alt={props.result.title}
           />
         </div>
@@ -56,9 +46,8 @@ const NGORequestCard = (props) => {
         <p>{props.result.address}</p>
 
         <p>{props.result.description}</p>
-
-        {console.log(props.result.title + " " + props.result.state)}
         <div className="status-dropdown">
+          {/* {props.initialText} */}
           <AnimatedDropdown
             options={props.options}
             HandleComplaintDropDown={HandleComplaintDropDown}
@@ -69,7 +58,9 @@ const NGORequestCard = (props) => {
                 : props.result.state
             }
           />
-          <p>{timeAgo}</p>
+          <p>
+            <strong>Reported:</strong> {timeAgo}
+          </p>
         </div>
       </div>
     </>

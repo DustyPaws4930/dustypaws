@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import jwt from "jwt-decode";
-import { getApiPath, isValidEmail, setToken, setTokenTimeout } from "../../Common";
+import { getApiPath, isValidEmail, setToken } from "../../Common";
 import "./SignUp.css";
 import Header from "../Header/Header";
 import LoginBg from "../project-files/Login-Bg-image.svg";
@@ -9,6 +8,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import leftCorner from "../project-files/left_corner_login.svg";
 import rightCorner from "../project-files/right_corner_login.svg";
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -17,7 +18,8 @@ const SignUp = () => {
     password: "",
     isNgo: false,
   });
-  const [securityKey, setSecurityKey] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const HandleInputChange = (e) => {
     let name = e.target.name;
@@ -71,8 +73,9 @@ const SignUp = () => {
       });
   };
 
-  const HandleSecurityCheck = (event) => {
-    event.preventDefault();
+  const HandleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -94,6 +97,8 @@ const SignUp = () => {
                 name="username"
                 value={user.username}
                 id="username"
+                autoComplete="off"
+                required
                 onChange={(event) => HandleInputChange(event)}
                 placeholder="User name"
               />
@@ -105,6 +110,8 @@ const SignUp = () => {
                 name="email"
                 value={user.email}
                 id="email"
+                autoComplete="off"
+                required
                 placeholder="Email"
                 onChange={(event) => HandleInputChange(event)}
               />
@@ -112,14 +119,25 @@ const SignUp = () => {
 
             <div className="labelInputWrapper">
               <label htmlFor="password">Password</label>
-              <input
-                type="text"
-                name="password"
-                id="password"
-                value={user.password}
-                placeholder="Password"
-                onChange={(event) => HandleInputChange(event)}
-              />
+              <div className="inputPasswordIconWrapper">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  required
+                  autoComplete="off"
+                  value={user.password}
+                  placeholder="Password"
+                  onChange={(event) => HandleInputChange(event)}
+                />
+                <FontAwesomeIcon
+                  onClick={(e) => {
+                    HandleShowPassword(e);
+                  }}
+                  className="passwordIcon"
+                  icon={faEyeSlash}
+                />
+              </div>
             </div>
             <div className="SubmitBtnWrapper">
               <button>Sign Up</button>

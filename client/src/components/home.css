@@ -13,7 +13,7 @@ h4.landing-text {
   width: 600px;
   /* margin: 1rem auto 3rem auto; */
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   padding: 8rem 2rem 3rem 2rem;
 }
 
@@ -22,7 +22,7 @@ h4.landing-text {
   justify-content: center;
   align-items: center;
   width: 250px;
-  }
+}
 
 .reportCaseContainer {
   width: 600px;
@@ -44,6 +44,8 @@ section.statistics {
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
+  max-width: 89%;
+  padding-left: 2rem;
 }
 section.statistics > div {
   margin: 2rem;
@@ -71,6 +73,10 @@ section.statistics h3 {
 .description {
   position: relative;
   flex: 1 1 50%;
+}
+.donate-wrapper {
+  display: flex;
+  justify-content: flex-end;
 }
 .description button#donate {
   position: relative;
@@ -154,6 +160,7 @@ section .feature-subsection1 {
   transform: translateY(-105px);
 }
 #card3 > .img-container {
+  z-index: 9;
   transform: translateY(-95px);
 }
 
@@ -234,11 +241,13 @@ section .feature-subsection1 {
 
 /* newsletter section css */
 section.newsletter {
+
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
   padding: 1px;
   background: #deb141;
 }
 section .newsletter-wrapper {
+  position: relative;
   clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
   background: #fffaef;
   height: 250px;
@@ -266,7 +275,7 @@ section.newsletter input[type="email"]:focus {
 }
 section.newsletter div {
   display: flex;
-  gap: 5px;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
 }
@@ -283,27 +292,31 @@ section.report-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  max-width: 50%;
+  max-width: 60%;
   align-items: center;
   margin: 2rem auto;
 }
+h2.report-title {
+  grid-column: 1/-1;
+}
 section.report-wrapper .report-images > img {
-  height: 500px;
+  /* height: 500px; */
   width: auto;
 }
 section.report-wrapper .report-image1 {
   position: absolute;
-  left: -50%;
+  left: -34%;
   height: 500px;
   width: auto;
   overflow: hidden;
 }
+
 img.report-image2 {
   width: auto;
   position: absolute;
-  right: -50%;
+  right: -33%;
   overflow: hidden;
-  bottom: -8%;
+  bottom: -6%;
   z-index: 1;
 }
 
@@ -341,7 +354,7 @@ footer p {
     right: 0;
     bottom: -2%;
   }
- 
+
   section.landing {
     /* height: 350px; */
     background: url(../components/project-files/hero-mobile.svg);
@@ -435,6 +448,9 @@ footer p {
     margin: 0;
     grid-template-columns: 1fr;
     max-width: 100%;
+  }
+  .donate-wrapper {
+    justify-content: space-around;
   }
 }
 

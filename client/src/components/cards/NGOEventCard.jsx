@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import ReactPaginate from "react-paginate";
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import React from "react";
 
 const NGOEventCard = (props) => {
-  const GetLocationNShowPopUp = (e) => {
-    e.preventDefault();
-  };
+
+  console.log(props.result);
+  
   return (
     <div key={props.index + 1} className="CardWrapper">
       <div className="card">
@@ -18,7 +13,7 @@ const NGOEventCard = (props) => {
           </div>
           <img src={props.result.Image} alt={props.result.title} />
           <h2 className="card-title">{props.result.title}</h2>
-          <p className="card-description">{props.result.description}</p>
+          <p className="NGO_card-description">{props.result.description}</p>
           <div className="btn-container">
             <a
               className="btn btn-view"

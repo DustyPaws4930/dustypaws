@@ -1,6 +1,5 @@
 // import React, { useEffect, useState } from 'react'
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Event.css';
 // import Header from '../Header/Header';
 import Carousel from 'react-multi-carousel';

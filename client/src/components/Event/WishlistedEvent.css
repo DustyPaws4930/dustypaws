@@ -1,0 +1,53 @@
+.wishlisted-events .AllEventsWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5rem;
+}
+
+.wishlisted-events .AllEventsWrapper .eventWrapper {
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.wishlisted-events .AllEventsWrapper .eventWrapper img {
+  width: 100%;
+  height: auto;
+  height: 175px;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.wishlisted-events .AllEventsWrapper .eventWrapper h2,
+.wishlisted-events .AllEventsWrapper .eventWrapper p {
+  margin: 1rem;
+}
+
+.AllEventsWrapper,
+h1 {
+  max-width: 80%;
+  margin: 1.5rem auto;
+}
+.wishlisted-events .AllEventsWrapper .eventWrapper .event-body {
+  margin: 1rem;
+}
+.wishlisted-events
+  .AllEventsWrapper
+  .eventWrapper
+  .event-body
+  .btn-eventt-details {
+  text-align: center;
+  margin: 1rem;
+}
+@media screen and (max-width: 1240px) {
+  .wishlisted-events .AllEventsWrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+}
+@media screen and (max-width: 768px) {
+  .wishlisted-events .AllEventsWrapper {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,186 +1,269 @@
-.about-us{
-    /* background-color: cadetblue; */
-    /* overflow: hidden; */
-    
+.team-intro {
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 70px auto;
 }
-.team-intro{
-    /* background-color: yellow; */
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  margin: 10px;
+}
+
+.Our-impact {
+  /* background-color: beige; */
+  position: absolute;
+  top: 170px;
+  width: 40%;
+  margin: 0 30px;
+  text-align: center;
+}
+.our-team {
+  /* background-color: coral; */
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.profile-details {
+  /* background-color: aliceblue; */
+  /* text-align: center; */
+  padding: 0 20px;
+  border-radius: 5px;
+}
+#profile1,
+#profile3,
+#profile5 {
+  border: 3px solid #deb141;
+}
+#profile2,
+#profile4,
+#profile6 {
+  border: 3px solid #295b53;
+}
+.connect-email {
+  clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+  padding: 1px;
+  background: #deb141;
+  margin-top: 100px;
+}
+.connect-email-wrapper {
+  clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+  background: #fffaef;
+  padding: 6rem 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bunny {
+  width: 100px;
+}
+img.bunny {
+  position: absolute;
+  z-index: 9;
+  right: -148px;
+  bottom: -25px;
+}
+
+@media screen and (max-width: 700px) {
+  .about-us {
+    margin: 0;
+    padding: 0;
+  }
+  .our-team {
+    /* background-color: blueviolet; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    /* margin: 0 70px; */
+  }
+  .Our-impact {
+    /* display: none; */
+    /* background-color: aqua; */
+    position: relative;
+    text-align: center;
+    height: 60vh;
+    top: 10px;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 1200px;
     margin: 70px auto;
-}
+  }
+  .about-description img {
+    background-color: aquamarine;
+  }
 
-.social-links img{
+  .social-links img {
     width: 24px;
     height: 24px;
 
     /* margin: 5px; */
-}
+  }
 
-.about-description{
-    /* background-color: rebeccapurple; */
-    /* background-image: url('../images/AboutUS_Hero_Image.png');
-    background-position: cover; 
-    background-repeat: no-repeat;
-    background-size: 100%; 
-    width: 100%;
-    height: 100%; */
-}
-
-.Our-impact{
+  .Our-impact {
     /* background-color: beige; */
     position: absolute;
-    top: 170px;
-    width: 40%;
-    margin: 0 30px;
+    top: 400px;
+    height: 250px;
+    width: 100%;
+  }
+  .team-intro {
+    /* background-color: blue; */
+    margin: 0px 20px;
     text-align: center;
+    height: 60vh;
+    margin: 80px 0 10px 0;
+  }
 }
-.o
-.our-team{
-    /* background-color: coral; */
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 100px;
-    max-width: 1200px;
-    margin: 0 auto;
-    /* height: 150vh; */
+.our-team {
+  /* background-color: coral; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* height: 150vh; */
+}
 
-
+.profile-details {
+  background-color: aliceblue;
+  /* text-align: center; */
+  /* padding: 0 20px ; */
+  border-radius: 5px;
 }
-
-.profile-details{
-    background-color: aliceblue;
-    /* text-align: center; */
-    /* padding: 0 20px ; */
-    border-radius: 5px;
+#profile1,
+#profile3,
+#profile5 {
+  /* padding: 0 20px; */
+  border: 3px solid #deb141;
 }
-#profile1, #profile3, #profile5{
-    /* padding: 0 20px; */
-    border: 3px solid #deb141;
+#profile2,
+#profile4,
+#profile6 {
+  border: 3px solid #295b53;
 }
-#profile2, #profile4, #profile6{
-    border: 3px solid #295b53;
+.connect-email {
+  clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+  padding: 1px;
+  background: #deb141;
+  margin-top: 5rem;
 }
-.connect-email{
-    clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
-    padding: 1px;
-    background: #deb141;
-    margin-top: 5rem;
-
+.connect-email-wrapper {
+  clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+  background: #fffaef;
+  padding: 6rem 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-.connect-email-wrapper{
-    clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
-    background: #fffaef;
-    padding: 6rem 4rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.connect-email-wrapper h4 {
+  padding: 10px 0;
 }
-.connect-email-wrapper h4{
-    padding: 10px 0;
-}
-.connect-email-wrapper p{
-    padding: 10px 20px;
+.connect-email-wrapper p {
+  padding: 10px 20px;
 }
 .social-links img {
-   
-    margin: 0 15px;
+  margin: 0 15px;
 }
-.member-title{
-    padding: 10px;
+.member-title {
+  padding: 10px;
 }
-.rabbit{
-    /* position: absolute;
+.rabbit {
+  visibility: hidden;
+}
+.BunnyImageWrapper {
+  position: relative;
+  margin: 3rem 0 0 0;
+}
+.BunnyImage {
+  width: auto;
+  position: absolute;
+  right: 10px;
+  overflow: hidden;
+  z-index: 1;
+  top: -80px;
+}
+
+.job-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.job-section input {
+  border: 1px solid black;
+  width: 250px;
+  margin: 0 20px;
+  border-radius: 5px;
+}
+.job-section button {
+  padding: 5px 30px;
+  background-color: #deb141;
+}
+@media screen and (max-width: 2000px) and (min-width: 1200px) {
+  .rabbit {
+    position: absolute;
     width: 100px;
     height: 50px;
     left: 83rem;
     top: 113.5rem;
-    z-index: 1; */
-    /* width: auto;
-  position: absolute;
-  right: -50%;
-  overflow: hidden;
-  bottom: -8%;
-  z-index: 1; */
-  visibility: hidden;
+    z-index: 1;
+  }
 }
-.job-section{
+
+@media screen and (max-width: 700px) and (min-width: 300px) {
+  .about-us {
+    margin: 0;
+    padding: 0;
+  }
+  .our-team {
+    /* background-color: blueviolet; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    /* margin: 0 70px; */
+  }
+  .Our-impact {
+    /* display: none; */
+    /* background-color: aqua; */
+    position: relative;
+    text-align: center;
+    height: 50vh;
+    top: 10px;
+    width: 70%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.job-section input{
-    border: 1px solid black;
-    width: 250px;
-    margin: 0 20px;
-    border-radius: 5px;
-}
-.job-section button{
-    padding: 5px 30px;
-    background-color: #deb141;
-}
-@media screen and (max-width: 2000px) and (min-width: 1200px) {
-    .rabbit{
-        position: absolute;
-        width: 100px;
-        height: 50px;
-        left: 83rem;
-        top: 113.5rem;
-        z-index: 1;
-       
-    }
-}
-
-@media screen and (max-width: 700px) and (min-width: 300px){
-    .about-us{
-        margin: 0;
-        padding: 0;
-    }
-    .our-team{
-        /* background-color: blueviolet; */
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 30px;
-        /* margin: 0 70px; */
-        width: 50%;
-
-    }
-    .Our-impact{
-        /* display: none; */
-        /* background-color: aqua; */
-        position: relative;
-        text-align: center;
-        height: 50vh;
-        top: 10px;
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .about-description img{
-        background-color: aquamarine;
-        position: absolute;
-        top: 400px;
-        height: 150px;
-        width: 100%;
-        
-    }
-    .team-intro{
-        /* background-color: blue; */
-        margin: 0px 20px;
-        text-align: center;
-        height: 50vh;
-        margin: 80px 0 10px 0;
-       
-    }
-    .rabbit{
-        visibility: hidden;
-    }
-    .connect-email{
-        margin-top: 0rem;
-    }
-    
+    flex-direction: column;
+    justify-content: center;
+  }
+  .about-description img {
+    background-color: aquamarine;
+    position: absolute;
+    top: 400px;
+    height: 150px;
+    width: 100%;
+  }
+  .team-intro {
+    /* background-color: blue; */
+    margin: 0px 20px;
+    text-align: center;
+    height: 50vh;
+    margin: 80px 0 10px 0;
+  }
+  .rabbit {
+    visibility: hidden;
+  }
+  .connect-email {
+    margin-top: 0rem;
+  }
 }

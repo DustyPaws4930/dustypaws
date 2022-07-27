@@ -49,7 +49,9 @@ const AllReports = () => {
             <h2>{complaints.title}</h2>
             <p className="card-address">{complaints.address}</p>
             <p>{complaints.description}</p>
-            <p>Status: {complaints.state}</p>
+            <p className="StatusBtn" id={`${complaints.state}`}>
+              {complaints.state}
+            </p>
             <p className={RenderState(complaints.priority)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

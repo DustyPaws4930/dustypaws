@@ -4,15 +4,16 @@ import { useEffect } from "react";
 import { getApiPath, getToken, UploadFile } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import Geocode from "react-geocode";
+import rewards from "../project-files/rewards-icon.svg";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { Link } from "react-router-dom";
+
 let Report = (props) => {
   Geocode.setLanguage("en");
   Geocode.setApiKey("AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw");
+
   // ***Declare all variables here***
   let [buttonChange, setButtonChange] = useState("");
   let PopUpContent;
@@ -30,7 +31,6 @@ let Report = (props) => {
   });
   let [fileName, setFileName] = useState("");
 
-  let [color, setColor] = useState("#ffffff");
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
@@ -162,7 +162,7 @@ let Report = (props) => {
   return (
     <>
       <section id="reportSection" className="report-complaint">
-        <h1>Report</h1>
+        {/* <h1>Report</h1> */}
         <form
           action="/"
           onSubmit={(e) => {
@@ -170,44 +170,49 @@ let Report = (props) => {
           }}
         >
           <div className="labelInputWrapper">
-            <label>Title <span>*</span></label>
+            <label>
+              Title <span>*</span>
+            </label>
             <input
               type="text"
+              required
               onChange={(event) => onInputChange(event)}
               name="title"
               id="title"
               value={reportData.title}
-              required
             />
           </div>
           <div className="labelInputWrapper">
-            <label>Description <span>*</span></label>
+            <label>
+              Description <span>*</span>
+            </label>
             <textarea
               name="description"
               id="reportDescription"
               value={reportData.description}
               onChange={(event) => onInputChange(event)}
-              placeholder="please briefly describe the event"
+              placeholder=""
               cols="30"
               rows="10"
               required
             ></textarea>
           </div>
           <div className="labelInputWrapper">
-            <label htmlFor="myFile">Upload image: <span>*</span></label>
+            <label htmlFor="myFile">
+              Upload image: <span>*</span>
+            </label>
             <div className="button-div">
               <div className="chooseFileContainer">
                 Choose File
                 <input
                   type="file"
                   id="myFile"
+                  required
                   name="chooseFileBtn"
                   className="fileOriginalBtn"
                   accept="image/*"
-                  required
                   onChange={(e) => {
                     handleFileChange(e);
-              
                   }}
                   aria-hidden="false"
                 ></input>
@@ -226,13 +231,15 @@ let Report = (props) => {
           </div>
 
           <div className="labelInputWrapper">
-            <label>Name <span>*</span></label>
+            <label>
+              Name <span>*</span>
+            </label>
             <div className="InputLinkWrapper">
               <input
                 type="text"
+                required
                 name="name"
                 id="name"
-                required
                 maxLength={28}
                 value={reportData.name}
                 onChange={(e) => onInputChange(e)}
@@ -249,7 +256,9 @@ let Report = (props) => {
             </div>
           </div>
           <div className="labelInputWrapper">
-            <label>Phone Number <span>*</span></label>
+            <label>
+              Phone Number <span>*</span>
+            </label>
             <input
               type="tel"
               name="phoneNumber"
@@ -262,14 +271,18 @@ let Report = (props) => {
             />
           </div>
           <div className="LocationWrapper">
-            <label>Location : <span>*</span></label>
+            <label>
+              Location : <span>*</span>
+            </label>
             <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
               Auto Detect
             </a>
           </div>
           {PopUpContent}
           <div className="priority-flag-wrapper">
-            <label>Priority Flag <span>*</span></label>
+            <label>
+              Priority Flag <span>*</span>
+            </label>
             <div className="priority-buttons">
               <button
                 className={` ${
@@ -290,7 +303,7 @@ let Report = (props) => {
 
               <button
                 className={`${
-                  buttonChange == "High"
+                  buttonChange === "High"
                     ? "disabled High-active"
                     : "priority-flag high"
                 }`}
@@ -306,7 +319,7 @@ let Report = (props) => {
 
               <button
                 className={`${
-                  buttonChange == "Moderate"
+                  buttonChange === "Moderate"
                     ? "disabled Moderate-active"
                     : "priority-flag moderate"
                 }`}
@@ -326,6 +339,17 @@ let Report = (props) => {
           <div className="submit">
             {/* <input type="submit" id='submit-complaint' value="Register Complaint" /> */}
             <button type="submit">Register Complaint</button>
+          </div>
+          <div className="form-footer">
+            <div>
+              <img src={rewards} alt="rewards" className="rewardsBg" />
+              <p>
+                Want to collect <span> rewards? </span>
+              </p>
+            </div>
+            <h4>
+              <Link to="/login">LOG IN / SIGN UP</Link>
+            </h4>
           </div>
         </form>
       </section>

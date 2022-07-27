@@ -29,18 +29,13 @@ const Pagination = (props) => {
   // Loading data
   useEffect(() => {
     setInitialText(props.initialText);
-    fetchData();
-  }, [apiUrl, fetchData, props.initialText]);
-  function fetchData() {
     axios.get(apiUrl).then((result) => {
       setData(result.data);
       if (pageName === "NGO-Home") {
         setData(result.data.complaints);
       }
-      console.log(result.data.complaints);
     });
-  }
-
+  }, [apiUrl, setData, setInitialText]);
   // Handle page click
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
@@ -69,22 +64,23 @@ const Pagination = (props) => {
 
   let currentPageData;
   if (pageName === "NGO-Home") {
-    currentPageData = data
-      .slice(offset, offset + PerPage)
-
-      .map((result, index) => {
-        return (
-          <NGORequestCard
-            result={result}
-            options={props.options}
-            ShowOnMap={ShowOnMapEvent}
-            initialText={initialText}
-            HandleComplaintDropDown={HandleDropDownEvent}
-            index={index}
-            key={index}
-          />
-        );
-      });
+    if (data.length > 0) {
+      currentPageData = data
+        .slice(offset, offset + PerPage)
+        .map((result, index) => {
+          return (
+            <NGORequestCard
+              result={result}
+              options={props.options}
+              ShowOnMap={ShowOnMapEvent}
+              initialText={initialText}
+              HandleComplaintDropDown={HandleDropDownEvent}
+              index={index}
+              key={index}
+            />
+          );
+        });
+    }
   } else if (pageName === "EventForm") {
     currentPageData = data
       .slice(offset, offset + PerPage)
@@ -99,10 +95,6 @@ const Pagination = (props) => {
         );
       });
   }
-
-  console.log(currentPageData);
-
-  // console.log("currentPageData", currentPageData);
 
   // total pages Calculator
   let pageCount = Math.ceil(data.length / PerPage);

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import UserData from "../../../Data";
 import LineChart from "../../Charts/LineChart";
 import { getApiPath, getToken } from "../../../Common";
 import axios from "axios";
