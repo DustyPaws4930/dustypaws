@@ -42,6 +42,7 @@ let About = (props) => {
                 with rewards for users who provides information Unlike other
                 activist sites for animal help.
               </p>
+              {/* <a href="images/Proposal_Draft.pdf"><button>Project Proposal</button></a> */}
             </div>
           </div>
           <div className="image-container"></div>

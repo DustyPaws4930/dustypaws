@@ -252,7 +252,7 @@ h2.card-title {
   padding: 0 20px ;
 }
 
-.our-partners-content {
+.our-partners {
   /* background-color: #295b53; */
   width: 100%;
   height: auto;
@@ -261,7 +261,7 @@ h2.card-title {
   text-align: center;
 }
 .owl-item.active {
-  margin: 0;
+  /* margin: 0 20px; */
 }
 .owl-item.active.center .item {
   transform: scale(1);
@@ -269,9 +269,10 @@ h2.card-title {
   border-radius: 10px;
   width: 100%;
   background-position: center;
+  
 }
 .item {
-  padding: 50px 10px;
+  padding: 50px 20px;
   align-items: center;
   height: auto;
   border-radius: 30px;
@@ -290,7 +291,19 @@ h2.card-title {
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  z-index: 0;
+  /* z-index: 0; */
+}
+@media only screen and (max-width: 700px) and (min-width: 501px) {
+  .owl-item.active.center .item {
+    transform: scale(1);
+    opacity: 1;
+    border-radius: 10px;
+    width: 100%;
+    background-position: center;
+    position: relative;
+    left: 55%;
+    
+  }
 }
 
 .mobile-img-1,
@@ -376,6 +389,43 @@ h2.card-title {
   .btn-feature-event {
     display: flex;
     justify-content: center;
+  }
+  .item {
+    padding: 50px 10px;
+    align-items: center;
+    height: auto;
+    border-radius: 30px;
+    text-align: center;
+    transform: scale(0.8);
+    opacity: 0.8;
+    transition: all 0.3s;
+    background: linear-gradient(
+        0deg,
+        rgba(40, 91, 83, 0.3),
+        rgba(40, 91, 83, 0.3)
+      ),
+      url('../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg');
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    /* z-index: 0; */
+  }
+  .owl-item.active.center .item {
+    transform: scale(1);
+    opacity: 1;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    left: 55%;
+    /* background-position: center; */
+   
+  }
+  .our-partners {
+    /* background-color: #295b53; */
+    width: 100%;
+    height: auto;
   }
 }
 /* event page NGO */
@@ -563,7 +613,58 @@ input[type="Number"] {
     display: flex;
     justify-content: center;
   }
+  .item {
+    padding: 50px 10px;
+    align-items: center;
+    height: auto;
+    border-radius: 30px;
+    text-align: center;
+    transform: scale(0.8);
+    opacity: 0.8;
+    width: 100%;
+    /* transition: all 0.3s;
+    background: linear-gradient(
+        0deg,
+        rgba(40, 91, 83, 0.3),
+        rgba(40, 91, 83, 0.3)
+      ),
+      url('../images/news-dog-sad-puppy-being-cuddled-lost-pet.jpeg');
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white; */
+    /* z-index: 0; */
+  }
+  .owl-item.active.center .item{
+    background-color: red;
+    border-radius: 10px;
+    /* margin-left: auto; */
+    position: relative;
+    left: 55%;
+    /* right: 100%; */
+    width: 100%;
+    /* margin: 0 200px; */
+   
+    
+    /* background-position: center; */
+   
+  }
+  .our-partners{
+    /* background-color: #295b53; */
+    width: 100%;
+    height: auto;
+  }
+  .owl-item .cloned{
+    visibility: hidden;
+  }
 }
+
+
+
+
+
+
 /* event page NGO */
 
 .event-form-wrapper {

@@ -40,57 +40,57 @@ const Event = (props) => {
     },
   };
 
-  const [owlState, setOwlState] = useState({
-    responsive: {
-      0: {
-        items: 1,
-        center: 'true',
-      },
-      450: {
-        items: 2,
-      },
-      768: {
-        items: 3,
-        marginleft: '10px',
-        marginRight: '10px',
-        center: true,
-      },
-      1000: {
-        items: 5,
-        marginleft: '100px',
-        marginRight: '100px',
-        center: true,
-      },
-    },
-  });
+  // const [owlState, setOwlState] = useState({
+  //   responsive: {
+  //     0: {
+  //       items: 1,
+  //       center: 'true',
+  //     },
+  //     450: {
+  //       items: 2,
+  //     },
+  //     768: {
+  //       items: 3,
+  //       marginleft: '10px',
+  //       marginRight: '10px',
+  //       center: true,
+  //     },
+  //     1000: {
+  //       items: 5,
+  //       marginleft: '100px',
+  //       marginRight: '100px',
+  //       center: true,
+  //     },
+  //   },
+  // });
 
-  // const owl = {
-  //   1000: {
-  //     items: 5,
-  //     // margin: "0px",
-  //     marginleft: "100px",
-  //     marginRight: "100px",
-  //     center: true,
-  //   },
-  //   768: {
-  //     items: 3,
-  //     marginleft: "100px",
-  //     marginRight: "100px",
-  //     center: true,
-  //   },
-  //   480: {
-  //     items: 3,
-  //     marginleft: "10px",
-  //     marginRight: "10px",
-  //     center: true,
-  //   },
-  //   0: {
-  //     items: 1,
-  //     marginleft: "auto",
-  //     marginRight: "auto",
-  //     center: true,
-  //   },
-  // };
+  const owl = {
+    1000: {
+      items: 5,
+      // margin: "0px",
+      // marginleft: "100px",
+      // marginRight: "100px",
+      center: true,
+    },
+    768: {
+      items: 3,
+      // marginleft: "100px",
+      // marginRight: "100px",
+      center: true,
+    },
+    500: {
+      items: 1,
+      // marginleft: "10px",
+      // marginRight: "10px",
+      center: true,
+    },
+    300: {
+      items: 1,
+      // marginleft: "auto",
+      // marginRight: "auto",
+      center: true,
+    },
+  };
 
   const [recentEvents, setRecentEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
@@ -298,46 +298,38 @@ const Event = (props) => {
         <div className="our-partners-heading">
           <h2>Our Partners</h2>
         </div>
-        <div className="our-partners-content">
+        <div className="our-partners">
           <OwlCarousel
-            className="owl-theme"
-            loop
-            center
-            margin={1}
-            autoplay={true}
-            dots={false}
-            touchDrag={true}
-            lazyLoad={true}
-            responsive={owlState} // add this line
-            animateOut={'fadeOut'}
-            animateIn={'flipInX'}
+          className='owl-theme'
+          center
+          autoPlay
+          dots = {false}
+          touchDrag = {true}
+          responsive = {owl}
+          loop = {true}
+          width= "100%"
+          // autoplayHoverPause = {true}
+          
           >
-            {/* {allPartners.map((partner, idx) => { */}
-            {/* return ( */}
-            <div className="item" key={1}>
-              <h3>People For Animal</h3>
-              <p>
-                Animals in India need your help. People For Animals receives 99%
-                of its funding from people like you. Your donation, however
-                small is vital to the continuation of our work and makes a
-                difference to the ................
-              </p>
+            <div className='item'>
+              <h3>People For Animal1</h3>
+              <p>Animals in India need your help. People For Animals receives 99% of its funding from people like you. Your donation, however small is vital to the continuation of our work and makes a difference to the</p>
             </div>
-            <div className="item" key={2}>
+            <div className='item'>
               <h3>Sanjay Gandhi Animal Care</h3>
               <p>
                 The Sanjay Gandhi Animal Care Centre (SGACC) is India's oldest
                 and Delhi's largest all-animal shelter.
               </p>
             </div>
-            <div className="item" key={3}>
+            <div className='item'>
               <h3>PETA India</h3>
               <p>
                 Together, we can make the world a better place for all beings.
                 Your donation will go to work
               </p>
             </div>
-            <div className="item" key={4}>
+            <div className='item'>
               <h3>Animal Rahat</h3>
               <p>
                 Animal Rahat (rahat means “relief” in Hindi) is a unique program
@@ -346,7 +338,7 @@ const Event = (props) => {
                 India......
               </p>
             </div>
-            <div className="item" key={5}>
+            <div className='item'>
               <h3>Vet Helpline India (P) Ltd</h3>
               <p>
                 We help organizations conduct studies and implement development
@@ -366,3 +358,60 @@ const Event = (props) => {
 };
 
 export default Event;
+
+
+{/* <OwlCarousel
+className="owl-theme"
+loop
+center
+margin={1}
+autoplay={true}
+dots={false}
+touchDrag={true}
+lazyLoad={true}
+responsive={owlState} 
+animateOut={'fadeOut'}
+animateIn={'flipInX'}
+>
+
+<div className="item" key={1}>
+  <h3>People For Animal</h3>
+  <p>
+    Animals in India need your help. People For Animals receives 99%
+    of its funding from people like you. Your donation, however
+    small is vital to the continuation of our work and makes a
+    difference to the ................
+  </p>
+</div>
+<div className="item" key={2}>
+  <h3>Sanjay Gandhi Animal Care</h3>
+  <p>
+    The Sanjay Gandhi Animal Care Centre (SGACC) is India's oldest
+    and Delhi's largest all-animal shelter.
+  </p>
+</div>
+<div className="item" key={3}>
+  <h3>PETA India</h3>
+  <p>
+    Together, we can make the world a better place for all beings.
+    Your donation will go to work
+  </p>
+</div>
+<div className="item" key={4}>
+  <h3>Animal Rahat</h3>
+  <p>
+    Animal Rahat (rahat means “relief” in Hindi) is a unique program
+    that aims to help some of the most neglected animals in the
+    world—the bullocks, donkeys, and other working animals of
+    India......
+  </p>
+</div>
+<div className="item" key={5}>
+  <h3>Vet Helpline India (P) Ltd</h3>
+  <p>
+    We help organizations conduct studies and implement development
+    projects in the field of animal health care, animal welfare,
+    livestock development, food safety, and public health.....
+  </p>
+</div>
+</OwlCarousel> */}
