@@ -10,11 +10,12 @@
 }
 
 .LocationBtn {
-  margin: 1rem;
+  margin: 1rem 0.5rem 0 0;
   border: 1px solid black;
   padding: 0.5rem;
   background: #285b53;
   color: white;
+  width: max-content;
 }
 
 .LocationBtn:hover {
@@ -23,13 +24,13 @@
   color: black;
   cursor: pointer;
 }
-.labelInputWrapper span{
+.labelInputWrapper span {
   color: red;
 }
-.LocationWrapper span{
+.LocationWrapper span {
   color: red;
 }
-.priority-flag-wrapper span{
+.priority-flag-wrapper span {
   color: red;
 }
 section .labelInputWrapper,
@@ -253,4 +254,22 @@ section.report-complaint {
   margin: 0.5rem;
   text-align: center;
   font-size: 24px;
+}
+
+.locationInputWrapper {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: max-content;
+  justify-content: center;
+}
+
+.locationInputWrapper input {
+  outline: none;
+  border: 0;
+  width: 100%;
+  display: flex;
+  height: fit-content;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+  align-self: end;
 }

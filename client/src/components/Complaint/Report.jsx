@@ -274,9 +274,17 @@ let Report = (props) => {
             <label>
               Location : <span>*</span>
             </label>
-            <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
-              Auto Detect
-            </a>
+            <div className="locationInputWrapper">
+              <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
+                Auto Detect
+              </a>
+              <input
+                disabled={true}
+                type="text"
+                value={currentAddress}
+                name="address"
+              />
+            </div>
           </div>
           {PopUpContent}
           <div className="priority-flag-wrapper">

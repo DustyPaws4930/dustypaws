@@ -122,14 +122,14 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 50px;
-    margin: 0 40px;
+    margin: 0 15px;
   }
   .donate-card1 {
     /* background-color: cadetblue; */
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 50px;
-    margin: 0 40px;
+    margin: 0 15px;
   }
   .donate-card-img1:nth-child(1) {
     margin-top: 50px;
@@ -142,15 +142,20 @@
   }
   .donate-intro-container {
     /* background-color: aqua; */
-    margin: 50px 30px;
+    margin: 50px 15px;
   }
+  
+  .card-btn a {
+    top: 0;
+  }
+
   .card-load-more button {
     margin: 50px;
   }
   .donate-card-content {
     color: white;
     /* position: relative; */
-    padding: 20px;
+    padding: 10px;
   }
   .donate-card-content h2 {
     margin: 20px;

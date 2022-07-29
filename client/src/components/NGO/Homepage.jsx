@@ -27,6 +27,7 @@ const Homepage = (props) => {
   const initialText = "Change Status";
   const options = ["Accept", "Completed", "Spam"];
   let complaintsUrl = getApiPath() + "complaint/fetch";
+  
   useEffect(
     (e) => {
       let complaintsUrl = getApiPath() + "complaint/fetch";
