@@ -348,17 +348,22 @@ let Report = (props) => {
             {/* <input type="submit" id='submit-complaint' value="Register Complaint" /> */}
             <button type="submit">Register Complaint</button>
           </div>
-          <div className="form-footer">
-            <div>
-              <img src={rewards} alt="rewards" className="rewardsBg" />
-              <p>
-                Want to collect <span> rewards? </span>
-              </p>
+
+          {getToken() !== null ? (
+            ""
+          ) : (
+            <div className="form-footer">
+              <div>
+                <img src={rewards} alt="rewards" className="rewardsBg" />
+                <p>
+                  Want to collect <span> rewards? </span>
+                </p>
+              </div>
+              <h4>
+                <Link to="/login">LOG IN / SIGN UP</Link>
+              </h4>
             </div>
-            <h4>
-              <Link to="/login">LOG IN / SIGN UP</Link>
-            </h4>
-          </div>
+          )}
         </form>
       </section>
     </>
