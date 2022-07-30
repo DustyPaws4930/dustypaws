@@ -20,9 +20,10 @@ const Rewards = () => {
               {
                 label: "Rewards",
                 data: Urewards.map((data) => data.rewards),
-                backgroundColor: ["#deb141"],
+                backgroundColor: ["#285b53"],
                 borderColor: "#285b53",
                 borderWidth: 2,
+                bezierCurve: false,
               },
             ],
           });
@@ -39,6 +40,18 @@ const Rewards = () => {
       });
   }, [setUserRewards, setTotalRewardsPoints]);
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Chart.js Line Chart",
+      },
+    },
+  };
   return (
     <div className="userRewardsContainer">
       <div className="rewardsHeading">
@@ -48,7 +61,7 @@ const Rewards = () => {
         <div className="userChart">
           {Object.keys(userRewards).length > 0 ? (
             <>
-              <LineChart chartData={userRewards} />
+              <LineChart chartData={userRewards} options={options} />
             </>
           ) : (
             <></>
