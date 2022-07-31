@@ -3,7 +3,7 @@ import { Upload } from "@aws-sdk/lib-storage";
 import { S3Client, S3 } from "@aws-sdk/client-s3";
 let tokenTimeout;
 export const getApiPath = () => {
-  return "http://localhost:5000/";
+  return "https://dustypaws.herokuapp.com/";
 };
 
 export const getToken = () => {
