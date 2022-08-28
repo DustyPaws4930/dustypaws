@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import reportBGImage2 from "../project-files/rabbit-report-image.svg";
 
 import "./About.css";
 
-import profileImage from "../images/AboutUs_profile_Image.png";
 import AboutHeroImage from "../images/AboutUs_Hero_Image2.png";
 import AboutUsGlobe from "../images/AboutUs_globe.png";
 import AboutUsLinkdin from "../images/AboutUS_linkedin.png";
 import AboutUsGithub from "../images/AboutUs_github.png";
-// import { linkedIn } from ''
+
+import Anmol from "../images/Anmol.png";
+import Manpreet from "../images/Manpreet.png";
+import Tejaswini from "../images/Tejaswini.png";
+import Shubham from "../images/Shubham.png";
+import Jaskaran from "../images/Jaskaran.png";
+import Param from "../images/Param.png";
+
+import Behance from "../images/Behance.png";
+import Newsletter from "../Newsletter";
 
 let About = (props) => {
-  let [emailNews, setEmailNews] = useState("");
   return (
     <>
       {/* header component fetched */}
@@ -35,6 +42,7 @@ let About = (props) => {
                 with rewards for users who provides information Unlike other
                 activist sites for animal help.
               </p>
+              {/* <a href="images/Proposal_Draft.pdf"><button>Project Proposal</button></a> */}
             </div>
           </div>
           <div className="image-container"></div>
@@ -55,23 +63,25 @@ let About = (props) => {
 
         <section className="our-team">
           <div className="team-member" id="team-member1">
-            <img src={profileImage} alt="AnmolDeep Kaur" />
+            <img src={Anmol} alt="AnmolDeep Kaur" />
             <div className="profile-details" id="profile1">
               <div className="member-title">
                 <p>AnmolDeep Kaur</p>
                 <p>Lead UI Designer</p>
               </div>
               <div className="social-links">
-                <img src={AboutUsLinkdin} alt="linkedin" />
-
-                <img src={AboutUsGithub} alt="github profile" />
+                <a href="https://www.linkedin.com/in/anmoldeep-kaur-b6b938211/">
+                  <img src={AboutUsLinkdin} alt="linkedin" />
+                </a>
+                {/* <p>https://www.linkedin.com/in/anmoldeep-kaur-b6b938211/</p> */}
+                <img src={Behance} alt="Behance profile" />
 
                 <img src={AboutUsGlobe} alt="globe" />
               </div>
             </div>
           </div>
           <div className="team-member" id="team-member2">
-            <img src={profileImage} alt="Manpreet Kaur" />
+            <img src={Manpreet} alt="Manpreet Kaur" />
 
             <div className="profile-details" id="profile2">
               <div className="member-title">
@@ -79,27 +89,14 @@ let About = (props) => {
                 <p>Lead UX Designer</p>
               </div>
               <div className="social-links">
-                <img src={AboutUsLinkdin} alt="linkedin" />
-
-                <img src={AboutUsGithub} alt="github profile" />
-
-                <img src={AboutUsGlobe} alt="globe" />
-              </div>
-            </div>
-          </div>
-
-          <div className="team-member" id="team-member5">
-            <img src={profileImage} alt="Tejaswini Kalyan" />
-
-            <div className="profile-details" id="profile3">
-              <div className="member-title">
-                <p>Tejaswini Kalyan Kumar</p>
-                <p>Front End Developer</p>
-              </div>
-              <div className="social-links">
-                <img src={AboutUsLinkdin} alt="linkedin" />
-
-                <img src={AboutUsGithub} alt="github profile" />
+                <a href="https://www.linkedin.com/in/manpreet-kaur-52b935211">
+                  {" "}
+                  <img src={AboutUsLinkdin} alt="linkedin" />
+                </a>
+                {/* <p>https://www.linkedin.com/in/manpreet-kaur-52b935211/</p> */}
+                <a href="https://www.behance.net/manpreetkaur121">
+                  <img src={Behance} alt="Behance profile" />
+                </a>
 
                 <img src={AboutUsGlobe} alt="globe" />
               </div>
@@ -107,35 +104,67 @@ let About = (props) => {
           </div>
 
           <div className="team-member" id="team-member3">
-            <img src={profileImage} alt="Shubham Verma" />
+            <img src={Tejaswini} alt="Tejaswini Kalyan" />
 
-            <div className="profile-details" id="profile4">
+            <div className="profile-details" id="profile3">
               <div className="member-title">
-                <p>Shubham Verma</p>
-                <p>Full Stack Developer</p>
+                <p>Tejaswini Kalyan Kumar</p>
+                <p>Front End Developer</p>
               </div>
               <div className="social-links">
-                <img src={AboutUsLinkdin} alt="linkedin" />
-
-                <img src={AboutUsGithub} alt="github profile" />
-
+                <a href="https://www.linkedin.com/in/tejaswini-kalyan-465287212/">
+                  <img src={AboutUsLinkdin} alt="linkedin" />
+                </a>
+                {/* <p>www.linkedin.com/in/tejaswini-mysore-kalyan-kumar-465287212</p> */}
+                <a href="https://github.com/123-Teju">
+                  <img src={AboutUsGithub} alt="github profile" />
+                </a>
+                {/* https://github.com/123-Teju */}
                 <img src={AboutUsGlobe} alt="globe" />
               </div>
             </div>
           </div>
 
           <div className="team-member" id="team-member4">
-            <img src={profileImage} alt="Paraminder Singh" />
+            <img src={Jaskaran} alt="Jaskaranvir Deogan" />
+            <div className="profile-details" id="profile6">
+              <div className="member-title">
+                <p>Jaskaranvir Deogan</p>
+                <p>Front End Developer</p>
+              </div>
+              <div className="social-links">
+                <a href="https://www.linkedin.com/in/jaskaranvir-deogan-55a134171/">
+                  <img src={AboutUsLinkdin} alt="linkedin" />
+                </a>
+                {/* <p>https://www.linkedin.com/in/jaskaranvir-deogan-55a134171/</p> */}
+                <a href="https://github.com/jaskarandeogan">
+                  <img src={AboutUsGithub} alt="github profile" />
+                </a>
+                {/* https://github.com/jaskarandeogan */}
+                <a href="https://jasdeogan.com/">
+                  <img src={AboutUsGlobe} alt="globe" />
+                </a>
+                {/* https://jasdeogan.com/ */}
+              </div>
+            </div>
+          </div>
+
+          <div className="team-member" id="team-member5">
+            <img src={Shubham} alt="Shubham Verma" />
 
             <div className="profile-details" id="profile5">
               <div className="member-title">
-                <p>Paraminder Singh</p>
+                <p>Shubham Verma</p>
                 <p>Full Stack Developer</p>
               </div>
               <div className="social-links">
-                <img src={AboutUsLinkdin} alt="linkedin" />
-
-                <img src={AboutUsGithub} alt="github profile" />
+                <a href="https://www.linkedin.com/in/shubham-verma-2482b0137/">
+                  <img src={AboutUsLinkdin} alt="linkedin" />
+                </a>
+                {/* <p>https://www.linkedin.com/in/shubham-verma-2482b0137/</p> */}
+                <a href="https://github.com/SVerma799">
+                  <img src={AboutUsGithub} alt="github profile" />
+                </a>
 
                 <img src={AboutUsGlobe} alt="globe" />
               </div>
@@ -143,54 +172,29 @@ let About = (props) => {
           </div>
 
           <div className="team-member" id="team-member6">
-            <img src={profileImage} alt="Jaskaranvir Deogan" />
+            <img src={Param} alt="Paraminder Singh" />
+
             <div className="profile-details" id="profile6">
               <div className="member-title">
-                <p>Jaskaranvir Deogan</p>
-                <p>Front End Developer</p>
+                <p>Paraminder Singh</p>
+                <p>Full Stack Developer</p>
               </div>
               <div className="social-links">
-                <img src={AboutUsLinkdin} alt="linkedin" />
+                <a href="https://www.linkedin.com/in/parminder-singh-ab5651113">
+                  <img src={AboutUsLinkdin} alt="linkedin" />
+                </a>
 
                 <img src={AboutUsGithub} alt="github profile" />
 
                 <img src={AboutUsGlobe} alt="globe" />
               </div>
             </div>
-            <img src={reportBGImage2} alt="Bunny" className="bunny"/>
           </div>
         </section>
-        <section className="newsletter">
-         
-          <div className="newsletter-wrapper">
-          
-            <h4>Join Our Newsletter</h4>
-            <p>
-              Keep yourself updated with latest event and affairs. Subscribe our
-              news letter by providing your
-            </p>
-            <div>
-              <input
-                type="email"
-                name="newsletter-email"
-                id="newsletterEmail"
-                value={emailNews}
-                onChange={(e) => {
-                  setEmailNews(e.target.value);
-                }}
-                placeholder="Enter your email"
-              />
-              <button
-                type="submit"
-                onClick={(e) => {
-                  alert("You are subscribed for the news letter");
-                }}
-              >
-                Submit
-              </button>
-            </div>
-          </div>
+        <section className="BunnyImageWrapper">
+          <img src={reportBGImage2} alt=" report2" className="BunnyImage" />
         </section>
+        <Newsletter />
       </main>
 
       {/* Footer component fetched */}

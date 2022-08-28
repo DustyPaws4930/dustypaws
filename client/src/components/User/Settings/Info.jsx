@@ -98,6 +98,8 @@ const Info = () => {
     let name = e.target.name;
 
     SetImageForUI(name);
+
+    TogglePopUp();
   };
 
   let PopUpContent = "";

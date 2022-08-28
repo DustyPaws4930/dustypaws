@@ -183,7 +183,7 @@ const EventForm = () => {
               ></textarea>
             </div>
             <div className="event-form">
-              <label htmlFor="img">Upload image:</label>
+              <label htmlFor="img">Upload image: <span>*</span></label>
               <div className="Eventbutton-div">
                 <div className="chooseFileContainer">
                   Choose File
@@ -197,6 +197,7 @@ const EventForm = () => {
                       handleFileChange(e);
                     }}
                     aria-hidden="false"
+                    required = "true"
                   ></input>
                 </div>
                 {loading ? (
@@ -212,7 +213,7 @@ const EventForm = () => {
               </div>
             </div>
             <div className="event-form">
-              <label>Location</label>
+              <label>Location <span>*</span></label>
               <input
                 type="text"
                 value={eventData.address}
@@ -220,11 +221,12 @@ const EventForm = () => {
                   HandleInputChange(e);
                 }}
                 name="address"
+                required = "true"
                 id="address"
               />
             </div>
             <div className="event-form">
-              <label>Date:</label>
+              <label>Date: <span>*</span></label>
               <input
                 type="date"
                 value={eventData.date}
@@ -232,10 +234,11 @@ const EventForm = () => {
                   HandleInputChange(e);
                 }}
                 name="date"
+                required = "true"
               />
             </div>
             <div className="event-form">
-              <label>price</label>
+              <label>price <span>*</span></label>
               <input
                 type="number"
                 value={eventData.price}
@@ -243,6 +246,7 @@ const EventForm = () => {
                   HandleInputChange(e);
                 }}
                 name="price"
+                required = "true"
               />
             </div>
             <div className="event-form">

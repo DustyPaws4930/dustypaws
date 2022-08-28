@@ -1,9 +1,8 @@
 import React from "react";
-import DefaultImage from "../project-files/default-image.svg"
+import DefaultImage from "../project-files/default-image.svg";
 import AnimatedDropdown from "../dropdown/AnimatedDropdown";
 
 const NGORequestCard = (props) => {
-   
   const HandleComplaintDropDown = (option, reportId) => {
     props.HandleComplaintDropDown(option, reportId);
   };

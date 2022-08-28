@@ -6,16 +6,37 @@ import Whislist from "./Whislist";
 import Header from "../../Header/Header";
 import "./Profile.css";
 import Footer from "../../Footer/Footer";
+import { useEffect } from "react";
+import { useState } from "react";
+import { getLoggedInUser } from "../../../Common";
 
 const Profile = () => {
+  let [loggedInUser, setLoggedInUser] = useState(null);
+  useEffect(
+    (e) => {
+      let logUser = getLoggedInUser();
+
+      if (logUser !== "") {
+        setLoggedInUser(logUser);
+      }
+    },
+    [setLoggedInUser]
+  );
+
   return (
     <div>
       <Header />
       <div className="profile-user">
         <Info />
-        <Rewards />
-        <Whislist />
-        <Reports />
+        {loggedInUser !== null && loggedInUser.role !== "ngo" ? (
+          <>
+            <Rewards />
+            <Whislist />
+            <Reports />
+          </>
+        ) : (
+          ""
+        )}
       </div>
       <Footer />
     </div>

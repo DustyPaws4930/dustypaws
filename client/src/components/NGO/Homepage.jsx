@@ -27,6 +27,7 @@ const Homepage = (props) => {
   const initialText = "Change Status";
   const options = ["Accept", "Completed", "Spam"];
   let complaintsUrl = getApiPath() + "complaint/fetch";
+  
   useEffect(
     (e) => {
       let complaintsUrl = getApiPath() + "complaint/fetch";
@@ -84,7 +85,7 @@ const Homepage = (props) => {
               }}
               icon={{
                 url: GetIcon(complaint),
-                scaledSize: new window.google.maps.Size(30, 30),
+                scaledSize: new window.google.maps.Size(30, 40),
               }}
             />
           );

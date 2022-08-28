@@ -310,12 +310,13 @@ section.report-wrapper .report-image1 {
   width: auto;
   overflow: hidden;
 }
+
 img.report-image2 {
   width: auto;
   position: absolute;
   right: -33%;
   overflow: hidden;
-  bottom: -8%;
+  bottom: -6%;
   z-index: 1;
 }
 

@@ -4,9 +4,6 @@ import { useEffect } from "react";
 import { getApiPath, getToken, UploadFile } from "../../Common";
 import PopUp from "../ModelPopups/PopUp";
 import "./Report.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import Geocode from "react-geocode";
 import rewards from "../project-files/rewards-icon.svg";
@@ -16,6 +13,7 @@ import { Link } from "react-router-dom";
 let Report = (props) => {
   Geocode.setLanguage("en");
   Geocode.setApiKey("AIzaSyDEcxBYEDNORQY12G_W30I0WufUD3ooOPw");
+
   // ***Declare all variables here***
   let [buttonChange, setButtonChange] = useState("");
   let PopUpContent;
@@ -33,7 +31,6 @@ let Report = (props) => {
   });
   let [fileName, setFileName] = useState("");
 
-  let [color, setColor] = useState("#ffffff");
   // ***Declare Functions here***F
   useEffect(() => {
     let userToken = getToken();
@@ -173,7 +170,9 @@ let Report = (props) => {
           }}
         >
           <div className="labelInputWrapper">
-            <label>Title</label>
+            <label>
+              Title <span>*</span>
+            </label>
             <input
               type="text"
               required
@@ -184,7 +183,9 @@ let Report = (props) => {
             />
           </div>
           <div className="labelInputWrapper">
-            <label>Description</label>
+            <label>
+              Description <span>*</span>
+            </label>
             <textarea
               name="description"
               id="reportDescription"
@@ -192,12 +193,14 @@ let Report = (props) => {
               onChange={(event) => onInputChange(event)}
               placeholder=""
               cols="30"
-              rows="2"
+              rows="10"
               required
             ></textarea>
           </div>
           <div className="labelInputWrapper">
-            <label htmlFor="myFile">Upload image:</label>
+            <label htmlFor="myFile">
+              Upload image: <span>*</span>
+            </label>
             <div className="button-div">
               <div className="chooseFileContainer">
                 Choose File
@@ -228,7 +231,9 @@ let Report = (props) => {
           </div>
 
           <div className="labelInputWrapper">
-            <label>Name</label>
+            <label>
+              Name <span>*</span>
+            </label>
             <div className="InputLinkWrapper">
               <input
                 type="text"
@@ -251,7 +256,9 @@ let Report = (props) => {
             </div>
           </div>
           <div className="labelInputWrapper">
-            <label>Phone Number</label>
+            <label>
+              Phone Number <span>*</span>
+            </label>
             <input
               type="tel"
               name="phoneNumber"
@@ -264,14 +271,26 @@ let Report = (props) => {
             />
           </div>
           <div className="LocationWrapper">
-            <label>Location :</label>
-            <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
-              Auto Detect
-            </a>
+            <label>
+              Location : <span>*</span>
+            </label>
+            <div className="locationInputWrapper">
+              <a className="LocationBtn" onClick={GetLocationNShowPopUp}>
+                Auto Detect
+              </a>
+              <input
+                disabled={true}
+                type="text"
+                value={currentAddress}
+                name="address"
+              />
+            </div>
           </div>
           {PopUpContent}
           <div className="priority-flag-wrapper">
-            <label>Priority Flag</label>
+            <label>
+              Priority Flag <span>*</span>
+            </label>
             <div className="priority-buttons">
               <button
                 className={` ${
@@ -292,7 +311,7 @@ let Report = (props) => {
 
               <button
                 className={`${
-                  buttonChange == "High"
+                  buttonChange === "High"
                     ? "disabled High-active"
                     : "priority-flag high"
                 }`}
@@ -308,7 +327,7 @@ let Report = (props) => {
 
               <button
                 className={`${
-                  buttonChange == "Moderate"
+                  buttonChange === "Moderate"
                     ? "disabled Moderate-active"
                     : "priority-flag moderate"
                 }`}
@@ -329,17 +348,22 @@ let Report = (props) => {
             {/* <input type="submit" id='submit-complaint' value="Register Complaint" /> */}
             <button type="submit">Register Complaint</button>
           </div>
-          <div className="form-footer">
-            <div>
-              <img src={rewards} alt="rewards" className="rewardsBg" />
-              <p>
-                Want to collect <span> rewards? </span>
-              </p>
+
+          {getToken() !== null ? (
+            ""
+          ) : (
+            <div className="form-footer">
+              <div>
+                <img src={rewards} alt="rewards" className="rewardsBg" />
+                <p>
+                  Want to collect <span> rewards? </span>
+                </p>
+              </div>
+              <h4>
+                <Link to="/login">LOG IN / SIGN UP</Link>
+              </h4>
             </div>
-            <h4>
-              <Link to="/login">LOG IN / SIGN UP</Link>
-            </h4>
-          </div>
+          )}
         </form>
       </section>
     </>
